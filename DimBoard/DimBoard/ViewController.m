@@ -7,6 +7,14 @@
 //
 
 #import "ViewController.h"
+#define MIN_HOME_VALUE 1.00         // 1,0000
+#define MAX_HOME_VALUE 5000.00      // 5000,0000
+#define MIN_LOANRATE_VALUE 0.1      // 0.1%
+#define MAX_LOANRATE_VALUE 15.00    // 15%
+#define MIN_LOANYEAR_VALUE 1        // 1 years
+#define MAX_LOANYEAR_VALUE 50       // 50 years
+#define MIN_LOANPERCENT_VALUE 1     // 1%
+#define MAX_LOANPERCENT_VALUE 95    // 95%
 
 @interface ViewController ()
 
@@ -48,6 +56,23 @@
     m_monthlyPay = 0;
     m_loanTerms = 0;
     m_totoalPay = 0;
+    
+    [self.HomeValue_slid setMinimumValue:MIN_HOME_VALUE]; //int terms of 10-thousand
+    [self.HomeValue_slid setMaximumValue:MAX_HOME_VALUE];
+    [self.HomeValue_slid addTarget:self action:@selector(onSlidValueChanged:) forControlEvents:UIControlEventValueChanged];
+        
+    [self.LoanRate_slid setMinimumValue:MIN_LOANRATE_VALUE]; //in terms of %
+    [self.LoanRate_slid setMaximumValue:MAX_LOANRATE_VALUE];
+    [self.LoanRate_slid addTarget:self action:@selector(onSlidValueChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    [self.LoanYear_slid setMinimumValue:MIN_LOANYEAR_VALUE];  // in terms of year
+    [self.LoanYear_slid setMaximumValue:MAX_LOANYEAR_VALUE];
+    [self.LoanYear_slid addTarget:self action:@selector(onSlidValueChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    [self.LoanPercent_slid setMinimumValue:MIN_LOANPERCENT_VALUE]; // in terms of %
+    [self.LoanPercent_slid setMaximumValue:MAX_LOANPERCENT_VALUE];
+    [self.LoanPercent_slid addTarget:self action:@selector(onSlidValueChanged:) forControlEvents:UIControlEventValueChanged];
+
 }
 
 -(void)updateInput{
@@ -107,4 +132,21 @@
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }
+
+//notifications
+- (void)onSlidValueChanged:(id) sender{
+    UISlider* slider = (UISlider*)sender;
+    float sliderValue = slider.value;
+    
+    if(sender == HomeValue_slid){
+        HomeValue_input.text = [NSString stringWithFormat:@"%0.2f",sliderValue];
+    }else if(sender == LoanPercent_slid){
+        LoanPercent_input.text = [NSString stringWithFormat:@"%0.2f",sliderValue];
+    }else if(sender == LoanYear_slid){
+        LoanYear_input.text = [NSString stringWithFormat:@"%d",(int)sliderValue];
+    }else if(sender == LoanRate_slid){
+        LoanRate_input.text = [NSString stringWithFormat:@"%0.2f",sliderValue];
+    }
+}
+
 @end

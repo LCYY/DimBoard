@@ -729,6 +729,15 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">OnHomeValueChangedBySlideBar:</string>
+						<reference key="source" ref="174044387"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">6</int>
+					</object>
+					<int key="connectionID">57</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">OnShowOveralInfo:</string>
 						<reference key="source" ref="465087029"/>
 						<reference key="destination" ref="372490531"/>
@@ -776,7 +785,6 @@
 							<reference ref="446114798"/>
 							<reference ref="174044387"/>
 							<reference ref="461462203"/>
-							<reference ref="235189238"/>
 							<reference ref="137077122"/>
 							<reference ref="655678768"/>
 							<reference ref="285879333"/>
@@ -795,6 +803,7 @@
 							<reference ref="19249518"/>
 							<reference ref="542663391"/>
 							<reference ref="465087029"/>
+							<reference ref="235189238"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -967,7 +976,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">56</int>
+			<int key="maxID">57</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -975,10 +984,15 @@
 					<string key="className">ViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="OnHomeValueChangedBySlideBar:">id</string>
 						<string key="OnShowDetails:">id</string>
 						<string key="OnShowOveralInfo:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="OnHomeValueChangedBySlideBar:">
+							<string key="name">OnHomeValueChangedBySlideBar:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="OnShowDetails:">
 							<string key="name">OnShowDetails:</string>
 							<string key="candidateClassName">id</string>
