@@ -68,13 +68,7 @@
     [LoanPercent_input setDelegate:self];
     [LoanRate_input setDelegate:self];
     [LoanYear_input setDelegate:self];
-    
-    //set slider
-    [HomeValue_slid setValue:m_homeValue];
-    [LoanPercent_slid setValue:m_loanPercent];
-    [LoanYear_slid setValue:m_loanYear];
-    [LoanRate_slid setValue:m_loanRate];
-         
+             
     //set slid range and callback
     [HomeValue_slid setMinimumValue:MIN_HOME_VALUE]; //int terms of 10-thousand
     [HomeValue_slid setMaximumValue:MAX_HOME_VALUE];
@@ -91,6 +85,12 @@
     [LoanPercent_slid setMinimumValue:MIN_LOANPERCENT_VALUE]; // in terms of %
     [LoanPercent_slid setMaximumValue:MAX_LOANPERCENT_VALUE];
     [LoanPercent_slid addTarget:self action:@selector(onSlidValueChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    //set slider
+    [HomeValue_slid setValue:m_homeValue];
+    [LoanPercent_slid setValue:m_loanPercent];
+    [LoanYear_slid setValue:m_loanYear];
+    [LoanRate_slid setValue:m_loanRate];
 
 }
 
@@ -107,10 +107,10 @@
     return TRUE;
 }
 
-- (IBAction)OnShowOveralInfo:(id)sender {
+- (IBAction)onShowOveralInfo:(id)sender {
 }
 
-- (IBAction)OnShowDetails:(id)sender {
+- (IBAction)onShowDetails:(id)sender {
 }
 
 // for hide keyboard when touch background
@@ -202,4 +202,8 @@ replacementString:(NSString *)string {
     [self updateOutput];
 }
 
+- (void)viewDidUnload {
+    [self setHomeValue_slid:nil];
+    [super viewDidUnload];
+}
 @end

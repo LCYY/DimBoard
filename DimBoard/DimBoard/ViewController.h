@@ -43,8 +43,8 @@
 
 //Buttons
 @property (weak, nonatomic) IBOutlet UIButton *ShowOveralInfo;
-- (IBAction)OnShowDetails:(id)sender;
+- (IBAction)onShowDetails:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *ShowDetails;
-- (IBAction)OnShowOveralInfo:(id)sender;
+- (IBAction)onShowOveralInfo:(id)sender;
 @end
