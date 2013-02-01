@@ -12,6 +12,8 @@
 		FB2D6FA116BA22E2008E367F /* icon_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2D6F9C16BA22E2008E367F /* icon_64x64.png */; };
 		FB2D6FA216BA22E2008E367F /* icon_128x128.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2D6F9D16BA22E2008E367F /* icon_128x128.png */; };
 		FB2D6FA316BA22E2008E367F /* icon_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2D6F9E16BA22E2008E367F /* icon_256x256.png */; };
+		FB7858F416BBB0DF00C63D08 /* OveralInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7858F216BBB0DF00C63D08 /* OveralInfoViewController.m */; };
+		FB7858F516BBB0DF00C63D08 /* OveralInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB7858F316BBB0DF00C63D08 /* OveralInfoViewController.xib */; };
 		FBF3C85616B920D400790005 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85516B920D400790005 /* UIKit.framework */; };
 		FBF3C85816B920D400790005 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85716B920D400790005 /* Foundation.framework */; };
 		FBF3C85A16B920D400790005 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85916B920D400790005 /* CoreGraphics.framework */; };
@@ -28,6 +30,9 @@
 		FB2D6F9C16BA22E2008E367F /* icon_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_64x64.png; path = Home.iconset/icon_64x64.png; sourceTree = "<group>"; };
 		FB2D6F9D16BA22E2008E367F /* icon_128x128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_128x128.png; path = Home.iconset/icon_128x128.png; sourceTree = "<group>"; };
 		FB2D6F9E16BA22E2008E367F /* icon_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_256x256.png; path = Home.iconset/icon_256x256.png; sourceTree = "<group>"; };
+		FB7858F116BBB0DF00C63D08 /* OveralInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OveralInfoViewController.h; sourceTree = "<group>"; };
+		FB7858F216BBB0DF00C63D08 /* OveralInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OveralInfoViewController.m; sourceTree = "<group>"; };
+		FB7858F316BBB0DF00C63D08 /* OveralInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OveralInfoViewController.xib; sourceTree = "<group>"; };
 		FBF3C85116B920D400790005 /* DimBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DimBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF3C85516B920D400790005 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FBF3C85716B920D400790005 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -106,6 +111,9 @@
 				FBF3C86816B920D400790005 /* ViewController.m */,
 				FBF3C86A16B920D400790005 /* ViewController.xib */,
 				FBF3C85C16B920D400790005 /* Supporting Files */,
+				FB7858F116BBB0DF00C63D08 /* OveralInfoViewController.h */,
+				FB7858F216BBB0DF00C63D08 /* OveralInfoViewController.m */,
+				FB7858F316BBB0DF00C63D08 /* OveralInfoViewController.xib */,
 			);
 			path = DimBoard;
 			sourceTree = "<group>";
@@ -179,6 +187,7 @@
 				FB2D6FA116BA22E2008E367F /* icon_64x64.png in Resources */,
 				FB2D6FA216BA22E2008E367F /* icon_128x128.png in Resources */,
 				FB2D6FA316BA22E2008E367F /* icon_256x256.png in Resources */,
+				FB7858F516BBB0DF00C63D08 /* OveralInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +201,7 @@
 				FBF3C86216B920D400790005 /* main.m in Sources */,
 				FBF3C86616B920D400790005 /* AppDelegate.m in Sources */,
 				FBF3C86916B920D400790005 /* ViewController.m in Sources */,
+				FB7858F416BBB0DF00C63D08 /* OveralInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
