@@ -44,6 +44,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     [self initVarirables];
     [self updateOutput];
+    [self calculateResult];
 }
 
 - (void)initVarirables{    
@@ -108,6 +109,23 @@
 }
 
 - (IBAction)onShowOveralInfo:(id)sender {
+    NSMutableDictionary* dict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                           [HomeValue_input.text stringByAppendingString:@" 萬元"],@"homevalue",
+                           [LoanPercent_input.text stringByAppendingString:@" %"],@"loanpercent",
+                           [LoanYear_input.text stringByAppendingString:@" 年"],@"loanyear",
+                           [LoanRate_input.text stringByAppendingString:@" %"],@"loanrate",
+                           LoanAmount_output.text,@"loanamount",
+                           LoanTerms_output.text,@"loanterms",
+                           MonthlyPay_output.text,@"monthlypay",
+                           [NSString stringWithFormat:@"%0.2f 萬元",m_firstPay],@"firstpay",
+                           [NSString stringWithFormat:@"%0.2f 元",m_comission],@"commision",
+                           [NSString stringWithFormat:@"%0.2f 元",m_tax],@"tax",
+                           [NSString stringWithFormat:@"%0.2f 萬元",m_firstExpence],@"firstexpence",
+                           [NSString stringWithFormat:@"%0.2f 萬元",m_totalExpence],@"overalexpence",
+                           nil];
+
+    m_overalInfoViewController = [[OveralInfoViewController alloc] initWithValues:dict];
+    [self.view addSubview:m_overalInfoViewController.view];
 }
 
 - (IBAction)onShowDetails:(id)sender {
@@ -192,13 +210,18 @@ replacementString:(NSString *)string {
     
     m_monthlyPay = interest_term_1 + principle_term_1;
     m_totoalPay = m_monthlyPay/10000.0*m_loanTerms;
-    //m_principals = [[NSMutableArray alloc] initWithCapacity:m_loanTerms];
-    //m_interests = [[NSMutableArray alloc] initWithCapacity:m_loanTerms];
+    
+    m_firstPay = m_homeValue - m_loanAmount;
+    m_comission = 10000*m_homeValue*0.01;  // in terms of 1
+    m_tax = 100; // in terms of 1
+    m_firstExpence = m_firstPay + (m_comission + m_tax)/10000.0;
+    m_totalExpence = m_firstExpence + m_totoalPay;
+    
     
     for(int i=0; i<m_loanTerms; i++){
         [m_principals addObject:[NSNumber numberWithDouble:(interest_term_1*pow(1+rate_per_month,i))]];
     }
-    
+      
     [self updateOutput];
 }
 

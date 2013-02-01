@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OveralInfoViewController.h"
 
 @interface ViewController : UIViewController<UITextFieldDelegate>{
 
@@ -20,7 +21,15 @@
     NSInteger m_loanTerms;
     double m_totoalPay; // in terms of 10-thousands
     
-    NSMutableArray* m_principals;   
+    double m_firstPay;
+    double m_firstExpence;
+    double m_totalExpence;
+    double m_comission;
+    double m_tax;
+    
+    NSMutableArray* m_principals;
+    
+    OveralInfoViewController* m_overalInfoViewController;
 }
 
 //TextField Input
@@ -47,4 +56,5 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *ShowDetails;
 - (IBAction)onShowOveralInfo:(id)sender;
+
 @end
