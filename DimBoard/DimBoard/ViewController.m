@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+
 #define MIN_HOME_VALUE 1.00         // 1,0000
 #define MAX_HOME_VALUE 5000.00      // 5000,0000
 #define MIN_LOANRATE_VALUE 0.1      // 0.1%
@@ -42,84 +43,68 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self initVarirables];
-    [self updateInput];
     [self updateOutput];
 }
 
-- (void)initVarirables{
+- (void)initVarirables{    
     m_homeValue = 100;
-    m_loanPercent = 0.3;
+    m_loanPercent = 30;
     m_loanYear = 30;
-    m_loanRate = 0.02;
+    m_loanRate = 2;
     
     m_loanAmount = 0;
     m_monthlyPay = 0;
     m_loanTerms = 0;
     m_totoalPay = 0;
     
-    [self.HomeValue_slid setMinimumValue:MIN_HOME_VALUE]; //int terms of 10-thousand
-    [self.HomeValue_slid setMaximumValue:MAX_HOME_VALUE];
-    [self.HomeValue_slid addTarget:self action:@selector(onSlidValueChanged:) forControlEvents:UIControlEventValueChanged];
-        
-    [self.LoanRate_slid setMinimumValue:MIN_LOANRATE_VALUE]; //in terms of %
-    [self.LoanRate_slid setMaximumValue:MAX_LOANRATE_VALUE];
-    [self.LoanRate_slid addTarget:self action:@selector(onSlidValueChanged:) forControlEvents:UIControlEventValueChanged];
-    
-    [self.LoanYear_slid setMinimumValue:MIN_LOANYEAR_VALUE];  // in terms of year
-    [self.LoanYear_slid setMaximumValue:MAX_LOANYEAR_VALUE];
-    [self.LoanYear_slid addTarget:self action:@selector(onSlidValueChanged:) forControlEvents:UIControlEventValueChanged];
-    
-    [self.LoanPercent_slid setMinimumValue:MIN_LOANPERCENT_VALUE]; // in terms of %
-    [self.LoanPercent_slid setMaximumValue:MAX_LOANPERCENT_VALUE];
-    [self.LoanPercent_slid addTarget:self action:@selector(onSlidValueChanged:) forControlEvents:UIControlEventValueChanged];
-
-}
-
--(void)updateInput{
     // set input
-    self.HomeValue_input.text = [NSString stringWithFormat:@"%0.2f", m_homeValue];
-    self.LoanPercent_input.text = [NSString stringWithFormat:@"%0.2f",m_loanPercent*100];
-    self.LoanYear_input.text = [NSString stringWithFormat:@"%d", m_loanYear];
-    self.LoanRate_input.text = [NSString stringWithFormat:@"%0.2f",m_loanRate*100];
+    HomeValue_input.text = [NSString stringWithFormat:@"%0.2f", m_homeValue];
+    LoanPercent_input.text = [NSString stringWithFormat:@"%0.2f",m_loanPercent];
+    LoanYear_input.text = [NSString stringWithFormat:@"%d", m_loanYear];
+    LoanRate_input.text = [NSString stringWithFormat:@"%0.2f",m_loanRate];
     
-    //set slidbar
-    self.HomeValue_slid.value = m_homeValue;
-    self.LoanPercent_slid.value = m_loanPercent;
-    self.LoanYear_slid.value = m_loanYear;
-    self.LoanRate_slid.value = m_loanRate;
+    //set input delegate to self
+    [HomeValue_input setDelegate:self];
+    [LoanPercent_input setDelegate:self];
+    [LoanRate_input setDelegate:self];
+    [LoanYear_input setDelegate:self];
+    
+    //set slider
+    [HomeValue_slid setValue:m_homeValue];
+    [LoanPercent_slid setValue:m_loanPercent];
+    [LoanYear_slid setValue:m_loanYear];
+    [LoanRate_slid setValue:m_loanRate];
+         
+    //set slid range and callback
+    [HomeValue_slid setMinimumValue:MIN_HOME_VALUE]; //int terms of 10-thousand
+    [HomeValue_slid setMaximumValue:MAX_HOME_VALUE];
+    [HomeValue_slid addTarget:self action:@selector(onSlidValueChanged:) forControlEvents:UIControlEventValueChanged];
+        
+    [LoanRate_slid setMinimumValue:MIN_LOANRATE_VALUE]; //in terms of %
+    [LoanRate_slid setMaximumValue:MAX_LOANRATE_VALUE];
+    [LoanRate_slid addTarget:self action:@selector(onSlidValueChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    [LoanYear_slid setMinimumValue:MIN_LOANYEAR_VALUE];  // in terms of year
+    [LoanYear_slid setMaximumValue:MAX_LOANYEAR_VALUE];
+    [LoanYear_slid addTarget:self action:@selector(onSlidValueChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    [LoanPercent_slid setMinimumValue:MIN_LOANPERCENT_VALUE]; // in terms of %
+    [LoanPercent_slid setMaximumValue:MAX_LOANPERCENT_VALUE];
+    [LoanPercent_slid addTarget:self action:@selector(onSlidValueChanged:) forControlEvents:UIControlEventValueChanged];
+
 }
 
 -(void)updateOutput{
     //set result
-    self.LoanAmount_output.text = [NSString stringWithFormat:@"%0.2f", m_loanAmount];
-    self.LoanTerms_output.text = [NSString stringWithFormat:@"%d",m_loanTerms];
-    self.TotalPay_output.text = [NSString stringWithFormat:@"%0.2f",m_totoalPay];
-    self.MonthlyPay_output.text = [NSString stringWithFormat:@"%0.2f",m_monthlyPay];
-}
-
-- (void)viewDidUnload
-{
-    [self setHomeValue_input:nil];
-    [self setLoanPercent_input:nil];
-    [self setLoanYear_input:nil];
-    [self setLoanRate_input:nil];
-    [self setHomeValue_slid:nil];
-    [self setLoanPercent_slid:nil];
-    [self setLoanYear_slid:nil];
-    [self setLoanRate_slid:nil];
-    [self setLoanAmount_output:nil];
-    [self setTotalPay_output:nil];
-    [self setLoanTerms_output:nil];
-    [self setShowOveralInfo:nil];
-    [self setShowDetails:nil];
-    [self setMonthlyPay_output:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
+    LoanAmount_output.text = [NSString stringWithFormat:@"%0.2f 萬元", m_loanAmount];
+    LoanTerms_output.text = [NSString stringWithFormat:@"%d 期",m_loanTerms];
+    TotalPay_output.text = [NSString stringWithFormat:@"%0.2f 萬元",m_totoalPay];
+    MonthlyPay_output.text = [NSString stringWithFormat:@"%0.2f 元",m_monthlyPay];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return TRUE;
 }
 
 - (IBAction)OnShowOveralInfo:(id)sender {
@@ -133,6 +118,48 @@
     [self.view endEditing:YES];
 }
 
+//UITextField Delegate
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string {
+    if(string.length == 0)
+        return YES;
+    //can only input number and one dot
+    NSRange hasDot = [textField.text rangeOfString:@"."];
+    NSCharacterSet* filterSet;
+    NSString* afterFilter;
+    if(hasDot.location < textField.text.length || hasDot.location == 0 ){
+        filterSet = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
+        afterFilter = [string stringByTrimmingCharactersInSet:filterSet];
+    }else{
+        filterSet = [[NSCharacterSet characterSetWithCharactersInString:@".0123456789"] invertedSet];
+        afterFilter = [string stringByTrimmingCharactersInSet:filterSet];
+    }
+    if(afterFilter.length > 0){
+        return YES;
+    }else{
+        return NO;
+    }
+    //? need range handling???
+}
+
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    if(textField == HomeValue_input){
+        m_homeValue = [HomeValue_input.text doubleValue];
+        [HomeValue_slid setValue:m_homeValue];
+    }else if(textField == LoanPercent_input){
+        m_loanPercent = [LoanPercent_input.text doubleValue];
+        [LoanPercent_slid setValue:m_loanPercent];
+    }else if(textField == LoanRate_input){
+        m_loanRate = [LoanRate_input.text doubleValue];
+        [LoanRate_slid setValue:m_loanRate];
+    }else if(textField == LoanYear_input){
+        m_loanYear = [LoanYear_input.text intValue];
+        [LoanYear_slid setValue:m_loanYear];
+    }
+    
+    [self calculateResult];
+}
+
 //notifications
 - (void)onSlidValueChanged:(id) sender{
     UISlider* slider = (UISlider*)sender;
@@ -140,13 +167,39 @@
     
     if(sender == HomeValue_slid){
         HomeValue_input.text = [NSString stringWithFormat:@"%0.2f",sliderValue];
+        m_homeValue = [HomeValue_input.text doubleValue];
     }else if(sender == LoanPercent_slid){
         LoanPercent_input.text = [NSString stringWithFormat:@"%0.2f",sliderValue];
+        m_loanPercent = [LoanPercent_input.text doubleValue];
     }else if(sender == LoanYear_slid){
         LoanYear_input.text = [NSString stringWithFormat:@"%d",(int)sliderValue];
+        m_loanYear = [LoanYear_input.text intValue];
     }else if(sender == LoanRate_slid){
         LoanRate_input.text = [NSString stringWithFormat:@"%0.2f",sliderValue];
+        m_loanRate = [LoanRate_input.text doubleValue];
     }
+    
+    [self calculateResult];
+}
+
+-(void)calculateResult{
+    m_loanAmount = m_homeValue*m_loanPercent/100.0;
+    m_loanTerms = 12*m_loanYear;
+    
+    double rate_per_month = m_loanRate/12.0/100.0;
+    double interest_term_1 = 10000*m_loanAmount*rate_per_month;
+    double principle_term_1 = interest_term_1/(pow(1+rate_per_month,m_loanTerms) - 1);
+    
+    m_monthlyPay = interest_term_1 + principle_term_1;
+    m_totoalPay = m_monthlyPay/10000.0*m_loanTerms;
+    //m_principals = [[NSMutableArray alloc] initWithCapacity:m_loanTerms];
+    //m_interests = [[NSMutableArray alloc] initWithCapacity:m_loanTerms];
+    
+    for(int i=0; i<m_loanTerms; i++){
+        [m_principals addObject:[NSNumber numberWithDouble:(interest_term_1*pow(1+rate_per_month,i))]];
+    }
+    
+    [self updateOutput];
 }
 
 @end

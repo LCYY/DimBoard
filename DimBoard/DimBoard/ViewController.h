@@ -8,18 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController{
+@interface ViewController : UIViewController<UITextFieldDelegate>{
 
     double m_homeValue; // in terms of 10-thoudsands
-    CGFloat m_loanPercent;
-    NSInteger m_loanYear;
-    CGFloat m_loanRate;
+    double m_loanPercent; // in terms of %
+    NSInteger m_loanYear; // integer
+    double m_loanRate; // in terms of %, loan rate per year
     
-    double m_loanAmount;
-    double m_monthlyPay;
+    double m_loanAmount; // in terms of 10-thousands
+    double m_monthlyPay; // in terms of 1
     NSInteger m_loanTerms;
-    double m_totoalPay;
+    double m_totoalPay; // in terms of 10-thousands
     
+    NSMutableArray* m_principals;   
 }
 
 //TextField Input
