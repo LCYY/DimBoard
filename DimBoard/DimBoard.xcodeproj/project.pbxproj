@@ -26,7 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		35AB6DF716BEA10000795E57 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		35AB6DF716BEA10000795E57 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		FB2D6F9A16BA22E2008E367F /* icon_16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_16x16.png; path = Home.iconset/icon_16x16.png; sourceTree = "<group>"; };
 		FB2D6F9B16BA22E2008E367F /* icon_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_32x32.png; path = Home.iconset/icon_32x32.png; sourceTree = "<group>"; };
 		FB2D6F9C16BA22E2008E367F /* icon_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_64x64.png; path = Home.iconset/icon_64x64.png; sourceTree = "<group>"; };
@@ -67,11 +67,12 @@
 		FB2D6FA416BA2364008E367F /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				35AB6DF716BEA10000795E57 /* Default-568h@2x.png */,
 				FB2D6F9A16BA22E2008E367F /* icon_16x16.png */,
-				FB2D6F9E16BA22E2008E367F /* icon_256x256.png */,
 				FB2D6F9B16BA22E2008E367F /* icon_32x32.png */,
 				FB2D6F9C16BA22E2008E367F /* icon_64x64.png */,
 				FB2D6F9D16BA22E2008E367F /* icon_128x128.png */,
+				FB2D6F9E16BA22E2008E367F /* icon_256x256.png */,
 			);
 			name = Res;
 			sourceTree = "<group>";
@@ -79,7 +80,6 @@
 		FBF3C84616B920D400790005 = {
 			isa = PBXGroup;
 			children = (
-				35AB6DF716BEA10000795E57 /* Default-568h@2x.png */,
 				FBF3C85B16B920D400790005 /* DimBoard */,
 				FBF3C85416B920D400790005 /* Frameworks */,
 				FBF3C85216B920D400790005 /* Products */,
@@ -108,12 +108,12 @@
 			isa = PBXGroup;
 			children = (
 				FB2D6FA416BA2364008E367F /* Res */,
+				FBF3C85C16B920D400790005 /* Supporting Files */,
 				FBF3C86416B920D400790005 /* AppDelegate.h */,
 				FBF3C86516B920D400790005 /* AppDelegate.m */,
 				FBF3C86716B920D400790005 /* ViewController.h */,
 				FBF3C86816B920D400790005 /* ViewController.m */,
 				FBF3C86A16B920D400790005 /* ViewController.xib */,
-				FBF3C85C16B920D400790005 /* Supporting Files */,
 				FB7858F116BBB0DF00C63D08 /* OveralInfoViewController.h */,
 				FB7858F216BBB0DF00C63D08 /* OveralInfoViewController.m */,
 				FB7858F316BBB0DF00C63D08 /* OveralInfoViewController.xib */,
