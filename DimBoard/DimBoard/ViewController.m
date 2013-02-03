@@ -176,6 +176,7 @@ replacementString:(NSString *)string {
     }
     
     [self calculateResult];
+    return TRUE;
 }
 
 //notifications

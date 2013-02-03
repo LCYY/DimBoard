@@ -50,8 +50,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    NSString* temp = [m_dict valueForKey:@"homevalue"];
-    
     [HomeValue_ouput setText:[m_dict objectForKey:@"homevalue"]];
     [LoanPercent_output setText:[m_dict objectForKey:@"loanpercent"]];
     [LoanYear_output setText:[m_dict objectForKey:@"loanyear"]];
