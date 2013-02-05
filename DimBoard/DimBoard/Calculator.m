@@ -18,6 +18,7 @@
     if(self){
         m_input = [[MortgageInput alloc] initVariables];
         m_output = [[MortgageOutput alloc] initVariables];
+        m_principals = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -58,7 +59,8 @@
     
     //calculate principal in each term
     for(int i=0; i<m_output->loanTerms; i++){
-        [m_principals addObject:[NSNumber numberWithDouble:(interest_term_1*pow(1+rate_per_month,i))]];
+        NSNumber* number = [NSNumber numberWithDouble:(interest_term_1*pow(1+rate_per_month,i))];
+        [self.m_principals addObject:number];
     }
     
     m_output->monthlyPay = interest_term_1 + principle_term_1;

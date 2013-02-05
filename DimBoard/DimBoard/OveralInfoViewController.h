@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Calculator.h"
+#import "XYPieChart/XYPieChart.h"
 
-@interface OveralInfoViewController : UIViewController
+@interface OveralInfoViewController : UIViewController <XYPieChartDelegate, XYPieChartDataSource>
 {
     MortgageInput* m_input;
     MortgageOutput* m_output;
+    NSArray *m_sliceColors;
+    NSMutableArray *m_slices;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *HomeValue_ouput;
@@ -27,7 +30,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *Tax_output;
 @property (weak, nonatomic) IBOutlet UILabel *FirstExpence_output;
 @property (weak, nonatomic) IBOutlet UILabel *OveralExpence_output;
-
+@property (weak, nonatomic) IBOutlet XYPieChart *PieChart;
+@property (retain, nonatomic) NSArray *m_sliceColors;
+@property (retain, nonatomic) NSMutableArray *m_slices;
 
 - (IBAction)onBack:(id)sender;
 - (id)initWithInput:(MortgageInput*)input Output:(MortgageOutput*)output;
