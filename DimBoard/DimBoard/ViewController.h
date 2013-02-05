@@ -11,7 +11,6 @@
 #import "Calculator.h"
 
 @interface ViewController : UIViewController<UITextFieldDelegate>{
-
     MortgageOutput* m_output;
     MortgageInput* m_input;
     
@@ -20,6 +19,7 @@
     OveralInfoViewController* m_overalInfoViewController;
     Calculator* m_calculator;
     
+    UIView* m_view;
 }
 
 //TextField Input

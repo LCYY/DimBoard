@@ -43,6 +43,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    UIScrollView* scrollview = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    
+    m_view = self.view;
+    scrollview.contentSize = m_view.frame.size;
+    [scrollview addSubview:m_view];
+    self.view = scrollview;
+    
     m_input = [[MortgageInput alloc] initWithHomeValue:100.0 LoanYear:30 LoanPercent:30.0 LoanRate:2.0];
     m_output = [[MortgageOutput alloc] initVariables];
     m_calculator = [[Calculator alloc] initVarirables];
@@ -99,12 +106,21 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    CGRect screen = [[UIScreen mainScreen] applicationFrame];
+    if(interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown){
+        m_view.frame = CGRectMake(0, 0, screen.size.width, screen.size.height);
+    }else if(interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight){
+        m_view.frame = CGRectMake(0, 0, screen.size.height, screen.size.height);
+    }
+    ((UIScrollView*)self.view).contentSize = m_view.frame.size;
     return TRUE;
 }
+
 
 - (IBAction)onShowOveralInfo:(id)sender {
     m_overalInfoViewController = [[OveralInfoViewController alloc] initWithInput:m_input Output:m_output];
     [self.view addSubview:m_overalInfoViewController.view];
+    ((UIScrollView*)self.view).contentOffset = CGPointMake(0, 0);
 }
 
 - (IBAction)onShowDetails:(id)sender {

@@ -48,6 +48,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view from its nib.
     [HomeValue_ouput setText:[NSString stringWithFormat:@"%0.2f 萬元",m_input->homeValue]];
     [LoanPercent_output setText:[NSString stringWithFormat:@"%0.2f %",m_input->loanPercent]];
@@ -85,7 +86,13 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    CGRect screen = [[UIScreen mainScreen] applicationFrame];
+    if(interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown){
+        self.view.frame = CGRectMake(0, 0, screen.size.width, screen.size.height);
+    }else if(interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight){
+        self.view.frame = CGRectMake(0, 0, screen.size.height, screen.size.height);
+    }
+    return TRUE;
 }
 
 - (IBAction)onBack:(id)sender {
