@@ -25,7 +25,6 @@
 @synthesize Tax_output;
 @synthesize FirstExpence_output;
 @synthesize OveralExpence_output;
-@synthesize m_dict;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,11 +35,12 @@
     return self;
 }
 
-- (id) initWithValues:(NSMutableDictionary *)dict{
+- (id)initWithInput:(MortgageInput*)input Output:(MortgageOutput*)output{
     self = [self init];
     
     if(self){
-        m_dict = [[NSMutableDictionary alloc] initWithDictionary:dict copyItems:YES];
+        m_input = [[MortgageInput alloc] initWithInput:input];
+        m_output = [[MortgageOutput alloc] initWithOutput:output];
     }
     return self;
 }
@@ -49,21 +49,20 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    NSString* temp = [m_dict valueForKey:@"homevalue"];
-    
-    [HomeValue_ouput setText:[m_dict objectForKey:@"homevalue"]];
-    [LoanPercent_output setText:[m_dict objectForKey:@"loanpercent"]];
-    [LoanYear_output setText:[m_dict objectForKey:@"loanyear"]];
-    [LoanRate_output setText:[m_dict objectForKey:@"loanrate"]];
-    [LoanAmount_output setText:[m_dict objectForKey:@"loanamount"]];
-    [LoanTerms_output setText:[m_dict objectForKey:@"loanterms"]];
-    [MonthlyPay_output setText:[m_dict objectForKey:@"monthlypay"]];
-    [FirstPay_output setText:[m_dict objectForKey:@"firstpay"]];
-    [Commision_output setText:[m_dict objectForKey:@"commision"]];
-    [Tax_output setText:[m_dict objectForKey:@"tax"]];
-    [FirstExpence_output setText:[m_dict objectForKey:@"firstexpence"]];
-    [OveralExpence_output setText:[m_dict objectForKey:@"overalexpence"]];
+        
+   
+    [HomeValue_ouput setText:[NSString stringWithFormat:@"%0.2f 萬元",m_input->homeValue]];
+    [LoanPercent_output setText:[NSString stringWithFormat:@"%0.2f %",m_input->loanPercent]];
+    [LoanYear_output setText:[NSString stringWithFormat:@"%d 年",m_input->loanYear]];
+    [LoanRate_output setText:[NSString stringWithFormat:@"%0.2f %",m_input->loanRate]];
+    [LoanAmount_output setText:[NSString stringWithFormat:@"%0.2f 萬元",m_output->loanAmount]];
+    [LoanTerms_output setText:[NSString stringWithFormat:@"%d 期",m_output->loanTerms]];
+    [MonthlyPay_output setText:[NSString stringWithFormat:@"%0.2f 元",m_output->monthlyPay]];
+    [FirstPay_output setText:[NSString stringWithFormat:@"%0.2f 萬元",m_output->firstPay]];
+    [Commision_output setText:[NSString stringWithFormat:@"%0.2f 元",m_output->comission]];
+    [Tax_output setText:[NSString stringWithFormat:@"%0.2f 元",m_output->tax]];
+    [FirstExpence_output setText:[NSString stringWithFormat:@"%0.2f 萬元",m_output->firstExpence]];
+    [OveralExpence_output setText:[NSString stringWithFormat:@"%0.2f 萬元",m_output->totalExpence]];
 }
 
 - (void)viewDidUnload

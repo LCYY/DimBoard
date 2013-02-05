@@ -14,6 +14,8 @@
 		FB2D6FA316BA22E2008E367F /* icon_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2D6F9E16BA22E2008E367F /* icon_256x256.png */; };
 		FB7858F416BBB0DF00C63D08 /* OveralInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7858F216BBB0DF00C63D08 /* OveralInfoViewController.m */; };
 		FB7858F516BBB0DF00C63D08 /* OveralInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB7858F316BBB0DF00C63D08 /* OveralInfoViewController.xib */; };
+		FB78590816BF9EEB00C63D08 /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = FB78590716BF9EEB00C63D08 /* Calculator.m */; };
+		FB78590C16C0B07600C63D08 /* MortgageDataType.m in Sources */ = {isa = PBXBuildFile; fileRef = FB78590B16C0B07500C63D08 /* MortgageDataType.m */; };
 		FBF3C85616B920D400790005 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85516B920D400790005 /* UIKit.framework */; };
 		FBF3C85816B920D400790005 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85716B920D400790005 /* Foundation.framework */; };
 		FBF3C85A16B920D400790005 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85916B920D400790005 /* CoreGraphics.framework */; };
@@ -33,6 +35,10 @@
 		FB7858F116BBB0DF00C63D08 /* OveralInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OveralInfoViewController.h; sourceTree = "<group>"; };
 		FB7858F216BBB0DF00C63D08 /* OveralInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OveralInfoViewController.m; sourceTree = "<group>"; };
 		FB7858F316BBB0DF00C63D08 /* OveralInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OveralInfoViewController.xib; sourceTree = "<group>"; };
+		FB78590616BF9EEB00C63D08 /* Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Calculator.h; path = ../Calculator.h; sourceTree = "<group>"; };
+		FB78590716BF9EEB00C63D08 /* Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calculator.m; path = ../Calculator.m; sourceTree = "<group>"; };
+		FB78590A16C0B07500C63D08 /* MortgageDataType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MortgageDataType.h; sourceTree = "<group>"; };
+		FB78590B16C0B07500C63D08 /* MortgageDataType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MortgageDataType.m; sourceTree = "<group>"; };
 		FBF3C85116B920D400790005 /* DimBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DimBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF3C85516B920D400790005 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FBF3C85716B920D400790005 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -110,10 +116,14 @@
 				FBF3C86716B920D400790005 /* ViewController.h */,
 				FBF3C86816B920D400790005 /* ViewController.m */,
 				FBF3C86A16B920D400790005 /* ViewController.xib */,
+				FB78590616BF9EEB00C63D08 /* Calculator.h */,
+				FB78590716BF9EEB00C63D08 /* Calculator.m */,
 				FBF3C85C16B920D400790005 /* Supporting Files */,
 				FB7858F116BBB0DF00C63D08 /* OveralInfoViewController.h */,
 				FB7858F216BBB0DF00C63D08 /* OveralInfoViewController.m */,
 				FB7858F316BBB0DF00C63D08 /* OveralInfoViewController.xib */,
+				FB78590A16C0B07500C63D08 /* MortgageDataType.h */,
+				FB78590B16C0B07500C63D08 /* MortgageDataType.m */,
 			);
 			path = DimBoard;
 			sourceTree = "<group>";
@@ -202,6 +212,8 @@
 				FBF3C86616B920D400790005 /* AppDelegate.m in Sources */,
 				FBF3C86916B920D400790005 /* ViewController.m in Sources */,
 				FB7858F416BBB0DF00C63D08 /* OveralInfoViewController.m in Sources */,
+				FB78590816BF9EEB00C63D08 /* Calculator.m in Sources */,
+				FB78590C16C0B07600C63D08 /* MortgageDataType.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

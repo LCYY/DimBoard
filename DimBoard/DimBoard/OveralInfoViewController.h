@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Calculator.h"
 
 @interface OveralInfoViewController : UIViewController
 {
-    NSMutableDictionary* m_dict;
+    MortgageInput* m_input;
+    MortgageOutput* m_output;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *HomeValue_ouput;
@@ -26,9 +28,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *FirstExpence_output;
 @property (weak, nonatomic) IBOutlet UILabel *OveralExpence_output;
 
-@property (retain, nonatomic) NSMutableDictionary* m_dict;
 
 - (IBAction)onBack:(id)sender;
-- (id)initWithValues:(NSMutableDictionary*)dict;
+- (id)initWithInput:(MortgageInput*)input Output:(MortgageOutput*)output;
 
 @end

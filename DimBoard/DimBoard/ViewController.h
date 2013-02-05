@@ -8,28 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "OveralInfoViewController.h"
+#import "Calculator.h"
 
 @interface ViewController : UIViewController<UITextFieldDelegate>{
 
-    double m_homeValue; // in terms of 10-thoudsands
-    double m_loanPercent; // in terms of %
-    NSInteger m_loanYear; // integer
-    double m_loanRate; // in terms of %, loan rate per year
-    
-    double m_loanAmount; // in terms of 10-thousands
-    double m_monthlyPay; // in terms of 1
-    NSInteger m_loanTerms;
-    double m_totoalPay; // in terms of 10-thousands
-    
-    double m_firstPay;
-    double m_firstExpence;
-    double m_totalExpence;
-    double m_comission;
-    double m_tax;
+    MortgageOutput* m_output;
+    MortgageInput* m_input;
     
     NSMutableArray* m_principals;
     
     OveralInfoViewController* m_overalInfoViewController;
+    Calculator* m_calculator;
+    
 }
 
 //TextField Input
