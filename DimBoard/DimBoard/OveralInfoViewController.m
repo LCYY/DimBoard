@@ -49,8 +49,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-        
-   
     [HomeValue_ouput setText:[NSString stringWithFormat:@"%0.2f 萬元",m_input->homeValue]];
     [LoanPercent_output setText:[NSString stringWithFormat:@"%0.2f %",m_input->loanPercent]];
     [LoanYear_output setText:[NSString stringWithFormat:@"%d 年",m_input->loanYear]];
@@ -63,6 +61,7 @@
     [Tax_output setText:[NSString stringWithFormat:@"%0.2f 元",m_output->tax]];
     [FirstExpence_output setText:[NSString stringWithFormat:@"%0.2f 萬元",m_output->firstExpence]];
     [OveralExpence_output setText:[NSString stringWithFormat:@"%0.2f 萬元",m_output->totalExpence]];
+
 }
 
 - (void)viewDidUnload
