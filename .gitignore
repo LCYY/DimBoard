@@ -3,3 +3,7 @@
 DimBoard/.DS_Store
 
 *.xcuserstate
+
+*.xcbkptlist
+
+DimBoard/DimBoard.xcodeproj/xcuserdata
