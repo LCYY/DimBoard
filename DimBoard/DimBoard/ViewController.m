@@ -157,6 +157,8 @@ replacementString:(NSString *)string {
     [m_calculator setInput:m_input];
     [m_calculator getOutput:m_output];
     [self updateResult];
+    
+    return YES;
 }
 
 //notifications
