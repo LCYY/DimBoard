@@ -96,7 +96,7 @@
 
 - (void)initUI{
     // set input
-    HomeValue_input.text = [NSString stringWithFormat:@"%0.2f", m_input->homeValue];
+    HomeValue_input.text = [NSString stringWithFormat:@"%0.4f", m_input->homeValue];
     LoanPercent_input.text = [NSString stringWithFormat:@"%0.2f",m_input->loanPercent];
     LoanYear_input.text = [NSString stringWithFormat:@"%d", m_input->loanYear];
     LoanRate_input.text = [NSString stringWithFormat:@"%0.2f",m_input->loanRate];
@@ -132,9 +132,9 @@
 }
 
 -(void)updateResult{    
-    LoanAmount_output.text = [NSString stringWithFormat:@"%0.2f 萬元", m_output->loanAmount];
+    LoanAmount_output.text = [NSString stringWithFormat:@"%0.4f 萬元", m_output->loanAmount];
     LoanTerms_output.text = [NSString stringWithFormat:@"%d 期",m_output->loanTerms];
-    TotalPay_output.text = [NSString stringWithFormat:@"%0.2f 萬元",m_output->totoalPay];
+    TotalPay_output.text = [NSString stringWithFormat:@"%0.4f 萬元",m_output->totoalPay];
     MonthlyPay_output.text = [NSString stringWithFormat:@"%0.2f 元",m_output->monthlyPay];
 }
 
@@ -203,7 +203,7 @@ replacementString:(NSString *)string {
     UISlider* slider = (UISlider*)sender;
     float sliderValue = slider.value;
     if(sender == HomeValue_slid){
-        HomeValue_input.text = [NSString stringWithFormat:@"%0.2f",sliderValue];
+        HomeValue_input.text = [NSString stringWithFormat:@"%0.4f",sliderValue];
         m_input->homeValue = [HomeValue_input.text doubleValue];
     }else if(sender == LoanPercent_slid){
         LoanPercent_input.text = [NSString stringWithFormat:@"%0.2f",sliderValue];

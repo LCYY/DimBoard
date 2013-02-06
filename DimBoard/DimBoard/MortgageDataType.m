@@ -67,6 +67,7 @@
         tax = 0.0;
         totalExpence = 0.0;
         totoalPay = 0.0;
+        totalInterest = 0.0;
     }
     return self;
 }
@@ -83,6 +84,7 @@
         tax = output->tax;
         totalExpence = output->totalExpence;
         totoalPay = output->totoalPay;
+        totalInterest = output->totalInterest;
     }
     return self;
 }
@@ -97,6 +99,7 @@
     output->tax = tax;
     output->totalExpence = totalExpence;
     output->totoalPay = totoalPay;
+    output->totalInterest = totalInterest;
 }
 
 @end

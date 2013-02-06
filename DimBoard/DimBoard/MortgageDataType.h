@@ -33,6 +33,7 @@
     double totalExpence;
     double comission;
     double tax;
+    double totalInterest;
 }
 -(id) initVariables;
 -(id)initWithOutput:(MortgageOutput*) output;

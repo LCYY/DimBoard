@@ -28,6 +28,7 @@
 @synthesize PieChart;
 @synthesize m_sliceColors;
 @synthesize m_slices;
+@synthesize PieChartSlice_output;
 
 - (void)viewDidLoad
 {
@@ -56,6 +57,7 @@
     [self setFirstExpence_output:nil];
     [self setOveralExpence_output:nil];
     [self setPieChart:nil];
+    [self setPieChartSlice_output:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -96,23 +98,25 @@
         m_input = [[MortgageInput alloc] initWithInput:input];
         m_output = [[MortgageOutput alloc] initWithOutput:output];
         m_slices = [[NSMutableArray alloc] init];
+        m_slicesDesp = [[NSMutableArray alloc] init];
+        m_selectedSliceIndex = -1;
     }
     return self;
 }
 
 -(void)showMortgageData{
-    [HomeValue_ouput setText:[NSString stringWithFormat:@"%0.2f 萬元",m_input->homeValue]];
+    [HomeValue_ouput setText:[NSString stringWithFormat:@"%0.4f 萬元",m_input->homeValue]];
     [LoanPercent_output setText:[NSString stringWithFormat:@"%0.2f %%",m_input->loanPercent]];
     [LoanYear_output setText:[NSString stringWithFormat:@"%d 年",m_input->loanYear]];
     [LoanRate_output setText:[NSString stringWithFormat:@"%0.2f %%",m_input->loanRate]];
-    [LoanAmount_output setText:[NSString stringWithFormat:@"%0.2f 萬元",m_output->loanAmount]];
+    [LoanAmount_output setText:[NSString stringWithFormat:@"%0.4f 萬元",m_output->loanAmount]];
     [LoanTerms_output setText:[NSString stringWithFormat:@"%d 期",m_output->loanTerms]];
     [MonthlyPay_output setText:[NSString stringWithFormat:@"%0.2f 元",m_output->monthlyPay]];
-    [FirstPay_output setText:[NSString stringWithFormat:@"%0.2f 萬元",m_output->firstPay]];
+    [FirstPay_output setText:[NSString stringWithFormat:@"%0.4f 萬元",m_output->firstPay]];
     [Commision_output setText:[NSString stringWithFormat:@"%0.2f 元",m_output->comission]];
     [Tax_output setText:[NSString stringWithFormat:@"%0.2f 元",m_output->tax]];
-    [FirstExpence_output setText:[NSString stringWithFormat:@"%0.2f 萬元",m_output->firstExpence]];
-    [OveralExpence_output setText:[NSString stringWithFormat:@"%0.2f 萬元",m_output->totalExpence]];
+    [FirstExpence_output setText:[NSString stringWithFormat:@"%0.4f 萬元",m_output->firstExpence]];
+    [OveralExpence_output setText:[NSString stringWithFormat:@"%0.4f 萬元",m_output->totalExpence]];
 }
 
 -(void)calculatePieCharSlices{
@@ -122,9 +126,16 @@
     double interest_percent = 1 - homevalue_percent - comission_percent - tax_percent;
     
     [m_slices addObject:[NSNumber numberWithDouble:homevalue_percent]];
+    [m_slices addObject:[NSNumber numberWithDouble:interest_percent]];
     [m_slices addObject:[NSNumber numberWithDouble:comission_percent]];
     [m_slices addObject:[NSNumber numberWithDouble:tax_percent]];
-    [m_slices addObject:[NSNumber numberWithDouble:interest_percent]];
+   
+    
+    [m_slicesDesp addObject:[NSString stringWithFormat:@"物業樓價: %0.4f 萬元",m_input->homeValue]];
+    [m_slicesDesp addObject:[NSString stringWithFormat:@"貸款利息: %0.4f 萬元",m_output->totalInterest]];
+    [m_slicesDesp addObject:[NSString stringWithFormat:@"代理佣金: %0.2f 元",m_output->comission]];
+    [m_slicesDesp addObject:[NSString stringWithFormat:@"印花稅: %0.2f 元",m_output->tax]];
+    [m_slicesDesp addObject:[NSString stringWithFormat:@"費用總額: %0.4f 萬元",m_output->totalExpence]];
 }
 
 -(void)showPieChar{
@@ -136,13 +147,18 @@
     [PieChart setLabelColor:[UIColor blackColor]];
     [PieChart setLabelFont:[UIFont systemFontOfSize:13.0]];
     [PieChart setPieRadius:120];
-    
+     
     m_sliceColors = [NSArray arrayWithObjects:
                      [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1],
                      [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1],
                      [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1],
                      [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1],
                      [UIColor colorWithRed:148/255.0 green:141/255.0 blue:139/255.0 alpha:1],nil];
+    
+    
+    [PieChartSlice_output setText:[m_slicesDesp objectAtIndex:[m_slices count]]];
+    [PieChartSlice_output setTextAlignment:UITextAlignmentCenter];
+    
     [PieChart reloadData];
 }
 
@@ -167,7 +183,6 @@
 
 - (UIColor *)pieChart:(XYPieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index
 {
-    if(pieChart == PieChart) return nil;
     UIColor* color =  [m_sliceColors objectAtIndex:(index % m_sliceColors.count)];
     return color;
 }
@@ -176,6 +191,17 @@
 - (void)pieChart:(XYPieChart *)pieChart didSelectSliceAtIndex:(NSUInteger)index
 {
     NSLog(@"did select slice at index %d",index);
+    m_selectedSliceIndex = index;
+    [PieChartSlice_output setText:[m_slicesDesp objectAtIndex:index]];
+}
+
+-(void)pieChart:(XYPieChart *)pieChart didDeselectSliceAtIndex:(NSUInteger)index{
+    NSLog(@"did De-select slice at index %d",index);
+    if(m_selectedSliceIndex == index){
+        m_selectedSliceIndex = -1;
+    }
+    if(m_selectedSliceIndex == -1)
+        [PieChartSlice_output setText:[m_slicesDesp objectAtIndex:[m_slices count]]];
 }
 
 @end

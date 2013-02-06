@@ -97,7 +97,7 @@
     
     m_output->firstExpence = m_output->firstPay + (m_output->comission + m_output->tax)/10000.0;
     m_output->totalExpence = m_output->firstExpence + m_output->totoalPay;
-    
+    m_output->totalInterest = m_output->totoalPay - m_output->loanAmount;
 }
 
 

@@ -16,6 +16,8 @@
     MortgageOutput* m_output;
     NSArray *m_sliceColors;
     NSMutableArray *m_slices;
+    NSMutableArray *m_slicesDesp;
+    NSInteger m_selectedSliceIndex;
     
     CGRect m_viewRect;
 }
@@ -33,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *FirstExpence_output;
 @property (weak, nonatomic) IBOutlet UILabel *OveralExpence_output;
 @property (weak, nonatomic) IBOutlet XYPieChart *PieChart;
+@property (weak, nonatomic) IBOutlet UILabel *PieChartSlice_output;
 @property (retain, nonatomic) NSArray *m_sliceColors;
 @property (retain, nonatomic) NSMutableArray *m_slices;
 
