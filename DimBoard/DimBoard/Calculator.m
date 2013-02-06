@@ -39,6 +39,30 @@
 }
 
 -(double)calculateTax{
+    double homevalue = m_input->homeValue*10000;
+    if(homevalue <= 2000000){ //20,0000
+        return 100;
+    }else if(homevalue <= 2351760){
+        return 100+ (homevalue - 2000000)*0.1;
+    }else if(homevalue <= 3000000){
+        return homevalue*0.015;
+    }else if(homevalue <= 3290320){
+        return 45000 + (homevalue - 3000000)*0.1;
+    }else if(homevalue <= 4000000){
+        return homevalue*0.0225;
+    }else if(homevalue <= 4428570){
+        return 90000 + (homevalue - 4000000)*0.1;
+    }else if(homevalue <= 6000000){
+        return homevalue*0.03;
+    }else if(homevalue <= 6720000){
+        return 180000 + (homevalue - 6000000)*0.1;
+    }else if(homevalue <= 20000000){
+        return homevalue*0.0375;
+    }else if(homevalue <= 21739120){
+        return 750000 + (homevalue - 20000000)*0.1;
+    }else{
+        return homevalue*0.0425;
+    }
     return 100;
 }
 
