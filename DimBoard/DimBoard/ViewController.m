@@ -50,6 +50,8 @@
     [scrollview addSubview:m_view];
     self.view = scrollview;
     
+    m_viewRect = m_view.frame;
+        
     m_input = [[MortgageInput alloc] initWithHomeValue:100.0 LoanYear:30 LoanPercent:30.0 LoanRate:2.0];
     m_output = [[MortgageOutput alloc] initVariables];
     m_calculator = [[Calculator alloc] initVarirables];
@@ -58,6 +60,38 @@
     [m_calculator setInput:m_input];
     [m_calculator getOutput:m_output];
     [self updateResult];
+}
+
+- (void)viewDidUnload {
+    [self setHomeValue_input:nil];
+    [self setLoanPercent_input:nil];
+    [self setLoanYear_input:nil];
+    [self setLoanRate_input:nil];
+    [self setHomeValue_slid:nil];
+    [self setLoanPercent_slid:nil];
+    [self setLoanYear_slid:nil];
+    [self setLoanRate_slid:nil];
+    [self setLoanAmount_output:nil];
+    [self setTotalPay_output:nil];
+    [self setLoanTerms_output:nil];
+    [self setShowOveralInfo:nil];
+    [self setShowDetails:nil];
+    [self setMonthlyPay_output:nil];
+    [super viewDidUnload];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    CGRect screen = [[UIScreen mainScreen] applicationFrame];
+    if(interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown){
+        ((UIScrollView*)self.view).contentSize = CGSizeMake(screen.size.width, m_viewRect.size.height);
+        m_view.frame = CGRectMake(0, 0, screen.size.width, screen.size.height);
+    }else if(interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight){
+        ((UIScrollView*)self.view).contentSize = CGSizeMake(screen.size.width, m_viewRect.size.height);
+        m_view.frame = CGRectMake(0, 0, screen.size.height, m_viewRect.size.height);
+    }
+    ((UIScrollView*)self.view).contentSize = m_view.frame.size;
+    return TRUE;
 }
 
 - (void)initUI{
@@ -103,19 +137,6 @@
     TotalPay_output.text = [NSString stringWithFormat:@"%0.2f 萬元",m_output->totoalPay];
     MonthlyPay_output.text = [NSString stringWithFormat:@"%0.2f 元",m_output->monthlyPay];
 }
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    CGRect screen = [[UIScreen mainScreen] applicationFrame];
-    if(interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown){
-        m_view.frame = CGRectMake(0, 0, screen.size.width, screen.size.height);
-    }else if(interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight){
-        m_view.frame = CGRectMake(0, 0, screen.size.height, screen.size.height);
-    }
-    ((UIScrollView*)self.view).contentSize = m_view.frame.size;
-    return TRUE;
-}
-
 
 - (IBAction)onShowOveralInfo:(id)sender {
     m_overalInfoViewController = [[OveralInfoViewController alloc] initWithInput:m_input Output:m_output];
@@ -200,8 +221,4 @@ replacementString:(NSString *)string {
     [self updateResult];
 }
 
-- (void)viewDidUnload {
-    [self setHomeValue_slid:nil];
-    [super viewDidUnload];
-}
 @end

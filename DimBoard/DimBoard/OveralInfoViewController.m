@@ -29,6 +29,57 @@
 @synthesize m_sliceColors;
 @synthesize m_slices;
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    m_viewRect = self.view.frame;
+        
+    // Do any additional setup after loading the view from its nib.
+    [self showMortgageData];
+    [self calculatePieCharSlices];
+    [self showPieChar];
+}
+
+- (void)viewDidUnload
+{
+    [self setHomeValue_ouput:nil];
+    [self setLoanPercent_output:nil];
+    [self setLoanYear_output:nil];
+    [self setLoanRate_output:nil];
+    [self setLoanAmount_output:nil];
+    [self setLoanTerms_output:nil];
+    [self setMonthlyPay_output:nil];
+    [self setFirstPay_output:nil];
+    [self setCommision_output:nil];
+    [self setTax_output:nil];
+    [self setFirstExpence_output:nil];
+    [self setOveralExpence_output:nil];
+    [self setPieChart:nil];
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [PieChart reloadData];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    CGRect screen = [[UIScreen mainScreen] applicationFrame];
+    if(interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown){
+        ((UIScrollView*)self.view.superview).contentSize = CGSizeMake(screen.size.width, m_viewRect.size.height);
+        self.view.frame = CGRectMake(0, 0, screen.size.width, m_viewRect.size.height);
+    }else if(interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight){
+         ((UIScrollView*)self.view.superview).contentSize = CGSizeMake(screen.size.height, m_viewRect.size.height);
+        self.view.frame = CGRectMake(0, 0, screen.size.height, m_viewRect.size.height);
+    }
+    return TRUE;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -47,16 +98,6 @@
         m_slices = [[NSMutableArray alloc] init];
     }
     return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    // Do any additional setup after loading the view from its nib.
-    [self showMortgageData];
-    [self calculatePieCharSlices];
-    [self showPieChar];
 }
 
 -(void)showMortgageData{
@@ -94,6 +135,7 @@
     [PieChart setShowLabel:YES];
     [PieChart setLabelColor:[UIColor blackColor]];
     [PieChart setLabelFont:[UIFont systemFontOfSize:13.0]];
+    [PieChart setPieRadius:120];
     
     m_sliceColors = [NSArray arrayWithObjects:
                      [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1],
@@ -104,44 +146,9 @@
     [PieChart reloadData];
 }
 
-- (void)viewDidUnload
-{
-    [self setHomeValue_ouput:nil];
-    [self setLoanPercent_output:nil];
-    [self setLoanYear_output:nil];
-    [self setLoanRate_output:nil];
-    [self setLoanAmount_output:nil];
-    [self setLoanTerms_output:nil];
-    [self setMonthlyPay_output:nil];
-    [self setFirstPay_output:nil];
-    [self setCommision_output:nil];
-    [self setTax_output:nil];
-    [self setFirstExpence_output:nil];
-    [self setOveralExpence_output:nil];
-    [self setPieChart:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [PieChart reloadData];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    CGRect screen = [[UIScreen mainScreen] applicationFrame];
-    if(interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown){
-        self.view.frame = CGRectMake(0, 0, screen.size.width, screen.size.height);
-    }else if(interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight){
-        self.view.frame = CGRectMake(0, 0, screen.size.height, screen.size.height);
-    }
-    return TRUE;
-}
-
 - (IBAction)onBack:(id)sender {
+    CGRect screen = [[UIScreen mainScreen] applicationFrame];
+    ((UIScrollView*)self.view.superview).contentSize = screen.size;
     [self.view removeFromSuperview];
 }
 

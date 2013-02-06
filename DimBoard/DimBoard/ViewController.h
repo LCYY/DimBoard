@@ -20,6 +20,7 @@
     Calculator* m_calculator;
     
     UIView* m_view;
+    CGRect m_viewRect;
 }
 
 //TextField Input

@@ -16,6 +16,8 @@
     MortgageOutput* m_output;
     NSArray *m_sliceColors;
     NSMutableArray *m_slices;
+    
+    CGRect m_viewRect;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *HomeValue_ouput;
