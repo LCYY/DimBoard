@@ -144,6 +144,12 @@
     ((UIScrollView*)self.view).contentOffset = CGPointMake(0, 0);
 }
 
+- (IBAction)onShowMortgageRecord:(id)sender {
+    m_mortgageRecordViewController = [[MortgageRecordViewController alloc] init];
+    [self.view addSubview:m_mortgageRecordViewController.view];
+    ((UIScrollView*)self.view).contentOffset = CGPointMake(0, 0);
+}
+
 - (IBAction)onShowDetails:(id)sender {
 }
 

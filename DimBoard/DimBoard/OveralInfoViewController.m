@@ -130,7 +130,6 @@
     [m_slices addObject:[NSNumber numberWithDouble:comission_percent]];
     [m_slices addObject:[NSNumber numberWithDouble:tax_percent]];
    
-    
     [m_slicesDesp addObject:[NSString stringWithFormat:@"物業樓價: %0.4f 萬元",m_input->homeValue]];
     [m_slicesDesp addObject:[NSString stringWithFormat:@"貸款利息: %0.4f 萬元",m_output->totalInterest]];
     [m_slicesDesp addObject:[NSString stringWithFormat:@"代理佣金: %0.2f 元",m_output->comission]];

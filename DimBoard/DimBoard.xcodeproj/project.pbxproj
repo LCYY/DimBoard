@@ -19,6 +19,12 @@
 		FB78592516C103F100C63D08 /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = FB78592416C103F100C63D08 /* Calculator.m */; };
 		FB78592916C1040100C63D08 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FB78592816C1040100C63D08 /* XYPieChart.m */; };
 		FB78592B16C104EC00C63D08 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB78592A16C104EC00C63D08 /* QuartzCore.framework */; };
+		FB961B4716C34AFD000EA974 /* MortgageRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB961B4516C34AFD000EA974 /* MortgageRecordViewController.m */; };
+		FB961B4816C34AFD000EA974 /* MortgageRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB961B4616C34AFD000EA974 /* MortgageRecordViewController.xib */; };
+		FB961B8616C34F04000EA974 /* AddRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB961B8416C34F04000EA974 /* AddRecordViewController.m */; };
+		FB961B8716C34F04000EA974 /* AddRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB961B8516C34F04000EA974 /* AddRecordViewController.xib */; };
+		FB961B8B16C35149000EA974 /* RecordDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB961B8916C35149000EA974 /* RecordDetailViewController.m */; };
+		FB961B8C16C35149000EA974 /* RecordDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB961B8A16C35149000EA974 /* RecordDetailViewController.xib */; };
 		FBF3C85616B920D400790005 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85516B920D400790005 /* UIKit.framework */; };
 		FBF3C85816B920D400790005 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85716B920D400790005 /* Foundation.framework */; };
 		FBF3C85A16B920D400790005 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85916B920D400790005 /* CoreGraphics.framework */; };
@@ -46,6 +52,15 @@
 		FB78592716C1040100C63D08 /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
 		FB78592816C1040100C63D08 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		FB78592A16C104EC00C63D08 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FB961B4416C34AFD000EA974 /* MortgageRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MortgageRecordViewController.h; sourceTree = "<group>"; };
+		FB961B4516C34AFD000EA974 /* MortgageRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MortgageRecordViewController.m; sourceTree = "<group>"; };
+		FB961B4616C34AFD000EA974 /* MortgageRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MortgageRecordViewController.xib; sourceTree = "<group>"; };
+		FB961B8316C34F04000EA974 /* AddRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRecordViewController.h; sourceTree = "<group>"; };
+		FB961B8416C34F04000EA974 /* AddRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRecordViewController.m; sourceTree = "<group>"; };
+		FB961B8516C34F04000EA974 /* AddRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddRecordViewController.xib; sourceTree = "<group>"; };
+		FB961B8816C35149000EA974 /* RecordDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordDetailViewController.h; sourceTree = "<group>"; };
+		FB961B8916C35149000EA974 /* RecordDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordDetailViewController.m; sourceTree = "<group>"; };
+		FB961B8A16C35149000EA974 /* RecordDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordDetailViewController.xib; sourceTree = "<group>"; };
 		FBF3C85116B920D400790005 /* DimBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DimBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF3C85516B920D400790005 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FBF3C85716B920D400790005 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -144,6 +159,15 @@
 				FB7858F316BBB0DF00C63D08 /* OveralInfoViewController.xib */,
 				FB78590A16C0B07500C63D08 /* MortgageDataType.h */,
 				FB78590B16C0B07500C63D08 /* MortgageDataType.m */,
+				FB961B4416C34AFD000EA974 /* MortgageRecordViewController.h */,
+				FB961B4516C34AFD000EA974 /* MortgageRecordViewController.m */,
+				FB961B4616C34AFD000EA974 /* MortgageRecordViewController.xib */,
+				FB961B8316C34F04000EA974 /* AddRecordViewController.h */,
+				FB961B8416C34F04000EA974 /* AddRecordViewController.m */,
+				FB961B8516C34F04000EA974 /* AddRecordViewController.xib */,
+				FB961B8816C35149000EA974 /* RecordDetailViewController.h */,
+				FB961B8916C35149000EA974 /* RecordDetailViewController.m */,
+				FB961B8A16C35149000EA974 /* RecordDetailViewController.xib */,
 			);
 			path = DimBoard;
 			sourceTree = "<group>";
@@ -219,6 +243,9 @@
 				FB2D6FA316BA22E2008E367F /* icon_256x256.png in Resources */,
 				FB7858F516BBB0DF00C63D08 /* OveralInfoViewController.xib in Resources */,
 				35AB6DF816BEA10000795E57 /* Default-568h@2x.png in Resources */,
+				FB961B4816C34AFD000EA974 /* MortgageRecordViewController.xib in Resources */,
+				FB961B8716C34F04000EA974 /* AddRecordViewController.xib in Resources */,
+				FB961B8C16C35149000EA974 /* RecordDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +263,9 @@
 				FB78590C16C0B07600C63D08 /* MortgageDataType.m in Sources */,
 				FB78592516C103F100C63D08 /* Calculator.m in Sources */,
 				FB78592916C1040100C63D08 /* XYPieChart.m in Sources */,
+				FB961B4716C34AFD000EA974 /* MortgageRecordViewController.m in Sources */,
+				FB961B8616C34F04000EA974 /* AddRecordViewController.m in Sources */,
+				FB961B8B16C35149000EA974 /* RecordDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

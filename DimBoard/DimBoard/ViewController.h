@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "OveralInfoViewController.h"
+#import "MortgageRecordViewController.h"
 #import "Calculator.h"
 
 @interface ViewController : UIViewController<UITextFieldDelegate>{
@@ -17,6 +18,7 @@
     NSMutableArray* m_principals;
     
     OveralInfoViewController* m_overalInfoViewController;
+    MortgageRecordViewController* m_mortgageRecordViewController;
     Calculator* m_calculator;
     
     UIView* m_view;
@@ -47,5 +49,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *ShowDetails;
 - (IBAction)onShowOveralInfo:(id)sender;
+- (IBAction)onShowMortgageRecord:(id)sender;
 
 @end
