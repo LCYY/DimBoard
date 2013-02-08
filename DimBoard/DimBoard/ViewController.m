@@ -42,27 +42,64 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self initVarirables];
-    [self updateOutput];
-    [self calculateResult];
+    
+    UIScrollView* scrollview = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    
+    m_view = self.view;
+    scrollview.contentSize = m_view.frame.size;
+    [scrollview addSubview:m_view];
+    self.view = scrollview;
+    
+    m_viewRect = m_view.frame;
+        
+    m_input = [[MortgageInput alloc] initWithHomeValue:100.0 LoanYear:30 LoanPercent:30.0 LoanRate:2.0];
+    m_output = [[MortgageOutput alloc] initVariables];
+    m_calculator = [[Calculator alloc] initVarirables];
+    
+    [self initUI];
+    [m_calculator setInput:m_input];
+    [m_calculator getOutput:m_output];
+    [self updateResult];
 }
 
-- (void)initVarirables{    
-    m_homeValue = 100;
-    m_loanPercent = 30;
-    m_loanYear = 30;
-    m_loanRate = 2;
-    
-    m_loanAmount = 0;
-    m_monthlyPay = 0;
-    m_loanTerms = 0;
-    m_totoalPay = 0;
-    
+- (void)viewDidUnload {
+    [self setHomeValue_input:nil];
+    [self setLoanPercent_input:nil];
+    [self setLoanYear_input:nil];
+    [self setLoanRate_input:nil];
+    [self setHomeValue_slid:nil];
+    [self setLoanPercent_slid:nil];
+    [self setLoanYear_slid:nil];
+    [self setLoanRate_slid:nil];
+    [self setLoanAmount_output:nil];
+    [self setTotalPay_output:nil];
+    [self setLoanTerms_output:nil];
+    [self setShowOveralInfo:nil];
+    [self setShowDetails:nil];
+    [self setMonthlyPay_output:nil];
+    [super viewDidUnload];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    CGRect screen = [[UIScreen mainScreen] applicationFrame];
+    if(interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown){
+        ((UIScrollView*)self.view).contentSize = CGSizeMake(screen.size.width, m_viewRect.size.height);
+        m_view.frame = CGRectMake(0, 0, screen.size.width, screen.size.height);
+    }else if(interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight){
+        ((UIScrollView*)self.view).contentSize = CGSizeMake(screen.size.width, m_viewRect.size.height);
+        m_view.frame = CGRectMake(0, 0, screen.size.height, m_viewRect.size.height);
+    }
+    ((UIScrollView*)self.view).contentSize = m_view.frame.size;
+    return TRUE;
+}
+
+- (void)initUI{
     // set input
-    HomeValue_input.text = [NSString stringWithFormat:@"%0.2f", m_homeValue];
-    LoanPercent_input.text = [NSString stringWithFormat:@"%0.2f",m_loanPercent];
-    LoanYear_input.text = [NSString stringWithFormat:@"%d", m_loanYear];
-    LoanRate_input.text = [NSString stringWithFormat:@"%0.2f",m_loanRate];
+    HomeValue_input.text = [NSString stringWithFormat:@"%0.4f", m_input->homeValue];
+    LoanPercent_input.text = [NSString stringWithFormat:@"%0.2f",m_input->loanPercent];
+    LoanYear_input.text = [NSString stringWithFormat:@"%d", m_input->loanYear];
+    LoanRate_input.text = [NSString stringWithFormat:@"%0.2f",m_input->loanRate];
     
     //set input delegate to self
     [HomeValue_input setDelegate:self];
@@ -88,44 +125,29 @@
     [LoanPercent_slid addTarget:self action:@selector(onSlidValueChanged:) forControlEvents:UIControlEventValueChanged];
     
     //set slider
-    [HomeValue_slid setValue:m_homeValue];
-    [LoanPercent_slid setValue:m_loanPercent];
-    [LoanYear_slid setValue:m_loanYear];
-    [LoanRate_slid setValue:m_loanRate];
-
+    [HomeValue_slid setValue:m_input->homeValue];
+    [LoanPercent_slid setValue:m_input->loanPercent];
+    [LoanYear_slid setValue:m_input->loanYear];
+    [LoanRate_slid setValue:m_input->loanRate];
 }
 
--(void)updateOutput{
-    //set result
-    LoanAmount_output.text = [NSString stringWithFormat:@"%0.2f 萬元", m_loanAmount];
-    LoanTerms_output.text = [NSString stringWithFormat:@"%d 期",m_loanTerms];
-    TotalPay_output.text = [NSString stringWithFormat:@"%0.2f 萬元",m_totoalPay];
-    MonthlyPay_output.text = [NSString stringWithFormat:@"%0.2f 元",m_monthlyPay];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return TRUE;
+-(void)updateResult{    
+    LoanAmount_output.text = [NSString stringWithFormat:@"%0.4f 萬元", m_output->loanAmount];
+    LoanTerms_output.text = [NSString stringWithFormat:@"%d 期",m_output->loanTerms];
+    TotalPay_output.text = [NSString stringWithFormat:@"%0.4f 萬元",m_output->totoalPay];
+    MonthlyPay_output.text = [NSString stringWithFormat:@"%0.2f 元",m_output->monthlyPay];
 }
 
 - (IBAction)onShowOveralInfo:(id)sender {
-    NSMutableDictionary* dict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                           [HomeValue_input.text stringByAppendingString:@" 萬元"],@"homevalue",
-                           [LoanPercent_input.text stringByAppendingString:@" %"],@"loanpercent",
-                           [LoanYear_input.text stringByAppendingString:@" 年"],@"loanyear",
-                           [LoanRate_input.text stringByAppendingString:@" %"],@"loanrate",
-                           LoanAmount_output.text,@"loanamount",
-                           LoanTerms_output.text,@"loanterms",
-                           MonthlyPay_output.text,@"monthlypay",
-                           [NSString stringWithFormat:@"%0.2f 萬元",m_firstPay],@"firstpay",
-                           [NSString stringWithFormat:@"%0.2f 元",m_comission],@"commision",
-                           [NSString stringWithFormat:@"%0.2f 元",m_tax],@"tax",
-                           [NSString stringWithFormat:@"%0.2f 萬元",m_firstExpence],@"firstexpence",
-                           [NSString stringWithFormat:@"%0.2f 萬元",m_totalExpence],@"overalexpence",
-                           nil];
-
-    m_overalInfoViewController = [[OveralInfoViewController alloc] initWithValues:dict];
+    m_overalInfoViewController = [[OveralInfoViewController alloc] initWithInput:m_input Output:m_output];
     [self.view addSubview:m_overalInfoViewController.view];
+    ((UIScrollView*)self.view).contentOffset = CGPointMake(0, 0);
+}
+
+- (IBAction)onShowMortgageRecord:(id)sender {
+    m_mortgageRecordViewController = [[MortgageRecordViewController alloc] init];
+    [self.view addSubview:m_mortgageRecordViewController.view];
+    ((UIScrollView*)self.view).contentOffset = CGPointMake(0, 0);
 }
 
 - (IBAction)onShowDetails:(id)sender {
@@ -160,74 +182,49 @@ replacementString:(NSString *)string {
     //? need range handling???
 }
 
--(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField{   
     if(textField == HomeValue_input){
-        m_homeValue = [HomeValue_input.text doubleValue];
-        [HomeValue_slid setValue:m_homeValue];
+        m_input->homeValue = [HomeValue_input.text doubleValue];
+        [HomeValue_slid setValue:m_input->homeValue];
     }else if(textField == LoanPercent_input){
-        m_loanPercent = [LoanPercent_input.text doubleValue];
-        [LoanPercent_slid setValue:m_loanPercent];
-    }else if(textField == LoanRate_input){
-        m_loanRate = [LoanRate_input.text doubleValue];
-        [LoanRate_slid setValue:m_loanRate];
+        m_input->loanPercent = [LoanPercent_input.text doubleValue];
+        [LoanPercent_slid setValue:m_input->loanPercent];
     }else if(textField == LoanYear_input){
-        m_loanYear = [LoanYear_input.text intValue];
-        [LoanYear_slid setValue:m_loanYear];
+        m_input->loanYear = [LoanYear_input.text intValue];
+        [LoanYear_slid setValue:m_input->loanYear];
+    }else if(textField == LoanRate_input){
+        m_input->loanRate = [LoanRate_input.text doubleValue];
+        [LoanRate_slid setValue:m_input->loanRate];
     }
     
-    [self calculateResult];
-    return TRUE;
+    [m_calculator setInput:m_input];
+    [m_calculator getOutput:m_output];
+    [self updateResult];
+    
+    return YES;
 }
 
 //notifications
 - (void)onSlidValueChanged:(id) sender{
     UISlider* slider = (UISlider*)sender;
     float sliderValue = slider.value;
-    
     if(sender == HomeValue_slid){
-        HomeValue_input.text = [NSString stringWithFormat:@"%0.2f",sliderValue];
-        m_homeValue = [HomeValue_input.text doubleValue];
+        HomeValue_input.text = [NSString stringWithFormat:@"%0.4f",sliderValue];
+        m_input->homeValue = [HomeValue_input.text doubleValue];
     }else if(sender == LoanPercent_slid){
         LoanPercent_input.text = [NSString stringWithFormat:@"%0.2f",sliderValue];
-        m_loanPercent = [LoanPercent_input.text doubleValue];
+        m_input->loanPercent = [LoanPercent_input.text doubleValue];
     }else if(sender == LoanYear_slid){
         LoanYear_input.text = [NSString stringWithFormat:@"%d",(int)sliderValue];
-        m_loanYear = [LoanYear_input.text intValue];
+        m_input->loanYear = [LoanYear_input.text intValue];
     }else if(sender == LoanRate_slid){
         LoanRate_input.text = [NSString stringWithFormat:@"%0.2f",sliderValue];
-        m_loanRate = [LoanRate_input.text doubleValue];
+        m_input->loanRate = [LoanRate_input.text doubleValue];
     }
     
-    [self calculateResult];
+    [m_calculator setInput:m_input];
+    [m_calculator getOutput:m_output];
+    [self updateResult];
 }
 
--(void)calculateResult{
-    m_loanAmount = m_homeValue*m_loanPercent/100.0;
-    m_loanTerms = 12*m_loanYear;
-    
-    double rate_per_month = m_loanRate/12.0/100.0;
-    double interest_term_1 = 10000*m_loanAmount*rate_per_month;
-    double principle_term_1 = interest_term_1/(pow(1+rate_per_month,m_loanTerms) - 1);
-    
-    m_monthlyPay = interest_term_1 + principle_term_1;
-    m_totoalPay = m_monthlyPay/10000.0*m_loanTerms;
-    
-    m_firstPay = m_homeValue - m_loanAmount;
-    m_comission = 10000*m_homeValue*0.01;  // in terms of 1
-    m_tax = 100; // in terms of 1
-    m_firstExpence = m_firstPay + (m_comission + m_tax)/10000.0;
-    m_totalExpence = m_firstExpence + m_totoalPay;
-    
-    
-    for(int i=0; i<m_loanTerms; i++){
-        [m_principals addObject:[NSNumber numberWithDouble:(interest_term_1*pow(1+rate_per_month,i))]];
-    }
-      
-    [self updateOutput];
-}
-
-- (void)viewDidUnload {
-    [self setHomeValue_slid:nil];
-    [super viewDidUnload];
-}
 @end
