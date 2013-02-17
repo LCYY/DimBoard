@@ -1,0 +1,389 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		35AB6DF816BEA10000795E57 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35AB6DF716BEA10000795E57 /* Default-568h@2x.png */; };
+		FB2D6F9F16BA22E2008E367F /* icon_16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2D6F9A16BA22E2008E367F /* icon_16x16.png */; };
+		FB2D6FA016BA22E2008E367F /* icon_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2D6F9B16BA22E2008E367F /* icon_32x32.png */; };
+		FB2D6FA116BA22E2008E367F /* icon_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2D6F9C16BA22E2008E367F /* icon_64x64.png */; };
+		FB2D6FA216BA22E2008E367F /* icon_128x128.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2D6F9D16BA22E2008E367F /* icon_128x128.png */; };
+		FB2D6FA316BA22E2008E367F /* icon_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2D6F9E16BA22E2008E367F /* icon_256x256.png */; };
+		FB7858F416BBB0DF00C63D08 /* OveralInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7858F216BBB0DF00C63D08 /* OveralInfoViewController.m */; };
+		FB7858F516BBB0DF00C63D08 /* OveralInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB7858F316BBB0DF00C63D08 /* OveralInfoViewController.xib */; };
+		FB78590C16C0B07600C63D08 /* MortgageDataType.m in Sources */ = {isa = PBXBuildFile; fileRef = FB78590B16C0B07500C63D08 /* MortgageDataType.m */; };
+		FB78592516C103F100C63D08 /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = FB78592416C103F100C63D08 /* Calculator.m */; };
+		FB78592916C1040100C63D08 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FB78592816C1040100C63D08 /* XYPieChart.m */; };
+		FB78592B16C104EC00C63D08 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB78592A16C104EC00C63D08 /* QuartzCore.framework */; };
+		FB961B4716C34AFD000EA974 /* MortgageRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB961B4516C34AFD000EA974 /* MortgageRecordViewController.m */; };
+		FB961B4816C34AFD000EA974 /* MortgageRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB961B4616C34AFD000EA974 /* MortgageRecordViewController.xib */; };
+		FB961B8616C34F04000EA974 /* AddRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB961B8416C34F04000EA974 /* AddRecordViewController.m */; };
+		FB961B8716C34F04000EA974 /* AddRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB961B8516C34F04000EA974 /* AddRecordViewController.xib */; };
+		FB961B8B16C35149000EA974 /* RecordDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB961B8916C35149000EA974 /* RecordDetailViewController.m */; };
+		FB961B8C16C35149000EA974 /* RecordDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB961B8A16C35149000EA974 /* RecordDetailViewController.xib */; };
+		FBF3C85616B920D400790005 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85516B920D400790005 /* UIKit.framework */; };
+		FBF3C85816B920D400790005 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85716B920D400790005 /* Foundation.framework */; };
+		FBF3C85A16B920D400790005 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85916B920D400790005 /* CoreGraphics.framework */; };
+		FBF3C86016B920D400790005 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBF3C85E16B920D400790005 /* InfoPlist.strings */; };
+		FBF3C86216B920D400790005 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF3C86116B920D400790005 /* main.m */; };
+		FBF3C86616B920D400790005 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF3C86516B920D400790005 /* AppDelegate.m */; };
+		FBF3C86916B920D400790005 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF3C86816B920D400790005 /* ViewController.m */; };
+		FBF3C86C16B920D400790005 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF3C86A16B920D400790005 /* ViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		35AB6DF716BEA10000795E57 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		FB2D6F9A16BA22E2008E367F /* icon_16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_16x16.png; path = Home.iconset/icon_16x16.png; sourceTree = "<group>"; };
+		FB2D6F9B16BA22E2008E367F /* icon_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_32x32.png; path = Home.iconset/icon_32x32.png; sourceTree = "<group>"; };
+		FB2D6F9C16BA22E2008E367F /* icon_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_64x64.png; path = Home.iconset/icon_64x64.png; sourceTree = "<group>"; };
+		FB2D6F9D16BA22E2008E367F /* icon_128x128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_128x128.png; path = Home.iconset/icon_128x128.png; sourceTree = "<group>"; };
+		FB2D6F9E16BA22E2008E367F /* icon_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_256x256.png; path = Home.iconset/icon_256x256.png; sourceTree = "<group>"; };
+		FB7858F116BBB0DF00C63D08 /* OveralInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OveralInfoViewController.h; sourceTree = "<group>"; };
+		FB7858F216BBB0DF00C63D08 /* OveralInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OveralInfoViewController.m; sourceTree = "<group>"; };
+		FB7858F316BBB0DF00C63D08 /* OveralInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OveralInfoViewController.xib; sourceTree = "<group>"; };
+		FB78590A16C0B07500C63D08 /* MortgageDataType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MortgageDataType.h; sourceTree = "<group>"; };
+		FB78590B16C0B07500C63D08 /* MortgageDataType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MortgageDataType.m; sourceTree = "<group>"; };
+		FB78592316C103F100C63D08 /* Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
+		FB78592416C103F100C63D08 /* Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
+		FB78592716C1040100C63D08 /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
+		FB78592816C1040100C63D08 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
+		FB78592A16C104EC00C63D08 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FB961B4416C34AFD000EA974 /* MortgageRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MortgageRecordViewController.h; sourceTree = "<group>"; };
+		FB961B4516C34AFD000EA974 /* MortgageRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MortgageRecordViewController.m; sourceTree = "<group>"; };
+		FB961B4616C34AFD000EA974 /* MortgageRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MortgageRecordViewController.xib; sourceTree = "<group>"; };
+		FB961B8316C34F04000EA974 /* AddRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRecordViewController.h; sourceTree = "<group>"; };
+		FB961B8416C34F04000EA974 /* AddRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRecordViewController.m; sourceTree = "<group>"; };
+		FB961B8516C34F04000EA974 /* AddRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddRecordViewController.xib; sourceTree = "<group>"; };
+		FB961B8816C35149000EA974 /* RecordDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordDetailViewController.h; sourceTree = "<group>"; };
+		FB961B8916C35149000EA974 /* RecordDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordDetailViewController.m; sourceTree = "<group>"; };
+		FB961B8A16C35149000EA974 /* RecordDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordDetailViewController.xib; sourceTree = "<group>"; };
+		FBF3C85116B920D400790005 /* DimBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DimBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBF3C85516B920D400790005 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FBF3C85716B920D400790005 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FBF3C85916B920D400790005 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FBF3C85D16B920D400790005 /* DimBoard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DimBoard-Info.plist"; sourceTree = "<group>"; };
+		FBF3C85F16B920D400790005 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FBF3C86116B920D400790005 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FBF3C86316B920D400790005 /* DimBoard-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DimBoard-Prefix.pch"; sourceTree = "<group>"; };
+		FBF3C86416B920D400790005 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FBF3C86516B920D400790005 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FBF3C86716B920D400790005 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FBF3C86816B920D400790005 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FBF3C86B16B920D400790005 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FBF3C84E16B920D400790005 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB78592B16C104EC00C63D08 /* QuartzCore.framework in Frameworks */,
+				FBF3C85616B920D400790005 /* UIKit.framework in Frameworks */,
+				FBF3C85816B920D400790005 /* Foundation.framework in Frameworks */,
+				FBF3C85A16B920D400790005 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FB2D6FA416BA2364008E367F /* Res */ = {
+			isa = PBXGroup;
+			children = (
+				FB2D6F9A16BA22E2008E367F /* icon_16x16.png */,
+				FB2D6F9E16BA22E2008E367F /* icon_256x256.png */,
+				FB2D6F9B16BA22E2008E367F /* icon_32x32.png */,
+				FB2D6F9C16BA22E2008E367F /* icon_64x64.png */,
+				FB2D6F9D16BA22E2008E367F /* icon_128x128.png */,
+			);
+			name = Res;
+			sourceTree = "<group>";
+		};
+		FB78592616C1040100C63D08 /* XYPieChart */ = {
+			isa = PBXGroup;
+			children = (
+				FB78592716C1040100C63D08 /* XYPieChart.h */,
+				FB78592816C1040100C63D08 /* XYPieChart.m */,
+			);
+			path = XYPieChart;
+			sourceTree = "<group>";
+		};
+		FBF3C84616B920D400790005 = {
+			isa = PBXGroup;
+			children = (
+				FB78592A16C104EC00C63D08 /* QuartzCore.framework */,
+				35AB6DF716BEA10000795E57 /* Default-568h@2x.png */,
+				FBF3C85B16B920D400790005 /* DimBoard */,
+				FBF3C85416B920D400790005 /* Frameworks */,
+				FBF3C85216B920D400790005 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FBF3C85216B920D400790005 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FBF3C85116B920D400790005 /* DimBoard.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FBF3C85416B920D400790005 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FBF3C85516B920D400790005 /* UIKit.framework */,
+				FBF3C85716B920D400790005 /* Foundation.framework */,
+				FBF3C85916B920D400790005 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FBF3C85B16B920D400790005 /* DimBoard */ = {
+			isa = PBXGroup;
+			children = (
+				FB78592616C1040100C63D08 /* XYPieChart */,
+				FB2D6FA416BA2364008E367F /* Res */,
+				FBF3C86416B920D400790005 /* AppDelegate.h */,
+				FBF3C86516B920D400790005 /* AppDelegate.m */,
+				FB78592316C103F100C63D08 /* Calculator.h */,
+				FB78592416C103F100C63D08 /* Calculator.m */,
+				FBF3C86716B920D400790005 /* ViewController.h */,
+				FBF3C86816B920D400790005 /* ViewController.m */,
+				FBF3C86A16B920D400790005 /* ViewController.xib */,
+				FBF3C85C16B920D400790005 /* Supporting Files */,
+				FB7858F116BBB0DF00C63D08 /* OveralInfoViewController.h */,
+				FB7858F216BBB0DF00C63D08 /* OveralInfoViewController.m */,
+				FB7858F316BBB0DF00C63D08 /* OveralInfoViewController.xib */,
+				FB78590A16C0B07500C63D08 /* MortgageDataType.h */,
+				FB78590B16C0B07500C63D08 /* MortgageDataType.m */,
+				FB961B4416C34AFD000EA974 /* MortgageRecordViewController.h */,
+				FB961B4516C34AFD000EA974 /* MortgageRecordViewController.m */,
+				FB961B4616C34AFD000EA974 /* MortgageRecordViewController.xib */,
+				FB961B8316C34F04000EA974 /* AddRecordViewController.h */,
+				FB961B8416C34F04000EA974 /* AddRecordViewController.m */,
+				FB961B8516C34F04000EA974 /* AddRecordViewController.xib */,
+				FB961B8816C35149000EA974 /* RecordDetailViewController.h */,
+				FB961B8916C35149000EA974 /* RecordDetailViewController.m */,
+				FB961B8A16C35149000EA974 /* RecordDetailViewController.xib */,
+			);
+			path = DimBoard;
+			sourceTree = "<group>";
+		};
+		FBF3C85C16B920D400790005 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FBF3C85D16B920D400790005 /* DimBoard-Info.plist */,
+				FBF3C85E16B920D400790005 /* InfoPlist.strings */,
+				FBF3C86116B920D400790005 /* main.m */,
+				FBF3C86316B920D400790005 /* DimBoard-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FBF3C85016B920D400790005 /* DimBoard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBF3C86F16B920D400790005 /* Build configuration list for PBXNativeTarget "DimBoard" */;
+			buildPhases = (
+				FBF3C84D16B920D400790005 /* Sources */,
+				FBF3C84E16B920D400790005 /* Frameworks */,
+				FBF3C84F16B920D400790005 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DimBoard;
+			productName = DimBoard;
+			productReference = FBF3C85116B920D400790005 /* DimBoard.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FBF3C84816B920D400790005 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = LCYY;
+			};
+			buildConfigurationList = FBF3C84B16B920D400790005 /* Build configuration list for PBXProject "DimBoard" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FBF3C84616B920D400790005;
+			productRefGroup = FBF3C85216B920D400790005 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FBF3C85016B920D400790005 /* DimBoard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FBF3C84F16B920D400790005 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBF3C86016B920D400790005 /* InfoPlist.strings in Resources */,
+				FBF3C86C16B920D400790005 /* ViewController.xib in Resources */,
+				FB2D6F9F16BA22E2008E367F /* icon_16x16.png in Resources */,
+				FB2D6FA016BA22E2008E367F /* icon_32x32.png in Resources */,
+				FB2D6FA116BA22E2008E367F /* icon_64x64.png in Resources */,
+				FB2D6FA216BA22E2008E367F /* icon_128x128.png in Resources */,
+				FB2D6FA316BA22E2008E367F /* icon_256x256.png in Resources */,
+				FB7858F516BBB0DF00C63D08 /* OveralInfoViewController.xib in Resources */,
+				35AB6DF816BEA10000795E57 /* Default-568h@2x.png in Resources */,
+				FB961B4816C34AFD000EA974 /* MortgageRecordViewController.xib in Resources */,
+				FB961B8716C34F04000EA974 /* AddRecordViewController.xib in Resources */,
+				FB961B8C16C35149000EA974 /* RecordDetailViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FBF3C84D16B920D400790005 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBF3C86216B920D400790005 /* main.m in Sources */,
+				FBF3C86616B920D400790005 /* AppDelegate.m in Sources */,
+				FBF3C86916B920D400790005 /* ViewController.m in Sources */,
+				FB7858F416BBB0DF00C63D08 /* OveralInfoViewController.m in Sources */,
+				FB78590C16C0B07600C63D08 /* MortgageDataType.m in Sources */,
+				FB78592516C103F100C63D08 /* Calculator.m in Sources */,
+				FB78592916C1040100C63D08 /* XYPieChart.m in Sources */,
+				FB961B4716C34AFD000EA974 /* MortgageRecordViewController.m in Sources */,
+				FB961B8616C34F04000EA974 /* AddRecordViewController.m in Sources */,
+				FB961B8B16C35149000EA974 /* RecordDetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FBF3C85E16B920D400790005 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FBF3C85F16B920D400790005 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FBF3C86A16B920D400790005 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FBF3C86B16B920D400790005 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FBF3C86D16B920D400790005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FBF3C86E16B920D400790005 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FBF3C87016B920D400790005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DimBoard/DimBoard-Prefix.pch";
+				INFOPLIST_FILE = "DimBoard/DimBoard-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FBF3C87116B920D400790005 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DimBoard/DimBoard-Prefix.pch";
+				INFOPLIST_FILE = "DimBoard/DimBoard-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FBF3C84B16B920D400790005 /* Build configuration list for PBXProject "DimBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBF3C86D16B920D400790005 /* Debug */,
+				FBF3C86E16B920D400790005 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FBF3C86F16B920D400790005 /* Build configuration list for PBXNativeTarget "DimBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBF3C87016B920D400790005 /* Debug */,
+				FBF3C87116B920D400790005 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FBF3C84816B920D400790005 /* Project object */;
+}
