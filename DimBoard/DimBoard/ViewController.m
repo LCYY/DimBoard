@@ -133,10 +133,27 @@
 
 - (IBAction)onShowMortgageRecord:(id)sender {
     m_mortgageRecordViewController = [[MortgageRecordViewController alloc] init];
-    [self.view addSubview:m_mortgageRecordViewController.view];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:m_mortgageRecordViewController];
+    
+    navController.navigationBar.topItem.title = @"我的貸款";
+    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(onBackFromMortgageRecordView:)];
+    navController.navigationBar.topItem.leftBarButtonItem = doneButton;
+    [navController setWantsFullScreenLayout:YES];
+    [navController.view setAutoresizesSubviews:NO];
+    navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    navController.visibleViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    
+    [self presentModalViewController:navController animated:YES];
 }
 
 - (IBAction)onShowDetails:(id)sender {
+}
+
+- (void)onBackFromMortgageRecordView:(id)sender{
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 // for hide keyboard when touch background

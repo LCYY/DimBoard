@@ -20,8 +20,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-        self.title = @"我的貸款";
+        // Custom initialization      
+        
         NSMutableArray * array = [[NSMutableArray alloc] init];
         self.m_controllerList = array;
         
