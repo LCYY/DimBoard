@@ -22,6 +22,7 @@
 @end
 
 @implementation ViewController
+@synthesize ScrollView;
 @synthesize ShowOveralInfo;
 @synthesize ShowDetails;
 @synthesize HomeValue_input;
@@ -43,15 +44,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    UIScrollView* scrollview = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyBoard)];
+    tapRecognizer.cancelsTouchesInView = NO;
+    [ScrollView addGestureRecognizer:tapRecognizer];
     
-    m_view = self.view;
-    scrollview.contentSize = m_view.frame.size;
-    [scrollview addSubview:m_view];
-    self.view = scrollview;
-    
-    m_viewRect = m_view.frame;
-        
     m_input = [[MortgageInput alloc] initWithHomeValue:100.0 LoanYear:30 LoanPercent:30.0 LoanRate:2.0];
     m_output = [[MortgageOutput alloc] initVariables];
     m_calculator = [[Calculator alloc] initVarirables];
@@ -77,20 +73,12 @@
     [self setShowOveralInfo:nil];
     [self setShowDetails:nil];
     [self setMonthlyPay_output:nil];
+    [self setScrollView:nil];
     [super viewDidUnload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    CGRect screen = [[UIScreen mainScreen] applicationFrame];
-    if(interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown){
-        ((UIScrollView*)self.view).contentSize = CGSizeMake(screen.size.width, m_viewRect.size.height);
-        m_view.frame = CGRectMake(0, 0, screen.size.width, screen.size.height);
-    }else if(interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight){
-        ((UIScrollView*)self.view).contentSize = CGSizeMake(screen.size.width, m_viewRect.size.height);
-        m_view.frame = CGRectMake(0, 0, screen.size.height, m_viewRect.size.height);
-    }
-    ((UIScrollView*)self.view).contentSize = m_view.frame.size;
     return TRUE;
 }
 
@@ -141,24 +129,49 @@
 - (IBAction)onShowOveralInfo:(id)sender {
     m_overalInfoViewController = [[OveralInfoViewController alloc] initWithInput:m_input Output:m_output];
     [self.view addSubview:m_overalInfoViewController.view];
-    ((UIScrollView*)self.view).contentOffset = CGPointMake(0, 0);
 }
 
 - (IBAction)onShowMortgageRecord:(id)sender {
     m_mortgageRecordViewController = [[MortgageRecordViewController alloc] init];
     [self.view addSubview:m_mortgageRecordViewController.view];
-    ((UIScrollView*)self.view).contentOffset = CGPointMake(0, 0);
 }
 
 - (IBAction)onShowDetails:(id)sender {
 }
 
 // for hide keyboard when touch background
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES];
+- (void)hideKeyBoard{
+    [HomeValue_input resignFirstResponder];
+    [LoanRate_input resignFirstResponder];
+    [LoanPercent_input resignFirstResponder];
+    [LoanYear_input resignFirstResponder];
 }
 
-//UITextField Delegate
+//notifications
+- (void)onSlidValueChanged:(id) sender{
+    UISlider* slider = (UISlider*)sender;
+    float sliderValue = slider.value;
+    if(sender == HomeValue_slid){
+        HomeValue_input.text = [NSString stringWithFormat:@"%0.4f",sliderValue];
+        m_input->homeValue = [HomeValue_input.text doubleValue];
+    }else if(sender == LoanPercent_slid){
+        LoanPercent_input.text = [NSString stringWithFormat:@"%0.2f",sliderValue];
+        m_input->loanPercent = [LoanPercent_input.text doubleValue];
+    }else if(sender == LoanYear_slid){
+        LoanYear_input.text = [NSString stringWithFormat:@"%d",(int)sliderValue];
+        m_input->loanYear = [LoanYear_input.text intValue];
+    }else if(sender == LoanRate_slid){
+        LoanRate_input.text = [NSString stringWithFormat:@"%0.2f",sliderValue];
+        m_input->loanRate = [LoanRate_input.text doubleValue];
+    }
+    
+    [m_calculator setInput:m_input];
+    [m_calculator getOutput:m_output];
+    [self updateResult];
+}
+
+#pragma mark
+#pragma mark - UITextFieldDelegate
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
 replacementString:(NSString *)string {
     if(string.length == 0)
@@ -203,28 +216,4 @@ replacementString:(NSString *)string {
     
     return YES;
 }
-
-//notifications
-- (void)onSlidValueChanged:(id) sender{
-    UISlider* slider = (UISlider*)sender;
-    float sliderValue = slider.value;
-    if(sender == HomeValue_slid){
-        HomeValue_input.text = [NSString stringWithFormat:@"%0.4f",sliderValue];
-        m_input->homeValue = [HomeValue_input.text doubleValue];
-    }else if(sender == LoanPercent_slid){
-        LoanPercent_input.text = [NSString stringWithFormat:@"%0.2f",sliderValue];
-        m_input->loanPercent = [LoanPercent_input.text doubleValue];
-    }else if(sender == LoanYear_slid){
-        LoanYear_input.text = [NSString stringWithFormat:@"%d",(int)sliderValue];
-        m_input->loanYear = [LoanYear_input.text intValue];
-    }else if(sender == LoanRate_slid){
-        LoanRate_input.text = [NSString stringWithFormat:@"%0.2f",sliderValue];
-        m_input->loanRate = [LoanRate_input.text doubleValue];
-    }
-    
-    [m_calculator setInput:m_input];
-    [m_calculator getOutput:m_output];
-    [self updateResult];
-}
-
 @end

@@ -20,10 +20,8 @@
     OveralInfoViewController* m_overalInfoViewController;
     MortgageRecordViewController* m_mortgageRecordViewController;
     Calculator* m_calculator;
-    
-    UIView* m_view;
-    CGRect m_viewRect;
 }
+@property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
 
 //TextField Input
 @property (weak, nonatomic) IBOutlet UITextField *HomeValue_input;

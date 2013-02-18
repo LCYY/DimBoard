@@ -33,8 +33,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    m_viewRect = self.view.frame;
         
     // Do any additional setup after loading the view from its nib.
     [self showMortgageData];
@@ -71,15 +69,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    CGRect screen = [[UIScreen mainScreen] applicationFrame];
-    if(interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown){
-        ((UIScrollView*)self.view.superview).contentSize = CGSizeMake(screen.size.width, m_viewRect.size.height);
-        self.view.frame = CGRectMake(0, 0, screen.size.width, m_viewRect.size.height);
-    }else if(interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight){
-         ((UIScrollView*)self.view.superview).contentSize = CGSizeMake(screen.size.height, m_viewRect.size.height);
-        self.view.frame = CGRectMake(0, 0, screen.size.height, m_viewRect.size.height);
-    }
-    return TRUE;
+    return FALSE;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -162,8 +152,6 @@
 }
 
 - (IBAction)onBack:(id)sender {
-    CGRect screen = [[UIScreen mainScreen] applicationFrame];
-    ((UIScrollView*)self.view.superview).contentSize = screen.size;
     [self.view removeFromSuperview];
 }
 

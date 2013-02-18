@@ -18,8 +18,6 @@
     NSMutableArray *m_slices;
     NSMutableArray *m_slicesDesp;
     NSInteger m_selectedSliceIndex;
-    
-    CGRect m_viewRect;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *HomeValue_ouput;
