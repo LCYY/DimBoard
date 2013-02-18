@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EditNumberViewController.h"
 
-@interface RecordDetailViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
-@property (retain, nonatomic) NSArray *m_items;
+@interface RecordDetailViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate>
+@property (retain, nonatomic) NSArray *m_mortgageItems;
+@property (retain, nonatomic) NSArray *m_expenceItems;
 @end

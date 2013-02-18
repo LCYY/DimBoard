@@ -21,7 +21,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization      
-        
         NSMutableArray * array = [[NSMutableArray alloc] init];
         self.m_controllerList = array;
         
@@ -73,7 +72,7 @@
     static NSString *MortgageRecordCell = @"MortgageRecordCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MortgageRecordCell];
     if(cell == nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MortgageRecordCell];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:MortgageRecordCell];
     }
     NSUInteger row = [indexPath row];
     UITableViewController *controller = [m_controllerList objectAtIndex:row];
@@ -88,10 +87,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return @"test";
 }
 
 @end
