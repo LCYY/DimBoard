@@ -42,6 +42,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.title = m_name;
     [NameLabel setText:m_name];
     [EditInput setText:[NSString stringWithFormat:@"%0.2f",m_value]];
     [UnitLabel setText:m_unit];

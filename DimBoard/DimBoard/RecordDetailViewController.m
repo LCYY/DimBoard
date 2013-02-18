@@ -87,6 +87,7 @@
         name = [m_expenceItems objectAtIndex:row];
     }
     EditNumberViewController * editController = [[EditNumberViewController alloc] initWithName:name Value:value Unit:unit];
+    self.navigationController.title = name;
     [self.navigationController pushViewController:editController animated:YES];
 }
 

@@ -128,7 +128,21 @@
 
 - (IBAction)onShowOveralInfo:(id)sender {
     m_overalInfoViewController = [[OveralInfoViewController alloc] initWithInput:m_input Output:m_output];
-    [self.view addSubview:m_overalInfoViewController.view];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:m_overalInfoViewController];
+    
+    navController.navigationBar.topItem.title = ((UIButton*)sender).titleLabel.text;
+    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
+    navController.navigationBar.topItem.leftBarButtonItem = doneButton;
+    [navController setWantsFullScreenLayout:YES];
+    [navController.view setAutoresizesSubviews:NO];
+    navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    navController.visibleViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    
+    [self presentModalViewController:navController animated:YES];
+    
 }
 
 - (IBAction)onShowMortgageRecord:(id)sender {
@@ -136,9 +150,9 @@
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:m_mortgageRecordViewController];
     
-    navController.navigationBar.topItem.title = @"我的貸款";
+    navController.navigationBar.topItem.title = ((UIButton*)sender).titleLabel.text;
     navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(onBackFromMortgageRecordView:)];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
     navController.navigationBar.topItem.leftBarButtonItem = doneButton;
     [navController setWantsFullScreenLayout:YES];
     [navController.view setAutoresizesSubviews:NO];
@@ -152,7 +166,7 @@
 - (IBAction)onShowDetails:(id)sender {
 }
 
-- (void)onBackFromMortgageRecordView:(id)sender{
+- (void)onBack:(id)sender{
     [self dismissModalViewControllerAnimated:YES];
 }
 

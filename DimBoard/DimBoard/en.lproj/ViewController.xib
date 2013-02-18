@@ -48,6 +48,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{21, 41}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="446114798"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -78,6 +79,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{21, 106}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="542663391"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -98,6 +100,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{21, 167}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="235189238"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -118,6 +121,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{21, 233}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="655678768"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -138,6 +142,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{100, 36}, {97, 31}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="752753723"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -173,6 +178,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{100, 101}, {97, 31}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="522899747"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -199,6 +205,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{19, 137}, {284, 23}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="520731993"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -212,6 +219,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{100, 167}, {97, 31}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="86323423"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -238,6 +246,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{19, 201}, {284, 23}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="906962854"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -251,6 +260,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{100, 230}, {97, 31}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="233819058"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -277,6 +287,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{19, 265}, {284, 23}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="192925487"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -290,6 +301,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{205, 44}, {28, 21}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="324067695"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -310,6 +322,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{205, 106}, {28, 21}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="461462203"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -330,6 +343,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{205, 167}, {28, 21}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="137077122"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -350,6 +364,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{205, 237}, {28, 21}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="285879333"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -370,6 +385,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{21, 315}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="621802721"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -390,6 +406,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 344}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="475575698"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -410,6 +427,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 373}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="539866871"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -430,6 +448,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{21, 402}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="19249518"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -450,6 +469,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{21, 439}, {117, 28}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1051137754"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -485,6 +505,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{183, 439}, {117, 28}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="301968919"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -507,6 +528,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{108, 315}, {193, 21}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="325146754"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -527,6 +549,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{108, 344}, {192, 21}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="202471788"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -547,6 +570,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{108, 373}, {192, 21}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="785688496"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -567,6 +591,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{108, 402}, {192, 21}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="465087029"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -587,6 +612,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{18, 71}, {285, 23}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1004153487"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -600,6 +626,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{21, 472}, {117, 28}}</string>
 								<reference key="NSSuperview" ref="890718213"/>
+								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -619,6 +646,7 @@
 						</array>
 						<string key="NSFrameSize">{320, 480}</string>
 						<reference key="NSSuperview" ref="774585933"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="8131385"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -629,11 +657,66 @@
 				</array>
 				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="890718213"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MC43NQA</bytes>
-					<reference key="NSCustomColorSpace" ref="471190620"/>
+					<int key="NSColorSpace">10</int>
+					<object class="NSImage" key="NSImage">
+						<int key="NSImageFlags">549453824</int>
+						<string key="NSSize">{512, 1}</string>
+						<array class="NSMutableArray" key="NSReps">
+							<array>
+								<integer value="0"/>
+								<object class="NSBitmapImageRep">
+									<object class="NSData" key="NSTIFFRepresentation">
+										<bytes key="NS.bytes">TU0AKgAACAjFzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/
+y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/
+xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/
+xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/
+xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/
+xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/
+xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/
+y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/
+y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/
+xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/
+xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/
+xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/
+xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/
+xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/
+y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/
+y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/
+xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/
+xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/
+xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/
+xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/
+xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/
+y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/
+y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/
+xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/
+xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/
+xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/
+xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/
+xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/
+y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/
+y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/
+xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/
+xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/
+xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/xczS/8vS2P/L0tj/xczU/8XM1P/FzNT/
+xczU/8XM0v/L0tj/y9LY/8XM1P/FzNT/xczU/8XM1P/FzNL/y9LY/8vS2P/FzNT/xczU/8XM1P/FzNT/
+xczS/8vS2P/L0tj/xczU/wANAQAAAwAAAAECAAAAAQEAAwAAAAEAAQAAAQIAAwAAAAQAAAiqAQMAAwAA
+AAEAAQAAAQYAAwAAAAEAAgAAAREABAAAAAEAAAAIARIAAwAAAAEAAQAAARUAAwAAAAEABAAAARYAAwAA
+AAEAAQAAARcABAAAAAEAAAgAARwAAwAAAAEAAQAAAVIAAwAAAAEAAQAAAVMAAwAAAAQAAAiyAAAAAAAI
+AAgACAAIAAEAAQABAAE</bytes>
+									</object>
+								</object>
+							</array>
+						</array>
+						<object class="NSColor" key="NSColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MCAwAA</bytes>
+						</object>
+					</object>
+					<string key="IBUIColorCocoaTouchKeyPath">groupTableViewBackgroundColor</string>
 				</object>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -1061,7 +1144,116 @@
 			<nil key="sourceID"/>
 			<int key="maxID">66</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">ViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="onShowDetails:">id</string>
+						<string key="onShowMortgageRecord:">id</string>
+						<string key="onShowOveralInfo:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="onShowDetails:">
+							<string key="name">onShowDetails:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="onShowMortgageRecord:">
+							<string key="name">onShowMortgageRecord:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="onShowOveralInfo:">
+							<string key="name">onShowOveralInfo:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="HomeValue_input">UITextField</string>
+						<string key="HomeValue_slid">UISlider</string>
+						<string key="LoanAmount_output">UILabel</string>
+						<string key="LoanPercent_input">UITextField</string>
+						<string key="LoanPercent_slid">UISlider</string>
+						<string key="LoanRate_input">UITextField</string>
+						<string key="LoanRate_slid">UISlider</string>
+						<string key="LoanTerms_output">UILabel</string>
+						<string key="LoanYear_input">UITextField</string>
+						<string key="LoanYear_slid">UISlider</string>
+						<string key="MonthlyPay_output">UILabel</string>
+						<string key="ScrollView">UIScrollView</string>
+						<string key="ShowDetails">UIButton</string>
+						<string key="ShowOveralInfo">UIButton</string>
+						<string key="TotalPay_output">UILabel</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="HomeValue_input">
+							<string key="name">HomeValue_input</string>
+							<string key="candidateClassName">UITextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="HomeValue_slid">
+							<string key="name">HomeValue_slid</string>
+							<string key="candidateClassName">UISlider</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="LoanAmount_output">
+							<string key="name">LoanAmount_output</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="LoanPercent_input">
+							<string key="name">LoanPercent_input</string>
+							<string key="candidateClassName">UITextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="LoanPercent_slid">
+							<string key="name">LoanPercent_slid</string>
+							<string key="candidateClassName">UISlider</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="LoanRate_input">
+							<string key="name">LoanRate_input</string>
+							<string key="candidateClassName">UITextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="LoanRate_slid">
+							<string key="name">LoanRate_slid</string>
+							<string key="candidateClassName">UISlider</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="LoanTerms_output">
+							<string key="name">LoanTerms_output</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="LoanYear_input">
+							<string key="name">LoanYear_input</string>
+							<string key="candidateClassName">UITextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="LoanYear_slid">
+							<string key="name">LoanYear_slid</string>
+							<string key="candidateClassName">UISlider</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="MonthlyPay_output">
+							<string key="name">MonthlyPay_output</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="ScrollView">
+							<string key="name">ScrollView</string>
+							<string key="candidateClassName">UIScrollView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="ShowDetails">
+							<string key="name">ShowDetails</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="ShowOveralInfo">
+							<string key="name">ShowOveralInfo</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="TotalPay_output">
+							<string key="name">TotalPay_output</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/ViewController.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
