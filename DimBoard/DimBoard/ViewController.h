@@ -17,8 +17,6 @@
     
     NSMutableArray* m_principals;
     
-    OveralInfoViewController* m_overalInfoViewController;
-    MortgageRecordViewController* m_mortgageRecordViewController;
     Calculator* m_calculator;
 }
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;

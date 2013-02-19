@@ -127,9 +127,9 @@
 }
 
 - (IBAction)onShowOveralInfo:(id)sender {
-    m_overalInfoViewController = [[OveralInfoViewController alloc] initWithInput:m_input Output:m_output];
+    OveralInfoViewController *rootController = [[OveralInfoViewController alloc] initWithInput:m_input Output:m_output];
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:m_overalInfoViewController];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
     
     navController.navigationBar.topItem.title = ((UIButton*)sender).titleLabel.text;
     navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
@@ -142,18 +142,18 @@
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
     
     [self presentModalViewController:navController animated:YES];
-    
 }
 
 - (IBAction)onShowMortgageRecord:(id)sender {
-    m_mortgageRecordViewController = [[MortgageRecordViewController alloc] init];
-    
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:m_mortgageRecordViewController];
+    MortgageRecordViewController *rootController = [[MortgageRecordViewController alloc] init];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
     
     navController.navigationBar.topItem.title = ((UIButton*)sender).titleLabel.text;
     navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
     navController.navigationBar.topItem.leftBarButtonItem = doneButton;
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:rootController action:@selector(onAddNewMortgageRecord:)];
+    navController.navigationBar.topItem.rightBarButtonItem = addButton;
     [navController setWantsFullScreenLayout:YES];
     [navController.view setAutoresizesSubviews:NO];
     navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -164,6 +164,7 @@
 }
 
 - (IBAction)onShowDetails:(id)sender {
+    
 }
 
 - (void)onBack:(id)sender{

@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "RecordDetailViewController.h"
+#import "AddRecordViewController.h"
 
 @interface MortgageRecordViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong,nonatomic) NSMutableArray* m_controllerList;
+
+- (void)onAddNewMortgageRecord:(id)sender;
+- (void)onBack:(id)sender;
 @end

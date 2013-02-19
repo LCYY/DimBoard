@@ -57,6 +57,29 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
+- (void)onAddNewMortgageRecord:(id)sender{   
+    AddRecordViewController* rootController = [[AddRecordViewController alloc] init];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
+    
+    navController.navigationBar.topItem.title = @"新增供款";
+    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"確定" style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
+    navController.navigationBar.topItem.rightBarButtonItem = doneButton;
+    [navController setWantsFullScreenLayout:YES];
+    [navController.view setAutoresizesSubviews:NO];
+    navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    navController.visibleViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+
+    [self presentModalViewController:navController animated:YES];
+}
+
+- (void)onBack:(id)sender{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 #pragma mark-
 #pragma mark UITableViewDelegate
 
