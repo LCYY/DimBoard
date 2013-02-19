@@ -31,6 +31,10 @@
 		FBB0A43616D34AE800F087EE /* InputCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0A43416D34AE800F087EE /* InputCellViewController.m */; };
 		FBB0A43716D34AE800F087EE /* InputCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB0A43516D34AE800F087EE /* InputCellViewController.xib */; };
 		FBB0A43A16D34B0600F087EE /* InputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0A43916D34B0600F087EE /* InputCell.m */; };
+		FBB0A44616D3738300F087EE /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0A44416D3738300F087EE /* DatePickerViewController.m */; };
+		FBB0A44716D3738300F087EE /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB0A44516D3738300F087EE /* DatePickerViewController.xib */; };
+		FBB0A45016D3771D00F087EE /* BankPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0A44E16D3771C00F087EE /* BankPickerViewController.m */; };
+		FBB0A45116D3771D00F087EE /* BankPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB0A44F16D3771D00F087EE /* BankPickerViewController.xib */; };
 		FBF3C85616B920D400790005 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85516B920D400790005 /* UIKit.framework */; };
 		FBF3C85816B920D400790005 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85716B920D400790005 /* Foundation.framework */; };
 		FBF3C85A16B920D400790005 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85916B920D400790005 /* CoreGraphics.framework */; };
@@ -77,6 +81,12 @@
 		FBB0A43516D34AE800F087EE /* InputCellViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputCellViewController.xib; sourceTree = "<group>"; };
 		FBB0A43816D34B0600F087EE /* InputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCell.h; sourceTree = "<group>"; };
 		FBB0A43916D34B0600F087EE /* InputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputCell.m; sourceTree = "<group>"; };
+		FBB0A44316D3738300F087EE /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
+		FBB0A44416D3738300F087EE /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
+		FBB0A44516D3738300F087EE /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
+		FBB0A44D16D3771C00F087EE /* BankPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankPickerViewController.h; sourceTree = "<group>"; };
+		FBB0A44E16D3771C00F087EE /* BankPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankPickerViewController.m; sourceTree = "<group>"; };
+		FBB0A44F16D3771D00F087EE /* BankPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BankPickerViewController.xib; sourceTree = "<group>"; };
 		FBF3C85116B920D400790005 /* DimBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DimBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF3C85516B920D400790005 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FBF3C85716B920D400790005 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -201,6 +211,12 @@
 				FB961B8816C35149000EA974 /* RecordDetailViewController.h */,
 				FB961B8916C35149000EA974 /* RecordDetailViewController.m */,
 				FB961B8A16C35149000EA974 /* RecordDetailViewController.xib */,
+				FBB0A44316D3738300F087EE /* DatePickerViewController.h */,
+				FBB0A44416D3738300F087EE /* DatePickerViewController.m */,
+				FBB0A44516D3738300F087EE /* DatePickerViewController.xib */,
+				FBB0A44D16D3771C00F087EE /* BankPickerViewController.h */,
+				FBB0A44E16D3771C00F087EE /* BankPickerViewController.m */,
+				FBB0A44F16D3771D00F087EE /* BankPickerViewController.xib */,
 				FBB0A43216D34A9F00F087EE /* Customized UITableViewCell */,
 			);
 			path = DimBoard;
@@ -282,6 +298,8 @@
 				FB961B8C16C35149000EA974 /* RecordDetailViewController.xib in Resources */,
 				FBB0A43116D3248F00F087EE /* SliderCellViewController.xib in Resources */,
 				FBB0A43716D34AE800F087EE /* InputCellViewController.xib in Resources */,
+				FBB0A44716D3738300F087EE /* DatePickerViewController.xib in Resources */,
+				FBB0A45116D3771D00F087EE /* BankPickerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +324,8 @@
 				FBB0A43016D3248F00F087EE /* SliderCellViewController.m in Sources */,
 				FBB0A43616D34AE800F087EE /* InputCellViewController.m in Sources */,
 				FBB0A43A16D34B0600F087EE /* InputCell.m in Sources */,
+				FBB0A44616D3738300F087EE /* DatePickerViewController.m in Sources */,
+				FBB0A45016D3771D00F087EE /* BankPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

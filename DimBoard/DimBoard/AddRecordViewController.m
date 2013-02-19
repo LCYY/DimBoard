@@ -64,11 +64,52 @@
     [self.view endEditing:YES];
 }
 
+-(void)onCancel:(id)sender{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 #pragma mark-
 #pragma mark UITableViewDelegate
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSUInteger row = [indexPath row];
+    NSInteger section = [indexPath section];
+    if(section == 1){
+        BankPickerViewController* rootController = [[BankPickerViewController alloc] init];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
+        
+        navController.navigationBar.topItem.title = m_section1;
+        navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+        UIBarButtonItem *cacelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonSystemItemDone target:self action:@selector(onCancel:)];
+        navController.navigationBar.topItem.leftBarButtonItem = cacelButton;
+        UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemDone target:rootController action:@selector(onSave:)];
+        navController.navigationBar.topItem.rightBarButtonItem = saveButton;
+        
+        [navController setWantsFullScreenLayout:YES];
+        [navController.view setAutoresizesSubviews:NO];
+        navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        navController.visibleViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        self.modalPresentationStyle = UIModalPresentationCurrentContext;
+        
+        [self presentModalViewController:navController animated:YES];
+    }else if(section == 3){
+        DatePickerViewController* rootController = [[DatePickerViewController alloc] init];       
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
+        
+        navController.navigationBar.topItem.title = m_section3;
+        navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+        UIBarButtonItem *cacelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonSystemItemDone target:self action:@selector(onCancel:)];
+        navController.navigationBar.topItem.leftBarButtonItem = cacelButton;
+        UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemDone target:rootController action:@selector(onSave:)];
+        navController.navigationBar.topItem.rightBarButtonItem = saveButton;
+        
+        [navController setWantsFullScreenLayout:YES];
+        [navController.view setAutoresizesSubviews:NO];
+        navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        navController.visibleViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        self.modalPresentationStyle = UIModalPresentationCurrentContext;
+        
+        [self presentModalViewController:navController animated:YES];
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

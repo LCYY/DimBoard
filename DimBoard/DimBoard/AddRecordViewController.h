@@ -10,6 +10,8 @@
 #import "SliderCell.h"
 #import "InputCell.h"
 #import "MortgageDataType.h"
+#import "DatePickerViewController.h"
+#import "BankPickerViewController.h"
 
 @interface AddRecordViewController : UITableViewController
 
