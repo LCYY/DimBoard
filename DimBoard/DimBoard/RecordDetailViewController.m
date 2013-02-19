@@ -69,26 +69,39 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)onEdit:(id)sender{
+    AddRecordViewController* rootController = [[AddRecordViewController alloc] init];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
+    
+    navController.navigationBar.topItem.title = self.navigationController.navigationBar.topItem.title;
+    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemDone target:self action:@selector(onChangeReocrd:)];
+    navController.navigationBar.topItem.rightBarButtonItem = saveButton;
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
+    navController.navigationBar.topItem.leftBarButtonItem = cancelButton;
+    
+    [navController setWantsFullScreenLayout:YES];
+    [navController.view setAutoresizesSubviews:NO];
+    navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    navController.visibleViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    
+    [self presentModalViewController:navController animated:YES];
+}
+
+- (void)onBack:(id)sender{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)onChangeReocrd:(id)sender{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 #pragma mark
 #pragma mark - UITableViewDlegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSInteger section = indexPath.section;
-    NSInteger row = indexPath.row;
-    NSString *name = @"";
-    NSString *unit = @"";
-    double value = 100;
-    if(section == 0){
-        name = @"物業價值";
-    }
-    else if(section == 1){
-        name = [m_mortgageItems objectAtIndex:row];
-    }
-    else if(section == 2){
-        name = [m_expenceItems objectAtIndex:row];
-    }
-    EditNumberViewController * editController = [[EditNumberViewController alloc] initWithName:name Value:value Unit:unit];
-    self.navigationController.title = name;
-    [self.navigationController pushViewController:editController animated:YES];
+    
 }
 
 #pragma mark - UITableViewDataSource
@@ -111,7 +124,6 @@
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:MortgageRecordDetails];
     }
-    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     if(indexPath.section == 0){
         cell.textLabel.text = @"物業價值";
         cell.detailTextLabel.text = @"value";
@@ -120,7 +132,7 @@
     }else if(indexPath.section == 2){
         cell.textLabel.text = [m_expenceItems objectAtIndex:indexPath.row];
     }
-
+    [cell setAccessoryType:UITableViewCellAccessoryNone];
     return cell;
 }
 @end

@@ -25,8 +25,6 @@
 		FB961B8716C34F04000EA974 /* AddRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB961B8516C34F04000EA974 /* AddRecordViewController.xib */; };
 		FB961B8B16C35149000EA974 /* RecordDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB961B8916C35149000EA974 /* RecordDetailViewController.m */; };
 		FB961B8C16C35149000EA974 /* RecordDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB961B8A16C35149000EA974 /* RecordDetailViewController.xib */; };
-		FBB0A42016D228A900F087EE /* EditNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0A41E16D228A800F087EE /* EditNumberViewController.m */; };
-		FBB0A42116D228A900F087EE /* EditNumberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB0A41F16D228A900F087EE /* EditNumberViewController.xib */; };
 		FBB0A42516D31ABD00F087EE /* SliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0A42416D31ABD00F087EE /* SliderCell.m */; };
 		FBB0A43016D3248F00F087EE /* SliderCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0A42E16D3248F00F087EE /* SliderCellViewController.m */; };
 		FBB0A43116D3248F00F087EE /* SliderCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB0A42F16D3248F00F087EE /* SliderCellViewController.xib */; };
@@ -69,9 +67,6 @@
 		FB961B8816C35149000EA974 /* RecordDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordDetailViewController.h; sourceTree = "<group>"; };
 		FB961B8916C35149000EA974 /* RecordDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordDetailViewController.m; sourceTree = "<group>"; };
 		FB961B8A16C35149000EA974 /* RecordDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordDetailViewController.xib; sourceTree = "<group>"; };
-		FBB0A41D16D228A800F087EE /* EditNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNumberViewController.h; sourceTree = "<group>"; };
-		FBB0A41E16D228A800F087EE /* EditNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNumberViewController.m; sourceTree = "<group>"; };
-		FBB0A41F16D228A900F087EE /* EditNumberViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditNumberViewController.xib; sourceTree = "<group>"; };
 		FBB0A42316D31ABC00F087EE /* SliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderCell.h; sourceTree = "<group>"; };
 		FBB0A42416D31ABD00F087EE /* SliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderCell.m; sourceTree = "<group>"; };
 		FBB0A42D16D3248E00F087EE /* SliderCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderCellViewController.h; sourceTree = "<group>"; };
@@ -206,9 +201,6 @@
 				FB961B8816C35149000EA974 /* RecordDetailViewController.h */,
 				FB961B8916C35149000EA974 /* RecordDetailViewController.m */,
 				FB961B8A16C35149000EA974 /* RecordDetailViewController.xib */,
-				FBB0A41D16D228A800F087EE /* EditNumberViewController.h */,
-				FBB0A41E16D228A800F087EE /* EditNumberViewController.m */,
-				FBB0A41F16D228A900F087EE /* EditNumberViewController.xib */,
 				FBB0A43216D34A9F00F087EE /* Customized UITableViewCell */,
 			);
 			path = DimBoard;
@@ -288,7 +280,6 @@
 				FB961B4816C34AFD000EA974 /* MortgageRecordViewController.xib in Resources */,
 				FB961B8716C34F04000EA974 /* AddRecordViewController.xib in Resources */,
 				FB961B8C16C35149000EA974 /* RecordDetailViewController.xib in Resources */,
-				FBB0A42116D228A900F087EE /* EditNumberViewController.xib in Resources */,
 				FBB0A43116D3248F00F087EE /* SliderCellViewController.xib in Resources */,
 				FBB0A43716D34AE800F087EE /* InputCellViewController.xib in Resources */,
 			);
@@ -311,7 +302,6 @@
 				FB961B4716C34AFD000EA974 /* MortgageRecordViewController.m in Sources */,
 				FB961B8616C34F04000EA974 /* AddRecordViewController.m in Sources */,
 				FB961B8B16C35149000EA974 /* RecordDetailViewController.m in Sources */,
-				FBB0A42016D228A900F087EE /* EditNumberViewController.m in Sources */,
 				FBB0A42516D31ABD00F087EE /* SliderCell.m in Sources */,
 				FBB0A43016D3248F00F087EE /* SliderCellViewController.m in Sources */,
 				FBB0A43616D34AE800F087EE /* InputCellViewController.m in Sources */,

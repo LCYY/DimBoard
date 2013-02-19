@@ -11,7 +11,6 @@
 @interface InputCellViewController : UIViewController<UITextFieldDelegate>{
     NSString* m_name;
     NSString* m_value;
-    UITapGestureRecognizer *m_gestureRecognizer;
 }
 @property (weak, nonatomic) IBOutlet UILabel *NameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *ValueInput;

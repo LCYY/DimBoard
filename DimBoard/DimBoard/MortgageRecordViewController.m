@@ -92,8 +92,26 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSUInteger row = [indexPath row];
-    UITableViewController *controller = [m_controllerList objectAtIndex:row];
-    [self.navigationController pushViewController:controller animated:YES];
+    UITableViewController *rootController = [m_controllerList objectAtIndex:row];
+
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
+    
+    navController.navigationBar.topItem.title = rootController.title;
+    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:self.navigationController.navigationBar.topItem.title style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
+    navController.navigationBar.topItem.leftBarButtonItem = backButton;
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:@"編輯" style:UIBarButtonSystemItemDone target:rootController action:@selector(onEdit:)];
+    navController.navigationBar.topItem.rightBarButtonItem = editButton;
+    
+    [navController setWantsFullScreenLayout:YES];
+    [navController.view setAutoresizesSubviews:NO];
+    navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    navController.visibleViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    
+    [self presentModalViewController:navController animated:YES];
+    
+    //[self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark UITableViewDataSource
