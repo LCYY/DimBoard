@@ -65,8 +65,11 @@
     
     navController.navigationBar.topItem.title = @"新增供款";
     navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"確定" style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
-    navController.navigationBar.topItem.rightBarButtonItem = doneButton;
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemDone target:self action:@selector(onSaveNewReocrd:)];
+    navController.navigationBar.topItem.rightBarButtonItem = saveButton;
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
+    navController.navigationBar.topItem.leftBarButtonItem = cancelButton;
+    
     [navController setWantsFullScreenLayout:YES];
     [navController.view setAutoresizesSubviews:NO];
     navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -77,6 +80,10 @@
 }
 
 - (void)onBack:(id)sender{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)onSaveNewReocrd:(id)sender{
     [self dismissModalViewControllerAnimated:YES];
 }
 
