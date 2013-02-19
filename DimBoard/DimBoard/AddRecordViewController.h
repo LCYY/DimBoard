@@ -7,7 +7,36 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SliderCell.h"
+#import "InputCell.h"
+#import "MortgageDataType.h"
 
-@interface AddRecordViewController : UIViewController
+@interface AddRecordViewController : UITableViewController
 
+//Section 0
+//---------
+//貸款名稱 inputcell
+//---------
+@property (retain, nonatomic) NSString *m_section0;
+
+//Section 1
+//---------
+//按揭銀行 normal cell
+//---------
+@property (retain, nonatomic) NSString *m_section1;
+
+//Section 2
+//---------
+//物業價值 slidercell
+//按揭成數 slidercell
+//按揭年期 slidercell
+//按揭利率 slidercell
+//---------
+@property (retain, nonatomic) NSArray *m_section2;
+
+//Section 3
+//---------
+//按揭時間 date picker
+//---------
+@property (retain, nonatomic) NSString *m_section3;
 @end

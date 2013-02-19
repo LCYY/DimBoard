@@ -8,15 +8,6 @@
 
 #import "ViewController.h"
 
-#define MIN_HOME_VALUE 1.00         // 1,0000
-#define MAX_HOME_VALUE 5000.00      // 5000,0000
-#define MIN_LOANRATE_VALUE 0.1      // 0.1%
-#define MAX_LOANRATE_VALUE 15.00    // 15%
-#define MIN_LOANYEAR_VALUE 1        // 1 years
-#define MAX_LOANYEAR_VALUE 50       // 50 years
-#define MIN_LOANPERCENT_VALUE 1     // 1%
-#define MAX_LOANPERCENT_VALUE 95    // 95%
-
 @interface ViewController ()
 
 @end
