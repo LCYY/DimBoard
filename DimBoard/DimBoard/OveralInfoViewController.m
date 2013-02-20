@@ -85,8 +85,8 @@
     self = [self init];
     
     if(self){
-        m_input = [[MortgageInput alloc] initWithInput:input];
-        m_output = [[MortgageOutput alloc] initWithOutput:output];
+        m_input = [input copy];
+        m_output = [output copy];
         m_slices = [[NSMutableArray alloc] init];
         m_slicesDesp = [[NSMutableArray alloc] init];
         m_selectedSliceIndex = -1;

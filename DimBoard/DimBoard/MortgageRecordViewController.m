@@ -16,6 +16,38 @@
 
 @synthesize m_controllerList;
 
+-(void)testRecordIO{
+    MortgageRecordIO* recordIO = [[MortgageRecordIO alloc] initWithLoadRecords];
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate* date = [formatter dateFromString:@"2012-02-05"];
+    MortgageRecord* newRecord = [[MortgageRecord alloc] initWithName:@"name_0" BankId:2 Date:date HomeValue:1000 LoanYear:20 LoanPercent:30 LoanRate:2.05];
+    
+    [recordIO addRecord:newRecord];
+    
+    newRecord->name = @"name_1";
+    [recordIO addRecord:newRecord];
+    
+//    [recordIO save];
+//    newRecord->recordId = 0;
+//    newRecord->name = @"testupdatename";
+//    newRecord->input->homeValue = 20000;
+//    [recordIO updateRecord:newRecord];
+//    
+//    NSArray* records = [recordIO getRecords];
+//    if(records){
+//        for(NSInteger i = 0; i< [records count]; i++){
+//            if(i == 1){
+//                MortgageRecord* record = [records objectAtIndex:i];
+//                [recordIO deleteRecordbyId:record->recordId];
+//            }
+//        }
+//    }
+    
+    [recordIO save];
+}
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -28,6 +60,7 @@
         RecordDetailViewController *controller_2 = [[RecordDetailViewController alloc] init];
         [self.m_controllerList addObject:controller_1];
         [self.m_controllerList addObject:controller_2];
+        [self testRecordIO];
     }
     return self;
 }

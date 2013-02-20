@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RecordDetailViewController.h"
 #import "AddRecordViewController.h"
+#import "MortgageRecordIO.h"
 
 @interface MortgageRecordViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource>
 

@@ -18,7 +18,7 @@
 #define MAX_LOANPERCENT_VALUE 95    // 95%
 
 
-@interface MortgageInput : NSObject{
+@interface MortgageInput : NSObject<NSCopying>{
     @public
     double homeValue; // in terms of 10-thoudsands
     double loanPercent; // in terms of %
@@ -27,12 +27,11 @@
 }
 
 -(id)initVariables;
--(id)initWithInput:(MortgageInput*) input;
 -(id)initWithHomeValue:(double)hv LoanYear:(NSInteger)ly LoanPercent:(double)lp LoanRate:(double)lr;
 -(void)setInput:(MortgageInput*) input;
 @end
 
-@interface MortgageOutput : NSObject{
+@interface MortgageOutput : NSObject<NSCopying>{
     @public
     double loanAmount; // in terms of 10-thousands
     double monthlyPay; // in terms of 1
@@ -45,18 +44,25 @@
     double tax;
     double totalInterest;
 }
--(id) initVariables;
--(id)initWithOutput:(MortgageOutput*) output;
+-(id)initVariables;
 -(void)getOutput:(MortgageOutput*) output;
 @end;
 
-@interface MortgageRecord : NSObject{
+@interface MortgageRecord : NSObject<NSCopying>{
     @public
+    NSInteger recordId;
+    
     MortgageInput *input;
     
     NSString *name;
     NSInteger bankId;
     NSDate *date;    
 }
+
+-(id)initWithNSStringRecordId:(NSString*)rid Name:(NSString*)name BankId:(NSString*)bid Date:(NSString*)date HomeValue:(NSString*)hv LoanYear:(NSString*)ly LoanPercent:(NSString*)lp LoanRate:(NSString*)lr;
+
+-(id)initWithName:(NSString*)name BankId:(NSInteger)bid Date:(NSDate*)date HomeValue:(double)hv LoanYear:(NSInteger)ly LoanPercent:(double)lp LoanRate:(double)lr;
+
+-(void) updateRecord:(MortgageRecord*)record;
 
 @end

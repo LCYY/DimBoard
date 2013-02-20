@@ -46,7 +46,7 @@
     [self initUI];
     [m_calculator setInput:m_input];
     [m_calculator getOutput:m_output];
-    [self updateResult];
+    [self updateResult];   
 }
 
 - (void)viewDidUnload {
