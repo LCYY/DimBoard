@@ -71,7 +71,6 @@
             [self.m_controllerList addObject:controller];
         }
     }
-    //[self testRecordIO];
     return self;
 }
 

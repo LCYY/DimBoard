@@ -8,6 +8,51 @@
 
 #import "MortgageDataType.h"
 
+@implementation BankTypes
+@synthesize m_banks;
+
+-(id)init{
+    self = [super init];
+    if(self){
+        m_banks = [[NSArray alloc] initWithObjects:
+                    @"渣打銀行",
+                    @"匯豐銀行",
+                    @"中國建設銀行",
+                    @"中國銀行",
+                    @"東亞銀行",
+                    @"恆生銀行",
+                    @"大新銀行",
+                    @"中國工商銀行",
+                    @"花旗銀行",
+                    @"中信銀行",
+                    @"星展銀行",
+                    @"富邦銀行",
+                    @"創興銀行",
+                    @"豐明銀行",
+                    @"南洋商業銀行",
+                    @"大眾銀行",
+                    @"上海商業銀行",
+                    @"標準銀行銀行",
+                    @"大生銀行",
+                    @"大有銀行",
+                    @"永亨銀行",
+                    @"永隆銀行",
+        nil];
+    }
+    return self;
+    
+}
+
+-(NSString*)getBankNameById:(NSInteger)bid{
+    return [m_banks objectAtIndex:bid];
+}
+
+-(NSInteger)getBankCount{
+    return [m_banks count];
+}
+@end
+
+
 @implementation MortgageInput
 
 -(id)initVariables{

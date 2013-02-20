@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MortgageDataType.h"
 
 @interface BankPickerViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate>{
-    NSArray* m_banks;
+    BankTypes* m_bankTypes;
     NSInteger m_selectedBankId;
 }
 @property (weak, nonatomic) IBOutlet UIPickerView *BankPicker;

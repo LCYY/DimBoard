@@ -31,30 +31,7 @@
     // Do any additional setup after loading the view from its nib.
     [BankPicker setDelegate:self];
     [BankPicker setDataSource:self];
-    m_banks = [[NSArray alloc] initWithObjects:
-                      @"渣打銀行",
-                      @"匯豐銀行",
-                      @"中國建設銀行",
-                      @"中國銀行",
-                      @"東亞銀行",
-                      @"恆生銀行",
-                      @"大新銀行",
-                      @"中國工商銀行",
-                      @"花旗銀行",
-                      @"中信銀行",
-                      @"星展銀行",
-                      @"富邦銀行",
-                      @"創興銀行",
-                      @"豐明銀行",
-                      @"南洋商業銀行",
-                      @"大眾銀行",
-                      @"上海商業銀行",
-                      @"標準銀行銀行",
-                      @"大生銀行",
-                      @"大有銀行",
-                      @"永亨銀行",
-                      @"永隆銀行",
-                      nil];
+    m_bankTypes = [[BankTypes alloc] init];
 }
 
 - (void)viewDidUnload
@@ -72,8 +49,8 @@
 
 -(void)onSave:(id)sender{
     [self dismissModalViewControllerAnimated:YES];
-    if(m_selectedBankId > -1 && m_selectedBankId < [m_banks count]){
-        NSString* selectedBack = [m_banks objectAtIndex:m_selectedBankId];
+    if(m_selectedBankId > -1 && m_selectedBankId < [m_bankTypes getBankCount]){
+        NSString* selectedBack = [m_bankTypes getBankNameById:m_selectedBankId];
     }
 }
 
@@ -84,7 +61,7 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return [m_banks count];
+    return [m_bankTypes getBankCount];
 }
 
 #pragma marks - UIPickerViewSourceDelegate
@@ -94,7 +71,7 @@
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    return [m_banks objectAtIndex:row];
+    return [m_bankTypes getBankNameById:row];
 }
 
 @end

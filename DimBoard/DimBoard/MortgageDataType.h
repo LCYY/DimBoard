@@ -36,7 +36,13 @@
 #define KEY_MORTGAGE_TOTALEXPENCE @"費用總額"
 #define KEY_MORTGAGE_LOANTERM @"按揭期數"
 
-
+@interface BankTypes : NSObject{
+    
+}
+@property(retain,nonatomic) NSArray* m_banks;
+-(NSString*)getBankNameById:(NSInteger)bid;
+-(NSInteger)getBankCount;
+@end
 
 @interface MortgageInput : NSObject<NSCopying>{
     @public
