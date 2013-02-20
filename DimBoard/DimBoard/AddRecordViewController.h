@@ -41,4 +41,7 @@
 //按揭時間 date picker
 //---------
 @property (retain, nonatomic) NSString *m_section3;
+@property (retain, nonatomic) MortgageRecord* m_record;
+
+- (id)initWithMortgageRecord:(MortgageRecord*)record;
 @end

@@ -40,8 +40,8 @@
     [ScrollView addGestureRecognizer:tapRecognizer];
     
     m_input = [[MortgageInput alloc] initWithHomeValue:100.0 LoanYear:30 LoanPercent:30.0 LoanRate:2.0];
-    m_output = [[MortgageOutput alloc] initVariables];
-    m_calculator = [[Calculator alloc] initVarirables];
+    m_output = [[MortgageOutput alloc] init];
+    m_calculator = [[Calculator alloc] init];
     
     [self initUI];
     [m_calculator setInput:m_input];

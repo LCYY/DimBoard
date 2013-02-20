@@ -19,7 +19,6 @@
 
 @property (retain, nonatomic) NSMutableArray* m_principals;
 
-- (id)initVarirables;
 -(void)setInput:(MortgageInput*)input;
 -(void)getOutput:(MortgageOutput*)output;
 -(void)getMonthlyPrincipals:(NSMutableArray*)arry;

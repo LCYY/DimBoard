@@ -51,10 +51,9 @@
     NSInteger loanYear; // integer
     double loanRate; // in terms of %, loan rate per year
 }
-
--(id)initVariables;
 -(id)initWithHomeValue:(double)hv LoanYear:(NSInteger)ly LoanPercent:(double)lp LoanRate:(double)lr;
 -(void)setInput:(MortgageInput*) input;
+-(void)setHomeValue:(double)hv LoanYear:(NSInteger)ly LoanPercent:(double)lp LoanRate:(double)lr;
 @end
 
 @interface MortgageOutput : NSObject<NSCopying>{
@@ -70,7 +69,6 @@
     double tax; // in terms of 1
     double totalInterest; // in terms of 10-thousands
 }
--(id)initVariables;
 -(void)getOutput:(MortgageOutput*) output;
 @end;
 
@@ -86,9 +84,7 @@
 }
 
 -(id)initWithNSStringRecordId:(NSString*)rid Name:(NSString*)name BankId:(NSString*)bid Date:(NSString*)date HomeValue:(NSString*)hv LoanYear:(NSString*)ly LoanPercent:(NSString*)lp LoanRate:(NSString*)lr;
-
 -(id)initWithName:(NSString*)name BankId:(NSInteger)bid Date:(NSDate*)date HomeValue:(double)hv LoanYear:(NSInteger)ly LoanPercent:(double)lp LoanRate:(double)lr;
-
 -(void) updateRecord:(MortgageRecord*)record;
 
 @end

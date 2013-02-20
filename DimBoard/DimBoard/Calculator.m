@@ -12,12 +12,11 @@
 
 @synthesize m_principals;
 
-- (id)initVarirables{
-    self = [self init];
-    
+- (id)init{
+    self = [super init];
     if(self){
-        m_input = [[MortgageInput alloc] initVariables];
-        m_output = [[MortgageOutput alloc] initVariables];
+        m_input = [[MortgageInput alloc] init];
+        m_output = [[MortgageOutput alloc] init];
         m_principals = [[NSMutableArray alloc] init];
     }
     return self;

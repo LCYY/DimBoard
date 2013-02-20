@@ -55,9 +55,8 @@
 
 @implementation MortgageInput
 
--(id)initVariables{
-    self = [self init];
-    
+-(id)init{
+    self = [super init];
     if(self){
         homeValue = 0.0;
         loanYear = 0;
@@ -68,7 +67,7 @@
 }
 
 -(id)initWithHomeValue:(double)hv LoanYear:(NSInteger)ly LoanPercent:(double)lp LoanRate:(double)lr{
-    self = [self initVariables];
+    self = [self init];
     if(self){
         homeValue = hv;
         loanYear = ly;
@@ -83,6 +82,13 @@
     loanYear = input->loanYear;
     loanPercent = input->loanPercent;
     loanRate = input->loanRate;
+}
+
+-(void)setHomeValue:(double)hv LoanYear:(NSInteger)ly LoanPercent:(double)lp LoanRate:(double)lr{
+    homeValue = hv;
+    loanYear = ly;
+    loanPercent = lp;
+    loanRate = lr;
 }
 
 #pragma marks
@@ -112,9 +118,8 @@
 @end
 
 @implementation MortgageOutput
--(id)initVariables{
-    self = [self init];
-    
+-(id)init{
+    self = [super init];
     if(self){
         comission = 0.0;
         firstExpence = 0.0;
@@ -183,11 +188,23 @@
 
 @implementation MortgageRecord
 
+-(id)init{
+    self = [super init];
+    if(self){
+        input = [[MortgageInput alloc] initWithHomeValue:0 LoanYear:0 LoanPercent:0 LoanRate:0];
+        recordId = -1;
+        name = @"";
+        date = [NSDate date];
+        bankId = 0;
+    }
+    return self;
+}
+
 -(id)initWithNSStringRecordId:(NSString*)rid Name:(NSString*)nm BankId:(NSString*)bid Date:(NSString*)dt HomeValue:(NSString*)hv LoanYear:(NSString*)ly LoanPercent:(NSString*)lp LoanRate:(NSString*)lr{
     self = [self init];
     if(self){
         recordId = [rid integerValue];
-        input = [[MortgageInput alloc] initWithHomeValue:[hv doubleValue] LoanYear:[ly integerValue] LoanPercent:[lp doubleValue] LoanRate:[lr doubleValue]];
+        [input setHomeValue:[hv doubleValue] LoanYear:[ly integerValue] LoanPercent:[lp doubleValue] LoanRate:[lr doubleValue]];
         name = nm;
         bankId = [bid integerValue];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];  
@@ -201,7 +218,7 @@
 -(id)initWithName:(NSString*)nm BankId:(NSInteger)bid Date:(NSDate*)dt HomeValue:(double)hv LoanYear:(NSInteger)ly LoanPercent:(double)lp LoanRate:(double)lr{
     self = [self init];
     if(self){
-        input = [[MortgageInput alloc] initWithHomeValue:hv LoanYear:ly LoanPercent:lp LoanRate:lr];
+        [input setHomeValue:hv LoanYear:ly LoanPercent:lp LoanRate:lr];
         name = nm;
         bankId = bid;
         date = dt;

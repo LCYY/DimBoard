@@ -13,13 +13,13 @@
 @end
 
 @implementation AddRecordViewController
-@synthesize m_section0,m_section1,m_section2,m_section3;
+@synthesize m_section0,m_section1,m_section2,m_section3,m_record;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+-(id)init{
+    self = [super init];
     if (self) {
         // Custom initialization
+        m_record = [[MortgageRecord alloc] init];
         m_section0 = @"貸款名稱"; //input cell
         m_section1 = @"貸款銀行"; //input cell
         NSArray *value1 = [[NSArray alloc] initWithObjects:@"物業樓價",@"%",nil];
@@ -33,9 +33,27 @@
     return self;
 }
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
 - (id)initWithStyle:(UITableViewStyle)style{
     //set style as UITableViewStyleGrouped
     self = [super initWithStyle:UITableViewStyleGrouped];
+    return self;
+}
+
+- (id)initWithMortgageRecord:(MortgageRecord*)record{
+    self = [self init];
+    if (self) {
+        // Custom initialization
+        m_record = [record copy];
+    }
     return self;
 }
 
