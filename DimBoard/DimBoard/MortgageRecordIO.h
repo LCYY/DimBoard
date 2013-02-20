@@ -9,14 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "MortgageDataType.h"
 #define PLISTFILENAME @"records.plist"
-#define KEY_MORTGAGE_RECORDID @"mortgage_recordid"
-#define KEY_MORTGAGE_NAME @"mortgage_name"
-#define KEY_MORTGAGE_BANKID @"mortgage_bankid"
-#define KEY_MORTGAGE_HOMEVALUE @"mortgage_homevalue"
-#define KEY_MORTGAGE_LOANPERCENT @"mortgage_loanpercent"
-#define KEY_MORTGAGE_LOANYEAR @"mortgage_loanyear"
-#define KEY_MORTGAGE_LOANRATE @"mortgage_loanrate"
-#define KEY_MORTGAGE_LOANDATE @"mortgage_loandate"
 
 @interface MortgageRecordIO : NSObject
 {

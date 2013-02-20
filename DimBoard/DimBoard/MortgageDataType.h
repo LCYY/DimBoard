@@ -17,6 +17,26 @@
 #define MIN_LOANPERCENT_VALUE 1     // 1%
 #define MAX_LOANPERCENT_VALUE 95    // 95%
 
+#define KEY_MORTGAGE_RECORDID @"mortgage_recordid"
+#define KEY_MORTGAGE_NAME @"按揭名稱"
+#define KEY_MORTGAGE_BANKID @"按揭銀行"
+#define KEY_MORTGAGE_HOMEVALUE @"物業樓價"
+#define KEY_MORTGAGE_LOANPERCENT @"按揭成數"
+#define KEY_MORTGAGE_LOANYEAR @"按揭年數"
+#define KEY_MORTGAGE_LOANRATE @"按揭利率"
+#define KEY_MORTGAGE_LOANDATE @"按揭日期"
+#define KEY_MORTGAGE_MONTHLYPAY @"每月供款"
+#define KEY_MORTGAGE_FIRSTPAY @"首付樓價金額"
+#define KEY_MORTGAGE_COMISSION @"代理佣金"
+#define KEY_MORTGAGE_TAX @"印花稅額"
+#define KEY_MORTGAGE_FIRSTEXPENCE @"首付總額"
+#define KEY_MORTGAGE_LOANAMOUNT @"按揭金額"
+#define KEY_MORTGAGE_TOTALPAY @"還款總額"
+#define KEY_MORTGAGE_TOTALINTEREST @"利息金額"
+#define KEY_MORTGAGE_TOTALEXPENCE @"費用總額"
+#define KEY_MORTGAGE_LOANTERM @"按揭期數"
+
+
 
 @interface MortgageInput : NSObject<NSCopying>{
     @public
@@ -37,12 +57,12 @@
     double monthlyPay; // in terms of 1
     NSInteger loanTerms;
     double totoalPay; // in terms of 10-thousands
-    double firstPay;
-    double firstExpence;
-    double totalExpence;
-    double comission;
-    double tax;
-    double totalInterest;
+    double firstPay; // in terms of 10-thousands
+    double firstExpence; // in terms of 10-thousands
+    double totalExpence; // in terms of 10-thousands
+    double comission; // in terms of 1
+    double tax; // in terms of 1
+    double totalInterest; // in terms of 10-thousands
 }
 -(id)initVariables;
 -(void)getOutput:(MortgageOutput*) output;

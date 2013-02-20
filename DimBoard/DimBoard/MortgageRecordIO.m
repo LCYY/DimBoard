@@ -45,7 +45,6 @@
                     m_maxId = maxid;
                 }
             }
-            [[NSFileManager defaultManager] removeItemAtPath:m_plistpath error:nil];
         }
     }
     return self;
@@ -97,6 +96,9 @@
 }
 
 -(void)save{
+    //delete the old file
+    [[NSFileManager defaultManager] removeItemAtPath:m_plistpath error:nil];
+    
     NSMutableDictionary* recordsDict = [[NSMutableDictionary alloc] init];
     for(NSInteger i = 0; i< [m_records count]; i++){
         MortgageRecord* record = [m_records objectAtIndex:i];

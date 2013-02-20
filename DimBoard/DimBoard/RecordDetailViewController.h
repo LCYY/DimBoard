@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "AddRecordViewController.h"
+#import "Calculator.h"
 
 @interface RecordDetailViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate>
-@property (retain, nonatomic) NSArray *m_mortgageItems;
-@property (retain, nonatomic) NSArray *m_expenceItems;
+@property (retain, nonatomic) NSDictionary *m_mortgageItems;
+@property (retain, nonatomic) NSDictionary *m_expenceItems;
+@property (retain, nonatomic) MortgageRecord *m_record;
+@property (retain, nonatomic) MortgageOutput *m_output;
+
+-(id)initWithMortgageRecord:(MortgageRecord*)record;
 @end

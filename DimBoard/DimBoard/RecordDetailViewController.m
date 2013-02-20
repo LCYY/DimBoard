@@ -15,30 +15,13 @@
 @implementation RecordDetailViewController
 @synthesize m_mortgageItems;
 @synthesize m_expenceItems;
+@synthesize m_record, m_output;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [self setTitle:@"供款"];
-        [self setM_mortgageItems:[[NSArray alloc] initWithObjects:
-                                @"按揭成數",
-                                @"按揭金額",
-                                @"按揭利率",
-                                @"按揭年限",
-                                @"每月供款",
-                                @"供款日期",
-                                nil]];
-        
-        [self setM_expenceItems: [[NSArray alloc] initWithObjects:
-                               @"首付金額",
-                               @"印花稅",
-                               @"代理佣金",
-                               @"剩餘金額",
-                               @"貸款利息",
-                               @"總額",
-                               nil]];
     }
     return self;
 }
@@ -46,6 +29,38 @@
 - (id)initWithStyle:(UITableViewStyle)style{
     //set style as UITableViewStyleGrouped
     self = [super initWithStyle:UITableViewStyleGrouped];
+    return self;
+}
+
+- (id)initWithMortgageRecord:(MortgageRecord*)record{
+    self = [super init];
+    if (self) {
+        // Custom initialization
+        m_record = [record copy];
+        m_output = [[MortgageOutput alloc] initVariables];
+        [self getOutput];
+        
+        [self setTitle:m_record->name];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat: @"yyyy-MM-dd"];
+        NSString* datestring = [dateFormatter stringFromDate:record->date];
+        [self setM_mortgageItems:[[NSDictionary alloc] initWithObjectsAndKeys:
+                                  [NSString stringWithFormat:@"%0.2f %%",m_record->input->loanPercent],KEY_MORTGAGE_LOANPERCENT,
+                                  [NSString stringWithFormat:@"%0.4f 萬元",m_output->loanAmount],KEY_MORTGAGE_LOANAMOUNT,
+                                  [NSString stringWithFormat:@"%0.2f %%",m_record->input->loanRate],KEY_MORTGAGE_LOANRATE,
+                                  [NSString stringWithFormat:@"%0.2f 元",m_output->monthlyPay],KEY_MORTGAGE_MONTHLYPAY,
+                                  datestring,KEY_MORTGAGE_LOANDATE,
+                                  nil]];
+        
+        [self setM_expenceItems: [[NSDictionary alloc] initWithObjectsAndKeys:
+                                  [NSString stringWithFormat:@"%0.4f 萬元",m_output->firstPay],KEY_MORTGAGE_FIRSTPAY,
+                                  [NSString stringWithFormat:@"%0.2f 元",m_output->tax],KEY_MORTGAGE_TAX,
+                                  [NSString stringWithFormat:@"%0.2f 元",m_output->comission],KEY_MORTGAGE_COMISSION,
+                                  [NSString stringWithFormat:@"%0.2f 萬元",m_output->totoalPay],KEY_MORTGAGE_TOTALPAY,
+                                  [NSString stringWithFormat:@"%0.4f 萬元",m_output->totalInterest],KEY_MORTGAGE_TOTALINTEREST,
+                                  [NSString stringWithFormat:@"%0.4f 萬元",m_output->totalExpence],KEY_MORTGAGE_TOTALEXPENCE,
+                                  nil]];
+    }
     return self;
 }
 
@@ -67,6 +82,12 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)getOutput{
+    Calculator* cal = [[Calculator alloc] initVarirables];
+    [cal setInput:m_record->input];
+    [cal getOutput:m_output];
 }
 
 - (void)onEdit:(id)sender{
@@ -124,13 +145,17 @@
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:MortgageRecordDetails];
     }
-    if(indexPath.section == 0){
-        cell.textLabel.text = @"物業價值";
-        cell.detailTextLabel.text = @"value";
-    }else if(indexPath.section == 1){
-        cell.textLabel.text = [m_mortgageItems objectAtIndex:indexPath.row];
-    }else if(indexPath.section == 2){
-        cell.textLabel.text = [m_expenceItems objectAtIndex:indexPath.row];
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    if(section == 0){
+        cell.textLabel.text = KEY_MORTGAGE_HOMEVALUE;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.2f 萬元",m_record->input->homeValue];
+    }else if(section == 1){
+        cell.textLabel.text = [[m_mortgageItems allKeys] objectAtIndex:row];
+        cell.detailTextLabel.text = [[m_mortgageItems allValues] objectAtIndex:row];
+    }else if(section == 2){
+        cell.textLabel.text = [[m_expenceItems allKeys] objectAtIndex:row];
+        cell.detailTextLabel.text = [[m_expenceItems allValues] objectAtIndex:row];
     }
     [cell setAccessoryType:UITableViewCellAccessoryNone];
     return cell;

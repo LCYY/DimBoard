@@ -28,6 +28,12 @@
     newRecord->name = @"name_1";
     [recordIO addRecord:newRecord];
     
+    newRecord->name = @"name_2";
+    [recordIO addRecord:newRecord];
+    
+    newRecord->name = @"name_3";
+    [recordIO addRecord:newRecord];
+    
 //    [recordIO save];
 //    newRecord->recordId = 0;
 //    newRecord->name = @"testupdatename";
@@ -56,12 +62,16 @@
         NSMutableArray * array = [[NSMutableArray alloc] init];
         self.m_controllerList = array;
         
-        RecordDetailViewController *controller_1 = [[RecordDetailViewController alloc] init];
-        RecordDetailViewController *controller_2 = [[RecordDetailViewController alloc] init];
-        [self.m_controllerList addObject:controller_1];
-        [self.m_controllerList addObject:controller_2];
-        [self testRecordIO];
+        MortgageRecordIO* recordIO = [[MortgageRecordIO alloc] initWithLoadRecords];
+        NSArray* records = [recordIO getRecords];
+        [recordIO save];
+        for(NSInteger i = 0; i< [records count]; i++){
+            MortgageRecord* record = [records objectAtIndex:i];
+            RecordDetailViewController* controller = [[RecordDetailViewController alloc] initWithMortgageRecord:record];
+            [self.m_controllerList addObject:controller];
+        }
     }
+    //[self testRecordIO];
     return self;
 }
 
