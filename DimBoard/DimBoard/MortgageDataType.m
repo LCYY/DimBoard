@@ -208,7 +208,7 @@
         name = nm;
         bankId = [bid integerValue];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];  
-        [dateFormatter setDateFormat: @"yyyy-MM-dd"];
+        [dateFormatter setDateFormat: DATEFORMAT];
         date = [dateFormatter dateFromString:dt];
     }
     

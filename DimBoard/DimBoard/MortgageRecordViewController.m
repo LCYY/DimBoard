@@ -20,7 +20,7 @@
 -(void)testRecordIO{
     MortgageRecordIO* recordIO = [[MortgageRecordIO alloc] initWithLoadRecords];
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
+    [formatter setDateFormat:DATEFORMAT];
     NSDate* date = [formatter dateFromString:@"2012-02-05"];
     MortgageRecord* newRecord = [[MortgageRecord alloc] initWithName:@"name_0" BankId:2 Date:date HomeValue:1000 LoanYear:20 LoanPercent:30 LoanRate:2.05];
     

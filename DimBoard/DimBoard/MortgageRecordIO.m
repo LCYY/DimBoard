@@ -109,7 +109,7 @@
     for(NSInteger i = 0; i< [m_records count]; i++){
         MortgageRecord* record = [m_records objectAtIndex:i];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat: @"yyyy-MM-dd"];
+        [dateFormatter setDateFormat: DATEFORMAT];
         NSString* datestring = [dateFormatter stringFromDate:record->date];
         NSDictionary* recordDict = [[NSDictionary alloc] initWithObjectsAndKeys:
                                     record->name, KEY_MORTGAGE_NAME,

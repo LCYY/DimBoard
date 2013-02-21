@@ -36,6 +36,8 @@
 #define KEY_MORTGAGE_TOTALEXPENCE @"費用總額"
 #define KEY_MORTGAGE_LOANTERM @"按揭期數"
 
+#define DATEFORMAT @"yyyy-MM-dd"
+
 @interface BankTypes : NSObject{
     
 }

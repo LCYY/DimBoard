@@ -184,7 +184,7 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:AddNormalRecordCell];
             cell.textLabel.text = m_section3;
             NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy-MM-dd"];
+            [formatter setDateFormat:DATEFORMAT];
             cell.detailTextLabel.text = [formatter stringFromDate:m_record->date];
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         }
@@ -213,7 +213,7 @@
         }else if(section == 3){
             cell.textLabel.text = m_section3;
             NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy-MM-dd"];
+            [formatter setDateFormat:DATEFORMAT];
             cell.detailTextLabel.text = [formatter stringFromDate:m_record->date];
 
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];

@@ -50,7 +50,7 @@
         [self setTitle:m_record->name];
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat: @"yyyy-MM-dd"];
+        [dateFormatter setDateFormat: DATEFORMAT];
         NSString* datestring = [dateFormatter stringFromDate:record->date];
         
         NSArray* sectionkeys0 = [[NSArray alloc] initWithObjects:
