@@ -37,6 +37,18 @@
     }
 }
 
+-(void)setCellControllerDelegate:(id<UpdateRecordItemProtocol>)delegate{
+    if(m_cellController)
+        [m_cellController setM_delegate:delegate];
+}
+
+-(NSString *)getValue{
+    if(m_cellController){
+        return [m_cellController getValue];
+    }
+    return @"";
+}
+
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];

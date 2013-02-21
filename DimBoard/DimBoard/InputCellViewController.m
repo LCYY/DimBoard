@@ -15,6 +15,7 @@
 @implementation InputCellViewController
 @synthesize NameLabel;
 @synthesize ValueInput;
+@synthesize m_delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,6 +48,7 @@
     self.title = m_name;
     [NameLabel setText:m_name];
     [ValueInput setText:m_value];
+    [ValueInput setDelegate:self];
 }
 
 - (void)viewDidUnload
@@ -63,9 +65,13 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark
-#pragma mark - UITextFieldDelegate
-- (void)textFieldDidEndEditing:(UITextField *)textField{
+-(NSString *)getValue{
+    return [ValueInput text];
 }
 
+#pragma marks - UITextFieldDelegate
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    m_value = [ValueInput text];
+    [m_delegate updateRecordKey:m_name withValue:m_value];
+}
 @end

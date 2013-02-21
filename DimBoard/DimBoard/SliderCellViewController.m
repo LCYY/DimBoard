@@ -17,6 +17,7 @@
 @synthesize ValueInput;
 @synthesize UnitLabel;
 @synthesize SlideBar;
+@synthesize m_deletegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,7 +55,25 @@
     [UnitLabel setText:m_unit];
     
     [SlideBar addTarget:self action:@selector(onSlidValueChanged:) forControlEvents:UIControlEventValueChanged];
-
+    
+    double minvalue = 0;
+    double maxvalue = 0;
+    if([m_name isEqualToString:KEY_MORTGAGE_HOMEVALUE]){//int terms of 10-thousand
+        minvalue = MIN_HOME_VALUE;
+        maxvalue = MAX_HOME_VALUE;
+    }else if([m_name isEqualToString:KEY_MORTGAGE_LOANRATE]){//in terms of %
+        minvalue = MIN_LOANRATE_VALUE;
+        maxvalue = MAX_LOANRATE_VALUE;
+    }else if([m_name isEqualToString:KEY_MORTGAGE_LOANPERCENT]){// in terms of year
+        minvalue = MIN_LOANPERCENT_VALUE;
+        maxvalue = MAX_LOANPERCENT_VALUE;
+    }else if([m_name isEqualToString:KEY_MORTGAGE_LOANYEAR]){// in terms of %
+        minvalue = MIN_LOANYEAR_VALUE;
+        maxvalue = MAX_LOANYEAR_VALUE;
+    }
+    [SlideBar setMinimumValue:minvalue];
+    [SlideBar setMaximumValue:maxvalue];
+    [SlideBar setValue:[m_value doubleValue]];
 }
 
 - (void)viewDidUnload
@@ -77,5 +96,36 @@
     UISlider* slider = (UISlider*)sender;
     m_value = [NSString stringWithFormat:@"%0.4f",slider.value];
     ValueInput.text = m_value;
+    [m_deletegate updateRecordKey:m_name withValue:m_value];
+}
+
+#pragma mark - UITextFieldDelegate
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    m_value = [ValueInput text];
+    [SlideBar setValue:[m_value doubleValue]];
+    [m_deletegate updateRecordKey:m_name withValue:m_value];
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string {
+    if(string.length == 0)
+        return YES;
+    //can only input number and one dot
+    NSRange hasDot = [textField.text rangeOfString:@"."];
+    NSCharacterSet* filterSet;
+    NSString* afterFilter;
+    if(hasDot.location < textField.text.length || hasDot.location == 0 ){
+        filterSet = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
+        afterFilter = [string stringByTrimmingCharactersInSet:filterSet];
+    }else{
+        filterSet = [[NSCharacterSet characterSetWithCharactersInString:@".0123456789"] invertedSet];
+        afterFilter = [string stringByTrimmingCharactersInSet:filterSet];
+    }
+    if(afterFilter.length > 0){
+        return YES;
+    }else{
+        return NO;
+    }
+    //? need range handling???
 }
 @end

@@ -14,13 +14,29 @@
 
 @implementation BankPickerViewController
 @synthesize BankPicker;
+@synthesize m_delegate;
+
+-(id)init{
+    self = [super init];
+    if(self){
+        m_selectedBankId = -1;
+    }
+    return self;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        m_selectedBankId = -1;
+    }
+    return self;
+}
+
+-(id)initWithBankId:(NSInteger)bankId{
+    self = [self init];
+    if(self){
+        m_selectedBankId = bankId;
     }
     return self;
 }
@@ -32,6 +48,7 @@
     [BankPicker setDelegate:self];
     [BankPicker setDataSource:self];
     m_bankTypes = [[BankTypes alloc] init];
+    [BankPicker selectRow:m_selectedBankId inComponent:0 animated:YES];
 }
 
 - (void)viewDidUnload
@@ -50,7 +67,7 @@
 -(void)onSave:(id)sender{
     [self dismissModalViewControllerAnimated:YES];
     if(m_selectedBankId > -1 && m_selectedBankId < [m_bankTypes getBankCount]){
-        NSString* selectedBack = [m_bankTypes getBankNameById:m_selectedBankId];
+        [m_delegate updateRecordKey:KEY_MORTGAGE_BANKID withValue:[NSNumber numberWithInteger:m_selectedBankId]];
     }
 }
 

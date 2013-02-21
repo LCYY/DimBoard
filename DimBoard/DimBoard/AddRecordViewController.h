@@ -12,9 +12,13 @@
 #import "MortgageDataType.h"
 #import "DatePickerViewController.h"
 #import "BankPickerViewController.h"
+#import "UpdateRecordItemProtocol.h"
 
-@interface AddRecordViewController : UITableViewController
+#define ADDRECORDSECTIONCOUNT 4
 
+@interface AddRecordViewController : UITableViewController<UpdateRecordItemProtocol>
+
+@property (retain, nonatomic) id<UpdateRecordProtocol> m_delegate;
 //Section 0
 //---------
 //貸款名稱 inputcell

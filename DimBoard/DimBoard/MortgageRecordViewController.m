@@ -69,6 +69,7 @@
         for(NSInteger i = 0; i< [records count]; i++){
             MortgageRecord* record = [records objectAtIndex:i];
             RecordDetailViewController* controller = [[RecordDetailViewController alloc] initWithMortgageRecord:record];
+            [controller setM_delegate:self];
             [self.m_controllerList addObject:controller];
         }
     }
@@ -103,12 +104,11 @@
 
 - (void)onAddNewMortgageRecord:(id)sender{   
     AddRecordViewController* rootController = [[AddRecordViewController alloc] init];
-    
+    [rootController setM_delegate:self];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
-    
     navController.navigationBar.topItem.title = @"新增供款";
     navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemDone target:self action:@selector(onSaveNewReocrd:)];
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemDone target:rootController action:@selector(onSaveNewReocrd:)];
     navController.navigationBar.topItem.rightBarButtonItem = saveButton;
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
     navController.navigationBar.topItem.leftBarButtonItem = cancelButton;
@@ -123,10 +123,6 @@
 }
 
 - (void)onBack:(id)sender{
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-- (void)onSaveNewReocrd:(id)sender{
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -193,4 +189,20 @@
         [((UITableView*)self.view) reloadData];
     }
 }
+#pragma mark - UpdateRecordProtocol
+-(void)updateRecord:(MortgageRecord *)record{
+    [m_recordIO updateRecord:record];
+    [m_recordIO save];
+    [((UITableView*)self.view) reloadData];
+}
+
+-(void)addNewRecord:(MortgageRecord *)record{
+    [m_recordIO addRecord:record];
+    [m_recordIO save];
+    RecordDetailViewController* controller = [[RecordDetailViewController alloc] initWithMortgageRecord:record];
+    [controller setM_delegate:self];
+    [self.m_controllerList addObject:controller];
+    [((UITableView*)self.view) reloadData];
+}
+
 @end

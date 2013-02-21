@@ -10,8 +10,9 @@
 #import "RecordDetailViewController.h"
 #import "AddRecordViewController.h"
 #import "MortgageRecordIO.h"
+#import "UpdateRecordItemProtocol.h"
 
-@interface MortgageRecordViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource>
+@interface MortgageRecordViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource, UpdateRecordProtocol>
 
 @property (strong,nonatomic) NSMutableArray* m_controllerList;
 @property (strong,nonatomic) MortgageRecordIO* m_recordIO;

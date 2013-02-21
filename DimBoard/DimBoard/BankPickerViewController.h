@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "MortgageDataType.h"
+#import "UpdateRecordItemProtocol.h"
 
 @interface BankPickerViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate>{
     BankTypes* m_bankTypes;
     NSInteger m_selectedBankId;
 }
 @property (weak, nonatomic) IBOutlet UIPickerView *BankPicker;
+@property (retain, nonatomic) id<UpdateRecordItemProtocol> m_delegate;
+-(id)initWithBankId:(NSInteger)bankId;
 
 @end

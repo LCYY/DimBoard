@@ -36,6 +36,10 @@
     }
 }
 
+-(void)setCellControllerDelegate:(id<UpdateRecordItemProtocol>)deletegate{
+    [m_cellController setM_deletegate:deletegate];
+}
+
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];

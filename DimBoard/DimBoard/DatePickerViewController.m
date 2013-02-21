@@ -14,6 +14,16 @@
 
 @implementation DatePickerViewController
 @synthesize DatePicker;
+@synthesize m_date;
+@synthesize m_delegate;
+
+-(id)init{
+    self = [super init];
+    if(self){
+        m_date = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
+    }
+    return self;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -24,9 +34,24 @@
     return self;
 }
 
+-(id)initWithDate:(NSDate*)date{
+    self = [self init];
+    if(self){
+        m_date = [date copy];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:DATEFORMAT];
+    [DatePicker setMinimumDate:[formatter dateFromString:@"1980-01-01"]];
+    [DatePicker setMaximumDate:[formatter dateFromString:@"3000-12-31"]];
+    [DatePicker setDate:m_date animated:YES];
+    
+    [DatePicker addTarget:self action:@selector(onDateChanged:) forControlEvents:UIControlEventValueChanged];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -45,6 +70,11 @@
 
 -(void)onSave:(id)sender{
     [self dismissModalViewControllerAnimated:YES];
+}
+
+-(void)onDateChanged:(id)sener{
+    m_date = [DatePicker date];
+    [m_delegate updateRecordKey:KEY_MORTGAGE_LOANDATE withValue:m_date];
 }
 
 @end

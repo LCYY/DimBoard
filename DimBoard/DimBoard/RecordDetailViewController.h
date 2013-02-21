@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "AddRecordViewController.h"
 #import "Calculator.h"
+#import "UpdateRecordItemProtocol.h"
 
-@interface RecordDetailViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate>
+@interface RecordDetailViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate,UpdateRecordProtocol>
 @property (retain, nonatomic) MortgageRecord *m_record;
 @property (retain, nonatomic) MortgageOutput *m_output;
 @property (retain, nonatomic) NSMutableArray* m_sections;
+@property (retain, nonatomic) id<UpdateRecordProtocol> m_delegate;
 
 //Section 0
 //---------

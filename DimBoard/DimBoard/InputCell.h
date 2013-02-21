@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "InputCellViewController.h"
+#import "UpdateRecordItemProtocol.h"
 
 @interface InputCell : UITableViewCell
 
-@property (nonatomic, retain) InputCellViewController *m_cellController;
+@property(nonatomic, retain) InputCellViewController *m_cellController;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier Name:(NSString *)name Value:(NSString *)value;
-- (void) setName:(NSString *)name Value:(NSString *)value;
+- (void)setName:(NSString *)name Value:(NSString *)value;
+- (void)setCellControllerDelegate:(id<UpdateRecordItemProtocol>)delegate;
+- (NSString*)getValue;
 @end

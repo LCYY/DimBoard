@@ -14,6 +14,7 @@
 
 @implementation AddRecordViewController
 @synthesize m_section0,m_section1,m_section2,m_section3,m_record;
+@synthesize m_delegate;
 
 -(id)init{
     self = [super init];
@@ -87,20 +88,31 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+- (void)onSaveNewReocrd:(id)sender{
+    [m_delegate addNewRecord:m_record];
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)onSaveRecord:(id)sender{
+    [m_delegate updateRecord:m_record];
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 #pragma mark-
 #pragma mark UITableViewDelegate
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger section = [indexPath section];
     if(section == 1){
-        BankPickerViewController* rootController = [[BankPickerViewController alloc] init];
+        BankPickerViewController* rootController = [[BankPickerViewController alloc] initWithBankId:m_record->bankId];
+        [rootController setM_delegate:self];
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
         
         navController.navigationBar.topItem.title = m_section1;
         navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
         UIBarButtonItem *cacelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonSystemItemDone target:self action:@selector(onCancel:)];
         navController.navigationBar.topItem.leftBarButtonItem = cacelButton;
-        UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemDone target:rootController action:@selector(onSave:)];
+        UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonSystemItemDone target:rootController action:@selector(onSave:)];
         navController.navigationBar.topItem.rightBarButtonItem = saveButton;
         
         [navController setWantsFullScreenLayout:YES];
@@ -111,14 +123,15 @@
         
         [self presentModalViewController:navController animated:YES];
     }else if(section == 3){
-        DatePickerViewController* rootController = [[DatePickerViewController alloc] init];       
+        DatePickerViewController* rootController = [[DatePickerViewController alloc] initWithDate:m_record->date];
+        [rootController setM_delegate:self];
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
         
         navController.navigationBar.topItem.title = m_section3;
         navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
         UIBarButtonItem *cacelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonSystemItemDone target:self action:@selector(onCancel:)];
         navController.navigationBar.topItem.leftBarButtonItem = cacelButton;
-        UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemDone target:rootController action:@selector(onSave:)];
+        UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonSystemItemDone target:rootController action:@selector(onSave:)];
         navController.navigationBar.topItem.rightBarButtonItem = saveButton;
         
         [navController setWantsFullScreenLayout:YES];
@@ -158,15 +171,16 @@
     }
     
     if(cell == nil){
-        if(section == 0){
+        if(section == 0){ // input cell
             cell = [[InputCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:AddInputRecordCell Name:m_section0 Value:m_record->name];
-        }else if(section == 1){
+            [((InputCell*)cell) setCellControllerDelegate:self];
+        }else if(section == 1){ // normal cell
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:AddNormalRecordCell];
             cell.textLabel.text = m_section1;
             cell.detailTextLabel.text = [[[BankTypes alloc] init] getBankNameById:m_record->bankId];
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         }
-        else if(section == 2){
+        else if(section == 2){ // slider cell
             NSString *name = [[m_section2 objectAtIndex:row] objectAtIndex:0];
             NSString *unit = [[m_section2 objectAtIndex:row] objectAtIndex:1];
             NSString *value = nil;
@@ -180,7 +194,8 @@
                 value = [NSString stringWithFormat:@"%0.2f",m_record->input->loanRate];
             }
             cell = [[SliderCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:AddSliderRecordCell Name:name Value:value Unit:unit];
-        }else if(section == 3){
+            [((SliderCell*)cell) setCellControllerDelegate:self];
+        }else if(section == 3){ // normal cell
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:AddNormalRecordCell];
             cell.textLabel.text = m_section3;
             NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
@@ -189,14 +204,15 @@
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         }
     }else{
-        if(section == 0){
+        if(section == 0){ // input cell
             [((InputCell *)cell) setName:m_section0 Value:m_record->name];
-        }else if(section == 1){
+            [((InputCell*)cell) setCellControllerDelegate:self];
+        }else if(section == 1){ //normal cell
             cell.textLabel.text = m_section1;
             cell.detailTextLabel.text = [[[BankTypes alloc] init] getBankNameById:m_record->bankId];
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         }
-        else if(section == 2){
+        else if(section == 2){ // slider cell
             NSString *name = [[m_section2 objectAtIndex:row] objectAtIndex:0];
             NSString *unit = [[m_section2 objectAtIndex:row] objectAtIndex:1];
             NSString *value = nil;
@@ -210,7 +226,8 @@
                 value = [NSString stringWithFormat:@"%0.2f",m_record->input->loanRate];
             }
             [((SliderCell *)cell) setName:name Value:value Unit:unit];
-        }else if(section == 3){
+            [((SliderCell *)cell) setCellControllerDelegate:self];
+        }else if(section == 3){ //normal cell
             cell.textLabel.text = m_section3;
             NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:DATEFORMAT];
@@ -236,6 +253,29 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    return ADDRECORDSECTIONCOUNT;
 }
+
+#pragma mark - UpdateRecordItemProtocol
+-(void)updateRecordKey:(NSString *)key withValue:(id)value{
+    if([key isEqualToString:KEY_MORTGAGE_BANKID]){
+        m_record->bankId = [((NSNumber*)value) integerValue];
+        [((UITableView*)self.view) reloadData];
+    }else if([key isEqualToString:KEY_MORTGAGE_LOANDATE]){
+        m_record->date = (NSDate*)value;
+        [((UITableView*)self.view) reloadData];
+    }else if([key isEqualToString:KEY_MORTGAGE_HOMEVALUE]){
+        m_record->input->homeValue = [((NSString*)value) doubleValue];
+    }else if([key isEqualToString:KEY_MORTGAGE_LOANPERCENT]){
+        m_record->input->loanPercent = [((NSString*)value) doubleValue];
+    }else if([key isEqualToString:KEY_MORTGAGE_LOANRATE]){
+        m_record->input->loanRate = [((NSString*)value) doubleValue];
+    }else if([key isEqualToString:KEY_MORTGAGE_LOANYEAR]){
+        m_record->input->loanYear = [((NSNumber*)value) integerValue];
+    }else if([key isEqualToString:KEY_MORTGAGE_NAME]){
+        m_record->name = (NSString*)value;
+        self.title = m_record->name;
+    }
+}
+
 @end
