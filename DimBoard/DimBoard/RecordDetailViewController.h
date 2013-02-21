@@ -57,4 +57,5 @@
 
 
 -(id)initWithMortgageRecord:(MortgageRecord*)record;
+-(NSInteger)getRecordId;
 @end

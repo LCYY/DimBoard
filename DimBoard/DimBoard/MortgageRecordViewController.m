@@ -15,6 +15,7 @@
 @implementation MortgageRecordViewController
 
 @synthesize m_controllerList;
+@synthesize m_recordIO;
 
 -(void)testRecordIO{
     MortgageRecordIO* recordIO = [[MortgageRecordIO alloc] initWithLoadRecords];
@@ -62,9 +63,9 @@
         NSMutableArray * array = [[NSMutableArray alloc] init];
         self.m_controllerList = array;
         
-        MortgageRecordIO* recordIO = [[MortgageRecordIO alloc] initWithLoadRecords];
-        NSArray* records = [recordIO getRecords];
-        [recordIO save];
+        m_recordIO = [[MortgageRecordIO alloc] initWithLoadRecords];
+        NSArray* records = [m_recordIO getRecords];
+        [m_recordIO save];
         for(NSInteger i = 0; i< [records count]; i++){
             MortgageRecord* record = [records objectAtIndex:i];
             RecordDetailViewController* controller = [[RecordDetailViewController alloc] initWithMortgageRecord:record];
@@ -179,4 +180,17 @@
     return 1;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(editingStyle == UITableViewCellEditingStyleDelete){
+        NSInteger rid = [[m_controllerList objectAtIndex:indexPath.row] getRecordId];
+        [m_recordIO deleteRecordbyId:rid];
+        [m_recordIO save];
+        [m_controllerList removeObjectAtIndex:indexPath.row];
+        [((UITableView*)self.view) reloadData];
+    }
+}
 @end

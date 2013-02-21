@@ -21,9 +21,8 @@
     if(self){
         // Custom initialization
         m_sections = [[NSMutableArray alloc] init];
-        m_record = nil;
+        m_record = [[MortgageRecord alloc] init];
         m_output = [[MortgageOutput alloc] init];
-
     }
     return self;
 }
@@ -46,7 +45,7 @@
 - (id)initWithMortgageRecord:(MortgageRecord*)record{
     self = [self init];
     if (self) {
-        m_record = [record copy];
+        [m_record updateRecord:record];
         [self getOutput];
         [self setTitle:m_record->name];
         
@@ -54,42 +53,76 @@
         [dateFormatter setDateFormat: @"yyyy-MM-dd"];
         NSString* datestring = [dateFormatter stringFromDate:record->date];
         
-        NSDictionary* section0 = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                  [NSString stringWithFormat:@"%0.4f 萬元",m_record->input->homeValue],KEY_MORTGAGE_HOMEVALUE,
-                                  [NSString stringWithFormat:@"%0.2f %%",m_record->input->loanPercent],KEY_MORTGAGE_LOANPERCENT,
-                                  [NSString stringWithFormat:@"%d 年",m_record->input->loanYear],KEY_MORTGAGE_LOANYEAR,
-                                  [NSString stringWithFormat:@"%0.2f %%",m_record->input->loanRate],KEY_MORTGAGE_LOANRATE,
-                                  nil];
+        NSArray* sectionkeys0 = [[NSArray alloc] initWithObjects:
+                                    KEY_MORTGAGE_HOMEVALUE,
+                                    KEY_MORTGAGE_LOANPERCENT,
+                                    KEY_MORTGAGE_LOANYEAR,
+                                    KEY_MORTGAGE_LOANRATE,
+                                    nil];
+        NSArray* sectionValues0 = [[NSArray alloc] initWithObjects:
+                                    [NSString stringWithFormat:@"%0.4f 萬元",m_record->input->homeValue],
+                                    [NSString stringWithFormat:@"%0.2f %%",m_record->input->loanPercent],
+                                    [NSString stringWithFormat:@"%d 年",m_record->input->loanYear],
+                                    [NSString stringWithFormat:@"%0.2f %%",m_record->input->loanRate],
+                                    nil];
         
-        NSDictionary* section1 = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                  [[[BankTypes alloc] init] getBankNameById:m_record->bankId],KEY_MORTGAGE_BANKID,
-                                  [NSString stringWithFormat:@"%d 期",m_output->loanTerms],KEY_MORTGAGE_LOANTERM,
-                                  datestring,KEY_MORTGAGE_LOANDATE,
-                                  [NSString stringWithFormat:@"%0.2f 元",m_output->totoalPay],KEY_MORTGAGE_MONTHLYPAY,
-                                  nil];
+        NSArray* sectionkeys1 = [[NSArray alloc] initWithObjects:
+                                    KEY_MORTGAGE_BANKID,
+                                    KEY_MORTGAGE_LOANTERM,
+                                    KEY_MORTGAGE_LOANDATE,
+                                    KEY_MORTGAGE_MONTHLYPAY,
+                                    nil];
+        NSArray* sectionValues1 = [[NSArray alloc] initWithObjects:
+                                    [[[BankTypes alloc] init] getBankNameById:m_record->bankId],
+                                    [NSString stringWithFormat:@"%d 期",m_output->loanTerms],
+                                    datestring,
+                                    [NSString stringWithFormat:@"%0.2f 元",m_output->monthlyPay],
+                                    nil];
+
+        NSArray* sectionkeys2 = [[NSArray alloc] initWithObjects:
+                                    KEY_MORTGAGE_FIRSTPAY,
+                                    KEY_MORTGAGE_TAX,
+                                    KEY_MORTGAGE_COMISSION,
+                                    KEY_MORTGAGE_FIRSTEXPENCE,
+                                    nil];
+        NSArray* sectionValues2 = [[NSArray alloc] initWithObjects:
+                                    [NSString stringWithFormat:@"%0.4f 萬元",m_output->firstPay],
+                                    [NSString stringWithFormat:@"%0.2f 元",m_output->tax],
+                                    [NSString stringWithFormat:@"%0.2f 元",m_output->comission],
+                                    [NSString stringWithFormat:@"%0.4f 萬元",m_output->firstExpence],
+                                    nil];
         
-        NSDictionary* section2 = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                  [NSString stringWithFormat:@"%0.4f 萬元",m_output->firstPay],KEY_MORTGAGE_FIRSTPAY,
-                                  [NSString stringWithFormat:@"%0.2f 元",m_output->tax],KEY_MORTGAGE_TAX,
-                                  [NSString stringWithFormat:@"%0.2f 元",m_output->comission],KEY_MORTGAGE_COMISSION,
-                                  [NSString stringWithFormat:@"%0.4f 萬元",m_output->firstExpence],KEY_MORTGAGE_FIRSTEXPENCE,
-                                  nil];
+        NSArray* sectionkeys3 = [[NSArray alloc] initWithObjects:
+                                    KEY_MORTGAGE_LOANAMOUNT,
+                                    KEY_MORTGAGE_TOTALINTEREST,
+                                    KEY_MORTGAGE_TOTALEXPENCE,
+                                    nil];
+
+        NSArray* sectionValues3 = [[NSArray alloc] initWithObjects:
+                                    [NSString stringWithFormat:@"%0.4f 萬元",m_output->loanAmount],
+                                    [NSString stringWithFormat:@"%0.4f 萬元",m_output->totalInterest],
+                                    [NSString stringWithFormat:@"%0.4f 萬元",m_output->totalExpence],
+                                    nil];
+
+        NSArray* sectionkeys4 = [[NSArray alloc] initWithObjects:
+                                    KEY_MORTGAGE_TOTALEXPENCE,
+                                    nil];
+
+        NSArray* sectionValues4 = [[NSArray alloc] initWithObjects:
+                                    [NSString stringWithFormat:@"%0.4f 萬元",m_output->totalExpence],
+                                    nil];
         
-        NSDictionary* section3 = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                  [NSString stringWithFormat:@"%0.4f 萬元",m_output->loanAmount],KEY_MORTGAGE_LOANAMOUNT,
-                                  [NSString stringWithFormat:@"%0.4f 萬元",m_output->totalInterest],KEY_MORTGAGE_TOTALINTEREST,
-                                  [NSString stringWithFormat:@"%0.4f 萬元",m_output->totalExpence],KEY_MORTGAGE_TOTALEXPENCE,
-                                  nil];
+        NSArray* sectionPair0 = [[NSMutableArray alloc] initWithObjects:sectionkeys0, sectionValues0, nil];
+        NSArray* sectionPair1 = [[NSMutableArray alloc] initWithObjects:sectionkeys1, sectionValues1, nil];
+        NSArray* sectionPair2 = [[NSMutableArray alloc] initWithObjects:sectionkeys2, sectionValues2, nil];
+        NSArray* sectionPair3 = [[NSMutableArray alloc] initWithObjects:sectionkeys3, sectionValues3, nil];
+        NSArray* sectionPair4 = [[NSMutableArray alloc] initWithObjects:sectionkeys4, sectionValues4, nil];
         
-        NSDictionary* section4 = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                  [NSString stringWithFormat:@"%0.4f 萬元",m_output->totalExpence],KEY_MORTGAGE_TOTALEXPENCE,
-                                  nil];
-        
-        [m_sections addObject:section0];
-        [m_sections addObject:section1];
-        [m_sections addObject:section2];
-        [m_sections addObject:section3];
-        [m_sections addObject:section4];
+        [m_sections addObject:sectionPair0];
+        [m_sections addObject:sectionPair1];
+        [m_sections addObject:sectionPair2];
+        [m_sections addObject:sectionPair3];
+        [m_sections addObject:sectionPair4];
     }
     return self;
 }
@@ -113,6 +146,10 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+-(NSInteger)getRecordId{
+    return m_record->recordId;
 }
 
 - (void)getOutput{
@@ -158,11 +195,11 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [[m_sections objectAtIndex:section] count];
+    return [[[m_sections objectAtIndex:section] objectAtIndex:0] count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 5;
+    return [m_sections count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -171,8 +208,8 @@
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:MortgageRecordDetails];
     }
-    cell.textLabel.text = [[[m_sections objectAtIndex:indexPath.section] allKeys] objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [[[m_sections objectAtIndex:indexPath.section] allValues] objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:0] objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:1] objectAtIndex:indexPath.row];
     [cell setAccessoryType:UITableViewCellAccessoryNone];
     return cell;
 }

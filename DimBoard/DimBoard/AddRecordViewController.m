@@ -20,15 +20,16 @@
     if (self) {
         // Custom initialization
         m_record = [[MortgageRecord alloc] init];
-        m_section0 = @"貸款名稱"; //input cell
-        m_section1 = @"貸款銀行"; //input cell
-        NSArray *value1 = [[NSArray alloc] initWithObjects:@"物業樓價",@"%",nil];
-        NSArray *value2 = [[NSArray alloc] initWithObjects:@"按揭成數",@"%",nil];
-        NSArray *value3 = [[NSArray alloc] initWithObjects:@"還款年期",@"年",nil];
-        NSArray *value4 = [[NSArray alloc] initWithObjects:@"按揭利率",@"%",nil];
+        
+        m_section0 = KEY_MORTGAGE_NAME; //input cell
+        m_section1 = KEY_MORTGAGE_BANKID; //input cell
+        NSArray *value1 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_HOMEVALUE,@"%",nil];
+        NSArray *value2 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANPERCENT,@"%",nil];
+        NSArray *value3 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANYEAR,@"年",nil];
+        NSArray *value4 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANRATE,@"%",nil];
         m_section2 = [[NSArray alloc] initWithObjects:value1,value2,value3,value4,nil];
         
-        m_section3 = @"貸款日期"; //input cell
+        m_section3 = KEY_MORTGAGE_LOANDATE; //input cell
     }
     return self;
 }
@@ -52,7 +53,7 @@
     self = [self init];
     if (self) {
         // Custom initialization
-        m_record = [record copy];
+        [m_record updateRecord:record];
     }
     return self;
 }
@@ -158,38 +159,63 @@
     
     if(cell == nil){
         if(section == 0){
-            cell = [[InputCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:AddInputRecordCell Name:m_section0 Value:@""];
+            cell = [[InputCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:AddInputRecordCell Name:m_section0 Value:m_record->name];
         }else if(section == 1){
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:AddNormalRecordCell];
             cell.textLabel.text = m_section1;
-            cell.detailTextLabel.text = @"";
+            cell.detailTextLabel.text = [[[BankTypes alloc] init] getBankNameById:m_record->bankId];
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         }
         else if(section == 2){
             NSString *name = [[m_section2 objectAtIndex:row] objectAtIndex:0];
             NSString *unit = [[m_section2 objectAtIndex:row] objectAtIndex:1];
-            cell = [[SliderCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:AddSliderRecordCell Name:name Value:@"" Unit:unit];
+            NSString *value = nil;
+            if(row == 0){
+                value = [NSString stringWithFormat:@"%0.4f",m_record->input->homeValue];
+            }else if(row == 1){
+                value = [NSString stringWithFormat:@"%0.2f",m_record->input->loanPercent];
+            }else if(row == 2){
+                value = [NSString stringWithFormat:@"%d",m_record->input->loanYear];
+            }else if(row == 3){
+                value = [NSString stringWithFormat:@"%0.2f",m_record->input->loanRate];
+            }
+            cell = [[SliderCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:AddSliderRecordCell Name:name Value:value Unit:unit];
         }else if(section == 3){
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:AddNormalRecordCell];
             cell.textLabel.text = m_section3;
-            cell.detailTextLabel.text = @"";
+            NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            cell.detailTextLabel.text = [formatter stringFromDate:m_record->date];
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         }
     }else{
         if(section == 0){
-            [((InputCell *)cell) setName:m_section0 Value:@""];
+            [((InputCell *)cell) setName:m_section0 Value:m_record->name];
         }else if(section == 1){
             cell.textLabel.text = m_section1;
-            cell.detailTextLabel.text = @"";
+            cell.detailTextLabel.text = [[[BankTypes alloc] init] getBankNameById:m_record->bankId];
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         }
         else if(section == 2){
             NSString *name = [[m_section2 objectAtIndex:row] objectAtIndex:0];
             NSString *unit = [[m_section2 objectAtIndex:row] objectAtIndex:1];
-            [((SliderCell *)cell) setName:name Value:@"" Unit:unit];
+            NSString *value = nil;
+            if(row == 0){
+                value = [NSString stringWithFormat:@"%0.4f",m_record->input->homeValue];
+            }else if(row == 1){
+                value = [NSString stringWithFormat:@"%0.2f",m_record->input->loanPercent];
+            }else if(row == 2){
+                value = [NSString stringWithFormat:@"%d",m_record->input->loanYear];
+            }else if(row == 3){
+                value = [NSString stringWithFormat:@"%0.2f",m_record->input->loanRate];
+            }
+            [((SliderCell *)cell) setName:name Value:value Unit:unit];
         }else if(section == 3){
             cell.textLabel.text = m_section3;
-            cell.detailTextLabel.text = @"";
+            NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            cell.detailTextLabel.text = [formatter stringFromDate:m_record->date];
+
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         }
     }

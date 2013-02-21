@@ -14,6 +14,7 @@
 @interface MortgageRecordViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong,nonatomic) NSMutableArray* m_controllerList;
+@property (strong,nonatomic) MortgageRecordIO* m_recordIO;
 
 - (void)onAddNewMortgageRecord:(id)sender;
 - (void)onBack:(id)sender;
