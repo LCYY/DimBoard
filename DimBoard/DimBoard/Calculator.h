@@ -11,16 +11,14 @@
 
 @interface Calculator : NSObject{
 
-    MortgageInput* m_input;
-    MortgageOutput* m_output;
-
-    NSMutableArray* m_principals;
 }
 
 @property (retain, nonatomic) NSMutableArray* m_principals;
+@property (retain, nonatomic) MortgageInput* m_input;
+@property (retain, nonatomic) MortgageOutput* m_output;
 
 -(void)setInput:(MortgageInput*)input;
--(void)getOutput:(MortgageOutput*)output;
+-(MortgageOutput*)getOutput;
 -(void)getMonthlyPrincipals:(NSMutableArray*)arry;
 
 

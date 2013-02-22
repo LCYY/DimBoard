@@ -28,7 +28,7 @@
                 NSDictionary* recordDict = [recordsDict objectForKey:key];
                 if(recordDict){
                     MortgageRecord* record = [[MortgageRecord alloc]
-                                              initWithNSStringRecordId:[recordDict objectForKey:KEY_MORTGAGE_RECORDID]
+                                              initWithRecordId:[recordDict objectForKey:KEY_MORTGAGE_RECORDID]
                                               Name:[recordDict objectForKey:KEY_MORTGAGE_NAME]
                                               BankId:[recordDict objectForKey:KEY_MORTGAGE_BANKID]
                                               Date:[recordDict objectForKey:KEY_MORTGAGE_LOANDATE]
@@ -72,6 +72,7 @@
     [m_records addObject:[record copy]];
     NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     m_records = [[m_records sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]] mutableCopy];
+    [self save];
 }
 
 -(void)updateRecord:(MortgageRecord*)r{
@@ -79,11 +80,12 @@
     for(NSInteger i = 0; i< [m_records count]; i++){
         MortgageRecord* record = [m_records objectAtIndex:i];
         if(record->recordId == rid){
-            [record updateRecord:r];
+            [m_records replaceObjectAtIndex:i withObject:[r copy]];
         }
     }
     NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     m_records = [[m_records sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]] mutableCopy];
+    [self save];
 }
 
 -(void)deleteRecord:(MortgageRecord*)r{
@@ -98,6 +100,7 @@
             [m_records removeObjectAtIndex:i];
         }
     }
+    [self save];
 }
 
 -(void)save{
@@ -109,16 +112,16 @@
         MortgageRecord* record = [m_records objectAtIndex:i];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat: DATEFORMAT];
-        NSString* datestring = [dateFormatter stringFromDate:record->date];
+        NSString* datestring = [dateFormatter stringFromDate:record.input.date];
         NSDictionary* recordDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                    record->name, KEY_MORTGAGE_NAME,
+                                    record.name, KEY_MORTGAGE_NAME,
                                     datestring, KEY_MORTGAGE_LOANDATE,
                                     [NSString stringWithFormat:@"%d",record->bankId], KEY_MORTGAGE_BANKID,
                                     [NSString stringWithFormat:@"%d",record->recordId], KEY_MORTGAGE_RECORDID,
-                                    [NSString stringWithFormat:@"%0.2f",record->input->homeValue], KEY_MORTGAGE_HOMEVALUE,
-                                    [NSString stringWithFormat:@"%0.2f",record->input->loanPercent], KEY_MORTGAGE_LOANPERCENT,
-                                    [NSString stringWithFormat:@"%0.2f",record->input->loanRate], KEY_MORTGAGE_LOANRATE,
-                                    [NSString stringWithFormat:@"%d",record->input->loanYear], KEY_MORTGAGE_LOANYEAR,
+                                    [NSString stringWithFormat:@"%0.2f",record.input->homeValue], KEY_MORTGAGE_HOMEVALUE,
+                                    [NSString stringWithFormat:@"%0.2f",record.input->loanPercent], KEY_MORTGAGE_LOANPERCENT,
+                                    [NSString stringWithFormat:@"%0.2f",record.input->loanRate], KEY_MORTGAGE_LOANRATE,
+                                    [NSString stringWithFormat:@"%d",record.input->loanYear], KEY_MORTGAGE_LOANYEAR,
                                     nil];
         [recordsDict setObject:recordDict forKey:[recordDict objectForKey:KEY_MORTGAGE_RECORDID]];
     }

@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-#define MIN_HOME_VALUE 1.00         // 1,0000
+#define MIN_HOME_VALUE 0.00         // 0
 #define MAX_HOME_VALUE 5000.00      // 5000,0000
-#define MIN_LOANRATE_VALUE 0.1      // 0.1%
+#define MIN_LOANRATE_VALUE 0.0      // 0.0%
 #define MAX_LOANRATE_VALUE 15.00    // 15%
-#define MIN_LOANYEAR_VALUE 1        // 1 years
+#define MIN_LOANYEAR_VALUE 0        // 0 years
 #define MAX_LOANYEAR_VALUE 50       // 50 years
-#define MIN_LOANPERCENT_VALUE 1     // 1%
-#define MAX_LOANPERCENT_VALUE 95    // 95%
+#define MIN_LOANPERCENT_VALUE 0     // 0%
+#define MAX_LOANPERCENT_VALUE 100    // 100%
 
 #define KEY_MORTGAGE_RECORDID @"mortgage_recordid"
 #define KEY_MORTGAGE_NAME @"按揭名稱"
@@ -35,16 +35,17 @@
 #define KEY_MORTGAGE_TOTALINTEREST @"利息金額"
 #define KEY_MORTGAGE_TOTALEXPENCE @"費用總額"
 #define KEY_MORTGAGE_LOANTERM @"按揭期數"
-
+#define KEY_MORTGAGE_TOBEPAIDAMOUNT @"待還金額"
+#define KEY_MORTGAGE_ALREADYPAIDAMOUNT @"已還金額"
 #define DATEFORMAT @"yyyy-MM-dd"
 
-@interface BankTypes : NSObject{
-    
-}
+
+@interface BankTypes : NSObject
 @property(retain,nonatomic) NSArray* m_banks;
 -(NSString*)getBankNameById:(NSInteger)bid;
 -(NSInteger)getBankCount;
 @end
+
 
 @interface MortgageInput : NSObject<NSCopying>{
     @public
@@ -53,10 +54,10 @@
     NSInteger loanYear; // integer
     double loanRate; // in terms of %, loan rate per year
 }
--(id)initWithHomeValue:(double)hv LoanYear:(NSInteger)ly LoanPercent:(double)lp LoanRate:(double)lr;
--(void)setInput:(MortgageInput*) input;
--(void)setHomeValue:(double)hv LoanYear:(NSInteger)ly LoanPercent:(double)lp LoanRate:(double)lr;
+@property (retain, nonatomic) NSDate* date;
+-(id)initWithHomeValue:(double)hv LoanYear:(NSInteger)ly LoanPercent:(double)lp LoanRate:(double)lr LoanDate:(NSDate*)dt;
 @end
+
 
 @interface MortgageOutput : NSObject<NSCopying>{
     @public
@@ -70,23 +71,22 @@
     double comission; // in terms of 1
     double tax; // in terms of 1
     double totalInterest; // in terms of 10-thousands
+    double alreadyPaidAmount; // in terms of 10-thousands
+    double toBePaidAmount; //in terms of 10-thousands
 }
--(void)getOutput:(MortgageOutput*) output;
 @end;
+
 
 @interface MortgageRecord : NSObject<NSCopying>{
     @public
     NSInteger recordId;
-    
-    MortgageInput *input;
-    
-    NSString *name;
-    NSInteger bankId;
-    NSDate *date;    
+    NSInteger bankId;  
 }
 
--(id)initWithNSStringRecordId:(NSString*)rid Name:(NSString*)name BankId:(NSString*)bid Date:(NSString*)date HomeValue:(NSString*)hv LoanYear:(NSString*)ly LoanPercent:(NSString*)lp LoanRate:(NSString*)lr;
+@property (retain, nonatomic) NSString* name;
+@property (retain, nonatomic) MortgageInput* input;
+
+-(id)initWithRecordId:(NSString*)rid Name:(NSString*)name BankId:(NSString*)bid Date:(NSString*)date HomeValue:(NSString*)hv LoanYear:(NSString*)ly LoanPercent:(NSString*)lp LoanRate:(NSString*)lr;
 -(id)initWithName:(NSString*)name BankId:(NSInteger)bid Date:(NSDate*)date HomeValue:(double)hv LoanYear:(NSInteger)ly LoanPercent:(double)lp LoanRate:(double)lr;
--(void)updateRecord:(MortgageRecord*)record;
 
 @end

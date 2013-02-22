@@ -10,6 +10,7 @@
 #import "AddRecordViewController.h"
 #import "Calculator.h"
 #import "UpdateRecordItemProtocol.h"
+#import "PieChartCell.h"
 
 @interface RecordDetailViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate,UpdateRecordProtocol>
 @property (retain, nonatomic) MortgageRecord *m_record;
@@ -32,6 +33,8 @@
 //按揭期數
 //按揭日期
 //每月供款
+//已還金額
+//待還金額
 //---------
 
 

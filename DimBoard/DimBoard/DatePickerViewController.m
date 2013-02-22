@@ -57,10 +57,12 @@
 
 - (void)viewDidUnload
 {
-    [self setDatePicker:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    [self setDatePicker:nil];
+    [self setM_delegate:nil];
+    [self setM_date:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

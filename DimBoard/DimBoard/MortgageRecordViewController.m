@@ -26,13 +26,13 @@
     
     [recordIO addRecord:newRecord];
     
-    newRecord->name = @"name_1";
+    newRecord.name = @"name_1";
     [recordIO addRecord:newRecord];
     
-    newRecord->name = @"name_2";
+    newRecord.name = @"name_2";
     [recordIO addRecord:newRecord];
     
-    newRecord->name = @"name_3";
+    newRecord.name = @"name_3";
     [recordIO addRecord:newRecord];
     
 //    [recordIO save];
@@ -54,24 +54,31 @@
     [recordIO save];
 }
 
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (id)init{
+    self = [super init];
     if (self) {
-        // Custom initialization      
-        NSMutableArray * array = [[NSMutableArray alloc] init];
-        self.m_controllerList = array;
-        
+        // Custom initialization
+        m_controllerList = [[NSMutableArray alloc] init];       
         m_recordIO = [[MortgageRecordIO alloc] initWithLoadRecords];
+        
+        //get records from stored plist
         NSArray* records = [m_recordIO getRecords];
-        [m_recordIO save];
+        
         for(NSInteger i = 0; i< [records count]; i++){
             MortgageRecord* record = [records objectAtIndex:i];
             RecordDetailViewController* controller = [[RecordDetailViewController alloc] initWithMortgageRecord:record];
             [controller setM_delegate:self];
             [self.m_controllerList addObject:controller];
         }
+    }
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization      
     }
     return self;
 }
@@ -94,6 +101,7 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     [self setM_controllerList:nil];
+    [self setM_recordIO:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -105,6 +113,7 @@
 - (void)onAddNewMortgageRecord:(id)sender{   
     AddRecordViewController* rootController = [[AddRecordViewController alloc] init];
     [rootController setM_delegate:self];
+    
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
     navController.navigationBar.topItem.title = @"新增供款";
     navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
@@ -126,13 +135,11 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-#pragma mark-
-#pragma mark UITableViewDelegate
+#pragma mark - UITableViewDelegate
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSUInteger row = [indexPath row];
     UITableViewController *rootController = [m_controllerList objectAtIndex:row];
-
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
     
     navController.navigationBar.topItem.title = rootController.title;
@@ -189,10 +196,10 @@
         [((UITableView*)self.view) reloadData];
     }
 }
+
 #pragma mark - UpdateRecordProtocol
 -(void)updateRecord:(MortgageRecord *)record{
     [m_recordIO updateRecord:record];
-    [m_recordIO save];
     [((UITableView*)self.view) reloadData];
 }
 

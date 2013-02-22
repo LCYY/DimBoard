@@ -65,17 +65,19 @@
     [self setM_record:nil];
     [self setM_output:nil];
     [self setM_sections:nil];
+    [self setM_delegate:nil];
 }
 
 -(void)setSectionWithRecord:(MortgageRecord*)record{
-    [m_record updateRecord:record];
-    [self getOutput];
-    [self setTitle:m_record->name];
+    m_record = [record copy];
+    m_output = [[self getOutput] copy];
+    
+    self.title = m_record.name;
     [m_sections removeAllObjects];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat: DATEFORMAT];
-    NSString* datestring = [dateFormatter stringFromDate:record->date];
+    NSString* datestring = [dateFormatter stringFromDate:record.input.date];
     
     NSArray* sectionkeys0 = [[NSArray alloc] initWithObjects:
                              KEY_MORTGAGE_HOMEVALUE,
@@ -84,10 +86,10 @@
                              KEY_MORTGAGE_LOANRATE,
                              nil];
     NSArray* sectionValues0 = [[NSArray alloc] initWithObjects:
-                               [NSString stringWithFormat:@"%0.4f 萬元",m_record->input->homeValue],
-                               [NSString stringWithFormat:@"%0.2f %%",m_record->input->loanPercent],
-                               [NSString stringWithFormat:@"%d 年",m_record->input->loanYear],
-                               [NSString stringWithFormat:@"%0.2f %%",m_record->input->loanRate],
+                               [NSString stringWithFormat:@"%0.4f 萬元",m_record.input->homeValue],
+                               [NSString stringWithFormat:@"%0.2f %%",m_record.input->loanPercent],
+                               [NSString stringWithFormat:@"%d 年",m_record.input->loanYear],
+                               [NSString stringWithFormat:@"%0.2f %%",m_record.input->loanRate],
                                nil];
     
     NSArray* sectionkeys1 = [[NSArray alloc] initWithObjects:
@@ -95,12 +97,17 @@
                              KEY_MORTGAGE_LOANTERM,
                              KEY_MORTGAGE_LOANDATE,
                              KEY_MORTGAGE_MONTHLYPAY,
+                             KEY_MORTGAGE_ALREADYPAIDAMOUNT,
+                             KEY_MORTGAGE_TOBEPAIDAMOUNT,
                              nil];
+    
     NSArray* sectionValues1 = [[NSArray alloc] initWithObjects:
                                [[[BankTypes alloc] init] getBankNameById:m_record->bankId],
                                [NSString stringWithFormat:@"%d 期",m_output->loanTerms],
                                datestring,
                                [NSString stringWithFormat:@"%0.2f 元",m_output->monthlyPay],
+                               [NSString stringWithFormat:@"%0.4f 萬元",m_output->alreadyPaidAmount],
+                               [NSString stringWithFormat:@"%0.4f 萬元",m_output->toBePaidAmount],
                                nil];
     
     NSArray* sectionkeys2 = [[NSArray alloc] initWithObjects:
@@ -158,10 +165,10 @@
     return m_record->recordId;
 }
 
-- (void)getOutput{
+- (MortgageOutput*)getOutput{
     Calculator* cal = [[Calculator alloc] init];
-    [cal setInput:m_record->input];
-    [cal getOutput:m_output];
+    [cal setInput:m_record.input];
+    return [cal getOutput];
 }
 
 - (void)onEdit:(id)sender{
@@ -198,6 +205,9 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if(section == 1){
+        return 7;
+    }
     return [[[m_sections objectAtIndex:section] objectAtIndex:0] count];
 }
 
@@ -206,28 +216,74 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString* MortgageRecordDetails = @"MortgageRecordDetails";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MortgageRecordDetails];
-    if(cell == nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:MortgageRecordDetails];
+    NSString* MortgageRecordDetailsNormalCell = @"MortgageRecordDetailsNormalCell";
+    NSString* MortgageRecordDetailsPieChartCell = @"MortgageRecordDetailsPieChartCell";
+    
+    UITableViewCell *cell = nil;
+    if(indexPath.section == 1 && indexPath.row == 6){
+        cell = [tableView dequeueReusableCellWithIdentifier:MortgageRecordDetailsPieChartCell];
+    }else{
+        cell = [tableView dequeueReusableCellWithIdentifier:MortgageRecordDetailsNormalCell];
     }
-    cell.textLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:0] objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:1] objectAtIndex:indexPath.row];
-    [cell setAccessoryType:UITableViewCellAccessoryNone];
+    
+    if(cell == nil){
+        if(indexPath.section == 1 && indexPath.row == 6){
+            // show pie chart for section 1, row 6
+            NSArray* slices = [[NSArray alloc] initWithObjects:
+                               [NSString stringWithFormat:@"%0.4f",0.5],
+                               [NSString stringWithFormat:@"%0.4f",0.5],
+                               nil];
+            NSArray* desps = [[NSArray alloc] initWithObjects:
+                              [KEY_MORTGAGE_ALREADYPAIDAMOUNT stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->alreadyPaidAmount]],
+                              [KEY_MORTGAGE_TOBEPAIDAMOUNT stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->toBePaidAmount]],
+                              [KEY_MORTGAGE_TOTALPAY stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->totoalPay]],
+                              nil];
+            cell = [[PieChartCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:MortgageRecordDetailsPieChartCell Slices:slices Descriptions:desps Colors:nil];
+        }else{
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:MortgageRecordDetailsNormalCell];
+            cell.textLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:0] objectAtIndex:indexPath.row];
+            cell.detailTextLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:1] objectAtIndex:indexPath.row];
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
+        }
+    }else{
+        if(indexPath.section == 1 && indexPath.row == 6){
+            // show pie chart for section 1, row 6
+            [(PieChartCell*)cell reloadData];
+        }else{
+            cell.textLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:0] objectAtIndex:indexPath.row];
+            cell.detailTextLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:1] objectAtIndex:indexPath.row];
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
+        }
+
+    }
     return cell;
 }
 
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if(section == 0){
+        return @"物業資料";
+    }else if (section == 1){
+        return @"按揭資料";
+    }else if (section == 2){
+        return @"首付金額分析";
+    }else if (section == 3){
+        return @"貸款金額分析";
+    }else if (section == 4){
+        return @"費用總額分析";
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.section == 1 && indexPath.row == 6){
+        return 310;
+    }
+    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+}
+
 #pragma mark - UpdateRecordProtocl
--(id)updateRecord:(MortgageRecord *)record{
+-(void)updateRecord:(MortgageRecord *)record{
     [self setSectionWithRecord:record];
     [((UITableView*)self.view) reloadData];
     [m_delegate updateRecord:m_record];
 }
-
--(id)addNewRecord:(MortgageRecord *)record{
-    [self setSectionWithRecord:record];
-    [((UITableView*)self.view) reloadData];
-    [m_delegate addNewRecord:record];
-}
-
 @end

@@ -36,6 +36,9 @@
 		FBB0A45016D3771D00F087EE /* BankPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0A44E16D3771C00F087EE /* BankPickerViewController.m */; };
 		FBB0A45116D3771D00F087EE /* BankPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB0A44F16D3771D00F087EE /* BankPickerViewController.xib */; };
 		FBB0A45716D4648E00F087EE /* MortgageRecordIO.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0A45616D4648E00F087EE /* MortgageRecordIO.m */; };
+		FBB0A46216D7204400F087EE /* PieChartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0A46116D7204400F087EE /* PieChartCell.m */; };
+		FBB0A46616D720D700F087EE /* PieChartCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0A46416D720D700F087EE /* PieChartCellViewController.m */; };
+		FBB0A46716D720D700F087EE /* PieChartCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB0A46516D720D700F087EE /* PieChartCellViewController.xib */; };
 		FBF3C85616B920D400790005 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85516B920D400790005 /* UIKit.framework */; };
 		FBF3C85816B920D400790005 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85716B920D400790005 /* Foundation.framework */; };
 		FBF3C85A16B920D400790005 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85916B920D400790005 /* CoreGraphics.framework */; };
@@ -91,6 +94,11 @@
 		FBB0A45516D4648E00F087EE /* MortgageRecordIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MortgageRecordIO.h; sourceTree = "<group>"; };
 		FBB0A45616D4648E00F087EE /* MortgageRecordIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MortgageRecordIO.m; sourceTree = "<group>"; };
 		FBB0A45816D5F6A600F087EE /* UpdateRecordItemProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateRecordItemProtocol.h; sourceTree = "<group>"; };
+		FBB0A46016D7204300F087EE /* PieChartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieChartCell.h; sourceTree = "<group>"; };
+		FBB0A46116D7204400F087EE /* PieChartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieChartCell.m; sourceTree = "<group>"; };
+		FBB0A46316D720D700F087EE /* PieChartCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieChartCellViewController.h; sourceTree = "<group>"; };
+		FBB0A46416D720D700F087EE /* PieChartCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieChartCellViewController.m; sourceTree = "<group>"; };
+		FBB0A46516D720D700F087EE /* PieChartCellViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PieChartCellViewController.xib; sourceTree = "<group>"; };
 		FBF3C85116B920D400790005 /* DimBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DimBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF3C85516B920D400790005 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FBF3C85716B920D400790005 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -145,6 +153,11 @@
 		FBB0A43216D34A9F00F087EE /* Customized UITableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				FBB0A46016D7204300F087EE /* PieChartCell.h */,
+				FBB0A46116D7204400F087EE /* PieChartCell.m */,
+				FBB0A46316D720D700F087EE /* PieChartCellViewController.h */,
+				FBB0A46416D720D700F087EE /* PieChartCellViewController.m */,
+				FBB0A46516D720D700F087EE /* PieChartCellViewController.xib */,
 				FBB0A42316D31ABC00F087EE /* SliderCell.h */,
 				FBB0A42416D31ABD00F087EE /* SliderCell.m */,
 				FBB0A42D16D3248E00F087EE /* SliderCellViewController.h */,
@@ -307,6 +320,7 @@
 				FBB0A43716D34AE800F087EE /* InputCellViewController.xib in Resources */,
 				FBB0A44716D3738300F087EE /* DatePickerViewController.xib in Resources */,
 				FBB0A45116D3771D00F087EE /* BankPickerViewController.xib in Resources */,
+				FBB0A46716D720D700F087EE /* PieChartCellViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +348,8 @@
 				FBB0A44616D3738300F087EE /* DatePickerViewController.m in Sources */,
 				FBB0A45016D3771D00F087EE /* BankPickerViewController.m in Sources */,
 				FBB0A45716D4648E00F087EE /* MortgageRecordIO.m in Sources */,
+				FBB0A46216D7204400F087EE /* PieChartCell.m in Sources */,
+				FBB0A46616D720D700F087EE /* PieChartCellViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,7 +28,7 @@
 @synthesize TotalPay_output;
 @synthesize LoanTerms_output;
 @synthesize MonthlyPay_output;
-
+@synthesize m_input, m_output;
 
 - (void)viewDidLoad
 {
@@ -39,14 +39,14 @@
     tapRecognizer.cancelsTouchesInView = NO;
     [ScrollView addGestureRecognizer:tapRecognizer];
     
-    m_input = [[MortgageInput alloc] initWithHomeValue:100.0 LoanYear:30 LoanPercent:30.0 LoanRate:2.0];
+    m_input = [[MortgageInput alloc] initWithHomeValue:100.0 LoanYear:30 LoanPercent:30.0 LoanRate:2.0 LoanDate:nil];
     m_output = [[MortgageOutput alloc] init];
     m_calculator = [[Calculator alloc] init];
     
     [self initUI];
     [m_calculator setInput:m_input];
-    [m_calculator getOutput:m_output];
-    [self updateResult];   
+    m_output = [[m_calculator getOutput] copy];
+    [self updateResult];
 }
 
 - (void)viewDidUnload {
@@ -175,10 +175,10 @@
     UISlider* slider = (UISlider*)sender;
     float sliderValue = slider.value;
     if(sender == HomeValue_slid){
-        HomeValue_input.text = [NSString stringWithFormat:@"%0.4f",sliderValue];
+        HomeValue_input.text = [NSString stringWithFormat:@"%d",(int)sliderValue];
         m_input->homeValue = [HomeValue_input.text doubleValue];
     }else if(sender == LoanPercent_slid){
-        LoanPercent_input.text = [NSString stringWithFormat:@"%0.2f",sliderValue];
+        LoanPercent_input.text = [NSString stringWithFormat:@"%d",(int)sliderValue];
         m_input->loanPercent = [LoanPercent_input.text doubleValue];
     }else if(sender == LoanYear_slid){
         LoanYear_input.text = [NSString stringWithFormat:@"%d",(int)sliderValue];
@@ -189,7 +189,7 @@
     }
     
     [m_calculator setInput:m_input];
-    [m_calculator getOutput:m_output];
+    m_output = [[m_calculator getOutput] copy];
     [self updateResult];
 }
 
@@ -234,7 +234,7 @@ replacementString:(NSString *)string {
     }
     
     [m_calculator setInput:m_input];
-    [m_calculator getOutput:m_output];
+    m_output = [[m_calculator getOutput] copy];
     [self updateResult];
     
     return YES;

@@ -10,15 +10,16 @@
 #import "OveralInfoViewController.h"
 #import "MortgageRecordViewController.h"
 #import "Calculator.h"
+#import "PieChartCellViewController.h"
 
-@interface ViewController : UIViewController<UITextFieldDelegate>{
-    MortgageOutput* m_output;
-    MortgageInput* m_input;
-    
+@interface ViewController : UIViewController<UITextFieldDelegate>{    
     NSMutableArray* m_principals;
     
     Calculator* m_calculator;
 }
+@property (retain, nonatomic) MortgageInput *m_input;
+@property (retain, nonatomic) MortgageOutput *m_output;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
 
 //TextField Input

@@ -49,23 +49,6 @@
     return @"";
 }
 
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated
-{
-    [super setEditing:editing animated:animated];
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    
-    if(editing){
-        
-    }else{
-        
-    }
-    
-    [UIView commitAnimations];
-}
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     return;

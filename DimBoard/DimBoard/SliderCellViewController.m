@@ -85,6 +85,7 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    [self setM_deletegate:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -94,7 +95,16 @@
 
 - (void)onSlidValueChanged:(id)sender{
     UISlider* slider = (UISlider*)sender;
-    m_value = [NSString stringWithFormat:@"%0.4f",slider.value];
+    
+    if([m_name isEqualToString:KEY_MORTGAGE_LOANYEAR]){
+        m_value = [NSString stringWithFormat:@"%d",(int)slider.value];
+    }else if([m_name isEqualToString:KEY_MORTGAGE_LOANPERCENT]){
+        m_value = [NSString stringWithFormat:@"%d",(int)slider.value];
+    }else if([m_name isEqualToString:KEY_MORTGAGE_LOANRATE]){
+        m_value = [NSString stringWithFormat:@"%0.2f",slider.value];
+    }else if([m_name isEqualToString:KEY_MORTGAGE_HOMEVALUE]){
+        m_value = [NSString stringWithFormat:@"%d",(int)slider.value];
+    }
     ValueInput.text = m_value;
     [m_deletegate updateRecordKey:m_name withValue:m_value];
 }

@@ -120,11 +120,11 @@
     [m_slices addObject:[NSNumber numberWithDouble:comission_percent]];
     [m_slices addObject:[NSNumber numberWithDouble:tax_percent]];
    
-    [m_slicesDesp addObject:[NSString stringWithFormat:@"物業樓價: %0.4f 萬元",m_input->homeValue]];
-    [m_slicesDesp addObject:[NSString stringWithFormat:@"貸款利息: %0.4f 萬元",m_output->totalInterest]];
-    [m_slicesDesp addObject:[NSString stringWithFormat:@"代理佣金: %0.2f 元",m_output->comission]];
-    [m_slicesDesp addObject:[NSString stringWithFormat:@"印花稅: %0.2f 元",m_output->tax]];
-    [m_slicesDesp addObject:[NSString stringWithFormat:@"費用總額: %0.4f 萬元",m_output->totalExpence]];
+    [m_slicesDesp addObject: [KEY_MORTGAGE_HOMEVALUE stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_input->homeValue]]];
+    [m_slicesDesp addObject:[KEY_MORTGAGE_TOTALINTEREST stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->totalInterest]]];
+    [m_slicesDesp addObject:[KEY_MORTGAGE_COMISSION stringByAppendingString:[NSString stringWithFormat:@": %0.2f 元",m_output->comission]]];
+    [m_slicesDesp addObject:[KEY_MORTGAGE_TAX stringByAppendingString:[NSString stringWithFormat:@": %0.2f 元",m_output->tax]]];
+    [m_slicesDesp addObject:[KEY_MORTGAGE_TOTALEXPENCE stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->totalExpence]]];
 }
 
 -(void)showPieChar{

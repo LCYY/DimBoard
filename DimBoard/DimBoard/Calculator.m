@@ -11,24 +11,23 @@
 @implementation Calculator
 
 @synthesize m_principals;
+@synthesize m_input, m_output;
 
 - (id)init{
     self = [super init];
     if(self){
-        m_input = [[MortgageInput alloc] init];
-        m_output = [[MortgageOutput alloc] init];
-        m_principals = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
 -(void)setInput:(MortgageInput*) input{
-    [m_input setInput:input];
+    m_input = [input copy];
+    m_output = [[MortgageOutput alloc] init];
     [self calculateResult];
 }
 
--(void)getOutput:(MortgageOutput*) output{
-    [m_output getOutput:output];
+-(MortgageOutput*)getOutput{
+    return m_output;
 }
 
 -(void)getMonthlyPrincipals:(NSMutableArray*) arry{
@@ -69,11 +68,47 @@
     return 10000*m_input->homeValue*0.01;
 }
 
+-(void)calculateCurrentStatus{
+    NSDate* startdate = m_input.date;
+    NSInteger pastMonths = 0;
+    if(startdate == nil){
+        pastMonths = 0;
+    }else{
+        NSDate* currentdate = [NSDate date];
+
+        if([[startdate laterDate:currentdate] isEqualToDate:startdate]){
+            //currentdate is earlier
+            pastMonths = 0;;
+        }else{
+            NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+            NSDateComponents* start_comps = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:startdate];
+            NSDateComponents* current_comps = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:currentdate];
+            
+            pastMonths = ([current_comps year] - [start_comps year])*12 + ([current_comps month] - [start_comps month]);
+            if([current_comps day] - [start_comps day] >= 0){
+                pastMonths += 1;
+            }
+        }
+    }
+    
+    m_output->alreadyPaidAmount = m_output->monthlyPay*pastMonths/10000.0;
+    m_output->toBePaidAmount = m_output->totoalPay - m_output->alreadyPaidAmount;
+}
+
 -(void)calculateResult{
     if(m_input->homeValue == 0)
         return;
     m_output->loanAmount = m_input->homeValue*m_input->loanPercent/100.0;
     m_output->loanTerms = 12*m_input->loanYear;
+    
+    m_output->firstPay = m_input->homeValue - m_output->loanAmount;
+    m_output->comission = [self calculateComission];  // in terms of 1
+    m_output->tax = [self calculateTax]; // in terms of 1
+    m_output->firstExpence = m_output->firstPay + (m_output->comission + m_output->tax)/10000.0;
+    
+    if(m_output->loanAmount == 0){
+        return;
+    }
     
     //monthlypay
     double rate_per_month = m_input->loanRate/12.0/100.0;
@@ -87,16 +122,11 @@
     }
     
     m_output->monthlyPay = interest_term_1 + principle_term_1;
-
     m_output->totoalPay = m_output->monthlyPay/10000.0*m_output->loanTerms;
-    
-    m_output->firstPay = m_input->homeValue - m_output->loanAmount;
-    m_output->comission = [self calculateComission];  // in terms of 1
-    m_output->tax = [self calculateTax]; // in terms of 1
-    
-    m_output->firstExpence = m_output->firstPay + (m_output->comission + m_output->tax)/10000.0;
-    m_output->totalExpence = m_output->firstExpence + m_output->totoalPay;
     m_output->totalInterest = m_output->totoalPay - m_output->loanAmount;
+    m_output->totalExpence = m_output->firstExpence + m_output->totoalPay;
+    
+    [self calculateCurrentStatus];
 }
 
 

@@ -53,8 +53,9 @@
 
 - (void)viewDidUnload
 {
-    [self setBankPicker:nil];
     [super viewDidUnload];
+    [self setBankPicker:nil];
+    [self setM_delegate:nil];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -71,8 +72,7 @@
     }
 }
 
-#pragma marks
-#pragma marks - UIPickerViewDelegate
+#pragma mark - UIPickerViewDelegate
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     m_selectedBankId = row;
 }
@@ -81,7 +81,7 @@
     return [m_bankTypes getBankCount];
 }
 
-#pragma marks - UIPickerViewSourceDelegate
+#pragma mark - UIPickerViewSourceDelegate
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;

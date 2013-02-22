@@ -54,6 +54,7 @@
 
 
 @implementation MortgageInput
+@synthesize date;
 
 -(id)init{
     self = [super init];
@@ -62,37 +63,24 @@
         loanYear = 0;
         loanPercent = 0.0;
         loanRate = 0.0;
+        date = [NSDate date];
     }
     return self;
 }
 
--(id)initWithHomeValue:(double)hv LoanYear:(NSInteger)ly LoanPercent:(double)lp LoanRate:(double)lr{
+-(id)initWithHomeValue:(double)hv LoanYear:(NSInteger)ly LoanPercent:(double)lp LoanRate:(double)lr LoanDate:(NSDate*)dt{
     self = [self init];
     if(self){
         homeValue = hv;
         loanYear = ly;
         loanPercent = lp;
         loanRate = lr;
+        date = [dt copy];
     }
     return self;
 }
 
--(void)setInput:(MortgageInput*) input{
-    homeValue = input->homeValue;
-    loanYear = input->loanYear;
-    loanPercent = input->loanPercent;
-    loanRate = input->loanRate;
-}
-
--(void)setHomeValue:(double)hv LoanYear:(NSInteger)ly LoanPercent:(double)lp LoanRate:(double)lr{
-    homeValue = hv;
-    loanYear = ly;
-    loanPercent = lp;
-    loanRate = lr;
-}
-
-#pragma marks
-#pragma marks - NSCopying
+#pragma mark - NSCopying
 -(id)copyWithZone:(NSZone *)zone{
     MortgageInput* copy = [[[self class] allocWithZone:zone] init];
     if(copy){
@@ -100,6 +88,7 @@
         copy->loanPercent = loanPercent;
         copy->loanRate = loanRate;
         copy->loanYear = loanYear;
+        copy->date = [date copyWithZone:zone];
     }
     return copy;
 }
@@ -111,6 +100,7 @@
         copy->loanPercent = loanPercent;
         copy->loanRate = loanRate;
         copy->loanYear = loanYear;
+        copy->date = [date copy];
     }
     return copy;
 }
@@ -131,38 +121,17 @@
         totalExpence = 0.0;
         totoalPay = 0.0;
         totalInterest = 0.0;
+        alreadyPaidAmount = 0.0;
+        toBePaidAmount = 0.0;
     }
     return self;
 }
 
--(void)getOutput:(MortgageOutput*)output{
-    output->comission = comission;
-    output->firstExpence = firstExpence;
-    output->firstPay = firstPay;
-    output->loanAmount = loanAmount;
-    output->loanTerms = loanTerms;
-    output->monthlyPay = monthlyPay;
-    output->tax = tax;
-    output->totalExpence = totalExpence;
-    output->totoalPay = totoalPay;
-    output->totalInterest = totalInterest;
-}
-
-#pragma marks
-#pragma marks - NSCopying
+#pragma mark - NSCopying
 -(id)copyWithZone:(NSZone *)zone{
     MortgageOutput* copy = [[[self class] allocWithZone:zone] init];
     if(copy){
-        copy->comission = comission;
-        copy->firstExpence = firstExpence;
-        copy->firstPay = firstPay;
-        copy->loanAmount = loanAmount;
-        copy->loanTerms = loanTerms;
-        copy->monthlyPay = monthlyPay;
-        copy->tax = tax;
-        copy->totalExpence = totalExpence;
-        copy->totoalPay = totoalPay;
-        copy->totalInterest = totalInterest;
+        copy = [self copy];
     }
     return copy;
 }
@@ -180,6 +149,8 @@
         copy->totalExpence = totalExpence;
         copy->totoalPay = totoalPay;
         copy->totalInterest = totalInterest;
+        copy->alreadyPaidAmount = alreadyPaidAmount;
+        copy->toBePaidAmount = toBePaidAmount;
     }
     return copy;
 }
@@ -187,29 +158,30 @@
 @end
 
 @implementation MortgageRecord
+@synthesize input, name;
 
 -(id)init{
     self = [super init];
     if(self){
-        input = [[MortgageInput alloc] initWithHomeValue:0 LoanYear:0 LoanPercent:0 LoanRate:0];
+        input = [[MortgageInput alloc] init];
         recordId = -1;
         name = @"";
-        date = [NSDate date];
         bankId = 0;
     }
     return self;
 }
 
--(id)initWithNSStringRecordId:(NSString*)rid Name:(NSString*)nm BankId:(NSString*)bid Date:(NSString*)dt HomeValue:(NSString*)hv LoanYear:(NSString*)ly LoanPercent:(NSString*)lp LoanRate:(NSString*)lr{
+-(id)initWithRecordId:(NSString*)rid Name:(NSString*)nm BankId:(NSString*)bid Date:(NSString*)dt HomeValue:(NSString*)hv LoanYear:(NSString*)ly LoanPercent:(NSString*)lp LoanRate:(NSString*)lr{
     self = [self init];
     if(self){
         recordId = [rid integerValue];
-        [input setHomeValue:[hv doubleValue] LoanYear:[ly integerValue] LoanPercent:[lp doubleValue] LoanRate:[lr doubleValue]];
-        name = nm;
         bankId = [bid integerValue];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];  
+        name = [nm copy];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat: DATEFORMAT];
-        date = [dateFormatter dateFromString:dt];
+        
+        input = [[MortgageInput alloc] initWithHomeValue:[hv doubleValue] LoanYear:[ly integerValue] LoanPercent:[lp doubleValue] LoanRate:[lr doubleValue] LoanDate:[dateFormatter dateFromString:dt]];
     }
     
     return self;
@@ -218,36 +190,23 @@
 -(id)initWithName:(NSString*)nm BankId:(NSInteger)bid Date:(NSDate*)dt HomeValue:(double)hv LoanYear:(NSInteger)ly LoanPercent:(double)lp LoanRate:(double)lr{
     self = [self init];
     if(self){
-        [input setHomeValue:hv LoanYear:ly LoanPercent:lp LoanRate:lr];
-        name = nm;
         bankId = bid;
-        date = dt;
+        input = [[MortgageInput alloc] initWithHomeValue:hv LoanYear:ly LoanPercent:lp LoanRate:lr LoanDate:dt];
+        name = [nm copy];
     }
     return self;
 }
 
--(void) updateRecord:(MortgageRecord*)record{
-    recordId = record->recordId;
-    name = [NSString stringWithString:record->name];
-    bankId = record->bankId;
-    date = [[NSDate alloc] initWithTimeInterval:0 sinceDate:record->date];
-    
-    [input setInput:record->input];
-}
-
-#pragma marks
-#pragma marks - NSCopying
+#pragma mark - NSCopying
 -(id)copy{
     MortgageRecord* copy = [[[self class] alloc] init];
     if (copy)
     {
-        copy->name = [NSString stringWithString:name];
         copy->bankId = bankId;
-        copy->date = [[NSDate alloc] initWithTimeInterval:0 sinceDate:date];
         copy->recordId = recordId;
+        copy->name = [name copy];
         copy->input = [input copy];
     }
-    
     return copy;
 }
 
@@ -255,16 +214,12 @@
     MortgageRecord* copy = [[[self class] allocWithZone:zone] init];
     if (copy)
     {
-        copy->name = [NSString stringWithString:name];
         copy->bankId = bankId;
-        copy->date = [[NSDate alloc] initWithTimeInterval:0 sinceDate:date];
         copy->recordId = recordId;
+        copy->name = [name copyWithZone:zone];
         copy->input = [input copyWithZone:zone];
     }
-    
     return copy;
 }
-
-
 
 @end

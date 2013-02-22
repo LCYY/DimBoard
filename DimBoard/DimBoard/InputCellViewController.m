@@ -55,6 +55,7 @@
 {
     [self setNameLabel:nil];
     [self setValueInput:nil];
+    [self setM_delegate:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -69,7 +70,7 @@
     return [ValueInput text];
 }
 
-#pragma marks - UITextFieldDelegate
+#pragma mark - UITextFieldDelegate
 -(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     m_value = [ValueInput text];
     [m_delegate updateRecordKey:m_name withValue:m_value];
