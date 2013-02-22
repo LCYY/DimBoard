@@ -25,7 +25,6 @@
         
         if(recordsDict){
             for(id key in recordsDict){
-                NSLog(@"key: %@",key);
                 NSDictionary* recordDict = [recordsDict objectForKey:key];
                 if(recordDict){
                     MortgageRecord* record = [[MortgageRecord alloc]
