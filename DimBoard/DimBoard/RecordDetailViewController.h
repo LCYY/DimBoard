@@ -12,12 +12,13 @@
 #import "UpdateRecordItemProtocol.h"
 #import "PieChartCell.h"
 
-@interface RecordDetailViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate,UpdateRecordProtocol>
+@interface RecordDetailViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate,UpdateRecordProtocol, PieChartCellExtendDelegate>
 @property (retain, nonatomic) MortgageRecord *m_record;
 @property (retain, nonatomic) MortgageOutput *m_output;
 @property (retain, nonatomic) NSMutableArray* m_sections;
 @property (retain, nonatomic) NSMutableArray* m_pieChartSlices;
 @property (retain, nonatomic) NSMutableArray* m_pieChartDesps;
+@property (retain, nonatomic) NSMutableDictionary* m_pieChartCells; //heights for indexpath
 @property (retain, nonatomic) id<UpdateRecordProtocol> m_delegate;
 
 //Section 0

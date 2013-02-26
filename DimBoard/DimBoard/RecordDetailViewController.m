@@ -17,6 +17,7 @@
 @synthesize m_sections;
 @synthesize m_delegate;
 @synthesize m_pieChartDesps,m_pieChartSlices;
+@synthesize m_pieChartCells;
 
 -(id)init{
     self = [super init];
@@ -27,6 +28,7 @@
         m_output = [[MortgageOutput alloc] init];
         m_pieChartSlices = [[NSMutableArray alloc] init];
         m_pieChartDesps = [[NSMutableArray alloc] init];
+        m_pieChartCells = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -71,6 +73,7 @@
     [self setM_delegate:nil];
     [self setM_pieChartDesps:nil];
     [self setM_pieChartSlices:nil];
+    [self setM_pieChartCells:nil];
 }
 
 -(void)setSectionWithRecord:(MortgageRecord*)record{
@@ -222,6 +225,16 @@
     [m_pieChartDesps addObject:s3Desps];
     [m_pieChartDesps addObject:s4Desps];
     
+    for(NSInteger section = 1; section < [m_sections count]; section++){
+        NSIndexPath* indexpath = [NSIndexPath indexPathForRow:[[[m_sections objectAtIndex:section] objectAtIndex:0] count] inSection:section];
+        NSString* key = [NSString stringWithFormat:@"%d-%d", indexpath.section, indexpath.row];
+        NSArray* slices = [m_pieChartSlices objectAtIndex:(section - 1)];
+        NSArray* desps = [m_pieChartDesps objectAtIndex:(section - 1)];
+        PieChartCell* cell = [[PieChartCell alloc] initWithSlices:slices Descriptions:desps Colors:nil IndexPath:indexpath];
+        [((PieChartCell*)cell) setM_delegate:self];
+        
+        [m_pieChartCells setObject:cell forKey:key];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -267,9 +280,6 @@
 
 #pragma mark
 #pragma mark - UITableViewDlegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-}
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -285,40 +295,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString* MortgageRecordDetailsNormalCell = @"MortgageRecordDetailsNormalCell";
-    NSString* MortgageRecordDetailsPieChartCell = @"MortgageRecordDetailsPieChartCell";
     
     UITableViewCell *cell = nil;
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
     if(section != 0 && row == [[[m_sections objectAtIndex:section] objectAtIndex:0] count]){
-        cell = [tableView dequeueReusableCellWithIdentifier:MortgageRecordDetailsPieChartCell];
+        NSString* key = [NSString stringWithFormat:@"%d-%d", section, row];
+        cell = (PieChartCell*)[m_pieChartCells objectForKey:key];
     }else{
         cell = [tableView dequeueReusableCellWithIdentifier:MortgageRecordDetailsNormalCell];
-    }
-    
-    if(cell == nil){
-        if(section != 0 && row == [[[m_sections objectAtIndex:section] objectAtIndex:0] count]){
-            NSArray* slices = [m_pieChartSlices objectAtIndex:(section - 1)];
-            NSArray* desps = [m_pieChartDesps objectAtIndex:(section - 1)];
-            cell = [[PieChartCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:MortgageRecordDetailsPieChartCell Slices:slices Descriptions:desps Colors:nil];
-        }else{
+        if(cell == nil){
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:MortgageRecordDetailsNormalCell];
-            cell.textLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:0] objectAtIndex:indexPath.row];
-            cell.detailTextLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:1] objectAtIndex:indexPath.row];
-            [cell setAccessoryType:UITableViewCellAccessoryNone];
         }
-    }else{
-        if(section != 0 && row == [[[m_sections objectAtIndex:section] objectAtIndex:0] count]){
-            // show pie chart for section 1, row 6
-            NSArray* slices = [m_pieChartSlices objectAtIndex:(section - 1)];
-            NSArray* desps = [m_pieChartDesps objectAtIndex:(section - 1)];
-            [(PieChartCell*)cell setSlices:slices Descriptions:desps Colors:nil];
-        }else{
-            cell.textLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:0] objectAtIndex:indexPath.row];
-            cell.detailTextLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:1] objectAtIndex:indexPath.row];
-            [cell setAccessoryType:UITableViewCellAccessoryNone];
-        }
-
+        cell.textLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:0] objectAtIndex:indexPath.row];
+        cell.detailTextLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:1] objectAtIndex:indexPath.row];
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
     }
     return cell;
 }
@@ -338,8 +329,12 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section != 0 && indexPath.row == [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:0] count]){
-        return 310;
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    if(section != 0 && row == [[[m_sections objectAtIndex:section] objectAtIndex:0] count]){
+        NSString* key = [NSString stringWithFormat:@"%d-%d", section, row];
+        PieChartCell* cell = [m_pieChartCells objectForKey:key];
+        return [cell getHeight];
     }
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
@@ -350,4 +345,9 @@
     [((UITableView*)self.view) reloadData];
     [m_delegate updateRecord:m_record];
 }
+#pragma mark - PieChartCellExtendDelegate
+-(void)extendPieChartCell:(BOOL)extend atIndexPath:(NSIndexPath *)indexpath{
+    [self.tableView reloadData];
+}
+
 @end

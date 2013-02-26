@@ -13,6 +13,7 @@
 		FB2D6FA116BA22E2008E367F /* icon_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2D6F9C16BA22E2008E367F /* icon_64x64.png */; };
 		FB2D6FA216BA22E2008E367F /* icon_128x128.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2D6F9D16BA22E2008E367F /* icon_128x128.png */; };
 		FB2D6FA316BA22E2008E367F /* icon_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2D6F9E16BA22E2008E367F /* icon_256x256.png */; };
+		FB43CC7816DC8D2C00743184 /* down.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FB43CC7716DC8D2C00743184 /* down.jpg */; };
 		FB7858F416BBB0DF00C63D08 /* OveralInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7858F216BBB0DF00C63D08 /* OveralInfoViewController.m */; };
 		FB7858F516BBB0DF00C63D08 /* OveralInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB7858F316BBB0DF00C63D08 /* OveralInfoViewController.xib */; };
 		FB78590C16C0B07600C63D08 /* MortgageDataType.m in Sources */ = {isa = PBXBuildFile; fileRef = FB78590B16C0B07500C63D08 /* MortgageDataType.m */; };
@@ -56,6 +57,7 @@
 		FB2D6F9C16BA22E2008E367F /* icon_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_64x64.png; path = Home.iconset/icon_64x64.png; sourceTree = "<group>"; };
 		FB2D6F9D16BA22E2008E367F /* icon_128x128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_128x128.png; path = Home.iconset/icon_128x128.png; sourceTree = "<group>"; };
 		FB2D6F9E16BA22E2008E367F /* icon_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_256x256.png; path = Home.iconset/icon_256x256.png; sourceTree = "<group>"; };
+		FB43CC7716DC8D2C00743184 /* down.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = down.jpg; path = Home.iconset/down.jpg; sourceTree = "<group>"; };
 		FB7858F116BBB0DF00C63D08 /* OveralInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OveralInfoViewController.h; sourceTree = "<group>"; };
 		FB7858F216BBB0DF00C63D08 /* OveralInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OveralInfoViewController.m; sourceTree = "<group>"; };
 		FB7858F316BBB0DF00C63D08 /* OveralInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OveralInfoViewController.xib; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		FB2D6FA416BA2364008E367F /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				FB43CC7716DC8D2C00743184 /* down.jpg */,
 				FB2D6F9A16BA22E2008E367F /* icon_16x16.png */,
 				FB2D6F9E16BA22E2008E367F /* icon_256x256.png */,
 				FB2D6F9B16BA22E2008E367F /* icon_32x32.png */,
@@ -321,6 +324,7 @@
 				FBB0A44716D3738300F087EE /* DatePickerViewController.xib in Resources */,
 				FBB0A45116D3771D00F087EE /* BankPickerViewController.xib in Resources */,
 				FBB0A46716D720D700F087EE /* PieChartCellViewController.xib in Resources */,
+				FB43CC7816DC8D2C00743184 /* down.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,9 +13,13 @@
 @end
 
 @implementation PieChartCellViewController
+@synthesize TitleLabel;
 @synthesize PieChartSlice_output;
 @synthesize PieChart;
+@synthesize ExtendButton;
 @synthesize m_slices,m_slicesDesp;
+@synthesize m_indexPath;
+@synthesize m_delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,11 +30,14 @@
     return self;
 }
 
--(id)initWithSlices:(NSArray *)slices Descriptions:(NSArray *)desps Colors:(NSArray*)colors{
+-(id)initWithSlices:(NSArray *)slices Descriptions:(NSArray *)desps Colors:(NSArray*)colors IndexPath:(NSIndexPath *)indexpath{
     self = [super init];
     if(self){
+        m_extend = NO;
+        m_height = 45;
         m_slices = [slices copy];
         m_slicesDesp = [desps copy];
+        m_indexPath = [indexpath copy];
         if(colors == nil)
             m_sliceColors = [NSArray arrayWithObjects:
                              [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1],
@@ -46,6 +53,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [PieChart setHidden:YES];
+    [PieChartSlice_output setHidden:YES];
+    [TitleLabel setFont:[UIFont boldSystemFontOfSize:17]];
+    
     [self showPieChar];
 }
 
@@ -55,6 +66,10 @@
     [self setM_slices:nil];
     [self setM_slicesDesp:nil];
     [self setPieChartSlice_output:nil];
+    [self setExtendButton:nil];
+    [self setM_delegate:nil];
+    [self setM_indexPath:nil];
+    [self setTitleLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -81,9 +96,10 @@
     [PieChart reloadData];
 }
 
--(void)setSlices:(NSArray*)slices Descriptions:(NSArray*)desps Colors:(NSArray*)colors{
+-(void)setSlices:(NSArray*)slices Descriptions:(NSArray*)desps Colors:(NSArray*)colors IndexPath:(NSIndexPath *)indexpath{
     m_slices = [slices copy];
     m_slicesDesp = [desps copy];
+    m_indexPath = [indexpath copy];
     if(colors == nil)
         m_sliceColors = [NSArray arrayWithObjects:
                          [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1],
@@ -92,6 +108,24 @@
                          [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1],
                          [UIColor colorWithRed:148/255.0 green:141/255.0 blue:139/255.0 alpha:1],nil];
     [PieChart reloadData];
+}
+
+- (IBAction)toggleExtendStatus:(id)sender {
+    m_extend = !m_extend;
+    if(m_extend){
+        m_height = 335;
+        [PieChart setHidden:NO];
+        [PieChartSlice_output setHidden:NO];
+    }else{
+        m_height = 45;
+        [PieChart setHidden:YES];
+        [PieChartSlice_output setHidden:YES];
+    }
+    [m_delegate extendPieChartCell:m_extend atIndexPath:m_indexPath];
+}
+
+-(CGFloat)getHeight{
+    return m_height;
 }
 
 #pragma mark - XYPieChart Data Source

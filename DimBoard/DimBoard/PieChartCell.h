@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "PieChartCellViewController.h"
 
-@interface PieChartCell : UITableViewCell
-
+@interface PieChartCell : UITableViewCell<PieChartCellExtendDelegate>
 @property (retain, nonatomic) PieChartCellViewController* m_cellController;
--(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier Slices:(NSArray*)slices Descriptions:(NSArray*)desps Colors:(NSArray*)colors;
--(void)setSlices:(NSArray*)slices Descriptions:(NSArray*)desps Colors:(NSArray*)colors;
+@property (retain, nonatomic) id<PieChartCellExtendDelegate> m_delegate;
+
+-(id)initWithSlices:(NSArray*)slices Descriptions:(NSArray*)desps Colors:(NSArray*)colors IndexPath:(NSIndexPath*)indexpath;
+-(void)setSlices:(NSArray*)slices Descriptions:(NSArray*)desps Colors:(NSArray*)colors IndexPath:(NSIndexPath*)indexpath;
+-(CGFloat)getHeight;
 @end
