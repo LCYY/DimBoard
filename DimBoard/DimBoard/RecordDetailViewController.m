@@ -16,6 +16,7 @@
 @synthesize m_record, m_output;
 @synthesize m_sections;
 @synthesize m_delegate;
+@synthesize m_pieChartDesps,m_pieChartSlices;
 
 -(id)init{
     self = [super init];
@@ -24,6 +25,8 @@
         m_sections = [[NSMutableArray alloc] init];
         m_record = [[MortgageRecord alloc] init];
         m_output = [[MortgageOutput alloc] init];
+        m_pieChartSlices = [[NSMutableArray alloc] init];
+        m_pieChartDesps = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -66,6 +69,8 @@
     [self setM_output:nil];
     [self setM_sections:nil];
     [self setM_delegate:nil];
+    [self setM_pieChartDesps:nil];
+    [self setM_pieChartSlices:nil];
 }
 
 -(void)setSectionWithRecord:(MortgageRecord*)record{
@@ -154,6 +159,69 @@
     [m_sections addObject:sectionPair2];
     [m_sections addObject:sectionPair3];
     [m_sections addObject:sectionPair4];
+    
+    //slices for section 1 pie chart
+    NSArray *s1Slices = [[NSArray alloc] initWithObjects:
+                         [NSString stringWithFormat:@"%0.4f",m_output->alreadyPaidAmount/m_output->totalPay],
+                         [NSString stringWithFormat:@"%0.4f",m_output->toBePaidAmount/m_output->totalPay],
+                         nil];
+    NSArray *s1Desps = [[NSArray alloc] initWithObjects:
+                        [KEY_MORTGAGE_ALREADYPAIDAMOUNT stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->alreadyPaidAmount]],
+                        [KEY_MORTGAGE_TOBEPAIDAMOUNT stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->toBePaidAmount]],
+                        [KEY_MORTGAGE_TOTALPAY stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->totalPay]],
+                        nil];
+    
+    //slices for section 2 pie chart
+    NSArray *s2Slices = [[NSArray alloc] initWithObjects:
+                         [NSString stringWithFormat:@"%0.4f",m_output->firstPay/m_output->firstExpence],
+                         [NSString stringWithFormat:@"%0.4f",m_output->tax/m_output->firstExpence/10000.0],
+                         [NSString stringWithFormat:@"%0.4f",m_output->comission/m_output->firstExpence/10000.0],
+                         nil];
+    NSArray *s2Desps = [[NSArray alloc] initWithObjects:
+                        [KEY_MORTGAGE_FIRSTPAY stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->firstPay]],
+                        [KEY_MORTGAGE_TAX stringByAppendingString:[NSString stringWithFormat:@": %0.4f 元",m_output->tax]],
+                        [KEY_MORTGAGE_COMISSION stringByAppendingString:[NSString stringWithFormat:@": %0.4f 元",m_output->comission]],
+                        [KEY_MORTGAGE_FIRSTEXPENCE stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->firstExpence]],
+                        nil];
+    
+    //slices for section 3 pie chart
+    NSArray *s3Slices = [[NSArray alloc] initWithObjects:
+                         [NSString stringWithFormat:@"%0.4f",m_output->loanAmount/m_output->totalPay],
+                         [NSString stringWithFormat:@"%0.4f",m_output->totalInterest/m_output->totalPay],
+                         nil];
+    NSArray *s3Desps = [[NSArray alloc] initWithObjects:
+                        [KEY_MORTGAGE_LOANAMOUNT stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->loanAmount]],
+                        [KEY_MORTGAGE_TOTALINTEREST stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->totalInterest]],
+                        [KEY_MORTGAGE_TOTALPAY stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->totalPay]],
+                        nil];
+    
+    //slices for section 4 pie chart
+    NSArray *s4Slices = [[NSArray alloc] initWithObjects:
+                         [NSString stringWithFormat:@"%0.4f",m_output->firstPay/m_output->totalExpence],
+                         [NSString stringWithFormat:@"%0.4f",m_output->tax/m_output->totalExpence/10000.0],
+                         [NSString stringWithFormat:@"%0.4f",m_output->comission/m_output->totalExpence/10000.0],
+                         [NSString stringWithFormat:@"%0.4f",m_output->totalPay/m_output->totalExpence],
+                         [NSString stringWithFormat:@"%0.4f",m_output->totalInterest/m_output->totalExpence],
+                         nil];
+    NSArray *s4Desps = [[NSArray alloc] initWithObjects:
+                        [KEY_MORTGAGE_FIRSTPAY stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->firstPay]],
+                        [KEY_MORTGAGE_TAX stringByAppendingString:[NSString stringWithFormat:@": %0.4f 元",m_output->tax]],
+                        [KEY_MORTGAGE_COMISSION stringByAppendingString:[NSString stringWithFormat:@": %0.4f 元",m_output->comission]],
+                        [KEY_MORTGAGE_LOANAMOUNT stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->loanAmount]],
+                        [KEY_MORTGAGE_TOTALINTEREST stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->totalInterest]],
+                        [KEY_MORTGAGE_TOTALEXPENCE stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->totalExpence]],
+                        nil];
+    
+    [m_pieChartSlices addObject:s1Slices];
+    [m_pieChartSlices addObject:s2Slices];
+    [m_pieChartSlices addObject:s3Slices];
+    [m_pieChartSlices addObject:s4Slices];
+    
+    [m_pieChartDesps addObject:s1Desps];
+    [m_pieChartDesps addObject:s2Desps];
+    [m_pieChartDesps addObject:s3Desps];
+    [m_pieChartDesps addObject:s4Desps];
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -205,8 +273,8 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(section == 1){
-        return 7;
+    if(section != 0){
+        return [[[m_sections objectAtIndex:section] objectAtIndex:0] count] + 1;
     }
     return [[[m_sections objectAtIndex:section] objectAtIndex:0] count];
 }
@@ -220,24 +288,18 @@
     NSString* MortgageRecordDetailsPieChartCell = @"MortgageRecordDetailsPieChartCell";
     
     UITableViewCell *cell = nil;
-    if(indexPath.section == 1 && indexPath.row == 6){
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    if(section != 0 && row == [[[m_sections objectAtIndex:section] objectAtIndex:0] count]){
         cell = [tableView dequeueReusableCellWithIdentifier:MortgageRecordDetailsPieChartCell];
     }else{
         cell = [tableView dequeueReusableCellWithIdentifier:MortgageRecordDetailsNormalCell];
     }
     
     if(cell == nil){
-        if(indexPath.section == 1 && indexPath.row == 6){
-            // show pie chart for section 1, row 6
-            NSArray* slices = [[NSArray alloc] initWithObjects:
-                               [NSString stringWithFormat:@"%0.4f",m_output->alreadyPaidAmount/m_output->totalPay],
-                               [NSString stringWithFormat:@"%0.4f",m_output->toBePaidAmount/m_output->totalPay],
-                               nil];
-            NSArray* desps = [[NSArray alloc] initWithObjects:
-                              [KEY_MORTGAGE_ALREADYPAIDAMOUNT stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->alreadyPaidAmount]],
-                              [KEY_MORTGAGE_TOBEPAIDAMOUNT stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->toBePaidAmount]],
-                              [KEY_MORTGAGE_TOTALPAY stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->totalPay]],
-                              nil];
+        if(section != 0 && row == [[[m_sections objectAtIndex:section] objectAtIndex:0] count]){
+            NSArray* slices = [m_pieChartSlices objectAtIndex:(section - 1)];
+            NSArray* desps = [m_pieChartDesps objectAtIndex:(section - 1)];
             cell = [[PieChartCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:MortgageRecordDetailsPieChartCell Slices:slices Descriptions:desps Colors:nil];
         }else{
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:MortgageRecordDetailsNormalCell];
@@ -246,18 +308,10 @@
             [cell setAccessoryType:UITableViewCellAccessoryNone];
         }
     }else{
-        if(indexPath.section == 1 && indexPath.row == 6){
+        if(section != 0 && row == [[[m_sections objectAtIndex:section] objectAtIndex:0] count]){
             // show pie chart for section 1, row 6
-            NSArray* slices = [[NSArray alloc] initWithObjects:
-                               [NSString stringWithFormat:@"%0.4f",m_output->alreadyPaidAmount/m_output->totalPay],
-                               [NSString stringWithFormat:@"%0.4f",m_output->toBePaidAmount/m_output->totalPay],
-                               nil];
-            NSArray* desps = [[NSArray alloc] initWithObjects:
-                              [KEY_MORTGAGE_ALREADYPAIDAMOUNT stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->alreadyPaidAmount]],
-                              [KEY_MORTGAGE_TOBEPAIDAMOUNT stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->toBePaidAmount]],
-                              [KEY_MORTGAGE_TOTALPAY stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->totalPay]],
-                              nil];
-
+            NSArray* slices = [m_pieChartSlices objectAtIndex:(section - 1)];
+            NSArray* desps = [m_pieChartDesps objectAtIndex:(section - 1)];
             [(PieChartCell*)cell setSlices:slices Descriptions:desps Colors:nil];
         }else{
             cell.textLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:0] objectAtIndex:indexPath.row];
@@ -284,7 +338,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section == 1 && indexPath.row == 6){
+    if(indexPath.section != 0 && indexPath.row == [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:0] count]){
         return 310;
     }
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];

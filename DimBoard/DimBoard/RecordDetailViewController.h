@@ -16,6 +16,8 @@
 @property (retain, nonatomic) MortgageRecord *m_record;
 @property (retain, nonatomic) MortgageOutput *m_output;
 @property (retain, nonatomic) NSMutableArray* m_sections;
+@property (retain, nonatomic) NSMutableArray* m_pieChartSlices;
+@property (retain, nonatomic) NSMutableArray* m_pieChartDesps;
 @property (retain, nonatomic) id<UpdateRecordProtocol> m_delegate;
 
 //Section 0
@@ -35,6 +37,7 @@
 //每月供款
 //已還金額
 //待還金額
+//Pie Chart
 //---------
 
 
@@ -44,6 +47,7 @@
 //印花稅額 
 //代理佣金 
 //首付金額
+//Pie Chart
 //---------
 
 
@@ -52,12 +56,14 @@
 //按揭金額
 //按揭利息
 //還款金額
+//Pie Chart
 //---------
 
 
 //Section 4
 //---------
 //費用總額
+//Pie Chart
 //---------
 
 
