@@ -119,7 +119,7 @@
         monthlyPay = 0.0;
         tax = 0.0;
         totalExpence = 0.0;
-        totoalPay = 0.0;
+        totalPay = 0.0;
         totalInterest = 0.0;
         alreadyPaidAmount = 0.0;
         toBePaidAmount = 0.0;
@@ -147,7 +147,7 @@
         copy->monthlyPay = monthlyPay;
         copy->tax = tax;
         copy->totalExpence = totalExpence;
-        copy->totoalPay = totoalPay;
+        copy->totalPay = totalPay;
         copy->totalInterest = totalInterest;
         copy->alreadyPaidAmount = alreadyPaidAmount;
         copy->toBePaidAmount = toBePaidAmount;

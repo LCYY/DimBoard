@@ -46,7 +46,7 @@
     [self initUI];
     [m_calculator setInput:m_input];
     m_output = [[m_calculator getOutput] copy];
-    [self updateResult];
+    [self updateResult];    
 }
 
 - (void)viewDidUnload {
@@ -113,7 +113,7 @@
 -(void)updateResult{    
     LoanAmount_output.text = [NSString stringWithFormat:@"%0.4f 萬元", m_output->loanAmount];
     LoanTerms_output.text = [NSString stringWithFormat:@"%d 期",m_output->loanTerms];
-    TotalPay_output.text = [NSString stringWithFormat:@"%0.4f 萬元",m_output->totoalPay];
+    TotalPay_output.text = [NSString stringWithFormat:@"%0.4f 萬元",m_output->totalPay];
     MonthlyPay_output.text = [NSString stringWithFormat:@"%0.2f 元",m_output->monthlyPay];
 }
 

@@ -132,7 +132,7 @@
     NSArray* sectionValues3 = [[NSArray alloc] initWithObjects:
                                [NSString stringWithFormat:@"%0.4f 萬元",m_output->loanAmount],
                                [NSString stringWithFormat:@"%0.4f 萬元",m_output->totalInterest],
-                               [NSString stringWithFormat:@"%0.4f 萬元",m_output->totoalPay],
+                               [NSString stringWithFormat:@"%0.4f 萬元",m_output->totalPay],
                                nil];
     
     NSArray* sectionkeys4 = [[NSArray alloc] initWithObjects:
@@ -230,13 +230,13 @@
         if(indexPath.section == 1 && indexPath.row == 6){
             // show pie chart for section 1, row 6
             NSArray* slices = [[NSArray alloc] initWithObjects:
-                               [NSString stringWithFormat:@"%0.4f",0.5],
-                               [NSString stringWithFormat:@"%0.4f",0.5],
+                               [NSString stringWithFormat:@"%0.4f",m_output->alreadyPaidAmount/m_output->totalPay],
+                               [NSString stringWithFormat:@"%0.4f",m_output->toBePaidAmount/m_output->totalPay],
                                nil];
             NSArray* desps = [[NSArray alloc] initWithObjects:
                               [KEY_MORTGAGE_ALREADYPAIDAMOUNT stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->alreadyPaidAmount]],
                               [KEY_MORTGAGE_TOBEPAIDAMOUNT stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->toBePaidAmount]],
-                              [KEY_MORTGAGE_TOTALPAY stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->totoalPay]],
+                              [KEY_MORTGAGE_TOTALPAY stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->totalPay]],
                               nil];
             cell = [[PieChartCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:MortgageRecordDetailsPieChartCell Slices:slices Descriptions:desps Colors:nil];
         }else{
@@ -248,7 +248,17 @@
     }else{
         if(indexPath.section == 1 && indexPath.row == 6){
             // show pie chart for section 1, row 6
-            [(PieChartCell*)cell reloadData];
+            NSArray* slices = [[NSArray alloc] initWithObjects:
+                               [NSString stringWithFormat:@"%0.4f",m_output->alreadyPaidAmount/m_output->totalPay],
+                               [NSString stringWithFormat:@"%0.4f",m_output->toBePaidAmount/m_output->totalPay],
+                               nil];
+            NSArray* desps = [[NSArray alloc] initWithObjects:
+                              [KEY_MORTGAGE_ALREADYPAIDAMOUNT stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->alreadyPaidAmount]],
+                              [KEY_MORTGAGE_TOBEPAIDAMOUNT stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->toBePaidAmount]],
+                              [KEY_MORTGAGE_TOTALPAY stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->totalPay]],
+                              nil];
+
+            [(PieChartCell*)cell setSlices:slices Descriptions:desps Colors:nil];
         }else{
             cell.textLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:0] objectAtIndex:indexPath.row];
             cell.detailTextLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:1] objectAtIndex:indexPath.row];

@@ -92,7 +92,7 @@
     }
     
     m_output->alreadyPaidAmount = m_output->monthlyPay*pastMonths/10000.0;
-    m_output->toBePaidAmount = m_output->totoalPay - m_output->alreadyPaidAmount;
+    m_output->toBePaidAmount = m_output->totalPay - m_output->alreadyPaidAmount;
 }
 
 -(void)calculateResult{
@@ -122,9 +122,9 @@
     }
     
     m_output->monthlyPay = interest_term_1 + principle_term_1;
-    m_output->totoalPay = m_output->monthlyPay/10000.0*m_output->loanTerms;
-    m_output->totalInterest = m_output->totoalPay - m_output->loanAmount;
-    m_output->totalExpence = m_output->firstExpence + m_output->totoalPay;
+    m_output->totalPay = m_output->monthlyPay/10000.0*m_output->loanTerms;
+    m_output->totalInterest = m_output->totalPay - m_output->loanAmount;
+    m_output->totalExpence = m_output->firstExpence + m_output->totalPay;
     
     [self calculateCurrentStatus];
 }

@@ -119,6 +119,7 @@ static NSUInteger kDefaultSliceZOrder = 100;
 @synthesize selectedSliceStroke = _selectedSliceStroke;
 @synthesize selectedSliceOffsetRadius = _selectedSliceOffsetRadius;
 @synthesize showPercentage = _showPercentage;
+@synthesize updateTimerFiredDone = _updateTimerFiredDone;
 
 static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAngle, CGFloat endAngle) 
 {
@@ -157,6 +158,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         
         _showLabel = YES;
         _showPercentage = YES;
+        _updateTimerFiredDone = 0;
     }
     return self;
 }
@@ -235,7 +237,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         if(!_showLabel) return;
         NSString *label;
         if(_showPercentage)
-            label = [NSString stringWithFormat:@"%0.0f %%", layer.percentage*100];
+            label = [NSString stringWithFormat:@"%0.2f %%", layer.percentage*100];
         else
             label = (layer.text)?layer.text:[NSString stringWithFormat:@"%0.0f", layer.value];
         CGSize size = [label sizeWithFont:self.labelFont];
@@ -429,7 +431,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
 #pragma mark - Animation Delegate + Run Loop Timer
 
 - (void)updateTimerFired:(NSTimer *)timer;
-{   
+{
     CALayer *parentLayer = [_pieView layer];
     NSArray *pieLayers = [parentLayer sublayers];
 
@@ -453,6 +455,12 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
             [CATransaction setDisableActions:NO];
         }
     }];
+    _updateTimerFiredDone++;
+    if(_updateTimerFiredDone > 500){
+        [_animationTimer invalidate];
+        _animationTimer = nil;
+        _updateTimerFiredDone = 0;
+    }
 }
 
 - (void)animationDidStart:(CAAnimation *)anim
@@ -461,18 +469,19 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         static float timeInterval = 1.0/60.0;
         _animationTimer= [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(updateTimerFired:) userInfo:nil repeats:YES];
     }
-    
-    [_animations addObject:anim];
+//    [_animations addObject:anim];
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)animationCompleted
 {
-    [_animations removeObject:anim];
-    
-    if ([_animations count] == 0) {
-        [_animationTimer invalidate];
-        _animationTimer = nil;
-    }
+//    NSLog(@"animationDidStop animationCompleted= %d count = %d",animationCompleted, [_animations count]);
+//    [_animations removeObject:anim];
+//    
+//    if ([_animations count] == 0) {
+//        NSLog(@"invalidate _animationTimer animation count = %d", [_animations count]);
+//        [_animationTimer invalidate];
+//        _animationTimer = nil;
+//    }
 }
 
 #pragma mark - Touch Handing (Selection Notification)
@@ -656,7 +665,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     if(!_showLabel) return;
     NSString *label;
     if(_showPercentage)
-        label = [NSString stringWithFormat:@"%0.0f %%", pieLayer.percentage*100];
+        label = [NSString stringWithFormat:@"%0.2f %%", pieLayer.percentage*100];
     else
         label = (pieLayer.text)?pieLayer.text:[NSString stringWithFormat:@"%0.0f", value];
     

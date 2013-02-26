@@ -21,5 +21,5 @@
 @property (retain, nonatomic) NSMutableArray *m_slicesDesp;
 
 -(id)initWithSlices:(NSArray *)slices Descriptions:(NSArray *)desps Colors:(NSArray*)colors;
--(void)reloadData;
+-(void)setSlices:(NSArray*)slices Descriptions:(NSArray*)desps Colors:(NSArray*)colors;
 @end

@@ -64,7 +64,7 @@
     double loanAmount; // in terms of 10-thousands
     double monthlyPay; // in terms of 1
     NSInteger loanTerms;
-    double totoalPay; // in terms of 10-thousands
+    double totalPay; // in terms of 10-thousands
     double firstPay; // in terms of 10-thousands
     double firstExpence; // in terms of 10-thousands
     double totalExpence; // in terms of 10-thousands

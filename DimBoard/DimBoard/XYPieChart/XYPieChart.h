@@ -61,6 +61,7 @@
 @property(nonatomic, assign) CGFloat selectedSliceStroke;
 @property(nonatomic, assign) CGFloat selectedSliceOffsetRadius;
 @property(nonatomic, assign) BOOL    showPercentage;
+@property(nonatomic, assign) NSInteger    updateTimerFiredDone;
 - (id)initWithFrame:(CGRect)frame Center:(CGPoint)center Radius:(CGFloat)radius;
 - (void)reloadData;
 - (void)setPieBackgroundColor:(UIColor *)color;

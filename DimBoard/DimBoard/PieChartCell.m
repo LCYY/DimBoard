@@ -23,15 +23,15 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier Slices:(NSArray*)slices Descriptions:(NSArray*)desps Colors:(NSArray*)colors{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
-        m_cellController = [[PieChartCellViewController alloc] init];
+        m_cellController = [[PieChartCellViewController alloc] initWithSlices:slices Descriptions:desps Colors:nil];
         [self.contentView addSubview:m_cellController.view];
     }
     return self;
 }
 
--(void)reloadData{
+-(void)setSlices:(NSArray*)slices Descriptions:(NSArray*)desps Colors:(NSArray*)colors{
     if(m_cellController){
-        [m_cellController reloadData];
+        [m_cellController setSlices:slices Descriptions:desps Colors:colors];
     }
 }
 

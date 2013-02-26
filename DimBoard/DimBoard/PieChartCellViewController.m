@@ -74,15 +74,23 @@
     [PieChart setLabelColor:[UIColor blackColor]];
     [PieChart setLabelFont:[UIFont systemFontOfSize:13.0]];
     [PieChart setPieRadius:100];
-    [PieChart setPieBackgroundColor:[UIColor redColor]];
     
-//    [PieChartSlice_output setText:[m_slicesDesp objectAtIndex:[m_slices count]]];
-//    [PieChartSlice_output setTextAlignment:UITextAlignmentCenter];
+    [PieChartSlice_output setText:[m_slicesDesp objectAtIndex:[m_slices count]]];
+    [PieChartSlice_output setTextAlignment:UITextAlignmentCenter];
     
     [PieChart reloadData];
 }
 
--(void)reloadData{
+-(void)setSlices:(NSArray*)slices Descriptions:(NSArray*)desps Colors:(NSArray*)colors{
+    m_slices = [slices copy];
+    m_slicesDesp = [desps copy];
+    if(colors == nil)
+        m_sliceColors = [NSArray arrayWithObjects:
+                         [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1],
+                         [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1],
+                         [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1],
+                         [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1],
+                         [UIColor colorWithRed:148/255.0 green:141/255.0 blue:139/255.0 alpha:1],nil];
     [PieChart reloadData];
 }
 
@@ -90,19 +98,33 @@
 
 - (NSUInteger)numberOfSlicesInPieChart:(XYPieChart *)pieChart
 {
-    return 4;
-    //return m_slices.count;
+    return m_slices.count;
 }
 
 - (CGFloat)pieChart:(XYPieChart *)pieChart valueForSliceAtIndex:(NSUInteger)index
 {
-    //CGFloat value = [[m_slices objectAtIndex:index] doubleValue];
-    return 0.25;
+    return[[m_slices objectAtIndex:index] doubleValue];
 }
 
 - (UIColor *)pieChart:(XYPieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index
 {
-    //UIColor* color =  [m_sliceColors objectAtIndex:(index % m_sliceColors.count)];
-    return nil;
+    return [m_sliceColors objectAtIndex:(index % m_sliceColors.count)];
+}
+
+#pragma mark - XYPieChart Delegate
+- (void)pieChart:(XYPieChart *)pieChart didSelectSliceAtIndex:(NSUInteger)index
+{
+    NSLog(@"did select slice at index %d",index);
+    m_selectedSliceIndex = index;
+    [PieChartSlice_output setText:[m_slicesDesp objectAtIndex:index]];
+}
+
+-(void)pieChart:(XYPieChart *)pieChart didDeselectSliceAtIndex:(NSUInteger)index{
+    NSLog(@"did De-select slice at index %d",index);
+    if(m_selectedSliceIndex == index){
+        m_selectedSliceIndex = -1;
+    }
+    if(m_selectedSliceIndex == -1)
+        [PieChartSlice_output setText:[m_slicesDesp objectAtIndex:[m_slices count]]];
 }
 @end
