@@ -117,7 +117,7 @@
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
     navController.navigationBar.topItem.title = @"新增供款";
     navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemDone target:rootController action:@selector(onSaveNewReocrd:)];
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemDone target:rootController action:@selector(onSaveNewRecord:)];
     navController.navigationBar.topItem.rightBarButtonItem = saveButton;
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
     navController.navigationBar.topItem.leftBarButtonItem = cancelButton;

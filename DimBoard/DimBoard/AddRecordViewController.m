@@ -94,7 +94,7 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (void)onSaveNewReocrd:(id)sender{
+- (void)onSaveNewRecord:(id)sender{
     [m_delegate addNewRecord:m_record];
     [self dismissModalViewControllerAnimated:YES];
 }

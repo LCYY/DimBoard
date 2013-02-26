@@ -29,6 +29,7 @@
 @synthesize LoanTerms_output;
 @synthesize MonthlyPay_output;
 @synthesize m_input, m_output;
+@synthesize m_recordViewController;
 
 - (void)viewDidLoad
 {
@@ -46,7 +47,9 @@
     [self initUI];
     [m_calculator setInput:m_input];
     m_output = [[m_calculator getOutput] copy];
-    [self updateResult];    
+    [self updateResult];
+    
+    m_recordViewController = [[MortgageRecordViewController alloc] init];
 }
 
 - (void)viewDidUnload {
@@ -118,7 +121,9 @@
 }
 
 - (IBAction)onShowOveralInfo:(id)sender {
-    OveralInfoViewController *rootController = [[OveralInfoViewController alloc] initWithInput:m_input Output:m_output];
+    //OveralInfoViewController *rootController = [[OveralInfoViewController alloc] initWithInput:m_input Output:m_output];
+    MortgageDetailViewController* rootController = [[MortgageDetailViewController alloc] initWithMortgageRecord:[[MortgageRecord alloc] initWithMortgageInput:m_input]];
+    [rootController setRecordViewController:m_recordViewController];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
     
@@ -126,6 +131,8 @@
     navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
     navController.navigationBar.topItem.leftBarButtonItem = doneButton;
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:rootController action:@selector(onAddMortgageToRecord:)];
+    navController.navigationBar.topItem.rightBarButtonItem = addButton;
     [navController setWantsFullScreenLayout:YES];
     [navController.view setAutoresizesSubviews:NO];
     navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -136,7 +143,7 @@
 }
 
 - (IBAction)onShowMortgageRecord:(id)sender {
-    MortgageRecordViewController *rootController = [[MortgageRecordViewController alloc] init];
+    MortgageRecordViewController *rootController = m_recordViewController;
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
     
     navController.navigationBar.topItem.title = ((UIButton*)sender).titleLabel.text;
@@ -155,12 +162,12 @@
 }
 
 - (IBAction)onShowDetails:(id)sender {
-    
 }
 
 - (void)onBack:(id)sender{
     [self dismissModalViewControllerAnimated:YES];
 }
+
 
 // for hide keyboard when touch background
 - (void)hideKeyBoard{

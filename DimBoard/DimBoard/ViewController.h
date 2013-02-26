@@ -11,12 +11,16 @@
 #import "MortgageRecordViewController.h"
 #import "Calculator.h"
 #import "PieChartCellViewController.h"
+#import "MortgageDetailViewController.h"
 
 @interface ViewController : UIViewController<UITextFieldDelegate>{    
     NSMutableArray* m_principals;
     
     Calculator* m_calculator;
 }
+
+@property (retain, nonatomic) MortgageRecordViewController* m_recordViewController;
+
 @property (retain, nonatomic) MortgageInput *m_input;
 @property (retain, nonatomic) MortgageOutput *m_output;
 

@@ -197,6 +197,14 @@
     return self;
 }
 
+-(id)initWithMortgageInput:(MortgageInput *)in{
+    self = [self init];
+    if(self){
+        input = [in copy];
+    }
+    return self;
+}
+
 #pragma mark - NSCopying
 -(id)copy{
     MortgageRecord* copy = [[[self class] alloc] init];

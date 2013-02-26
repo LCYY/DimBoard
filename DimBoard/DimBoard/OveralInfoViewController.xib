@@ -45,7 +45,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{21, 478}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="947454247"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -76,7 +75,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 507}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="817554932"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -97,7 +95,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 536}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="546245307"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -118,7 +115,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{108, 478}, {192, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="363378361"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -139,7 +135,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{108, 507}, {192, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="820582166"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -160,7 +155,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{108, 536}, {192, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -180,7 +174,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{22, 20}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="58453323"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -201,7 +194,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{21, 49}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1027679067"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -222,7 +214,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{21, 78}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="559217606"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -243,7 +234,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{22, 107}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="19851890"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -264,7 +254,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{109, 20}, {192, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="552506162"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -285,7 +274,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{109, 49}, {192, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="365600434"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -306,7 +294,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{109, 78}, {192, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="504886626"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -327,7 +314,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{109, 107}, {192, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -347,7 +333,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{21, 581}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1015649499"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -368,7 +353,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 610}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="945407104"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -389,7 +373,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 639}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1050543078"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -410,7 +393,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{21, 668}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="328136945"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -431,7 +413,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{108, 581}, {192, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="548336408"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -452,7 +433,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{108, 610}, {192, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="11104493"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -473,7 +453,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{22, 728}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="791198373"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -494,7 +473,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{109, 728}, {192, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -514,7 +492,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{108, 639}, {192, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="52609761"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -535,7 +512,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{108, 668}, {192, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -555,7 +531,6 @@
 								<int key="NSvFlags">274</int>
 								<string key="NSFrame">{{22, 144}, {280, 280}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:212</string>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
@@ -568,7 +543,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 434}, {280, 21}}</string>
 								<reference key="NSSuperview" ref="362816423"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -586,16 +560,14 @@
 						</array>
 						<string key="NSFrameSize">{320, 480}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</array>
-				<string key="NSFrame">{{0, 64}, {320, 416}}</string>
+				<string key="NSFrameSize">{320, 416}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
@@ -739,14 +711,6 @@
 						<nil key="parent"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">1</int>
-						<reference key="object" ref="191373211"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="362816423"/>
-						</array>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">-1</int>
 						<reference key="object" ref="372490531"/>
 						<reference key="parent" ref="0"/>
@@ -755,6 +719,14 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">-2</int>
 						<reference key="object" ref="975951072"/>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1</int>
+						<reference key="object" ref="191373211"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="362816423"/>
+						</array>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -791,123 +763,8 @@
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">4</int>
-						<reference key="object" ref="259847230"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">5</int>
-						<reference key="object" ref="363378361"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">6</int>
-						<reference key="object" ref="820582166"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">8</int>
-						<reference key="object" ref="947454247"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">9</int>
-						<reference key="object" ref="817554932"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">10</int>
-						<reference key="object" ref="546245307"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">12</int>
-						<reference key="object" ref="431008175"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">13</int>
-						<reference key="object" ref="552506162"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">14</int>
-						<reference key="object" ref="365600434"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">15</int>
-						<reference key="object" ref="504886626"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">16</int>
-						<reference key="object" ref="58453323"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">17</int>
-						<reference key="object" ref="1027679067"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">18</int>
-						<reference key="object" ref="559217606"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">19</int>
-						<reference key="object" ref="19851890"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">20</int>
-						<reference key="object" ref="403893841"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">21</int>
-						<reference key="object" ref="548336408"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">22</int>
-						<reference key="object" ref="11104493"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">23</int>
-						<reference key="object" ref="52609761"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">24</int>
-						<reference key="object" ref="1015649499"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">25</int>
-						<reference key="object" ref="945407104"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">28</int>
-						<reference key="object" ref="318239430"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">29</int>
-						<reference key="object" ref="791198373"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">26</int>
-						<reference key="object" ref="1050543078"/>
-						<reference key="parent" ref="362816423"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">27</int>
-						<reference key="object" ref="328136945"/>
+						<int key="objectID">46</int>
+						<reference key="object" ref="84352193"/>
 						<reference key="parent" ref="362816423"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -916,8 +773,123 @@
 						<reference key="parent" ref="362816423"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">46</int>
-						<reference key="object" ref="84352193"/>
+						<int key="objectID">27</int>
+						<reference key="object" ref="328136945"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">26</int>
+						<reference key="object" ref="1050543078"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">29</int>
+						<reference key="object" ref="791198373"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">28</int>
+						<reference key="object" ref="318239430"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">25</int>
+						<reference key="object" ref="945407104"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">24</int>
+						<reference key="object" ref="1015649499"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">23</int>
+						<reference key="object" ref="52609761"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">22</int>
+						<reference key="object" ref="11104493"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">21</int>
+						<reference key="object" ref="548336408"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">20</int>
+						<reference key="object" ref="403893841"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">19</int>
+						<reference key="object" ref="19851890"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">18</int>
+						<reference key="object" ref="559217606"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">17</int>
+						<reference key="object" ref="1027679067"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">16</int>
+						<reference key="object" ref="58453323"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">15</int>
+						<reference key="object" ref="504886626"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">14</int>
+						<reference key="object" ref="365600434"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">13</int>
+						<reference key="object" ref="552506162"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">12</int>
+						<reference key="object" ref="431008175"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">10</int>
+						<reference key="object" ref="546245307"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">9</int>
+						<reference key="object" ref="817554932"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">8</int>
+						<reference key="object" ref="947454247"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">6</int>
+						<reference key="object" ref="820582166"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">5</int>
+						<reference key="object" ref="363378361"/>
+						<reference key="parent" ref="362816423"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">4</int>
+						<reference key="object" ref="259847230"/>
 						<reference key="parent" ref="362816423"/>
 					</object>
 				</array>
@@ -983,7 +955,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">48</int>
+			<int key="maxID">50</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

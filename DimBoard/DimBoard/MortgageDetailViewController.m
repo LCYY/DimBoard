@@ -1,23 +1,24 @@
 //
-//  RecordDetailViewController.m
+//  MortgageDetailViewController.m
 //  DimBoard
 //
-//  Created by conicacui on 7/2/13.
+//  Created by conicacui on 26/2/13.
 //  Copyright (c) 2013 LCYY. All rights reserved.
 //
 
-#import "RecordDetailViewController.h"
+#import "MortgageDetailViewController.h"
 
-@interface RecordDetailViewController ()
+@interface MortgageDetailViewController ()
 
 @end
 
-@implementation RecordDetailViewController
+@implementation MortgageDetailViewController
+
 @synthesize m_record, m_output;
 @synthesize m_sections;
-@synthesize m_delegate;
 @synthesize m_pieChartDesps,m_pieChartSlices;
 @synthesize m_pieChartCells;
+@synthesize m_recordViewController;
 
 -(id)init{
     self = [super init];
@@ -29,6 +30,7 @@
         m_pieChartSlices = [[NSMutableArray alloc] init];
         m_pieChartDesps = [[NSMutableArray alloc] init];
         m_pieChartCells = [[NSMutableDictionary alloc] init];
+        m_recordViewController = nil;
     }
     return self;
 }
@@ -52,8 +54,15 @@
     self = [self init];
     if (self) {
         [self setSectionWithRecord:record];
+        if(m_record.input.date == nil){
+            m_record.input.date = [NSDate date];
+        }
     }
     return self;
+}
+
+-(void)setRecordViewController:(id)recordViewController{
+    m_recordViewController = recordViewController;
 }
 
 - (void)viewDidLoad
@@ -70,7 +79,6 @@
     [self setM_record:nil];
     [self setM_output:nil];
     [self setM_sections:nil];
-    [self setM_delegate:nil];
     [self setM_pieChartDesps:nil];
     [self setM_pieChartSlices:nil];
     [self setM_pieChartCells:nil];
@@ -85,11 +93,7 @@
     m_output = [[self getOutput] copy];
     
     self.title = m_record.name;
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat: DATEFORMAT];
-    NSString* datestring = [dateFormatter stringFromDate:record.input.date];
-    
+        
     NSArray* sectionkeys0 = [[NSArray alloc] initWithObjects:
                              KEY_MORTGAGE_HOMEVALUE,
                              KEY_MORTGAGE_LOANPERCENT,
@@ -104,21 +108,13 @@
                                nil];
     
     NSArray* sectionkeys1 = [[NSArray alloc] initWithObjects:
-                             KEY_MORTGAGE_BANKID,
                              KEY_MORTGAGE_LOANTERM,
-                             KEY_MORTGAGE_LOANDATE,
                              KEY_MORTGAGE_MONTHLYPAY,
-                             KEY_MORTGAGE_ALREADYPAIDAMOUNT,
-                             KEY_MORTGAGE_TOBEPAIDAMOUNT,
                              nil];
     
     NSArray* sectionValues1 = [[NSArray alloc] initWithObjects:
-                               [[[BankTypes alloc] init] getBankNameById:m_record->bankId],
                                [NSString stringWithFormat:@"%d 期",m_output->loanTerms],
-                               datestring,
                                [NSString stringWithFormat:@"%0.2f 元",m_output->monthlyPay],
-                               [NSString stringWithFormat:@"%0.4f 萬元",m_output->alreadyPaidAmount],
-                               [NSString stringWithFormat:@"%0.4f 萬元",m_output->toBePaidAmount],
                                nil];
     
     NSArray* sectionkeys2 = [[NSArray alloc] initWithObjects:
@@ -139,7 +135,7 @@
                              KEY_MORTGAGE_TOTALINTEREST,
                              KEY_MORTGAGE_TOTALPAY,
                              nil];
-
+    
     NSArray* sectionValues3 = [[NSArray alloc] initWithObjects:
                                [NSString stringWithFormat:@"%0.4f 萬元",m_output->loanAmount],
                                [NSString stringWithFormat:@"%0.4f 萬元",m_output->totalInterest],
@@ -166,16 +162,6 @@
     [m_sections addObject:sectionPair3];
     [m_sections addObject:sectionPair4];
     
-    //slices for section 1 pie chart
-    NSArray *s1Slices = [[NSArray alloc] initWithObjects:
-                         [NSString stringWithFormat:@"%0.4f",m_output->alreadyPaidAmount/m_output->totalPay],
-                         [NSString stringWithFormat:@"%0.4f",m_output->toBePaidAmount/m_output->totalPay],
-                         nil];
-    NSArray *s1Desps = [[NSArray alloc] initWithObjects:
-                        [KEY_MORTGAGE_ALREADYPAIDAMOUNT stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->alreadyPaidAmount]],
-                        [KEY_MORTGAGE_TOBEPAIDAMOUNT stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->toBePaidAmount]],
-                        [KEY_MORTGAGE_TOTALPAY stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->totalPay]],
-                        nil];
     
     //slices for section 2 pie chart
     NSArray *s2Slices = [[NSArray alloc] initWithObjects:
@@ -218,23 +204,21 @@
                         [KEY_MORTGAGE_TOTALEXPENCE stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->totalExpence]],
                         nil];
     
-    [m_pieChartSlices addObject:s1Slices];
     [m_pieChartSlices addObject:s2Slices];
     [m_pieChartSlices addObject:s3Slices];
     [m_pieChartSlices addObject:s4Slices];
     
-    [m_pieChartDesps addObject:s1Desps];
     [m_pieChartDesps addObject:s2Desps];
     [m_pieChartDesps addObject:s3Desps];
     [m_pieChartDesps addObject:s4Desps];
     
-
-    for(NSInteger section = 1; section < [m_sections count]; section++){
+    
+    for(NSInteger section = 2; section < [m_sections count]; section++){
         NSIndexPath* indexpath = [NSIndexPath indexPathForRow:[[[m_sections objectAtIndex:section] objectAtIndex:0] count] inSection:section];
         NSString* key = [NSString stringWithFormat:@"%d-%d", indexpath.section, indexpath.row];
-   
-        NSArray* slices = [m_pieChartSlices objectAtIndex:(section - 1)];
-        NSArray* desps = [m_pieChartDesps objectAtIndex:(section - 1)];
+        
+        NSArray* slices = [m_pieChartSlices objectAtIndex:(section - 2)];
+        NSArray* desps = [m_pieChartDesps objectAtIndex:(section - 2)];
         
         PieChartCell* cell = [m_pieChartCells objectForKey:key];
         if(cell == nil){
@@ -263,15 +247,18 @@
     return [cal getOutput];
 }
 
-- (void)onEdit:(id)sender{
+- (void)onBack:(id)sender{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+-(void)onAddMortgageToRecord:(id)sender{
     AddRecordViewController* rootController = [[AddRecordViewController alloc] initWithMortgageRecord:m_record];
-    [rootController setM_delegate:self];
+    [rootController setM_delegate:m_recordViewController];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
-    
-    navController.navigationBar.topItem.title = self.navigationController.navigationBar.topItem.title;
+    navController.navigationBar.topItem.title = @"新增供款";
     navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemDone target:rootController action:@selector(onSaveRecord:)];
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemDone target:rootController action:@selector(onSaveNewRecord:)];
     navController.navigationBar.topItem.rightBarButtonItem = saveButton;
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
     navController.navigationBar.topItem.leftBarButtonItem = cancelButton;
@@ -285,16 +272,13 @@
     [self presentModalViewController:navController animated:YES];
 }
 
-- (void)onBack:(id)sender{
-    [self dismissModalViewControllerAnimated:YES];
-}
 
 #pragma mark
 #pragma mark - UITableViewDlegate
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(section != 0){
+    if(section != 0 && section != 1){
         return [[[m_sections objectAtIndex:section] objectAtIndex:0] count] + 1;
     }
     return [[[m_sections objectAtIndex:section] objectAtIndex:0] count];
@@ -310,11 +294,11 @@
     UITableViewCell *cell = nil;
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
-    if(section != 0 && row == [[[m_sections objectAtIndex:section] objectAtIndex:0] count]){
+    if(section != 0 && section != 1 && row == [[[m_sections objectAtIndex:section] objectAtIndex:0] count]){
         NSString* key = [NSString stringWithFormat:@"%d-%d", section, row];
         cell = (PieChartCell*)[m_pieChartCells objectForKey:key];
         
-        [((PieChartCell*)cell) setSlices:[m_pieChartSlices objectAtIndex:(section - 1)] Descriptions:[m_pieChartDesps objectAtIndex:(section - 1)] Colors:nil IndexPath:indexPath];
+        [((PieChartCell*)cell) setSlices:[m_pieChartSlices objectAtIndex:(section - 2)] Descriptions:[m_pieChartDesps objectAtIndex:(section - 2)] Colors:nil IndexPath:indexPath];
     }else{
         cell = [tableView dequeueReusableCellWithIdentifier:MortgageRecordDetailsNormalCell];
         if(cell == nil){
@@ -344,7 +328,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
-    if(section != 0 && row == [[[m_sections objectAtIndex:section] objectAtIndex:0] count]){
+    if(section != 0 && section != 1 && row == [[[m_sections objectAtIndex:section] objectAtIndex:0] count]){
         NSString* key = [NSString stringWithFormat:@"%d-%d", section, row];
         PieChartCell* cell = [m_pieChartCells objectForKey:key];
         return [cell getHeight];
@@ -352,15 +336,9 @@
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
-#pragma mark - UpdateRecordProtocl
--(void)updateRecord:(MortgageRecord *)record{
-    [self setSectionWithRecord:record];
-    [((UITableView*)self.view) reloadData];
-    [m_delegate updateRecord:m_record];
-}
 #pragma mark - PieChartCellExtendDelegate
 -(void)extendPieChartCell:(BOOL)extend atIndexPath:(NSIndexPath *)indexpath{
     [self.tableView reloadData];
 }
-
 @end
+

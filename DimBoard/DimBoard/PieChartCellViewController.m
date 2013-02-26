@@ -107,6 +107,9 @@
                          [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1],
                          [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1],
                          [UIColor colorWithRed:148/255.0 green:141/255.0 blue:139/255.0 alpha:1],nil];
+    
+    [PieChartSlice_output setText:[m_slicesDesp objectAtIndex:[m_slices count]]];
+    [PieChartSlice_output setTextAlignment:UITextAlignmentCenter];
     [PieChart reloadData];
 }
 
@@ -148,13 +151,13 @@
 #pragma mark - XYPieChart Delegate
 - (void)pieChart:(XYPieChart *)pieChart didSelectSliceAtIndex:(NSUInteger)index
 {
-    NSLog(@"did select slice at index %d",index);
+    //NSLog(@"did select slice at index %d",index);
     m_selectedSliceIndex = index;
     [PieChartSlice_output setText:[m_slicesDesp objectAtIndex:index]];
 }
 
 -(void)pieChart:(XYPieChart *)pieChart didDeselectSliceAtIndex:(NSUInteger)index{
-    NSLog(@"did De-select slice at index %d",index);
+    //NSLog(@"did De-select slice at index %d",index);
     if(m_selectedSliceIndex == index){
         m_selectedSliceIndex = -1;
     }

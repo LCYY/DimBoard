@@ -177,13 +177,13 @@
 #pragma mark - XYPieChart Delegate
 - (void)pieChart:(XYPieChart *)pieChart didSelectSliceAtIndex:(NSUInteger)index
 {
-    NSLog(@"did select slice at index %d",index);
+    //NSLog(@"did select slice at index %d",index);
     m_selectedSliceIndex = index;
     [PieChartSlice_output setText:[m_slicesDesp objectAtIndex:index]];
 }
 
 -(void)pieChart:(XYPieChart *)pieChart didDeselectSliceAtIndex:(NSUInteger)index{
-    NSLog(@"did De-select slice at index %d",index);
+    //NSLog(@"did De-select slice at index %d",index);
     if(m_selectedSliceIndex == index){
         m_selectedSliceIndex = -1;
     }
