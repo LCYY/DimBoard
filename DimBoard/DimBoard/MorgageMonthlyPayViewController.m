@@ -19,8 +19,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    TableView.layer.borderWidth = 2;
-    TableView.layer.borderColor = [UIColor colorWithRed:0 green:0 blue:255 alpha:0.5].CGColor;
+    //TableView.layer.borderWidth = 2;
+    //TableView.layer.borderColor = [UIColor colorWithRed:0 green:0 blue:255 alpha:0.5].CGColor;
     [TableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     [TableView setDataSource:self];
@@ -77,25 +77,25 @@
     return 28;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 4;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 4;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 4)];
-    [view setBackgroundColor:[UIColor whiteColor]];
-    return view;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 4)];
-    [view setBackgroundColor:[UIColor whiteColor]];
-    return view;
-}
+//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//    return 4;
+//}
+//
+//-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+//    return 4;
+//}
+//
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 4)];
+//    [view setBackgroundColor:[UIColor whiteColor]];
+//    return view;
+//}
+//
+//-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+//    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 4)];
+//    [view setBackgroundColor:[UIColor whiteColor]];
+//    return view;
+//}
 
 @end
 
