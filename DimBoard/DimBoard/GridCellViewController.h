@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface GridCellViewController : UIViewController{
     NSInteger m_term;
@@ -14,7 +15,6 @@
     double m_principal;
     double m_interest;
     double m_leftAmount;
-    NSInteger m_row;
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *TermLabel;
@@ -22,5 +22,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *InterestLabel;
 @property (weak, nonatomic) IBOutlet UITextField *LeftAmountLabel;
 
--(void)setTerm:(NSInteger)term MonthlyPay:(double)monthlypay Principal:(double)principal Interest:(double)interest LeftAmount:(double)amount Row:(NSInteger)row;
+-(void)setTerm:(NSInteger)term MonthlyPay:(double)monthlypay Principal:(double)principal Interest:(double)interest LeftAmount:(double)amount;
 @end

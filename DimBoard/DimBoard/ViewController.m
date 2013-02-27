@@ -166,6 +166,7 @@
 
 - (IBAction)onShowDetails:(id)sender {
     MorgageMonthlyPayViewController* rootController = [[MorgageMonthlyPayViewController alloc] init];
+    [rootController setPricipals:m_output.principals LeftAmount:m_output.leftLoanAmounts MonthlyPay:m_output->monthlyPay];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
     

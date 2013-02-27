@@ -20,12 +20,12 @@
     return self;
 }
 
--(void)setTerm:(NSInteger)term MonthlyPay:(double)monthlypay Principal:(double)principal Interest:(double)interest LeftAmount:(double)amount Row:(NSInteger)row{
+-(void)setTerm:(NSInteger)term MonthlyPay:(double)monthlypay Principal:(double)principal Interest:(double)interest LeftAmount:(double)amount{
     if(m_cellController == nil){
         m_cellController = [[GridCellViewController alloc] init];
         [self.contentView addSubview:m_cellController.view];
     }
-    [m_cellController setTerm:term MonthlyPay:monthlypay Principal:principal Interest:interest LeftAmount:amount Row:row];
+    [m_cellController setTerm:term MonthlyPay:monthlypay Principal:principal Interest:interest LeftAmount:amount];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

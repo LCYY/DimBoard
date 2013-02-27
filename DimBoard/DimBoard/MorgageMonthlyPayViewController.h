@@ -10,6 +10,13 @@
 #import "GridCell.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface MorgageMonthlyPayViewController : UITableViewController
+@interface MorgageMonthlyPayViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+{
+    double m_monthlyPay;
+}
+@property (weak, nonatomic) IBOutlet UITableView *TableView;
+@property (retain, nonatomic) NSArray* m_principals;
+@property (retain, nonatomic) NSArray* m_leftLoanAmounts;
 
+-(void)setPricipals:(NSArray*)pricipals LeftAmount:(NSArray*)leftAmounts MonthlyPay:(double)monthlyPay;
 @end

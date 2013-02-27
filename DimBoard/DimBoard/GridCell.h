@@ -13,5 +13,5 @@
 
 @property (retain, nonatomic) GridCellViewController* m_cellController;
 
--(void)setTerm:(NSInteger)term MonthlyPay:(double)monthlypay Principal:(double)principal Interest:(double)interest LeftAmount:(double)amount Row:(NSInteger)row;
+-(void)setTerm:(NSInteger)term MonthlyPay:(double)monthlypay Principal:(double)principal Interest:(double)interest LeftAmount:(double)amount;
 @end

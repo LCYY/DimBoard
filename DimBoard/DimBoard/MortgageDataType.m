@@ -54,7 +54,7 @@
 
 
 @implementation MortgageInput
-@synthesize date, principals;
+@synthesize date;
 
 -(id)init{
     self = [super init];
@@ -64,7 +64,6 @@
         loanPercent = 0.0;
         loanRate = 0.0;
         date = [NSDate date];
-        principals = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -77,13 +76,8 @@
         loanPercent = lp;
         loanRate = lr;
         date = [dt copy];
-        principals = [[NSMutableArray alloc] init];
     }
     return self;
-}
-
--(void)setPrincipals:(NSMutableArray *)ppals{
-    principals = [ppals mutableCopy];
 }
 
 #pragma mark - NSCopying
@@ -95,7 +89,6 @@
         copy->loanRate = loanRate;
         copy->loanYear = loanYear;
         copy->date = [date copyWithZone:zone];
-        copy->principals = [principals mutableCopyWithZone:zone];
     }
     return copy;
 }
@@ -108,7 +101,6 @@
         copy->loanRate = loanRate;
         copy->loanYear = loanYear;
         copy->date = [date copy];
-        copy->principals = [principals mutableCopy];
     }
     return copy;
 }
@@ -116,6 +108,8 @@
 @end
 
 @implementation MortgageOutput
+@synthesize principals, leftLoanAmounts;
+
 -(id)init{
     self = [super init];
     if(self){
@@ -131,6 +125,8 @@
         totalInterest = 0.0;
         alreadyPaidAmount = 0.0;
         toBePaidAmount = 0.0;
+        principals = [[NSMutableArray alloc] init];
+        leftLoanAmounts = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -139,7 +135,20 @@
 -(id)copyWithZone:(NSZone *)zone{
     MortgageOutput* copy = [[[self class] allocWithZone:zone] init];
     if(copy){
-        copy = [self copy];
+        copy->comission = comission;
+        copy->firstExpence = firstExpence;
+        copy->firstPay = firstPay;
+        copy->loanAmount = loanAmount;
+        copy->loanTerms = loanTerms;
+        copy->monthlyPay = monthlyPay;
+        copy->tax = tax;
+        copy->totalExpence = totalExpence;
+        copy->totalPay = totalPay;
+        copy->totalInterest = totalInterest;
+        copy->alreadyPaidAmount = alreadyPaidAmount;
+        copy->toBePaidAmount = toBePaidAmount;
+        copy->principals = [principals mutableCopyWithZone:zone];
+        copy->leftLoanAmounts = [leftLoanAmounts mutableCopyWithZone:zone];
     }
     return copy;
 }
@@ -159,6 +168,8 @@
         copy->totalInterest = totalInterest;
         copy->alreadyPaidAmount = alreadyPaidAmount;
         copy->toBePaidAmount = toBePaidAmount;
+        copy->principals = [principals mutableCopy];
+        copy->leftLoanAmounts = [leftLoanAmounts mutableCopy];
     }
     return copy;
 }

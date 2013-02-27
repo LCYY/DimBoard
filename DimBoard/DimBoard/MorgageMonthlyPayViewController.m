@@ -13,33 +13,30 @@
 @end
 
 @implementation MorgageMonthlyPayViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize TableView;
+@synthesize m_principals, m_leftLoanAmounts;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UITableView* tableview = self.view;
-    tableview.layer.borderWidth = 2;
-    tableview.layer.borderColor = [UIColor redColor].CGColor;
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    TableView.layer.borderWidth = 2;
+    TableView.layer.borderColor = [UIColor colorWithRed:0 green:0 blue:255 alpha:0.5].CGColor;
+    [TableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    [TableView setDataSource:self];
+    [TableView setDelegate:self];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)viewDidUnload{
+    [super viewDidUnload];
+    [self setTableView:nil];
+    [self setM_principals:nil];
+}
+
+-(void)setPricipals:(NSArray *)pricipals LeftAmount:(NSArray*)leftAmounts MonthlyPay:(double)monthlypay{
+    m_principals = [pricipals copy];
+    m_leftLoanAmounts = [leftAmounts copy];
+    m_monthlyPay = monthlypay;
 }
 
 #pragma mark - Table view data source
@@ -51,7 +48,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 100;
+    return [m_principals count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -61,7 +58,12 @@
     if (cell == nil) {
         cell = [[GridCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    [(GridCell*)cell setTerm:indexPath.row MonthlyPay:100000 Principal:80000 Interest:20000 LeftAmount:5000000 Row:indexPath.row];
+    NSInteger term = indexPath.row + 1;
+    double pricipal = [[m_principals objectAtIndex:indexPath.row] doubleValue];
+    double interest = m_monthlyPay - pricipal;
+    double leftAmount = [[m_leftLoanAmounts objectAtIndex:indexPath.row] doubleValue];
+    
+    [(GridCell*)cell setTerm:term MonthlyPay:m_monthlyPay Principal:pricipal Interest:interest LeftAmount:leftAmount];
     return cell;
 }
 
@@ -73,6 +75,26 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 28;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 4;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 4;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 4)];
+    [view setBackgroundColor:[UIColor whiteColor]];
+    return view;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 4)];
+    [view setBackgroundColor:[UIColor whiteColor]];
+    return view;
 }
 
 @end

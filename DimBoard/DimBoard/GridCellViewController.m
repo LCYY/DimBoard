@@ -24,14 +24,23 @@
     return self;
 }
 
--(void)setTerm:(NSInteger)term MonthlyPay:(double)monthlypay Principal:(double)principal Interest:(double)interest LeftAmount:(double)amount Row:(NSInteger)row{
+-(void)setTerm:(NSInteger)term MonthlyPay:(double)monthlypay Principal:(double)principal Interest:(double)interest LeftAmount:(double)amount{
     m_term = term;
     m_monthlyPay = monthlypay;
     m_principal = principal;
     m_interest = interest;
     m_leftAmount = amount;
-    m_row = row;
     
+    CGColorRef colorref = [UIColor colorWithRed:255 green:255 blue:255 alpha:0.7].CGColor;
+    TermLabel.layer.borderColor = colorref;
+    PrincipalLabel.layer.borderColor = colorref;
+    InterestLabel.layer.borderColor = colorref;
+    LeftAmountLabel.layer.borderColor = colorref;
+    TermLabel.layer.borderWidth = 1;
+    PrincipalLabel.layer.borderWidth = 1;
+    InterestLabel.layer.borderWidth = 1;
+    LeftAmountLabel.layer.borderWidth = 1;
+
     [TermLabel setTextAlignment:NSTextAlignmentCenter];
     [PrincipalLabel setTextAlignment:NSTextAlignmentCenter];
     [InterestLabel setTextAlignment:NSTextAlignmentCenter];
@@ -43,13 +52,13 @@
     [LeftAmountLabel setUserInteractionEnabled:NO];
     
     [TermLabel setText:[NSString stringWithFormat:@"%d",m_term]];
-    [PrincipalLabel setText:[NSString stringWithFormat:@"%0.2f",m_principal]];
-    [InterestLabel setText:[NSString stringWithFormat:@"%0.2f",m_interest]];
-    [LeftAmountLabel setText:[NSString stringWithFormat:@"%0.2f",m_leftAmount]];
+    [PrincipalLabel setText:[NSString stringWithFormat:@"%0.0f",m_principal]];
+    [InterestLabel setText:[NSString stringWithFormat:@"%0.0f",m_interest]];
+    [LeftAmountLabel setText:[NSString stringWithFormat:@"%0.0f",m_leftAmount]];
     
     UIColor *color = nil;
-    if(m_row%2 == 0){
-        color = [UIColor colorWithRed:255 green:0 blue:0 alpha:0.2];
+    if(m_term%2 == 0){
+        color = [UIColor colorWithRed:0 green:0 blue:255 alpha:0.2];
     }else{
         color = [UIColor whiteColor];
     }

@@ -83,11 +83,12 @@
             }
         }
     }
-    for(NSInteger i = 0; i < pastMonths; i++){
-        m_output->alreadyPaidAmount += [[m_input.principals objectAtIndex:i] doubleValue];
+    if(pastMonths == 0){
+        m_output->toBePaidAmount = m_output->loanAmount;
+    }else{
+        m_output->toBePaidAmount = [[m_output.leftLoanAmounts objectAtIndex:(pastMonths-1)] doubleValue]/10000.0;
     }
-    m_output->alreadyPaidAmount /= 10000.0;
-    m_output->toBePaidAmount = m_output->loanAmount - m_output->alreadyPaidAmount;
+    m_output->alreadyPaidAmount = m_output->loanAmount - m_output->toBePaidAmount;
 }
 
 -(void)calculateResult{
@@ -116,9 +117,13 @@
     m_output->totalExpence = m_output->firstExpence + m_output->totalPay;
     
     //calculate principal in each term
+    double leftLoanAmount = m_output->loanAmount*10000.0;
+    double pricipal_term_1 = m_output->monthlyPay - interest_term_1;
     for(int i=0; i<m_output->loanTerms; i++){
-        NSNumber* number = [NSNumber numberWithDouble:(m_output->monthlyPay-interest_term_1*pow(1+rate_per_month,i))];
-        [m_input.principals addObject:number];
+        double principal = pricipal_term_1*pow(1+rate_per_month,i);
+        leftLoanAmount -= principal;
+        [m_output.principals addObject:[NSString stringWithFormat:@"%0.2f",principal]];
+        [m_output.leftLoanAmounts addObject:[NSString stringWithFormat:@"%0.2f",leftLoanAmount]];
     }
     
     [self calculateCurrentStatus];
