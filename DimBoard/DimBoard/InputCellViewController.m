@@ -75,4 +75,5 @@
     m_value = [ValueInput text];
     [m_delegate updateRecordKey:m_name withValue:m_value];
 }
+
 @end

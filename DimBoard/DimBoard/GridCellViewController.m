@@ -32,10 +32,10 @@
     m_leftAmount = amount;
     
     CGColorRef colorref = [UIColor colorWithRed:255 green:255 blue:255 alpha:0.7].CGColor;
-    TermLabel.layer.borderColor = colorref;
-    PrincipalLabel.layer.borderColor = colorref;
-    InterestLabel.layer.borderColor = colorref;
-    LeftAmountLabel.layer.borderColor = colorref;
+    TermLabel.layer.borderColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:0.7].CGColor;
+    PrincipalLabel.layer.borderColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:0.7].CGColor;
+    InterestLabel.layer.borderColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:0.7].CGColor;
+    LeftAmountLabel.layer.borderColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:0.7].CGColor;
     TermLabel.layer.borderWidth = 1;
     PrincipalLabel.layer.borderWidth = 1;
     InterestLabel.layer.borderWidth = 1;
