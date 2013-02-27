@@ -206,7 +206,7 @@
                          [NSString stringWithFormat:@"%0.4f",m_output->firstPay/m_output->totalExpence],
                          [NSString stringWithFormat:@"%0.4f",m_output->tax/m_output->totalExpence/10000.0],
                          [NSString stringWithFormat:@"%0.4f",m_output->comission/m_output->totalExpence/10000.0],
-                         [NSString stringWithFormat:@"%0.4f",m_output->totalPay/m_output->totalExpence],
+                         [NSString stringWithFormat:@"%0.4f",m_output->loanAmount/m_output->totalExpence],
                          [NSString stringWithFormat:@"%0.4f",m_output->totalInterest/m_output->totalExpence],
                          nil];
     NSArray *s4Desps = [[NSArray alloc] initWithObjects:
@@ -313,7 +313,6 @@
     if(section != 0 && row == [[[m_sections objectAtIndex:section] objectAtIndex:0] count]){
         NSString* key = [NSString stringWithFormat:@"%d-%d", section, row];
         cell = (PieChartCell*)[m_pieChartCells objectForKey:key];
-        
         [((PieChartCell*)cell) setSlices:[m_pieChartSlices objectAtIndex:(section - 1)] Descriptions:[m_pieChartDesps objectAtIndex:(section - 1)] Colors:nil IndexPath:indexPath];
     }else{
         cell = [tableView dequeueReusableCellWithIdentifier:MortgageRecordDetailsNormalCell];

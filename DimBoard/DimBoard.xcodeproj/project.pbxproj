@@ -13,9 +13,12 @@
 		FB2D6FA116BA22E2008E367F /* icon_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2D6F9C16BA22E2008E367F /* icon_64x64.png */; };
 		FB2D6FA216BA22E2008E367F /* icon_128x128.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2D6F9D16BA22E2008E367F /* icon_128x128.png */; };
 		FB2D6FA316BA22E2008E367F /* icon_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2D6F9E16BA22E2008E367F /* icon_256x256.png */; };
+		FB31519816DDAB970090B972 /* GridCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB31519616DDAB970090B972 /* GridCellViewController.m */; };
+		FB31519916DDAB970090B972 /* GridCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB31519716DDAB970090B972 /* GridCellViewController.xib */; };
+		FB3151A216DDE1AF0090B972 /* MorgageMonthlyPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3151A016DDE1AF0090B972 /* MorgageMonthlyPayViewController.m */; };
+		FB3151A316DDE1AF0090B972 /* MorgageMonthlyPayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB3151A116DDE1AF0090B972 /* MorgageMonthlyPayViewController.xib */; };
+		FB3151A616DDE6970090B972 /* GridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3151A516DDE6970090B972 /* GridCell.m */; };
 		FB43CC7816DC8D2C00743184 /* down.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FB43CC7716DC8D2C00743184 /* down.jpg */; };
-		FB7858F416BBB0DF00C63D08 /* OveralInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7858F216BBB0DF00C63D08 /* OveralInfoViewController.m */; };
-		FB7858F516BBB0DF00C63D08 /* OveralInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB7858F316BBB0DF00C63D08 /* OveralInfoViewController.xib */; };
 		FB78590C16C0B07600C63D08 /* MortgageDataType.m in Sources */ = {isa = PBXBuildFile; fileRef = FB78590B16C0B07500C63D08 /* MortgageDataType.m */; };
 		FB78592516C103F100C63D08 /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = FB78592416C103F100C63D08 /* Calculator.m */; };
 		FB78592916C1040100C63D08 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FB78592816C1040100C63D08 /* XYPieChart.m */; };
@@ -59,10 +62,15 @@
 		FB2D6F9C16BA22E2008E367F /* icon_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_64x64.png; path = Home.iconset/icon_64x64.png; sourceTree = "<group>"; };
 		FB2D6F9D16BA22E2008E367F /* icon_128x128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_128x128.png; path = Home.iconset/icon_128x128.png; sourceTree = "<group>"; };
 		FB2D6F9E16BA22E2008E367F /* icon_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_256x256.png; path = Home.iconset/icon_256x256.png; sourceTree = "<group>"; };
+		FB31519516DDAB970090B972 /* GridCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridCellViewController.h; sourceTree = "<group>"; };
+		FB31519616DDAB970090B972 /* GridCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridCellViewController.m; sourceTree = "<group>"; };
+		FB31519716DDAB970090B972 /* GridCellViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GridCellViewController.xib; sourceTree = "<group>"; };
+		FB31519F16DDE1AF0090B972 /* MorgageMonthlyPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MorgageMonthlyPayViewController.h; sourceTree = "<group>"; };
+		FB3151A016DDE1AF0090B972 /* MorgageMonthlyPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MorgageMonthlyPayViewController.m; sourceTree = "<group>"; };
+		FB3151A116DDE1AF0090B972 /* MorgageMonthlyPayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MorgageMonthlyPayViewController.xib; sourceTree = "<group>"; };
+		FB3151A416DDE6970090B972 /* GridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridCell.h; sourceTree = "<group>"; };
+		FB3151A516DDE6970090B972 /* GridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridCell.m; sourceTree = "<group>"; };
 		FB43CC7716DC8D2C00743184 /* down.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = down.jpg; path = Home.iconset/down.jpg; sourceTree = "<group>"; };
-		FB7858F116BBB0DF00C63D08 /* OveralInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OveralInfoViewController.h; sourceTree = "<group>"; };
-		FB7858F216BBB0DF00C63D08 /* OveralInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OveralInfoViewController.m; sourceTree = "<group>"; };
-		FB7858F316BBB0DF00C63D08 /* OveralInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OveralInfoViewController.xib; sourceTree = "<group>"; };
 		FB78590A16C0B07500C63D08 /* MortgageDataType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MortgageDataType.h; sourceTree = "<group>"; };
 		FB78590B16C0B07500C63D08 /* MortgageDataType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MortgageDataType.m; sourceTree = "<group>"; };
 		FB78592316C103F100C63D08 /* Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
@@ -176,6 +184,11 @@
 				FBB0A43516D34AE800F087EE /* InputCellViewController.xib */,
 				FBB0A43816D34B0600F087EE /* InputCell.h */,
 				FBB0A43916D34B0600F087EE /* InputCell.m */,
+				FB31519516DDAB970090B972 /* GridCellViewController.h */,
+				FB31519616DDAB970090B972 /* GridCellViewController.m */,
+				FB31519716DDAB970090B972 /* GridCellViewController.xib */,
+				FB3151A416DDE6970090B972 /* GridCell.h */,
+				FB3151A516DDE6970090B972 /* GridCell.m */,
 			);
 			name = "Customized UITableViewCell";
 			sourceTree = "<group>";
@@ -225,9 +238,6 @@
 				FBF3642916DCAA0A001B4F14 /* MortgageDetailViewController.h */,
 				FBF3642A16DCAA0A001B4F14 /* MortgageDetailViewController.m */,
 				FBF3642B16DCAA0A001B4F14 /* MortgageDetailViewController.xib */,
-				FB7858F116BBB0DF00C63D08 /* OveralInfoViewController.h */,
-				FB7858F216BBB0DF00C63D08 /* OveralInfoViewController.m */,
-				FB7858F316BBB0DF00C63D08 /* OveralInfoViewController.xib */,
 				FB78590A16C0B07500C63D08 /* MortgageDataType.h */,
 				FB78590B16C0B07500C63D08 /* MortgageDataType.m */,
 				FB961B4416C34AFD000EA974 /* MortgageRecordViewController.h */,
@@ -245,6 +255,9 @@
 				FBB0A44D16D3771C00F087EE /* BankPickerViewController.h */,
 				FBB0A44E16D3771C00F087EE /* BankPickerViewController.m */,
 				FBB0A44F16D3771D00F087EE /* BankPickerViewController.xib */,
+				FB31519F16DDE1AF0090B972 /* MorgageMonthlyPayViewController.h */,
+				FB3151A016DDE1AF0090B972 /* MorgageMonthlyPayViewController.m */,
+				FB3151A116DDE1AF0090B972 /* MorgageMonthlyPayViewController.xib */,
 				FBB0A43216D34A9F00F087EE /* Customized UITableViewCell */,
 				FBB0A45516D4648E00F087EE /* MortgageRecordIO.h */,
 				FBB0A45616D4648E00F087EE /* MortgageRecordIO.m */,
@@ -322,7 +335,6 @@
 				FB2D6FA116BA22E2008E367F /* icon_64x64.png in Resources */,
 				FB2D6FA216BA22E2008E367F /* icon_128x128.png in Resources */,
 				FB2D6FA316BA22E2008E367F /* icon_256x256.png in Resources */,
-				FB7858F516BBB0DF00C63D08 /* OveralInfoViewController.xib in Resources */,
 				35AB6DF816BEA10000795E57 /* Default-568h@2x.png in Resources */,
 				FB961B4816C34AFD000EA974 /* MortgageRecordViewController.xib in Resources */,
 				FB961B8716C34F04000EA974 /* AddRecordViewController.xib in Resources */,
@@ -334,6 +346,8 @@
 				FBB0A46716D720D700F087EE /* PieChartCellViewController.xib in Resources */,
 				FB43CC7816DC8D2C00743184 /* down.jpg in Resources */,
 				FBF3642D16DCAA0A001B4F14 /* MortgageDetailViewController.xib in Resources */,
+				FB31519916DDAB970090B972 /* GridCellViewController.xib in Resources */,
+				FB3151A316DDE1AF0090B972 /* MorgageMonthlyPayViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +361,6 @@
 				FBF3C86216B920D400790005 /* main.m in Sources */,
 				FBF3C86616B920D400790005 /* AppDelegate.m in Sources */,
 				FBF3C86916B920D400790005 /* ViewController.m in Sources */,
-				FB7858F416BBB0DF00C63D08 /* OveralInfoViewController.m in Sources */,
 				FB78590C16C0B07600C63D08 /* MortgageDataType.m in Sources */,
 				FB78592516C103F100C63D08 /* Calculator.m in Sources */,
 				FB78592916C1040100C63D08 /* XYPieChart.m in Sources */,
@@ -364,6 +377,9 @@
 				FBB0A46216D7204400F087EE /* PieChartCell.m in Sources */,
 				FBB0A46616D720D700F087EE /* PieChartCellViewController.m in Sources */,
 				FBF3642C16DCAA0A001B4F14 /* MortgageDetailViewController.m in Sources */,
+				FB31519816DDAB970090B972 /* GridCellViewController.m in Sources */,
+				FB3151A216DDE1AF0090B972 /* MorgageMonthlyPayViewController.m in Sources */,
+				FB3151A616DDE6970090B972 /* GridCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

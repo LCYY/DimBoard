@@ -71,9 +71,12 @@
     [super viewDidUnload];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return TRUE;
+-(BOOL)shouldAutorotate{
+    return NO;
+}
+
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    return NO;
 }
 
 - (void)initUI{
@@ -162,6 +165,22 @@
 }
 
 - (IBAction)onShowDetails:(id)sender {
+    MorgageMonthlyPayViewController* rootController = [[MorgageMonthlyPayViewController alloc] init];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
+    
+    navController.navigationBar.topItem.title = ((UIButton*)sender).titleLabel.text;
+    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
+    navController.navigationBar.topItem.leftBarButtonItem = doneButton;
+    
+    [navController setWantsFullScreenLayout:YES];
+    [navController.view setAutoresizesSubviews:NO];
+    navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    navController.visibleViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    
+    [self presentModalViewController:navController animated:YES];
 }
 
 - (void)onBack:(id)sender{

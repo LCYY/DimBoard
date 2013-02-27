@@ -15,7 +15,7 @@
     self = [self init];
     if(self){
         m_maxId = -1;
-        m_plistpath = [[NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:PLISTFILENAME];
+        m_plistpath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:PLISTFILENAME];
         m_records = [[NSMutableArray alloc] init];
         
         if(![[NSFileManager defaultManager] fileExistsAtPath:m_plistpath])

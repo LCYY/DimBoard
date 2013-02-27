@@ -10,7 +10,6 @@
 
 @implementation Calculator
 
-@synthesize m_principals;
 @synthesize m_input, m_output;
 
 - (id)init{
@@ -28,12 +27,6 @@
 
 -(MortgageOutput*)getOutput{
     return m_output;
-}
-
--(void)getMonthlyPrincipals:(NSMutableArray*) arry{
-    for(int i=0; i<m_output->loanTerms; i++){
-        [arry addObject: [m_principals objectAtIndex:i]];
-    }
 }
 
 -(double)calculateTax{
@@ -90,9 +83,11 @@
             }
         }
     }
-    
-    m_output->alreadyPaidAmount = m_output->monthlyPay*pastMonths/10000.0;
-    m_output->toBePaidAmount = m_output->totalPay - m_output->alreadyPaidAmount;
+    for(NSInteger i = 0; i < pastMonths; i++){
+        m_output->alreadyPaidAmount += [[m_input.principals objectAtIndex:i] doubleValue];
+    }
+    m_output->alreadyPaidAmount /= 10000.0;
+    m_output->toBePaidAmount = m_output->loanAmount - m_output->alreadyPaidAmount;
 }
 
 -(void)calculateResult{
@@ -114,17 +109,17 @@
     double rate_per_month = m_input->loanRate/12.0/100.0;
     double interest_term_1 = 10000*m_output->loanAmount*rate_per_month;
     double principle_term_1 = interest_term_1/(pow(1+rate_per_month,m_output->loanTerms) - 1);
-    
-    //calculate principal in each term
-    for(int i=0; i<m_output->loanTerms; i++){
-        NSNumber* number = [NSNumber numberWithDouble:(interest_term_1*pow(1+rate_per_month,i))];
-        [self.m_principals addObject:number];
-    }
-    
+       
     m_output->monthlyPay = interest_term_1 + principle_term_1;
     m_output->totalPay = m_output->monthlyPay/10000.0*m_output->loanTerms;
     m_output->totalInterest = m_output->totalPay - m_output->loanAmount;
     m_output->totalExpence = m_output->firstExpence + m_output->totalPay;
+    
+    //calculate principal in each term
+    for(int i=0; i<m_output->loanTerms; i++){
+        NSNumber* number = [NSNumber numberWithDouble:(m_output->monthlyPay-interest_term_1*pow(1+rate_per_month,i))];
+        [m_input.principals addObject:number];
+    }
     
     [self calculateCurrentStatus];
 }

@@ -54,7 +54,7 @@
 
 
 @implementation MortgageInput
-@synthesize date;
+@synthesize date, principals;
 
 -(id)init{
     self = [super init];
@@ -64,6 +64,7 @@
         loanPercent = 0.0;
         loanRate = 0.0;
         date = [NSDate date];
+        principals = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -76,8 +77,13 @@
         loanPercent = lp;
         loanRate = lr;
         date = [dt copy];
+        principals = [[NSMutableArray alloc] init];
     }
     return self;
+}
+
+-(void)setPrincipals:(NSMutableArray *)ppals{
+    principals = [ppals mutableCopy];
 }
 
 #pragma mark - NSCopying
@@ -89,6 +95,7 @@
         copy->loanRate = loanRate;
         copy->loanYear = loanYear;
         copy->date = [date copyWithZone:zone];
+        copy->principals = [principals mutableCopyWithZone:zone];
     }
     return copy;
 }
@@ -101,6 +108,7 @@
         copy->loanRate = loanRate;
         copy->loanYear = loanYear;
         copy->date = [date copy];
+        copy->principals = [principals mutableCopy];
     }
     return copy;
 }

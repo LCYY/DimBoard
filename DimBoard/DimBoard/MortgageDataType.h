@@ -55,7 +55,9 @@
     double loanRate; // in terms of %, loan rate per year
 }
 @property (retain, nonatomic) NSDate* date;
+@property (retain, nonatomic) NSMutableArray* principals;
 -(id)initWithHomeValue:(double)hv LoanYear:(NSInteger)ly LoanPercent:(double)lp LoanRate:(double)lr LoanDate:(NSDate*)dt;
+-(void)setPrincipals:(NSMutableArray *)principals;
 @end
 
 
