@@ -50,6 +50,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = m_name;
+    [ValueInput setDelegate:self];
+    
     [NameLabel setText:m_name];
     [ValueInput setText:m_value];
     [UnitLabel setText:m_unit];
