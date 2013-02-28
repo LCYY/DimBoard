@@ -119,10 +119,14 @@
         m_height = 335;
         [PieChart setHidden:NO];
         [PieChartSlice_output setHidden:NO];
+        [ExtendButton setBackgroundImage:[UIImage imageNamed:@"up.png"] forState:UIControlStateNormal];
+        [ExtendButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
     }else{
         m_height = 45;
         [PieChart setHidden:YES];
         [PieChartSlice_output setHidden:YES];
+        [ExtendButton setBackgroundImage:[UIImage imageNamed:@"down.png"] forState:UIControlStateNormal];
+        [ExtendButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
     }
     [m_delegate extendPieChartCell:m_extend atIndexPath:m_indexPath];
 }

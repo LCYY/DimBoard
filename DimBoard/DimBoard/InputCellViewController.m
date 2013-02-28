@@ -49,6 +49,8 @@
     [NameLabel setText:m_name];
     [ValueInput setText:m_value];
     [ValueInput setDelegate:self];
+    
+    [NameLabel setFont:[UIFont boldSystemFontOfSize:17]];
 }
 
 - (void)viewDidUnload

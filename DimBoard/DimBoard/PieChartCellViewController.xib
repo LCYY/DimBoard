@@ -46,6 +46,7 @@
 								<int key="NSvFlags">274</int>
 								<string key="NSFrame">{{25, 42}, {250, 250}}</string>
 								<reference key="NSSuperview" ref="355804258"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="10270137"/>
 								<string key="NSReuseIdentifierKey">_NS:212</string>
 								<object class="NSColor" key="IBUIBackgroundColor" id="59726842">
@@ -59,6 +60,8 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 302}, {260, 21}}</string>
 								<reference key="NSSuperview" ref="355804258"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -92,6 +95,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{11, 11}, {79, 21}}</string>
 								<reference key="NSSuperview" ref="355804258"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="184366647"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -110,13 +114,15 @@
 							<object class="IBUIButton" id="184366647">
 								<reference key="NSNextResponder" ref="355804258"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{264, 6}, {29, 31}}</string>
+								<string key="NSFrame">{{285, 6}, {30, 30}}</string>
 								<reference key="NSSuperview" ref="355804258"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="54044682"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
+								<int key="IBUIContentMode">4</int>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<int key="IBUIContentHorizontalAlignment">0</int>
+								<int key="IBUIContentHorizontalAlignment">2</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<reference key="IBUIHighlightedTitleColor" ref="1061206464"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
@@ -127,9 +133,9 @@
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC41AA</bytes>
 								</object>
-								<object class="NSCustomResource" key="IBUINormalImage">
+								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">down.jpg</string>
+									<string key="NSResourceName">down.png</string>
 								</object>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<int key="type">2</int>
@@ -144,6 +150,7 @@
 						</array>
 						<string key="NSFrameSize">{320, 334}</string>
 						<reference key="NSSuperview" ref="657253349"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="958024908"/>
 						<string key="NSReuseIdentifierKey">_NS:11</string>
 						<reference key="IBUIBackgroundColor" ref="59726842"/>
@@ -156,6 +163,7 @@
 				</array>
 				<string key="NSFrameSize">{320, 335}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="355804258"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -240,8 +248,8 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="10270137"/>
 							<reference ref="184366647"/>
-							<reference ref="54044682"/>
 							<reference ref="958024908"/>
+							<reference ref="54044682"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -285,7 +293,61 @@
 			<nil key="sourceID"/>
 			<int key="maxID">14</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">PieChartCellViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">toggleExtendStatus:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">toggleExtendStatus:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">toggleExtendStatus:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="ExtendButton">UIButton</string>
+						<string key="PieChart">XYPieChart</string>
+						<string key="PieChartSlice_output">UILabel</string>
+						<string key="TitleLabel">UILabel</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="ExtendButton">
+							<string key="name">ExtendButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="PieChart">
+							<string key="name">PieChart</string>
+							<string key="candidateClassName">XYPieChart</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="PieChartSlice_output">
+							<string key="name">PieChartSlice_output</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="TitleLabel">
+							<string key="name">TitleLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/PieChartCellViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">XYPieChart</string>
+					<string key="superclassName">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/XYPieChart.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
@@ -295,8 +357,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">down.jpg</string>
-			<string key="NS.object.0">{29, 29}</string>
+			<string key="NS.key.0">down.png</string>
+			<string key="NS.object.0">{50, 50}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>

@@ -56,6 +56,8 @@
     [ValueInput setText:m_value];
     [UnitLabel setText:m_unit];
     
+    [NameLabel setFont:[UIFont boldSystemFontOfSize:17]];
+    
     [SlideBar addTarget:self action:@selector(onSlidValueChanged:) forControlEvents:UIControlEventValueChanged];
     
     double minvalue = 0;
