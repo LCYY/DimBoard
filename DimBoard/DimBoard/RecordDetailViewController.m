@@ -18,6 +18,7 @@
 @synthesize m_delegate;
 @synthesize m_pieChartDesps,m_pieChartSlices;
 @synthesize m_pieChartCells;
+@synthesize m_pieChartKeys;
 
 -(id)init{
     self = [super init];
@@ -29,6 +30,7 @@
         m_pieChartSlices = [[NSMutableArray alloc] init];
         m_pieChartDesps = [[NSMutableArray alloc] init];
         m_pieChartCells = [[NSMutableDictionary alloc] init];
+        m_pieChartKeys = [[NSSet alloc] init];
     }
     return self;
 }
@@ -162,17 +164,27 @@
                                [NSString stringWithFormat:@"%0.4f 萬元",m_output->totalExpence],
                                nil];
     
+    NSArray* sectionkeys5 = [[NSArray alloc] initWithObjects:
+                             KEY_MORTGAGE_TABLE,
+                             nil];
+    
+    NSArray* sectionValues5 = [[NSArray alloc] initWithObjects:
+                               @"",
+                               nil];
+    
     NSArray* sectionPair0 = [[NSMutableArray alloc] initWithObjects:sectionkeys0, sectionValues0, nil];
     NSArray* sectionPair1 = [[NSMutableArray alloc] initWithObjects:sectionkeys1, sectionValues1, nil];
     NSArray* sectionPair2 = [[NSMutableArray alloc] initWithObjects:sectionkeys2, sectionValues2, nil];
     NSArray* sectionPair3 = [[NSMutableArray alloc] initWithObjects:sectionkeys3, sectionValues3, nil];
     NSArray* sectionPair4 = [[NSMutableArray alloc] initWithObjects:sectionkeys4, sectionValues4, nil];
+    NSArray* sectionPair5 = [[NSMutableArray alloc] initWithObjects:sectionkeys5, sectionValues5, nil];
     
     [m_sections addObject:sectionPair0];
     [m_sections addObject:sectionPair1];
     [m_sections addObject:sectionPair2];
     [m_sections addObject:sectionPair3];
     [m_sections addObject:sectionPair4];
+    [m_sections addObject:sectionPair5];
     
     //slices for section 1 pie chart
     NSArray *s1Slices = [[NSArray alloc] initWithObjects:
@@ -240,23 +252,31 @@
     [m_pieChartDesps addObject:s3Desps];
     [m_pieChartDesps addObject:s4Desps];
     
-
-    for(NSInteger section = 1; section < [m_sections count]; section++){
-        NSIndexPath* indexpath = [NSIndexPath indexPathForRow:[[[m_sections objectAtIndex:section] objectAtIndex:0] count] inSection:section];
-        NSString* key = [NSString stringWithFormat:@"%d-%d", indexpath.section, indexpath.row];
-   
-        NSArray* slices = [m_pieChartSlices objectAtIndex:(section - 1)];
-        NSArray* desps = [m_pieChartDesps objectAtIndex:(section - 1)];
-        
-        PieChartCell* cell = [m_pieChartCells objectForKey:key];
-        if(cell == nil){
-            cell = [[PieChartCell alloc] initWithSlices:slices Descriptions:desps Colors:nil IndexPath:indexpath];
-        }else{
-            [cell setSlices:slices Descriptions:desps Colors:nil IndexPath:indexpath];
+    NSString* key1 = [NSString stringWithFormat:@"%d-%d", 1, [[[m_sections objectAtIndex:1] objectAtIndex:0] count]];
+    NSString* key2 = [NSString stringWithFormat:@"%d-%d", 2, [[[m_sections objectAtIndex:2] objectAtIndex:0] count]];
+    NSString* key3 = [NSString stringWithFormat:@"%d-%d", 3, [[[m_sections objectAtIndex:3] objectAtIndex:0] count]];
+    NSString* key4 = [NSString stringWithFormat:@"%d-%d", 4, [[[m_sections objectAtIndex:4] objectAtIndex:0] count]];
+    m_pieChartKeys = [[NSSet alloc] initWithObjects:key1,key2,key3,key4,nil];
+    
+    for(NSInteger section = 0; section < [m_sections count]; section++){
+        NSString* key = [NSString stringWithFormat:@"%d-%d", section, [[[m_sections objectAtIndex:section] objectAtIndex:0] count]];
+        if([m_pieChartKeys containsObject:key]){ 
+            NSIndexPath* indexpath = [NSIndexPath indexPathForRow:[[[m_sections objectAtIndex:section] objectAtIndex:0] count] inSection:section];
+            NSString* key = [NSString stringWithFormat:@"%d-%d", indexpath.section, indexpath.row];
+       
+            NSArray* slices = [m_pieChartSlices objectAtIndex:(section - 1)];
+            NSArray* desps = [m_pieChartDesps objectAtIndex:(section - 1)];
+            
+            PieChartCell* cell = [m_pieChartCells objectForKey:key];
+            if(cell == nil){
+                cell = [[PieChartCell alloc] initWithSlices:slices Descriptions:desps Colors:nil IndexPath:indexpath];
+            }else{
+                [cell setSlices:slices Descriptions:desps Colors:nil IndexPath:indexpath];
+            }
+            [((PieChartCell*)cell) setM_delegate:self];
+            
+            [m_pieChartCells setObject:cell forKey:key];
         }
-        [((PieChartCell*)cell) setM_delegate:self];
-        
-        [m_pieChartCells setObject:cell forKey:key];
     }
 }
 
@@ -283,7 +303,7 @@
     
     navController.navigationBar.topItem.title = self.navigationController.navigationBar.topItem.title;
     navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemDone target:rootController action:@selector(onSaveRecord:)];
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemSave target:rootController action:@selector(onSaveRecord:)];
     navController.navigationBar.topItem.rightBarButtonItem = saveButton;
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
     navController.navigationBar.topItem.leftBarButtonItem = cancelButton;
@@ -306,7 +326,8 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(section != 0){
+    NSString* key = [NSString stringWithFormat:@"%d-%d", section, [[[m_sections objectAtIndex:section] objectAtIndex:0] count]];
+    if([m_pieChartKeys containsObject:key]){
         return [[[m_sections objectAtIndex:section] objectAtIndex:0] count] + 1;
     }
     return [[[m_sections objectAtIndex:section] objectAtIndex:0] count];
@@ -322,8 +343,8 @@
     UITableViewCell *cell = nil;
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
-    if(section != 0 && row == [[[m_sections objectAtIndex:section] objectAtIndex:0] count]){
-        NSString* key = [NSString stringWithFormat:@"%d-%d", section, row];
+    NSString* key = [NSString stringWithFormat:@"%d-%d", section, row];
+    if([m_pieChartKeys containsObject:key]){
         cell = (PieChartCell*)[m_pieChartCells objectForKey:key];
         [((PieChartCell*)cell) setSlices:[m_pieChartSlices objectAtIndex:(section - 1)] Descriptions:[m_pieChartDesps objectAtIndex:(section - 1)] Colors:nil IndexPath:indexPath];
     }else{
@@ -333,7 +354,11 @@
         }
         cell.textLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:0] objectAtIndex:indexPath.row];
         cell.detailTextLabel.text = [[[m_sections objectAtIndex:indexPath.section] objectAtIndex:1] objectAtIndex:indexPath.row];
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
+        if(section == [m_sections count] - 1){
+            [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        }
+        else
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
     }
     return cell;
 }
@@ -349,18 +374,71 @@
         return @"貸款金額分析";
     }else if (section == 4){
         return @"費用總額分析";
+    }else if (section == 5){
+        return @"供款表";
     }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
-    if(section != 0 && row == [[[m_sections objectAtIndex:section] objectAtIndex:0] count]){
+    NSString* key = [NSString stringWithFormat:@"%d-%d", section, row];
+    if([m_pieChartKeys containsObject:key]){
         NSString* key = [NSString stringWithFormat:@"%d-%d", section, row];
         PieChartCell* cell = [m_pieChartCells objectForKey:key];
         return [cell getHeight];
     }
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.section == 5 && indexPath.row == 0){
+        MortgageMonthlyPayViewController* rootController = [[MortgageMonthlyPayViewController alloc] init];
+        [rootController setPricipals:m_output.principals LeftAmount:m_output.leftLoanAmounts MonthlyPay:m_output->monthlyPay];
+        
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
+        
+        navController.navigationBar.topItem.title = rootController.title;
+        navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:self.navigationController.navigationBar.topItem.title style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
+        navController.navigationBar.topItem.leftBarButtonItem = backButton;
+        
+        [navController setWantsFullScreenLayout:YES];
+        [navController.view setAutoresizesSubviews:NO];
+        navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        navController.visibleViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        self.modalPresentationStyle = UIModalPresentationCurrentContext;
+        
+        [self presentModalViewController:navController animated:YES];
+    }
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+    view.backgroundColor = [UIColor colorWithRed:39/255.0 green:64/255.0 blue:139/255.0 alpha:1];
+    
+    UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 320, 30)];
+    label.textAlignment = NSTextAlignmentLeft;
+    label.textColor = [UIColor whiteColor];
+    label.text = [self tableView:tableView titleForHeaderInSection:section];
+    label.font = [UIFont boldSystemFontOfSize:16];
+    label.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.0];
+    [view addSubview:label];    
+    return view;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
+    view.backgroundColor = [UIColor colorWithRed:39/255.0 green:64/255.0 blue:139/255.0 alpha:1];
+    return view;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 30;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0;
 }
 
 #pragma mark - UpdateRecordProtocl

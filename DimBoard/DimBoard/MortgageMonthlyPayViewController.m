@@ -1,18 +1,18 @@
 //
-//  MorgageMonthlyPayViewController.m
+//  MortgageMonthlyPayViewController.m
 //  DimBoard
 //
 //  Created by conicacui on 27/2/13.
 //  Copyright (c) 2013 LCYY. All rights reserved.
 //
 
-#import "MorgageMonthlyPayViewController.h"
+#import "MortgageMonthlyPayViewController.h"
 
-@interface MorgageMonthlyPayViewController ()
+@interface MortgageMonthlyPayViewController ()
 
 @end
 
-@implementation MorgageMonthlyPayViewController
+@implementation MortgageMonthlyPayViewController
 @synthesize PrincipalLabel,InterestLabel,TermLabel,LeftAmountLabel;
 @synthesize TableView;
 @synthesize m_principals, m_leftLoanAmounts;
@@ -51,6 +51,8 @@
     [PrincipalLabel setText:@"本金"];
     [InterestLabel setText:@"利息"];
     [LeftAmountLabel setText:@"剩餘金額"];
+    
+    self.title = KEY_MORTGAGE_TABLE;
 }
 
 -(void)viewDidUnload{
@@ -94,9 +96,9 @@
     }
     
     NSInteger term = section*12 + row + 1;
-    double pricipal = [[m_principals objectAtIndex:indexPath.row] doubleValue];
+    double pricipal = [[m_principals objectAtIndex:term - 1] doubleValue];
     double interest = m_monthlyPay - pricipal;
-    double leftAmount = [[m_leftLoanAmounts objectAtIndex:indexPath.row] doubleValue];
+    double leftAmount = [[m_leftLoanAmounts objectAtIndex:term - 1] doubleValue];
     
     [(GridCell*)cell setTerm:term MonthlyPay:m_monthlyPay Principal:pricipal Interest:interest LeftAmount:leftAmount];
     return cell;

@@ -40,6 +40,7 @@
 #define KEY_MORTGAGE_PAIDINTEREST @"已還利息金額"
 #define KEY_MORTGAGE_PAIDTERM @"已還期數"
 #define KEY_MORTGAGE_TOTALEXP @"費用總額"
+#define KEY_MORTGAGE_TABLE @"供款表"
 #define DATEFORMAT @"yyyy-MM-dd"
 
 

@@ -102,6 +102,7 @@
     // e.g. self.myOutlet = nil;
     [self setM_controllerList:nil];
     [self setM_recordIO:nil];
+    self.view.backgroundColor = [UIColor colorWithRed:39/255.0 green:64/255.0 blue:139/255.0 alpha:0.8];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -117,7 +118,7 @@
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
     navController.navigationBar.topItem.title = @"新增供款";
     navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemDone target:rootController action:@selector(onSaveNewRecord:)];
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemSave target:rootController action:@selector(onSaveNewRecord:)];
     navController.navigationBar.topItem.rightBarButtonItem = saveButton;
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
     navController.navigationBar.topItem.leftBarButtonItem = cancelButton;
@@ -146,7 +147,7 @@
     navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:self.navigationController.navigationBar.topItem.title style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
     navController.navigationBar.topItem.leftBarButtonItem = backButton;
-    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:@"編輯" style:UIBarButtonSystemItemDone target:rootController action:@selector(onEdit:)];
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:rootController action:@selector(onEdit:)];
     navController.navigationBar.topItem.rightBarButtonItem = editButton;
     
     [navController setWantsFullScreenLayout:YES];
@@ -157,7 +158,7 @@
     
     [self presentModalViewController:navController animated:YES];
     
-    //[self.navigationController pushViewController:controller animated:YES];
+    //[self.navigationController pushViewController:rootController animated:YES];
 }
 
 #pragma mark UITableViewDataSource

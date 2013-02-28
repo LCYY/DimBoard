@@ -12,7 +12,7 @@
 #import "Calculator.h"
 #import "PieChartCellViewController.h"
 #import "MortgageDetailViewController.h"
-#import "MorgageMonthlyPayViewController.h"
+#import "MortgageMonthlyPayViewController.h"
 
 @interface ViewController : UIViewController<UITextFieldDelegate>{    
     NSMutableArray* m_principals;

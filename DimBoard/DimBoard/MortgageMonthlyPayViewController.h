@@ -1,5 +1,5 @@
 //
-//  MorgageMonthlyPayViewController.h
+//  MortgageMonthlyPayViewController.h
 //  DimBoard
 //
 //  Created by conicacui on 27/2/13.
@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "GridCell.h"
 #import <QuartzCore/QuartzCore.h>
+#import "MortgageDataType.h"
 
-@interface MorgageMonthlyPayViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface MortgageMonthlyPayViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
     double m_monthlyPay;
 }
