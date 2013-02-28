@@ -261,9 +261,7 @@
     for(NSInteger section = 0; section < [m_sections count]; section++){
         NSString* key = [NSString stringWithFormat:@"%d-%d", section, [[[m_sections objectAtIndex:section] objectAtIndex:0] count]];
         if([m_pieChartKeys containsObject:key]){ 
-            NSIndexPath* indexpath = [NSIndexPath indexPathForRow:[[[m_sections objectAtIndex:section] objectAtIndex:0] count] inSection:section];
-            NSString* key = [NSString stringWithFormat:@"%d-%d", indexpath.section, indexpath.row];
-       
+            NSIndexPath* indexpath = [NSIndexPath indexPathForRow:[[[m_sections objectAtIndex:section] objectAtIndex:0] count] inSection:section];       
             NSArray* slices = [m_pieChartSlices objectAtIndex:(section - 1)];
             NSArray* desps = [m_pieChartDesps objectAtIndex:(section - 1)];
             

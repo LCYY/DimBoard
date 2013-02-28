@@ -11,6 +11,7 @@
 #import "Calculator.h"
 #import "UpdateRecordItemProtocol.h"
 #import "PieChartCell.h"
+#import "MortgageMonthlyPayViewController.h"
 
 @interface MortgageDetailViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate, PieChartCellExtendDelegate>
 @property (retain, nonatomic) id m_recordViewController;
@@ -19,6 +20,7 @@
 @property (retain, nonatomic) NSMutableArray* m_sections;
 @property (retain, nonatomic) NSMutableArray* m_pieChartSlices;
 @property (retain, nonatomic) NSMutableArray* m_pieChartDesps;
+@property (readonly, nonatomic) NSSet* m_pieChartKeys;
 @property (retain, nonatomic) NSMutableDictionary* m_pieChartCells; //heights for indexpath
 
 //Section 0
@@ -62,6 +64,10 @@
 //Pie Chart
 //---------
 
+//Section 5
+//---------
+//供款圖表
+//---------
 
 -(id)initWithMortgageRecord:(MortgageRecord*)record;
 -(NSInteger)getRecordId;
