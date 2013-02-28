@@ -84,7 +84,7 @@
     HomeValue_input.text = [NSString stringWithFormat:@"%0.4f", m_input->homeValue];
     LoanPercent_input.text = [NSString stringWithFormat:@"%0.2f",m_input->loanPercent];
     LoanYear_input.text = [NSString stringWithFormat:@"%d", m_input->loanYear];
-    LoanRate_input.text = [NSString stringWithFormat:@"%0.2f",m_input->loanRate];
+    LoanRate_input.text = [NSString stringWithFormat:@"%0.2f",m_input->interestRate];
     
     //set input delegate to self
     [HomeValue_input setDelegate:self];
@@ -113,13 +113,13 @@
     [HomeValue_slid setValue:m_input->homeValue];
     [LoanPercent_slid setValue:m_input->loanPercent];
     [LoanYear_slid setValue:m_input->loanYear];
-    [LoanRate_slid setValue:m_input->loanRate];
+    [LoanRate_slid setValue:m_input->interestRate];
 }
 
 -(void)updateResult{    
     LoanAmount_output.text = [NSString stringWithFormat:@"%0.4f 萬元", m_output->loanAmount];
     LoanTerms_output.text = [NSString stringWithFormat:@"%d 期",m_output->loanTerms];
-    TotalPay_output.text = [NSString stringWithFormat:@"%0.4f 萬元",m_output->totalPay];
+    TotalPay_output.text = [NSString stringWithFormat:@"%0.4f 萬元",m_output->rePayment];
     MonthlyPay_output.text = [NSString stringWithFormat:@"%0.2f 元",m_output->monthlyPay];
 }
 
@@ -212,7 +212,7 @@
         m_input->loanYear = [LoanYear_input.text intValue];
     }else if(sender == LoanRate_slid){
         LoanRate_input.text = [NSString stringWithFormat:@"%0.2f",sliderValue];
-        m_input->loanRate = [LoanRate_input.text doubleValue];
+        m_input->interestRate = [LoanRate_input.text doubleValue];
     }
     
     [m_calculator setInput:m_input];
@@ -256,8 +256,8 @@ replacementString:(NSString *)string {
         m_input->loanYear = [LoanYear_input.text intValue];
         [LoanYear_slid setValue:m_input->loanYear];
     }else if(textField == LoanRate_input){
-        m_input->loanRate = [LoanRate_input.text doubleValue];
-        [LoanRate_slid setValue:m_input->loanRate];
+        m_input->interestRate = [LoanRate_input.text doubleValue];
+        [LoanRate_slid setValue:m_input->interestRate];
     }
     
     [m_calculator setInput:m_input];

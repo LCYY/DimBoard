@@ -14,6 +14,10 @@
 {
     double m_monthlyPay;
 }
+@property (weak, nonatomic) IBOutlet UITextField *PrincipalLabel;
+@property (weak, nonatomic) IBOutlet UITextField *InterestLabel;
+@property (weak, nonatomic) IBOutlet UITextField *TermLabel;
+@property (weak, nonatomic) IBOutlet UITextField *LeftAmountLabel;
 @property (weak, nonatomic) IBOutlet UITableView *TableView;
 @property (retain, nonatomic) NSArray* m_principals;
 @property (retain, nonatomic) NSArray* m_leftLoanAmounts;

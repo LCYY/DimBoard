@@ -63,7 +63,7 @@
     if([m_name isEqualToString:KEY_MORTGAGE_HOMEVALUE]){//int terms of 10-thousand
         minvalue = MIN_HOME_VALUE;
         maxvalue = MAX_HOME_VALUE;
-    }else if([m_name isEqualToString:KEY_MORTGAGE_LOANRATE]){//in terms of %
+    }else if([m_name isEqualToString:KEY_MORTGAGE_INTERESTRATE]){//in terms of %
         minvalue = MIN_LOANRATE_VALUE;
         maxvalue = MAX_LOANRATE_VALUE;
     }else if([m_name isEqualToString:KEY_MORTGAGE_LOANPERCENT]){// in terms of year
@@ -102,7 +102,7 @@
         m_value = [NSString stringWithFormat:@"%d",(int)slider.value];
     }else if([m_name isEqualToString:KEY_MORTGAGE_LOANPERCENT]){
         m_value = [NSString stringWithFormat:@"%d",(int)slider.value];
-    }else if([m_name isEqualToString:KEY_MORTGAGE_LOANRATE]){
+    }else if([m_name isEqualToString:KEY_MORTGAGE_INTERESTRATE]){
         m_value = [NSString stringWithFormat:@"%0.2f",slider.value];
     }else if([m_name isEqualToString:KEY_MORTGAGE_HOMEVALUE]){
         m_value = [NSString stringWithFormat:@"%d",(int)slider.value];

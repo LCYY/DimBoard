@@ -31,11 +31,10 @@
     m_interest = interest;
     m_leftAmount = amount;
     
-    CGColorRef colorref = [UIColor colorWithRed:255 green:255 blue:255 alpha:0.7].CGColor;
-    TermLabel.layer.borderColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:0.7].CGColor;
-    PrincipalLabel.layer.borderColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:0.7].CGColor;
-    InterestLabel.layer.borderColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:0.7].CGColor;
-    LeftAmountLabel.layer.borderColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:0.7].CGColor;
+    TermLabel.layer.borderColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:0.9].CGColor;
+    PrincipalLabel.layer.borderColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:0.9].CGColor;
+    InterestLabel.layer.borderColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:0.9].CGColor;
+    LeftAmountLabel.layer.borderColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:0.9].CGColor;
     TermLabel.layer.borderWidth = 1;
     PrincipalLabel.layer.borderWidth = 1;
     InterestLabel.layer.borderWidth = 1;
@@ -58,7 +57,7 @@
     
     UIColor *color = nil;
     if(m_term%2 == 0){
-        color = [UIColor colorWithRed:0 green:0 blue:255 alpha:0.2];
+        color = [UIColor colorWithRed:162/255.0 green:181/255.0 blue:205/255.0 alpha:0.1];
     }else{
         color = [UIColor whiteColor];
     }

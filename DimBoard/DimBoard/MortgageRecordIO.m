@@ -35,7 +35,7 @@
                                               HomeValue:[recordDict objectForKey:KEY_MORTGAGE_HOMEVALUE]
                                               LoanYear:[recordDict objectForKey:KEY_MORTGAGE_LOANYEAR]
                                               LoanPercent:[recordDict objectForKey:KEY_MORTGAGE_LOANPERCENT]
-                                              LoanRate:[recordDict objectForKey:KEY_MORTGAGE_LOANRATE]];
+                                              LoanRate:[recordDict objectForKey:KEY_MORTGAGE_INTERESTRATE]];
                     [m_records addObject:record];
                 }
                 // update m_maxId
@@ -120,7 +120,7 @@
                                     [NSString stringWithFormat:@"%d",record->recordId], KEY_MORTGAGE_RECORDID,
                                     [NSString stringWithFormat:@"%0.2f",record.input->homeValue], KEY_MORTGAGE_HOMEVALUE,
                                     [NSString stringWithFormat:@"%0.2f",record.input->loanPercent], KEY_MORTGAGE_LOANPERCENT,
-                                    [NSString stringWithFormat:@"%0.2f",record.input->loanRate], KEY_MORTGAGE_LOANRATE,
+                                    [NSString stringWithFormat:@"%0.2f",record.input->interestRate], KEY_MORTGAGE_INTERESTRATE,
                                     [NSString stringWithFormat:@"%d",record.input->loanYear], KEY_MORTGAGE_LOANYEAR,
                                     nil];
         [recordsDict setObject:recordDict forKey:[recordDict objectForKey:KEY_MORTGAGE_RECORDID]];

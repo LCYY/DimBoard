@@ -62,7 +62,7 @@
         homeValue = 0.0;
         loanYear = 0;
         loanPercent = 0.0;
-        loanRate = 0.0;
+        interestRate = 0.0;
         date = [NSDate date];
     }
     return self;
@@ -74,7 +74,7 @@
         homeValue = hv;
         loanYear = ly;
         loanPercent = lp;
-        loanRate = lr;
+        interestRate = lr;
         date = [dt copy];
     }
     return self;
@@ -86,7 +86,7 @@
     if(copy){
         copy->homeValue = homeValue;
         copy->loanPercent = loanPercent;
-        copy->loanRate = loanRate;
+        copy->interestRate = interestRate;
         copy->loanYear = loanYear;
         copy->date = [date copyWithZone:zone];
     }
@@ -98,7 +98,7 @@
     if(copy){
         copy->homeValue = homeValue;
         copy->loanPercent = loanPercent;
-        copy->loanRate = loanRate;
+        copy->interestRate = interestRate;
         copy->loanYear = loanYear;
         copy->date = [date copy];
     }
@@ -114,17 +114,20 @@
     self = [super init];
     if(self){
         comission = 0.0;
-        firstExpence = 0.0;
-        firstPay = 0.0;
+        firstTotalExp = 0.0;
+        firstPayment = 0.0;
         loanAmount = 0.0;
         loanTerms = 0;
         monthlyPay = 0.0;
         tax = 0.0;
         totalExpence = 0.0;
-        totalPay = 0.0;
-        totalInterest = 0.0;
-        alreadyPaidAmount = 0.0;
-        toBePaidAmount = 0.0;
+        rePayment = 0.0;
+        rePaymentInterest = 0.0;
+        paidPrincipal = 0.0;
+        toPayPrincipal = 0.0;
+        paidTerms = 0;
+        paidInterest = 0.0;
+        toPayInterest = 0.0;
         principals = [[NSMutableArray alloc] init];
         leftLoanAmounts = [[NSMutableArray alloc] init];
     }
@@ -136,17 +139,20 @@
     MortgageOutput* copy = [[[self class] allocWithZone:zone] init];
     if(copy){
         copy->comission = comission;
-        copy->firstExpence = firstExpence;
-        copy->firstPay = firstPay;
+        copy->firstTotalExp = firstTotalExp;
+        copy->firstPayment = firstPayment;
         copy->loanAmount = loanAmount;
         copy->loanTerms = loanTerms;
         copy->monthlyPay = monthlyPay;
         copy->tax = tax;
         copy->totalExpence = totalExpence;
-        copy->totalPay = totalPay;
-        copy->totalInterest = totalInterest;
-        copy->alreadyPaidAmount = alreadyPaidAmount;
-        copy->toBePaidAmount = toBePaidAmount;
+        copy->rePayment = rePayment;
+        copy->rePaymentInterest = rePaymentInterest;
+        copy->paidPrincipal = paidPrincipal;
+        copy->toPayPrincipal = toPayPrincipal;
+        copy->paidTerms = paidTerms;
+        copy->paidInterest = paidInterest;
+        copy->toPayInterest = toPayInterest;
         copy->principals = [principals mutableCopyWithZone:zone];
         copy->leftLoanAmounts = [leftLoanAmounts mutableCopyWithZone:zone];
     }
@@ -157,17 +163,20 @@
     MortgageOutput* copy = [[[self class] alloc] init];
     if(copy){
         copy->comission = comission;
-        copy->firstExpence = firstExpence;
-        copy->firstPay = firstPay;
+        copy->firstTotalExp = firstTotalExp;
+        copy->firstPayment = firstPayment;
         copy->loanAmount = loanAmount;
         copy->loanTerms = loanTerms;
         copy->monthlyPay = monthlyPay;
         copy->tax = tax;
         copy->totalExpence = totalExpence;
-        copy->totalPay = totalPay;
-        copy->totalInterest = totalInterest;
-        copy->alreadyPaidAmount = alreadyPaidAmount;
-        copy->toBePaidAmount = toBePaidAmount;
+        copy->rePayment = rePayment;
+        copy->rePaymentInterest = rePaymentInterest;
+        copy->paidPrincipal = paidPrincipal;
+        copy->toPayPrincipal = toPayPrincipal;
+        copy->paidTerms = paidTerms;
+        copy->paidInterest = paidInterest;
+        copy->toPayInterest = toPayInterest;
         copy->principals = [principals mutableCopy];
         copy->leftLoanAmounts = [leftLoanAmounts mutableCopy];
     }

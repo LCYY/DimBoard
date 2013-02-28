@@ -27,7 +27,7 @@
         NSArray *value1 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_HOMEVALUE,@"萬元",nil];
         NSArray *value2 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANPERCENT,@"%",nil];
         NSArray *value3 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANYEAR,@"年",nil];
-        NSArray *value4 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANRATE,@"%",nil];
+        NSArray *value4 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_INTERESTRATE,@"%",nil];
         m_section2 = [[NSArray alloc] initWithObjects:value1,value2,value3,value4,nil];
         
         m_section3 = KEY_MORTGAGE_LOANDATE; //input cell
@@ -197,7 +197,7 @@
             }else if(row == 2){
                 value = [NSString stringWithFormat:@"%d",m_record.input->loanYear];
             }else if(row == 3){
-                value = [NSString stringWithFormat:@"%0.2f",m_record.input->loanRate];
+                value = [NSString stringWithFormat:@"%0.2f",m_record.input->interestRate];
             }
             cell = [[SliderCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:AddSliderRecordCell Name:name Value:value Unit:unit];
             [((SliderCell*)cell) setCellControllerDelegate:self];
@@ -229,7 +229,7 @@
             }else if(row == 2){
                 value = [NSString stringWithFormat:@"%d",m_record.input->loanYear];
             }else if(row == 3){
-                value = [NSString stringWithFormat:@"%0.2f",m_record.input->loanRate];
+                value = [NSString stringWithFormat:@"%0.2f",m_record.input->interestRate];
             }
             [((SliderCell *)cell) setName:name Value:value Unit:unit];
             [((SliderCell *)cell) setCellControllerDelegate:self];
@@ -274,8 +274,8 @@
         m_record.input->homeValue = [((NSString*)value) doubleValue];
     }else if([key isEqualToString:KEY_MORTGAGE_LOANPERCENT]){
         m_record.input->loanPercent = [((NSString*)value) doubleValue];
-    }else if([key isEqualToString:KEY_MORTGAGE_LOANRATE]){
-        m_record.input->loanRate = [((NSString*)value) doubleValue];
+    }else if([key isEqualToString:KEY_MORTGAGE_INTERESTRATE]){
+        m_record.input->interestRate = [((NSString*)value) doubleValue];
     }else if([key isEqualToString:KEY_MORTGAGE_LOANYEAR]){
         m_record.input->loanYear = [((NSNumber*)value) integerValue];
     }else if([key isEqualToString:KEY_MORTGAGE_NAME]){
