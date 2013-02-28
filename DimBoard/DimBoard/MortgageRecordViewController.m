@@ -167,12 +167,14 @@
     static NSString *MortgageRecordCell = @"MortgageRecordCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MortgageRecordCell];
     if(cell == nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:MortgageRecordCell];
+        //cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:MortgageRecordCell];
+        cell = [[RecordCell alloc] init];
     }
     NSUInteger row = [indexPath row];
-    UITableViewController *controller = [m_controllerList objectAtIndex:row];
-    cell.textLabel.text = controller.title;
+    RecordDetailViewController *controller = [m_controllerList objectAtIndex:row];
+//    cell.textLabel.text = controller.title;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    [((RecordCell*)cell) setName:[controller getName] Term:[controller getTermDsp] Date:[controller getNextPayDate] Progress:[controller getPayProgress]];
     return cell;
 }
 
@@ -196,6 +198,10 @@
         [m_controllerList removeObjectAtIndex:indexPath.row];
         [((UITableView*)self.view) reloadData];
     }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 95;
 }
 
 #pragma mark - UpdateRecordProtocol

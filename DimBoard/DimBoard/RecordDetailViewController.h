@@ -78,4 +78,8 @@
 
 -(id)initWithMortgageRecord:(MortgageRecord*)record;
 -(NSInteger)getRecordId;
+-(NSString*)getName;
+-(NSString*)getTermDsp;
+-(NSString*)getNextPayDate;
+-(float)getPayProgress;
 @end

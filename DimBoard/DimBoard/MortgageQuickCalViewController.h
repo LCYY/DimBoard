@@ -16,6 +16,7 @@
 
 @interface MortgageQuickCalViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UpdateRecordItemProtocol>
 
+@property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
 @property (weak, nonatomic) IBOutlet UITableView *TableView;
 
 //Section 0

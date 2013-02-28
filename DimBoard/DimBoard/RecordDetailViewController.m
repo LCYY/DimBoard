@@ -287,6 +287,25 @@
     return m_record->recordId;
 }
 
+-(NSString *)getName{
+    return m_record.name;
+}
+
+-(NSString *)getTermDsp{
+    return [NSString stringWithFormat:@"第%d期 %0.2f元", m_output->paidTerms + 1, m_output->monthlyPay];
+}
+
+-(NSString *)getNextPayDate{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat: DATEFORMAT];
+    NSString* datestring = [dateFormatter stringFromDate:m_record.input.date];
+    return datestring;
+}
+
+-(float)getPayProgress{
+    return m_output->paidPrincipal/m_output->loanAmount;
+}
+
 - (MortgageOutput*)getOutput{
     Calculator* cal = [[Calculator alloc] init];
     [cal setInput:m_record.input];

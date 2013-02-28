@@ -11,6 +11,7 @@
 #import "AddRecordViewController.h"
 #import "MortgageRecordIO.h"
 #import "UpdateRecordItemProtocol.h"
+#import "RecordCell.h"
 
 @interface MortgageRecordViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource, UpdateRecordProtocol>
 

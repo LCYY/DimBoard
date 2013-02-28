@@ -13,7 +13,7 @@
 @end
 
 @implementation MortgageQuickCalViewController
-@synthesize TableView;
+@synthesize TableView, ScrollView;
 @synthesize m_section0,m_section1;
 @synthesize m_input,m_output,m_calculator;
 @synthesize m_recordViewController;
@@ -85,6 +85,7 @@
     [self setShowMyRecordButton:nil];
     [self setShowDetailsButton:nil];
     [self setShowMonthlyPayButton:nil];
+    [self setScrollView:nil];
     [super viewDidUnload];
 }
 
@@ -105,6 +106,7 @@
 
 - (void)onBack:(id)sender{
     [self dismissModalViewControllerAnimated:YES];
+    [ScrollView setContentOffset:CGPointMake(0,0)];
 }
 
 #pragma mark-
