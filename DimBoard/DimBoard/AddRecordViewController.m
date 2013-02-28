@@ -256,6 +256,7 @@
     }else if(section == 3){
         return 1;
     }
+    return 0;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -272,6 +273,7 @@
     }else if (section == 3){
         return @"按揭日期";
     }
+    return @"";
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

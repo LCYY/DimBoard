@@ -59,9 +59,9 @@
     [ShowDetailsButton setBackgroundColor:[UIColor colorWithRed:39/255.0 green:64/255.0 blue:139/255.0 alpha:1]];
     [ShowMonthlyPayButton setBackgroundColor:[UIColor colorWithRed:39/255.0 green:64/255.0 blue:139/255.0 alpha:1]];
     
-    [ShowMonthlyPayButton setFont:[UIFont boldSystemFontOfSize:17]];
-    [ShowDetailsButton setFont:[UIFont boldSystemFontOfSize:17]];
-    [ShowMonthlyPayButton setFont:[UIFont boldSystemFontOfSize:17]];
+    [ShowMonthlyPayButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17]];
+    [ShowDetailsButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17]];
+    [ShowMyRecordButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17]];
     
     UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
     tapRecognizer.cancelsTouchesInView = NO;
@@ -187,6 +187,7 @@
     }else if(section == 1){
         return [m_section1 count];
     }
+    return 0;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -199,6 +200,7 @@
     }else if (section == 1){
         return @"計算結果";
     }
+    return @"";
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

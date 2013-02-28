@@ -15,6 +15,7 @@
 @end
 
 @protocol UpdateRecordProtocol <NSObject>
+@optional
 -(void)updateRecord:(MortgageRecord*)record;
 -(void)addNewRecord:(MortgageRecord*)record;
 @end

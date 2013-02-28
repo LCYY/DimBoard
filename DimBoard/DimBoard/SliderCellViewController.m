@@ -118,6 +118,7 @@
     m_value = [ValueInput text];
     [SlideBar setValue:[m_value doubleValue]];
     [m_deletegate updateRecordKey:m_name withValue:m_value];
+    return YES;
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
