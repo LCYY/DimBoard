@@ -113,23 +113,32 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 20;
+    return 18;
 }
 
-//-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-//    return [NSString stringWithFormat:@"第 %d 年",section+1];
-//}
-
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
-    view.backgroundColor = [UIColor colorWithRed:39/255.0 green:64/255.0 blue:139/255.0 alpha:1];
-    UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
+    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 18)];
+    view.backgroundColor = [UIColor colorWithRed:39/255.0 green:64/255.0 blue:139/255.0 alpha:0.8];
+    UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 18)];
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [UIColor whiteColor];
     label.text = [NSString stringWithFormat:@"第 %d 年",section+1];
+    label.font = [UIFont fontWithName:label.font.fontName size:13];
     label.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.0];
     [view addSubview:label];
     return view;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index{
+    return index;
+}
+
+-(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView{
+    NSMutableArray* indexs = [[NSMutableArray alloc] init];
+    for(int i = 0; i < [m_principals count]/12; i++){
+        [indexs addObject:[NSString stringWithFormat:@"%d",i+1]];
+    }
+    return indexs;
 }
 
 
