@@ -83,12 +83,6 @@
     return self;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style{
-    //set style as UITableViewStyleGrouped
-    self = [super initWithStyle:UITableViewStyleGrouped];
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

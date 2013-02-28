@@ -105,7 +105,7 @@
     m_output->tax = [self calculateTax]; // in terms of 1
     m_output->firstTotalExp = m_output->firstPayment + (m_output->comission + m_output->tax)/10000.0;
     
-    if(m_output->loanAmount == 0){
+    if(m_output->loanAmount == 0 || m_input->loanYear == 0){
         return;
     }
     

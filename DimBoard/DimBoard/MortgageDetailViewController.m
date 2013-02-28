@@ -46,12 +46,6 @@
     return self;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style{
-    //set style as UITableViewStyleGrouped
-    self = [super initWithStyle:UITableViewStyleGrouped];
-    return self;
-}
-
 - (id)initWithMortgageRecord:(MortgageRecord*)record{
     self = [self init];
     if (self) {
