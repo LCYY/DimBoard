@@ -20,6 +20,8 @@
 @synthesize m_slices,m_slicesDesp;
 @synthesize m_indexPath;
 @synthesize m_delegate;
+@synthesize ColorLabel_1,ColorLabel_2,ColorLabel_3,ColorLabel_4,ColorLabel_5;
+@synthesize m_colorLabels;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +40,7 @@
         m_slices = [slices copy];
         m_slicesDesp = [desps copy];
         m_indexPath = [indexpath copy];
+        m_selectedSliceIndex = -1;
         if(colors == nil)
             m_sliceColors = [NSArray arrayWithObjects:
                              [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1],
@@ -57,6 +60,24 @@
     [PieChartSlice_output setHidden:YES];
     [TitleLabel setFont:[UIFont boldSystemFontOfSize:17]];
     
+    m_colorLabels = [NSArray arrayWithObjects:ColorLabel_1,ColorLabel_2,ColorLabel_3,ColorLabel_4,ColorLabel_5,nil];
+    
+    for(int i = 0; i < [m_colorLabels count]; i++){
+        UILabel* label = [m_colorLabels objectAtIndex:i];
+        [label setBackgroundColor:[m_sliceColors objectAtIndex:i]];
+        [label setHidden:YES];
+        [label setTextAlignment:NSTextAlignmentCenter];
+        [label setUserInteractionEnabled:NO];
+    }
+    for(int i = 0; i < [m_slices count]; i++){
+        UILabel* label = [m_colorLabels objectAtIndex:i];
+        NSString* text = [[[m_slicesDesp objectAtIndex:i] componentsSeparatedByString:@":"] objectAtIndex:0];
+        [label setText:text];
+        [label setUserInteractionEnabled:YES];
+        UITapGestureRecognizer* recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onColorLabelTouched:)];
+        [label addGestureRecognizer:recognizer];
+    }
+    
     [self showPieChar];
 }
 
@@ -70,6 +91,11 @@
     [self setM_delegate:nil];
     [self setM_indexPath:nil];
     [self setTitleLabel:nil];
+    [self setColorLabel_1:nil];
+    [self setColorLabel_2:nil];
+    [self setColorLabel_3:nil];
+    [self setColorLabel_4:nil];
+    [self setColorLabel_5:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -121,18 +147,50 @@
         [PieChartSlice_output setHidden:NO];
         [ExtendButton setBackgroundImage:[UIImage imageNamed:@"up.png"] forState:UIControlStateNormal];
         [ExtendButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+        [self showColorLabels];
     }else{
         m_height = 45;
         [PieChart setHidden:YES];
         [PieChartSlice_output setHidden:YES];
         [ExtendButton setBackgroundImage:[UIImage imageNamed:@"down.png"] forState:UIControlStateNormal];
         [ExtendButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+        [self hideColorLabels];
     }
     [m_delegate extendPieChartCell:m_extend atIndexPath:m_indexPath];
 }
 
 -(CGFloat)getHeight{
     return m_height;
+}
+
+-(void)hideColorLabels{
+    for(int i = 0; i < [m_slices count]; i++){
+        [[m_colorLabels objectAtIndex:i] setHidden:YES];
+    }
+}
+
+-(void)showColorLabels{
+    for(int i = 0; i < [m_slices count]; i++){
+        [[m_colorLabels objectAtIndex:i] setHidden:NO];
+    }
+}
+
+-(void)onColorLabelTouched:(id)sender{
+    UITapGestureRecognizer* recognizer = (UITapGestureRecognizer*)sender;
+    for(int i = 0; i < [m_slices count]; i++){
+        if(recognizer.view == [m_colorLabels objectAtIndex:i]){
+            if(m_selectedSliceIndex == i){
+                [PieChart setSliceDeselectedAtIndex:i];
+                [self pieChart:PieChart didDeselectSliceAtIndex:i];
+            }else{
+                [PieChart setSliceSelectedAtIndex:i];
+                [self pieChart:PieChart didSelectSliceAtIndex:i];
+            }
+        }else{
+            [PieChart setSliceDeselectedAtIndex:i];
+            [self pieChart:PieChart didDeselectSliceAtIndex:i];
+        }
+    }
 }
 
 #pragma mark - XYPieChart Data Source
@@ -149,7 +207,7 @@
 
 - (UIColor *)pieChart:(XYPieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index
 {
-    return [m_sliceColors objectAtIndex:(index % m_sliceColors.count)];
+    return [m_sliceColors objectAtIndex:index];
 }
 
 #pragma mark - XYPieChart Delegate

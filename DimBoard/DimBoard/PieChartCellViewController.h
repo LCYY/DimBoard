@@ -27,9 +27,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *PieChartSlice_output;
 @property (weak, nonatomic) IBOutlet XYPieChart *PieChart;
 @property (weak, nonatomic) IBOutlet UIButton *ExtendButton;
+@property (weak, nonatomic) IBOutlet UILabel *ColorLabel_1;
+@property (weak, nonatomic) IBOutlet UILabel *ColorLabel_2;
+@property (weak, nonatomic) IBOutlet UILabel *ColorLabel_3;
+@property (weak, nonatomic) IBOutlet UILabel *ColorLabel_4;
+@property (weak, nonatomic) IBOutlet UILabel *ColorLabel_5;
+
 @property (retain, nonatomic) NSMutableArray *m_slices;
 @property (retain, nonatomic) NSMutableArray *m_slicesDesp;
 @property (retain, nonatomic) NSIndexPath* m_indexPath;
+@property (retain, nonatomic) NSArray *m_colorLabels;
 @property (retain, nonatomic) id<PieChartCellExtendDelegate>m_delegate;
 
 -(id)initWithSlices:(NSArray *)slices Descriptions:(NSArray *)desps Colors:(NSArray*)colors IndexPath:(NSIndexPath*)indexpath;
