@@ -19,5 +19,4 @@
 @property (strong,nonatomic) MortgageRecordIO* m_recordIO;
 
 - (void)onAddNewMortgageRecord:(id)sender;
-- (void)onBack:(id)sender;
 @end

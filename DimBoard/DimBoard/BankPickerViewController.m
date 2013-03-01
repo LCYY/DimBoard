@@ -49,6 +49,10 @@
     [BankPicker setDataSource:self];
     m_bankTypes = [[BankTypes alloc] init];
     [BankPicker selectRow:m_selectedBankId inComponent:0 animated:YES];
+    
+    self.title = KEY_MORTGAGE_BANKID;
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemDone target:self action:@selector(onSave:)];
+    self.navigationItem.rightBarButtonItem = saveButton;
 }
 
 - (void)viewDidUnload
@@ -66,7 +70,7 @@
 }
 
 -(void)onSave:(id)sender{
-    [self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated: YES];
     if(m_selectedBankId > -1 && m_selectedBankId < [m_bankTypes getBankCount]){
         [m_delegate updateRecordKey:KEY_MORTGAGE_BANKID withValue:[NSNumber numberWithInteger:m_selectedBankId]];
     }

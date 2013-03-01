@@ -65,6 +65,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.title = KEY_MORTGAGE_DETAILS;
+    UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onAddMortgageToRecord:)];
+    self.navigationItem.rightBarButtonItem = addButton;
 }
 
 - (void)viewDidUnload
@@ -259,29 +262,11 @@
     return [cal getOutput];
 }
 
-- (void)onBack:(id)sender{
-    [self dismissModalViewControllerAnimated:YES];
-}
-
 -(void)onAddMortgageToRecord:(id)sender{
-    AddRecordViewController* rootController = [[AddRecordViewController alloc] initWithMortgageRecord:m_record];
+    AddRecordViewController* rootController = [[AddRecordViewController alloc] initWithMortgageRecord:m_record Mode:ADDMODE];
     [rootController setM_delegate:m_recordViewController];
-    
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
-    navController.navigationBar.topItem.title = @"新增供款";
-    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemSave target:rootController action:@selector(onSaveNewRecord:)];
-    navController.navigationBar.topItem.rightBarButtonItem = saveButton;
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonSystemItemCancel target:self action:@selector(onBack:)];
-    navController.navigationBar.topItem.leftBarButtonItem = cancelButton;
-    
-    [navController setWantsFullScreenLayout:YES];
-    [navController.view setAutoresizesSubviews:NO];
-    navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    navController.visibleViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    self.modalPresentationStyle = UIModalPresentationCurrentContext;
-    
-    [self presentModalViewController:navController animated:YES];
+    self.navigationItem.title = self.title;
+    [self.navigationController pushViewController:rootController animated:YES];
 }
 
 
@@ -341,7 +326,7 @@
     }else if (section == 4){
         return @"費用總額分析";
     }else if (section == 5){
-        return @"供款表";
+        return KEY_MORTGAGE_TABLE;
     }
     return @"";
 }
@@ -362,21 +347,8 @@
     if(indexPath.section == 5 && indexPath.row == 0){
         MortgageMonthlyPayViewController* rootController = [[MortgageMonthlyPayViewController alloc] init];
         [rootController setPricipals:m_output.principals LeftAmount:m_output.leftLoanAmounts MonthlyPay:m_output->monthlyPay];
-        
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
-        
-        navController.navigationBar.topItem.title = rootController.title;
-        navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:self.navigationController.navigationBar.topItem.title style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
-        navController.navigationBar.topItem.leftBarButtonItem = backButton;
-        
-        [navController setWantsFullScreenLayout:YES];
-        [navController.view setAutoresizesSubviews:NO];
-        navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        navController.visibleViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        self.modalPresentationStyle = UIModalPresentationCurrentContext;
-        
-        [self presentModalViewController:navController animated:YES];
+        self.navigationItem.title = self.title;
+        [self.navigationController pushViewController:rootController animated:YES];
     }
 }
 

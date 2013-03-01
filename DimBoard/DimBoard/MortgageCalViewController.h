@@ -11,6 +11,8 @@
 #import "MortgageDataType.h"
 #import "Calculator.h"
 #import "UpdateRecordItemProtocol.h"
+#import "MortgageDetailViewController.h"
+#import "MortgageMonthlyPayViewController.h"
 
 @interface MortgageCalViewController : UIViewController<UITableViewDataSource,UITableViewDelegate, UpdateRecordItemProtocol>
 
@@ -36,4 +38,7 @@
 @property (retain, nonatomic) MortgageInput *m_input;
 @property (retain, nonatomic) MortgageOutput *m_output;
 @property (retain, nonatomic) Calculator* m_calculator;
+@property (retain, nonatomic) id m_recordViewController;
+
+-(void)setRecordViewController:(id)controller;
 @end

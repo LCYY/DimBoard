@@ -52,7 +52,10 @@
     [DatePicker setDate:m_date animated:YES];
     
     [DatePicker addTarget:self action:@selector(onDateChanged:) forControlEvents:UIControlEventValueChanged];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.title = KEY_MORTGAGE_LOANDATE;
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemDone target:self action:@selector(onSave:)];
+    self.navigationItem.rightBarButtonItem = saveButton;
 }
 
 - (void)viewDidUnload
@@ -71,12 +74,12 @@
 }
 
 -(void)onSave:(id)sender{
-    [self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated: YES];
+    [m_delegate updateRecordKey:KEY_MORTGAGE_LOANDATE withValue:m_date];
 }
 
 -(void)onDateChanged:(id)sener{
     m_date = [DatePicker date];
-    [m_delegate updateRecordKey:KEY_MORTGAGE_LOANDATE withValue:m_date];
 }
 
 @end

@@ -9,13 +9,21 @@
 #import <Foundation/Foundation.h>
 
 #define MIN_HOME_VALUE 0.00         // 0
-#define MAX_HOME_VALUE 5000.00      // 5000,0000
+#define MAX_HOME_VALUE 500000000.00      // 5000,0000
+#define STEP_HOME_VALUE 1
+#define COEFF_HOME_VALUE 0.1
 #define MIN_LOANRATE_VALUE 0.0      // 0.0%
 #define MAX_LOANRATE_VALUE 15.00    // 15%
+#define STEP_LOANRATE_VALUE 0.01
+#define COEFF_LOANRATE_VALUE 0.01
 #define MIN_LOANYEAR_VALUE 0        // 0 years
 #define MAX_LOANYEAR_VALUE 50       // 50 years
+#define STEP_LOANYEAR_VALUE 1
+#define COEFF_LOANYEAR_VALUE 0.01
 #define MIN_LOANPERCENT_VALUE 0     // 0%
 #define MAX_LOANPERCENT_VALUE 100    // 100%
+#define STEP_LOANPERCENT_VALUE 1
+#define COEFF_LOANPERCENT_VALUE 0.01
 
 #define KEY_MORTGAGE_RECORDID @"mortgage_recordid"
 #define KEY_MORTGAGE_NAME @"按揭名稱"
@@ -34,13 +42,17 @@
 #define KEY_MORTGAGE_LOANAMOUNT @"按揭金額"
 #define KEY_MORTGAGE_REPAYMENT @"還款總額"
 #define KEY_MORTGAGE_REPAYMENT_INTEREST @"利息金額"
-#define KEY_MORTGAGE_TOBEPAIDPRINCIPAL @"待還本金金額"
-#define KEY_MORTGAGE_PAIDPRINCIPAL @"已還本金金額"
+#define KEY_MORTGAGE_TOBEPAIDPRINCIPAL @"待還按揭金額"
+#define KEY_MORTGAGE_PAIDPRINCIPAL @"已還按揭金額"
 #define KEY_MORTGAGE_TOBEPAIDINTEREST @"待還利息金額"
 #define KEY_MORTGAGE_PAIDINTEREST @"已還利息金額"
 #define KEY_MORTGAGE_PAIDTERM @"已還期數"
 #define KEY_MORTGAGE_TOTALEXP @"費用總額"
 #define KEY_MORTGAGE_TABLE @"供款表"
+#define KEY_MY_MORTGAGE @"我的按揭"
+#define KEY_MORTGAGE_DETAILS @"支出一覽"
+#define KEY_MORTGAGE_NEW @"新增按揭"
+#define KEY_MORTGAGE_CAL @"計算器"
 #define DATEFORMAT @"yyyy-MM-dd"
 
 

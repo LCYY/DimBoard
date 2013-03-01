@@ -16,8 +16,9 @@
 @synthesize NameLabel;
 @synthesize ValueInput;
 @synthesize UnitLabel;
-@synthesize SlideBar;
+@synthesize AddButton, MinusButton;
 @synthesize m_deletegate;
+@synthesize m_timer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,6 +36,34 @@
         m_name = name;
         m_value = value;
         m_unit = unit;
+        m_timer = nil;
+        m_currentValue = [m_value doubleValue];
+        m_minValue = 0.0;
+        m_maxValue = 0.0;
+        m_step = 0.0;
+        m_repeatCnt = 0;
+        
+        if([m_name isEqualToString:KEY_MORTGAGE_HOMEVALUE]){//int terms of 10-thousand
+            m_minValue = MIN_HOME_VALUE;
+            m_maxValue = MAX_HOME_VALUE;
+            m_step = STEP_HOME_VALUE;
+            m_stepCoeff = COEFF_HOME_VALUE;
+        }else if([m_name isEqualToString:KEY_MORTGAGE_INTERESTRATE]){//in terms of %
+            m_minValue = MIN_LOANRATE_VALUE;
+            m_maxValue = MAX_LOANRATE_VALUE;
+            m_step = STEP_LOANRATE_VALUE;
+            m_stepCoeff = COEFF_LOANRATE_VALUE;
+        }else if([m_name isEqualToString:KEY_MORTGAGE_LOANPERCENT]){// in terms of year
+            m_minValue = MIN_LOANPERCENT_VALUE;
+            m_maxValue = MAX_LOANPERCENT_VALUE;
+            m_step = STEP_LOANPERCENT_VALUE;
+            m_stepCoeff = COEFF_LOANPERCENT_VALUE;
+        }else if([m_name isEqualToString:KEY_MORTGAGE_LOANYEAR]){// in terms of %
+            m_minValue = MIN_LOANYEAR_VALUE;
+            m_maxValue = MAX_LOANYEAR_VALUE;
+            m_step = STEP_LOANYEAR_VALUE;
+            m_stepCoeff = COEFF_LOANYEAR_VALUE;
+        }
     }
     return self;
 }
@@ -54,60 +83,128 @@
     
     [NameLabel setText:m_name];
     [ValueInput setText:m_value];
-    [UnitLabel setText:m_unit];
-    
+    [UnitLabel setText:m_unit];    
     [NameLabel setFont:[UIFont boldSystemFontOfSize:17]];
     
-    [SlideBar addTarget:self action:@selector(onSlidValueChanged:) forControlEvents:UIControlEventValueChanged];
+    [AddButton setBackgroundImage:[UIImage imageNamed:@"add.png"] forState:UIControlStateNormal];
+    [AddButton setBackgroundImage:[UIImage imageNamed:@"add2.png"] forState:UIControlStateHighlighted];
+    [AddButton setBackgroundImage:[UIImage imageNamed:@"add2.png"] forState:UIControlStateReserved];
+    [AddButton setBackgroundImage:[UIImage imageNamed:@"add2.png"] forState:UIControlStateSelected];
+    [MinusButton setBackgroundImage:[UIImage imageNamed:@"minus.png"] forState:UIControlStateNormal];
+    [MinusButton setBackgroundImage:[UIImage imageNamed:@"minus2.png"] forState:UIControlStateHighlighted];
+    [MinusButton setBackgroundImage:[UIImage imageNamed:@"minus2.png"] forState:UIControlStateReserved];
+    [MinusButton setBackgroundImage:[UIImage imageNamed:@"minus2.png"] forState:UIControlStateSelected];
     
-    double minvalue = 0;
-    double maxvalue = 0;
-    if([m_name isEqualToString:KEY_MORTGAGE_HOMEVALUE]){//int terms of 10-thousand
-        minvalue = MIN_HOME_VALUE;
-        maxvalue = MAX_HOME_VALUE;
-    }else if([m_name isEqualToString:KEY_MORTGAGE_INTERESTRATE]){//in terms of %
-        minvalue = MIN_LOANRATE_VALUE;
-        maxvalue = MAX_LOANRATE_VALUE;
-    }else if([m_name isEqualToString:KEY_MORTGAGE_LOANPERCENT]){// in terms of year
-        minvalue = MIN_LOANPERCENT_VALUE;
-        maxvalue = MAX_LOANPERCENT_VALUE;
-    }else if([m_name isEqualToString:KEY_MORTGAGE_LOANYEAR]){// in terms of %
-        minvalue = MIN_LOANYEAR_VALUE;
-        maxvalue = MAX_LOANYEAR_VALUE;
-    }
-    [SlideBar setMinimumValue:minvalue];
-    [SlideBar setMaximumValue:maxvalue];
-    [SlideBar setValue:[m_value doubleValue]];
+    
+    UILongPressGestureRecognizer* addlongPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onAddLongPressed:)];
+    [addlongPressRecognizer setMinimumPressDuration:0.5];
+    [AddButton addGestureRecognizer:addlongPressRecognizer];
+    
+    UILongPressGestureRecognizer* minuslongPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onMinusLongPressed:)];
+    [minuslongPressRecognizer setMinimumPressDuration:0.5];
+    [MinusButton addGestureRecognizer:minuslongPressRecognizer];
 }
 
 - (void)viewDidUnload
 {
     [self setNameLabel:nil];
     [self setValueInput:nil];
-    [self setSlideBar:nil];
     [self setUnitLabel:nil];
+    [self setMinusButton:nil];
+    [self setAddButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     [self setM_deletegate:nil];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+- (IBAction)onMinusDown:(id)sender {
+    m_currentValue -= m_step;
+    [self updateValues];
 }
 
-- (void)onSlidValueChanged:(id)sender{
-    UISlider* slider = (UISlider*)sender;
+- (IBAction)onAddDown:(id)sender {
+    m_currentValue += m_step;
+    [self updateValues];
+}
+
+-(void)onAddLongPressed:(id)sender{
+    [self onLongPressed:sender];
+}
+
+-(void)onMinusLongPressed:(id)sender{
+    [self onLongPressed:sender];
+}
+
+-(void)onLongPressed:(id)sender{
+    UILongPressGestureRecognizer* recognizer = (UILongPressGestureRecognizer*)sender;
+    switch (recognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            if(m_timer){
+                [m_timer invalidate];
+                m_timer = nil;
+            }
+            if(recognizer.view == MinusButton){
+                m_timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(minusValueQuickly:) userInfo:nil repeats:YES];
+                [MinusButton setBackgroundImage:[UIImage imageNamed:@"minus2.png"] forState:UIControlStateNormal];
+            }
+            else if(recognizer.view == AddButton){
+                m_timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(addValueQuickly:) userInfo:nil repeats:YES];
+                [AddButton setBackgroundImage:[UIImage imageNamed:@"add2.png"] forState:UIControlStateNormal];
+            }
+            break;
+        case UIGestureRecognizerStateEnded:
+            if(m_timer){
+                [m_timer invalidate];
+                m_timer = nil;
+                m_repeatCnt = 0;
+            }
+            if(recognizer.view == MinusButton){
+                [MinusButton setBackgroundImage:[UIImage imageNamed:@"minus.png"] forState:UIControlStateNormal];
+            }
+            else if(recognizer.view == AddButton){
+                [AddButton setBackgroundImage:[UIImage imageNamed:@"add.png"] forState:UIControlStateNormal];
+            }
+            break;
+        default:
+            break;
+    }
+}
+
+-(void)addValueQuickly:(id)sender{
+    m_repeatCnt ++;
     
+    int times = 1+ (int)(m_stepCoeff*m_repeatCnt*m_repeatCnt);
+    m_currentValue += times*m_step;
+    [self updateValues];
+}
+
+-(void)minusValueQuickly:(id)sender{
+    m_repeatCnt ++;
+    
+    int times = 1 + (int)(m_stepCoeff*m_repeatCnt*m_repeatCnt);
+    m_currentValue -= times*m_step;
+    [self updateValues];
+}
+
+-(void)checkValueRange{
+    if(m_currentValue > m_maxValue){
+        m_currentValue = m_minValue;
+    }else if(m_currentValue < m_minValue){
+        m_currentValue = m_maxValue;
+    }
+}
+
+-(void)updateValues{
+    [self checkValueRange];
     if([m_name isEqualToString:KEY_MORTGAGE_LOANYEAR]){
-        m_value = [NSString stringWithFormat:@"%d",(int)slider.value];
+        m_value = [NSString stringWithFormat:@"%d",(int)m_currentValue];
     }else if([m_name isEqualToString:KEY_MORTGAGE_LOANPERCENT]){
-        m_value = [NSString stringWithFormat:@"%d",(int)slider.value];
+        m_value = [NSString stringWithFormat:@"%d",(int)m_currentValue];
     }else if([m_name isEqualToString:KEY_MORTGAGE_INTERESTRATE]){
-        m_value = [NSString stringWithFormat:@"%0.2f",slider.value];
+        m_value = [NSString stringWithFormat:@"%0.2f",m_currentValue];
     }else if([m_name isEqualToString:KEY_MORTGAGE_HOMEVALUE]){
-        m_value = [NSString stringWithFormat:@"%d",(int)slider.value];
+        m_value = [NSString stringWithFormat:@"%d",(int)m_currentValue];
     }
     ValueInput.text = m_value;
     [m_deletegate updateRecordKey:m_name withValue:m_value];
@@ -116,7 +213,7 @@
 #pragma mark - UITextFieldDelegate
 -(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     m_value = [ValueInput text];
-    [SlideBar setValue:[m_value doubleValue]];
+    m_currentValue = [m_value doubleValue];
     [m_deletegate updateRecordKey:m_name withValue:m_value];
     return YES;
 }

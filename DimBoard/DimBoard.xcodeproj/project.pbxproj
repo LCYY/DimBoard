@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		35AB6DF816BEA10000795E57 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35AB6DF716BEA10000795E57 /* Default-568h@2x.png */; };
+		FB2CAB8916E05F5F008C73B0 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2CAB8716E05F5F008C73B0 /* add.png */; };
+		FB2CAB8A16E05F5F008C73B0 /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2CAB8816E05F5F008C73B0 /* minus.png */; };
+		FB2CAB8D16E0897B008C73B0 /* add2.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2CAB8B16E0897B008C73B0 /* add2.png */; };
+		FB2CAB8E16E0897B008C73B0 /* minus2.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2CAB8C16E0897B008C73B0 /* minus2.png */; };
 		FB2D6F9F16BA22E2008E367F /* icon_16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2D6F9A16BA22E2008E367F /* icon_16x16.png */; };
 		FB2D6FA016BA22E2008E367F /* icon_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2D6F9B16BA22E2008E367F /* icon_32x32.png */; };
 		FB2D6FA116BA22E2008E367F /* icon_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2D6F9C16BA22E2008E367F /* icon_64x64.png */; };
@@ -20,6 +24,8 @@
 		FB78592516C103F100C63D08 /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = FB78592416C103F100C63D08 /* Calculator.m */; };
 		FB78592916C1040100C63D08 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FB78592816C1040100C63D08 /* XYPieChart.m */; };
 		FB78592B16C104EC00C63D08 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB78592A16C104EC00C63D08 /* QuartzCore.framework */; };
+		FB7ADDCC16E0BEBE00CB0263 /* cal.png in Resources */ = {isa = PBXBuildFile; fileRef = FB7ADDCB16E0BEBE00CB0263 /* cal.png */; };
+		FB7ADDCE16E0BF6000CB0263 /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = FB7ADDCD16E0BF6000CB0263 /* record.png */; };
 		FB961B4716C34AFD000EA974 /* MortgageRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB961B4516C34AFD000EA974 /* MortgageRecordViewController.m */; };
 		FB961B4816C34AFD000EA974 /* MortgageRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB961B4616C34AFD000EA974 /* MortgageRecordViewController.xib */; };
 		FB961B8616C34F04000EA974 /* AddRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB961B8416C34F04000EA974 /* AddRecordViewController.m */; };
@@ -42,8 +48,6 @@
 		FBB0A46716D720D700F087EE /* PieChartCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB0A46516D720D700F087EE /* PieChartCellViewController.xib */; };
 		FBC747D816DF293B0090A4B6 /* MortgageMonthlyPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC747D616DF293A0090A4B6 /* MortgageMonthlyPayViewController.m */; };
 		FBC747D916DF293B0090A4B6 /* MortgageMonthlyPayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBC747D716DF293B0090A4B6 /* MortgageMonthlyPayViewController.xib */; };
-		FBC747DD16DF408E0090A4B6 /* MortgageQuickCalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC747DB16DF408D0090A4B6 /* MortgageQuickCalViewController.m */; };
-		FBC747DE16DF408E0090A4B6 /* MortgageQuickCalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBC747DC16DF408E0090A4B6 /* MortgageQuickCalViewController.xib */; };
 		FBC747E116DF57D70090A4B6 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC747DF16DF57D70090A4B6 /* down.png */; };
 		FBC747E216DF57D70090A4B6 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC747E016DF57D70090A4B6 /* up.png */; };
 		FBC747E616DF5D450090A4B6 /* RecordCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC747E416DF5D450090A4B6 /* RecordCellViewController.m */; };
@@ -62,12 +66,14 @@
 		FBF3C86016B920D400790005 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBF3C85E16B920D400790005 /* InfoPlist.strings */; };
 		FBF3C86216B920D400790005 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF3C86116B920D400790005 /* main.m */; };
 		FBF3C86616B920D400790005 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF3C86516B920D400790005 /* AppDelegate.m */; };
-		FBF3C86916B920D400790005 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF3C86816B920D400790005 /* ViewController.m */; };
-		FBF3C86C16B920D400790005 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF3C86A16B920D400790005 /* ViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		35AB6DF716BEA10000795E57 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		FB2CAB8716E05F5F008C73B0 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add.png; path = Home.iconset/add.png; sourceTree = "<group>"; };
+		FB2CAB8816E05F5F008C73B0 /* minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = minus.png; path = Home.iconset/minus.png; sourceTree = "<group>"; };
+		FB2CAB8B16E0897B008C73B0 /* add2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add2.png; path = Home.iconset/add2.png; sourceTree = "<group>"; };
+		FB2CAB8C16E0897B008C73B0 /* minus2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = minus2.png; path = Home.iconset/minus2.png; sourceTree = "<group>"; };
 		FB2D6F9A16BA22E2008E367F /* icon_16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_16x16.png; path = Home.iconset/icon_16x16.png; sourceTree = "<group>"; };
 		FB2D6F9B16BA22E2008E367F /* icon_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_32x32.png; path = Home.iconset/icon_32x32.png; sourceTree = "<group>"; };
 		FB2D6F9C16BA22E2008E367F /* icon_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_64x64.png; path = Home.iconset/icon_64x64.png; sourceTree = "<group>"; };
@@ -85,6 +91,8 @@
 		FB78592716C1040100C63D08 /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
 		FB78592816C1040100C63D08 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		FB78592A16C104EC00C63D08 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FB7ADDCB16E0BEBE00CB0263 /* cal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cal.png; path = Home.iconset/cal.png; sourceTree = "<group>"; };
+		FB7ADDCD16E0BF6000CB0263 /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = record.png; path = Home.iconset/record.png; sourceTree = "<group>"; };
 		FB961B4416C34AFD000EA974 /* MortgageRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MortgageRecordViewController.h; sourceTree = "<group>"; };
 		FB961B4516C34AFD000EA974 /* MortgageRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MortgageRecordViewController.m; sourceTree = "<group>"; };
 		FB961B4616C34AFD000EA974 /* MortgageRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MortgageRecordViewController.xib; sourceTree = "<group>"; };
@@ -121,9 +129,6 @@
 		FBC747D516DF293A0090A4B6 /* MortgageMonthlyPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MortgageMonthlyPayViewController.h; sourceTree = "<group>"; };
 		FBC747D616DF293A0090A4B6 /* MortgageMonthlyPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MortgageMonthlyPayViewController.m; sourceTree = "<group>"; };
 		FBC747D716DF293B0090A4B6 /* MortgageMonthlyPayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MortgageMonthlyPayViewController.xib; sourceTree = "<group>"; };
-		FBC747DA16DF408D0090A4B6 /* MortgageQuickCalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MortgageQuickCalViewController.h; sourceTree = "<group>"; };
-		FBC747DB16DF408D0090A4B6 /* MortgageQuickCalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MortgageQuickCalViewController.m; sourceTree = "<group>"; };
-		FBC747DC16DF408E0090A4B6 /* MortgageQuickCalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MortgageQuickCalViewController.xib; sourceTree = "<group>"; };
 		FBC747DF16DF57D70090A4B6 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = down.png; path = Home.iconset/down.png; sourceTree = "<group>"; };
 		FBC747E016DF57D70090A4B6 /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = up.png; path = Home.iconset/up.png; sourceTree = "<group>"; };
 		FBC747E316DF5D440090A4B6 /* RecordCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordCellViewController.h; sourceTree = "<group>"; };
@@ -150,9 +155,6 @@
 		FBF3C86316B920D400790005 /* DimBoard-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DimBoard-Prefix.pch"; sourceTree = "<group>"; };
 		FBF3C86416B920D400790005 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FBF3C86516B920D400790005 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FBF3C86716B920D400790005 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FBF3C86816B920D400790005 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		FBF3C86B16B920D400790005 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,12 @@
 		FB2D6FA416BA2364008E367F /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				FB7ADDCD16E0BF6000CB0263 /* record.png */,
+				FB7ADDCB16E0BEBE00CB0263 /* cal.png */,
+				FB2CAB8B16E0897B008C73B0 /* add2.png */,
+				FB2CAB8C16E0897B008C73B0 /* minus2.png */,
+				FB2CAB8716E05F5F008C73B0 /* add.png */,
+				FB2CAB8816E05F5F008C73B0 /* minus.png */,
 				FBC747E816DF5FA80090A4B6 /* house1.png */,
 				FBC747E916DF5FA80090A4B6 /* house2.png */,
 				FBC747EA16DF5FA80090A4B6 /* house3.png */,
@@ -272,15 +280,9 @@
 				FBB0A45516D4648E00F087EE /* MortgageRecordIO.h */,
 				FBB0A45616D4648E00F087EE /* MortgageRecordIO.m */,
 				FBB0A45816D5F6A600F087EE /* UpdateRecordItemProtocol.h */,
-				FBF3C86716B920D400790005 /* ViewController.h */,
-				FBF3C86816B920D400790005 /* ViewController.m */,
-				FBF3C86A16B920D400790005 /* ViewController.xib */,
 				FBC747F616E03EFE0090A4B6 /* MortgageCalViewController.h */,
 				FBC747F716E03EFE0090A4B6 /* MortgageCalViewController.m */,
 				FBC747F816E03EFE0090A4B6 /* MortgageCalViewController.xib */,
-				FBC747DA16DF408D0090A4B6 /* MortgageQuickCalViewController.h */,
-				FBC747DB16DF408D0090A4B6 /* MortgageQuickCalViewController.m */,
-				FBC747DC16DF408E0090A4B6 /* MortgageQuickCalViewController.xib */,
 				FBF3642916DCAA0A001B4F14 /* MortgageDetailViewController.h */,
 				FBF3642A16DCAA0A001B4F14 /* MortgageDetailViewController.m */,
 				FBF3642B16DCAA0A001B4F14 /* MortgageDetailViewController.xib */,
@@ -370,7 +372,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBF3C86016B920D400790005 /* InfoPlist.strings in Resources */,
-				FBF3C86C16B920D400790005 /* ViewController.xib in Resources */,
 				FB2D6F9F16BA22E2008E367F /* icon_16x16.png in Resources */,
 				FB2D6FA016BA22E2008E367F /* icon_32x32.png in Resources */,
 				FB2D6FA116BA22E2008E367F /* icon_64x64.png in Resources */,
@@ -388,7 +389,6 @@
 				FBF3642D16DCAA0A001B4F14 /* MortgageDetailViewController.xib in Resources */,
 				FB31519916DDAB970090B972 /* GridCellViewController.xib in Resources */,
 				FBC747D916DF293B0090A4B6 /* MortgageMonthlyPayViewController.xib in Resources */,
-				FBC747DE16DF408E0090A4B6 /* MortgageQuickCalViewController.xib in Resources */,
 				FBC747E116DF57D70090A4B6 /* down.png in Resources */,
 				FBC747E216DF57D70090A4B6 /* up.png in Resources */,
 				FBC747E716DF5D450090A4B6 /* RecordCellViewController.xib in Resources */,
@@ -396,6 +396,12 @@
 				FBC747EC16DF5FA80090A4B6 /* house2.png in Resources */,
 				FBC747ED16DF5FA80090A4B6 /* house3.png in Resources */,
 				FBC747FA16E03EFF0090A4B6 /* MortgageCalViewController.xib in Resources */,
+				FB2CAB8916E05F5F008C73B0 /* add.png in Resources */,
+				FB2CAB8A16E05F5F008C73B0 /* minus.png in Resources */,
+				FB2CAB8D16E0897B008C73B0 /* add2.png in Resources */,
+				FB2CAB8E16E0897B008C73B0 /* minus2.png in Resources */,
+				FB7ADDCC16E0BEBE00CB0263 /* cal.png in Resources */,
+				FB7ADDCE16E0BF6000CB0263 /* record.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,7 +414,6 @@
 			files = (
 				FBF3C86216B920D400790005 /* main.m in Sources */,
 				FBF3C86616B920D400790005 /* AppDelegate.m in Sources */,
-				FBF3C86916B920D400790005 /* ViewController.m in Sources */,
 				FB78590C16C0B07600C63D08 /* MortgageDataType.m in Sources */,
 				FB78592516C103F100C63D08 /* Calculator.m in Sources */,
 				FB78592916C1040100C63D08 /* XYPieChart.m in Sources */,
@@ -428,7 +433,6 @@
 				FB31519816DDAB970090B972 /* GridCellViewController.m in Sources */,
 				FB3151A616DDE6970090B972 /* GridCell.m in Sources */,
 				FBC747D816DF293B0090A4B6 /* MortgageMonthlyPayViewController.m in Sources */,
-				FBC747DD16DF408E0090A4B6 /* MortgageQuickCalViewController.m in Sources */,
 				FBC747E616DF5D450090A4B6 /* RecordCellViewController.m in Sources */,
 				FBC747F016DF61FC0090A4B6 /* RecordCell.m in Sources */,
 				FBC747F916E03EFF0090A4B6 /* MortgageCalViewController.m in Sources */,
@@ -444,14 +448,6 @@
 				FBF3C85F16B920D400790005 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		FBF3C86A16B920D400790005 /* ViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FBF3C86B16B920D400790005 /* en */,
-			);
-			name = ViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

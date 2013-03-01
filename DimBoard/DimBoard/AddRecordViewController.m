@@ -44,11 +44,12 @@
     return self;
 }
 
-- (id)initWithMortgageRecord:(MortgageRecord*)record{
+- (id)initWithMortgageRecord:(MortgageRecord*)record Mode:(NSInteger)mode{
     self = [self init];
     if (self) {
         // Custom initialization
         m_record = [record copy];
+        m_mode = mode;
     }
     return self;
 }
@@ -60,6 +61,16 @@
     UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
     tapRecognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tapRecognizer];
+    
+    UIBarButtonItem *saveButton = nil;
+    if(m_mode == ADDMODE){
+        self.title = KEY_MORTGAGE_NEW;
+        saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemSave target:self action:@selector(onSaveNewRecord:)];
+    }else{
+        self.title = m_record.name;
+        saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemSave target:self action:@selector(onSaveRecord:)];
+    }
+    self.navigationItem.rightBarButtonItem = saveButton;
 }
 
 - (void)viewDidUnload
@@ -84,18 +95,14 @@
     [self.view endEditing:YES];
 }
 
--(void)onCancel:(id)sender{
-    [self dismissModalViewControllerAnimated:YES];
-}
-
 - (void)onSaveNewRecord:(id)sender{
     [m_delegate addNewRecord:m_record];
-    [self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated: YES];
 }
 
 - (void)onSaveRecord:(id)sender{
     [m_delegate updateRecord:m_record];
-    [self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated: YES];
 }
 
 #pragma mark-
@@ -106,49 +113,19 @@
     if(section == 1){
         BankPickerViewController* rootController = [[BankPickerViewController alloc] initWithBankId:m_record->bankId];
         [rootController setM_delegate:self];
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
-        
-        navController.navigationBar.topItem.title = m_section1;
-        navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-        UIBarButtonItem *cacelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonSystemItemDone target:self action:@selector(onCancel:)];
-        navController.navigationBar.topItem.leftBarButtonItem = cacelButton;
-        UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonSystemItemDone target:rootController action:@selector(onSave:)];
-        navController.navigationBar.topItem.rightBarButtonItem = saveButton;
-        
-        [navController setWantsFullScreenLayout:YES];
-        [navController.view setAutoresizesSubviews:NO];
-        navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        navController.visibleViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        self.modalPresentationStyle = UIModalPresentationCurrentContext;
-        
-        [self presentModalViewController:navController animated:YES];
+        [self.navigationController pushViewController:rootController animated:YES];
     }else if(section == 3){
         DatePickerViewController* rootController = [[DatePickerViewController alloc] initWithDate:m_record.input.date];
         [rootController setM_delegate:self];
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
-        
-        navController.navigationBar.topItem.title = m_section3;
-        navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-        UIBarButtonItem *cacelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonSystemItemDone target:self action:@selector(onCancel:)];
-        navController.navigationBar.topItem.leftBarButtonItem = cacelButton;
-        UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonSystemItemDone target:rootController action:@selector(onSave:)];
-        navController.navigationBar.topItem.rightBarButtonItem = saveButton;
-        
-        [navController setWantsFullScreenLayout:YES];
-        [navController.view setAutoresizesSubviews:NO];
-        navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        navController.visibleViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        self.modalPresentationStyle = UIModalPresentationCurrentContext;
-        
-        [self presentModalViewController:navController animated:YES];
+        [self.navigationController pushViewController:rootController animated:YES];
     }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 2)
-        return 65;
+        return 44;
     else
-        return 45;
+        return 44;
 }
 
 #pragma mark UITableViewDataSource

@@ -15,6 +15,7 @@
 @implementation MortgageCalViewController
 @synthesize InputTableView, ResultTableView;
 @synthesize m_input,m_output,m_calculator,m_inputRows,m_outputRows;
+@synthesize m_recordViewController;
 
 -(id)init{
     self = [super init];
@@ -22,8 +23,6 @@
         m_input = [[MortgageInput alloc] initWithHomeValue:100.0 LoanYear:30 LoanPercent:30.0 LoanRate:2.0 LoanDate:nil];
         m_output = [[MortgageOutput alloc] init];
         m_calculator = [[Calculator alloc] init];
-        
-        //m_recordViewController = [[MortgageRecordViewController alloc] init];
         
         NSArray *value01 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_HOMEVALUE,@"萬元",nil];
         NSArray *value02 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANPERCENT,@"%",nil];
@@ -53,6 +52,12 @@
     [InputTableView setDelegate:self];
     [ResultTableView setDataSource:self];
     [ResultTableView setDelegate:self];
+    
+    self.title = KEY_MORTGAGE_CAL;
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    UIBarButtonItem *detailButton = [[UIBarButtonItem alloc] initWithTitle:@"支出一覽" style:UIBarButtonSystemItemDone target:self action:@selector(onShowMortgageDetails:)];
+
+    self.navigationItem.rightBarButtonItem = detailButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,6 +72,9 @@
     [super viewDidUnload];
 }
 
+-(void)setRecordViewController:(id)controller{
+    m_recordViewController = controller;
+}
 
 - (void) updateResult{
     [m_calculator setInput:m_input];
@@ -83,17 +91,20 @@
     [self.view endEditing:YES];
 }
 
-- (void)onBack:(id)sender{
-    [self dismissModalViewControllerAnimated:YES];
+-(void)onShowMortgageDetails:(id)sender{
+    MortgageDetailViewController* rootController = [[MortgageDetailViewController alloc] initWithMortgageRecord:[[MortgageRecord alloc] initWithMortgageInput:m_input]];
+    [rootController setRecordViewController:m_recordViewController];
+    self.navigationItem.title = self.title;
+    [self.navigationController pushViewController:rootController animated:YES];
 }
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(tableView == InputTableView){
-        return 75;
+        return 44;
     }else if(tableView == ResultTableView){
-        return 35;
+        return 44;
     }
     return 0;
 }
@@ -159,39 +170,52 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if (tableView == InputTableView){
-        return @"按揭資料";
-    }else if (tableView == ResultTableView){
-        return @"計算結果";
+        return @"請輸入";
     }
     return @"";
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
-    view.backgroundColor = [UIColor colorWithRed:39/255.0 green:64/255.0 blue:139/255.0 alpha:1];
-    
-    UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 320, 30)];
-    label.textAlignment = NSTextAlignmentLeft;
-    label.textColor = [UIColor whiteColor];
-    label.text = [self tableView:tableView titleForHeaderInSection:section];
-    label.font = [UIFont boldSystemFontOfSize:16];
-    label.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.0];
-    [view addSubview:label];
-    return view;
+    if (tableView == InputTableView){
+        UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 22)];
+        view.backgroundColor = [UIColor colorWithRed:39/255.0 green:64/255.0 blue:139/255.0 alpha:1];
+        
+        UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 320, 22)];
+        label.textAlignment = NSTextAlignmentLeft;
+        label.textColor = [UIColor whiteColor];
+        label.text = [self tableView:tableView titleForHeaderInSection:section];
+        label.font = [UIFont boldSystemFontOfSize:16];
+        label.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.0];
+        [view addSubview:label];
+        return view;
+    }
+    return nil;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
-    view.backgroundColor = [UIColor colorWithRed:39/255.0 green:64/255.0 blue:139/255.0 alpha:1];
-    return view;
+    if (tableView == InputTableView){
+        UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
+        view.backgroundColor = [UIColor colorWithRed:39/255.0 green:64/255.0 blue:139/255.0 alpha:1];
+        return view;
+    }
+    return nil;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 30;
+    if (tableView == InputTableView){
+        return 22;
+    }
+    return 0;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(scrollView.contentOffset.y < 0){
+        [scrollView setContentOffset:CGPointMake(0, 0)];
+    }
 }
 
 #pragma mark - UpdateRecordItemProtocol

@@ -87,6 +87,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.title = KEY_MY_MORTGAGE;
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onAddNewMortgageRecord:)];
+    self.navigationItem.rightBarButtonItem = addButton;
 }
 
 - (void)viewDidUnload
@@ -109,25 +113,8 @@
     AddRecordViewController* rootController = [[AddRecordViewController alloc] init];
     [rootController setM_delegate:self];
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
-    navController.navigationBar.topItem.title = @"新增供款";
-    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemSave target:rootController action:@selector(onSaveNewRecord:)];
-    navController.navigationBar.topItem.rightBarButtonItem = saveButton;
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
-    navController.navigationBar.topItem.leftBarButtonItem = cancelButton;
-    
-    [navController setWantsFullScreenLayout:YES];
-    [navController.view setAutoresizesSubviews:NO];
-    navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    navController.visibleViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    self.modalPresentationStyle = UIModalPresentationCurrentContext;
-
-    [self presentModalViewController:navController animated:YES];
-}
-
-- (void)onBack:(id)sender{
-    [self dismissModalViewControllerAnimated:YES];
+    self.navigationItem.title = self.title;
+    [self.navigationController pushViewController:rootController animated:YES];
 }
 
 #pragma mark - UITableViewDelegate
@@ -135,24 +122,8 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSUInteger row = [indexPath row];
     UITableViewController *rootController = [m_controllerList objectAtIndex:row];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
-    
-    navController.navigationBar.topItem.title = rootController.title;
-    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:self.navigationController.navigationBar.topItem.title style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
-    navController.navigationBar.topItem.leftBarButtonItem = backButton;
-    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:rootController action:@selector(onEdit:)];
-    navController.navigationBar.topItem.rightBarButtonItem = editButton;
-    
-    [navController setWantsFullScreenLayout:YES];
-    [navController.view setAutoresizesSubviews:NO];
-    navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    navController.visibleViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    self.modalPresentationStyle = UIModalPresentationCurrentContext;
-    
-    [self presentModalViewController:navController animated:YES];
-    
-    //[self.navigationController pushViewController:rootController animated:YES];
+    self.navigationItem.title = self.title;
+    [self.navigationController pushViewController:rootController animated:YES];
 }
 
 #pragma mark UITableViewDataSource

@@ -8,14 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "MortgageCalViewController.h"
-
-@class ViewController;
+#import "MortgageRecordViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-//@property (strong, nonatomic) ViewController *viewController;
-@property (strong, nonatomic) MortgageCalViewController *viewController;
+@property (strong, nonatomic) UIViewController *viewController;
 
 @end

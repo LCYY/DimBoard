@@ -16,7 +16,12 @@
 
 #define ADDRECORDSECTIONCOUNT 4
 
-@interface AddRecordViewController : UITableViewController<UpdateRecordItemProtocol>
+#define ADDMODE 0
+#define EDITMODE 1
+
+@interface AddRecordViewController : UITableViewController<UpdateRecordItemProtocol>{
+    NSInteger m_mode;
+}
 
 @property (retain, nonatomic) id<UpdateRecordProtocol> m_delegate;
 //Section 0
@@ -47,5 +52,5 @@
 @property (retain, nonatomic) NSString *m_section3;
 @property (retain, nonatomic) MortgageRecord* m_record;
 
-- (id)initWithMortgageRecord:(MortgageRecord*)record;
+- (id)initWithMortgageRecord:(MortgageRecord*)record Mode:(NSInteger)mode;
 @end

@@ -56,6 +56,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(onEdit:)];
+    self.navigationItem.rightBarButtonItem = editButton;
+    self.title = m_record.name;
 }
 
 - (void)viewDidUnload
@@ -307,29 +310,11 @@
 }
 
 - (void)onEdit:(id)sender{
-    AddRecordViewController* rootController = [[AddRecordViewController alloc] initWithMortgageRecord:m_record];
+    AddRecordViewController* rootController = [[AddRecordViewController alloc] initWithMortgageRecord:m_record Mode:EDITMODE];
     [rootController setM_delegate:self];
-    
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
-    
-    navController.navigationBar.topItem.title = self.navigationController.navigationBar.topItem.title;
-    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemSave target:rootController action:@selector(onSaveRecord:)];
-    navController.navigationBar.topItem.rightBarButtonItem = saveButton;
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
-    navController.navigationBar.topItem.leftBarButtonItem = cancelButton;
-    
-    [navController setWantsFullScreenLayout:YES];
-    [navController.view setAutoresizesSubviews:NO];
-    navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    navController.visibleViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    self.modalPresentationStyle = UIModalPresentationCurrentContext;
-    
-    [self presentModalViewController:navController animated:YES];
-}
 
-- (void)onBack:(id)sender{
-    [self dismissModalViewControllerAnimated:YES];
+    self.navigationItem.title = self.title;
+    [self.navigationController pushViewController:rootController animated:YES];
 }
 
 #pragma mark
@@ -407,21 +392,7 @@
     if(indexPath.section == 5 && indexPath.row == 0){
         MortgageMonthlyPayViewController* rootController = [[MortgageMonthlyPayViewController alloc] init];
         [rootController setPricipals:m_output.principals LeftAmount:m_output.leftLoanAmounts MonthlyPay:m_output->monthlyPay];
-        
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];
-        
-        navController.navigationBar.topItem.title = rootController.title;
-        navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:self.navigationController.navigationBar.topItem.title style:UIBarButtonSystemItemDone target:self action:@selector(onBack:)];
-        navController.navigationBar.topItem.leftBarButtonItem = backButton;
-        
-        [navController setWantsFullScreenLayout:YES];
-        [navController.view setAutoresizesSubviews:NO];
-        navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        navController.visibleViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        self.modalPresentationStyle = UIModalPresentationCurrentContext;
-        
-        [self presentModalViewController:navController animated:YES];
+        [self.navigationController pushViewController:rootController animated:YES];
     }
 }
 
