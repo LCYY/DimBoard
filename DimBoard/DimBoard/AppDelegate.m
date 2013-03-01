@@ -17,7 +17,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     //self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-    self.viewController = [[MortgageQuickCalViewController alloc] init];
+    self.viewController = [[MortgageCalViewController alloc] init];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;

@@ -247,6 +247,7 @@
     [self updateResult];
     [TableView reloadData];
 }
+
 - (IBAction)onShowMyRecord:(id)sender {
     MortgageRecordViewController *rootController = m_recordViewController;
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootController];

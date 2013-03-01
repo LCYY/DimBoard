@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MortgageQuickCalViewController.h"
+#import "MortgageCalViewController.h"
 
 @class ViewController;
 
@@ -16,6 +16,6 @@
 @property (strong, nonatomic) UIWindow *window;
 
 //@property (strong, nonatomic) ViewController *viewController;
-@property (strong, nonatomic) MortgageQuickCalViewController *viewController;
+@property (strong, nonatomic) MortgageCalViewController *viewController;
 
 @end

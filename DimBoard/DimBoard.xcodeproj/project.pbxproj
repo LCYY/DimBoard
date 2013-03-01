@@ -52,6 +52,8 @@
 		FBC747EC16DF5FA80090A4B6 /* house2.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC747E916DF5FA80090A4B6 /* house2.png */; };
 		FBC747ED16DF5FA80090A4B6 /* house3.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC747EA16DF5FA80090A4B6 /* house3.png */; };
 		FBC747F016DF61FC0090A4B6 /* RecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC747EF16DF61FC0090A4B6 /* RecordCell.m */; };
+		FBC747F916E03EFF0090A4B6 /* MortgageCalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC747F716E03EFE0090A4B6 /* MortgageCalViewController.m */; };
+		FBC747FA16E03EFF0090A4B6 /* MortgageCalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBC747F816E03EFE0090A4B6 /* MortgageCalViewController.xib */; };
 		FBF3642C16DCAA0A001B4F14 /* MortgageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF3642A16DCAA0A001B4F14 /* MortgageDetailViewController.m */; };
 		FBF3642D16DCAA0A001B4F14 /* MortgageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF3642B16DCAA0A001B4F14 /* MortgageDetailViewController.xib */; };
 		FBF3C85616B920D400790005 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85516B920D400790005 /* UIKit.framework */; };
@@ -132,6 +134,9 @@
 		FBC747EA16DF5FA80090A4B6 /* house3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = house3.png; path = Home.iconset/house3.png; sourceTree = "<group>"; };
 		FBC747EE16DF61FC0090A4B6 /* RecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordCell.h; sourceTree = "<group>"; };
 		FBC747EF16DF61FC0090A4B6 /* RecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordCell.m; sourceTree = "<group>"; };
+		FBC747F616E03EFE0090A4B6 /* MortgageCalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MortgageCalViewController.h; sourceTree = "<group>"; };
+		FBC747F716E03EFE0090A4B6 /* MortgageCalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MortgageCalViewController.m; sourceTree = "<group>"; };
+		FBC747F816E03EFE0090A4B6 /* MortgageCalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MortgageCalViewController.xib; sourceTree = "<group>"; };
 		FBF3642916DCAA0A001B4F14 /* MortgageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MortgageDetailViewController.h; sourceTree = "<group>"; };
 		FBF3642A16DCAA0A001B4F14 /* MortgageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MortgageDetailViewController.m; sourceTree = "<group>"; };
 		FBF3642B16DCAA0A001B4F14 /* MortgageDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MortgageDetailViewController.xib; sourceTree = "<group>"; };
@@ -270,6 +275,9 @@
 				FBF3C86716B920D400790005 /* ViewController.h */,
 				FBF3C86816B920D400790005 /* ViewController.m */,
 				FBF3C86A16B920D400790005 /* ViewController.xib */,
+				FBC747F616E03EFE0090A4B6 /* MortgageCalViewController.h */,
+				FBC747F716E03EFE0090A4B6 /* MortgageCalViewController.m */,
+				FBC747F816E03EFE0090A4B6 /* MortgageCalViewController.xib */,
 				FBC747DA16DF408D0090A4B6 /* MortgageQuickCalViewController.h */,
 				FBC747DB16DF408D0090A4B6 /* MortgageQuickCalViewController.m */,
 				FBC747DC16DF408E0090A4B6 /* MortgageQuickCalViewController.xib */,
@@ -336,7 +344,7 @@
 		FBF3C84816B920D400790005 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = LCYY;
 			};
 			buildConfigurationList = FBF3C84B16B920D400790005 /* Build configuration list for PBXProject "DimBoard" */;
@@ -387,6 +395,7 @@
 				FBC747EB16DF5FA80090A4B6 /* house1.png in Resources */,
 				FBC747EC16DF5FA80090A4B6 /* house2.png in Resources */,
 				FBC747ED16DF5FA80090A4B6 /* house3.png in Resources */,
+				FBC747FA16E03EFF0090A4B6 /* MortgageCalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +431,7 @@
 				FBC747DD16DF408E0090A4B6 /* MortgageQuickCalViewController.m in Sources */,
 				FBC747E616DF5D450090A4B6 /* RecordCellViewController.m in Sources */,
 				FBC747F016DF61FC0090A4B6 /* RecordCell.m in Sources */,
+				FBC747F916E03EFF0090A4B6 /* MortgageCalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +464,9 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -481,6 +494,9 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
