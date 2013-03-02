@@ -265,8 +265,10 @@
 -(void)onAddMortgageToRecord:(id)sender{
     AddRecordViewController* rootController = [[AddRecordViewController alloc] initWithMortgageRecord:m_record Mode:ADDMODE];
     [rootController setM_delegate:m_recordViewController];
+    [self setHidesBottomBarWhenPushed:YES];
     self.navigationItem.title = self.title;
     [self.navigationController pushViewController:rootController animated:YES];
+    [self setHidesBottomBarWhenPushed:NO];
 }
 
 
@@ -347,8 +349,10 @@
     if(indexPath.section == 5 && indexPath.row == 0){
         MortgageMonthlyPayViewController* rootController = [[MortgageMonthlyPayViewController alloc] init];
         [rootController setPricipals:m_output.principals LeftAmount:m_output.leftLoanAmounts MonthlyPay:m_output->monthlyPay];
+        [self setHidesBottomBarWhenPushed:YES];
         self.navigationItem.title = self.title;
         [self.navigationController pushViewController:rootController animated:YES];
+        [self setHidesBottomBarWhenPushed:NO];
     }
 }
 

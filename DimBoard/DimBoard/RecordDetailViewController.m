@@ -312,9 +312,10 @@
 - (void)onEdit:(id)sender{
     AddRecordViewController* rootController = [[AddRecordViewController alloc] initWithMortgageRecord:m_record Mode:EDITMODE];
     [rootController setM_delegate:self];
-
+    [self setHidesBottomBarWhenPushed:YES];
     self.navigationItem.title = self.title;
     [self.navigationController pushViewController:rootController animated:YES];
+    [self setHidesBottomBarWhenPushed:NO];
 }
 
 #pragma mark

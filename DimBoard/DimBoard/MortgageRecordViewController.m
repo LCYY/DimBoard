@@ -113,8 +113,10 @@
     AddRecordViewController* rootController = [[AddRecordViewController alloc] init];
     [rootController setM_delegate:self];
     
+    [self setHidesBottomBarWhenPushed:YES];
     self.navigationItem.title = self.title;
     [self.navigationController pushViewController:rootController animated:YES];
+    [self setHidesBottomBarWhenPushed:NO];
 }
 
 #pragma mark - UITableViewDelegate
@@ -122,8 +124,11 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSUInteger row = [indexPath row];
     UITableViewController *rootController = [m_controllerList objectAtIndex:row];
+    
+    [self setHidesBottomBarWhenPushed:YES];
     self.navigationItem.title = self.title;
     [self.navigationController pushViewController:rootController animated:YES];
+    [self setHidesBottomBarWhenPushed:NO];
 }
 
 #pragma mark UITableViewDataSource

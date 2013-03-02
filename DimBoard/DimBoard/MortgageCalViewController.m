@@ -55,7 +55,7 @@
     
     self.title = KEY_MORTGAGE_CAL;
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    UIBarButtonItem *detailButton = [[UIBarButtonItem alloc] initWithTitle:@"支出一覽" style:UIBarButtonSystemItemDone target:self action:@selector(onShowMortgageDetails:)];
+    UIBarButtonItem *detailButton = [[UIBarButtonItem alloc] initWithTitle:@"支出一覽" style:UIBarButtonItemStyleDone target:self action:@selector(onShowMortgageDetails:)];
 
     self.navigationItem.rightBarButtonItem = detailButton;
 }
@@ -94,8 +94,10 @@
 -(void)onShowMortgageDetails:(id)sender{
     MortgageDetailViewController* rootController = [[MortgageDetailViewController alloc] initWithMortgageRecord:[[MortgageRecord alloc] initWithMortgageInput:m_input]];
     [rootController setRecordViewController:m_recordViewController];
+    [self setHidesBottomBarWhenPushed:YES];
     self.navigationItem.title = self.title;
     [self.navigationController pushViewController:rootController animated:YES];
+    [self setHidesBottomBarWhenPushed:NO];
 }
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource

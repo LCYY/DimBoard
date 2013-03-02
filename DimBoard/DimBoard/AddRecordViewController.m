@@ -65,10 +65,10 @@
     UIBarButtonItem *saveButton = nil;
     if(m_mode == ADDMODE){
         self.title = KEY_MORTGAGE_NEW;
-        saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemSave target:self action:@selector(onSaveNewRecord:)];
+        saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonItemStyleDone target:self action:@selector(onSaveNewRecord:)];
     }else{
         self.title = m_record.name;
-        saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonSystemItemSave target:self action:@selector(onSaveRecord:)];
+        saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonItemStyleDone target:self action:@selector(onSaveRecord:)];
     }
     self.navigationItem.rightBarButtonItem = saveButton;
 }
@@ -113,11 +113,15 @@
     if(section == 1){
         BankPickerViewController* rootController = [[BankPickerViewController alloc] initWithBankId:m_record->bankId];
         [rootController setM_delegate:self];
+        [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:rootController animated:YES];
+        [self setHidesBottomBarWhenPushed:NO];
     }else if(section == 3){
         DatePickerViewController* rootController = [[DatePickerViewController alloc] initWithDate:m_record.input.date];
         [rootController setM_delegate:self];
+        [self setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:rootController animated:YES];
+        [self setHidesBottomBarWhenPushed:NO];
     }
 }
 

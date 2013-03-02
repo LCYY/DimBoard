@@ -16,8 +16,6 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    
-    UINavigationController* navController = [[UINavigationController alloc] init];
 
     MortgageRecordViewController* recordController = [[MortgageRecordViewController alloc] init];
     UINavigationController* recordNavController = [[UINavigationController alloc] initWithRootViewController:recordController];
