@@ -16,23 +16,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-
-    MortgageRecordViewController* recordController = [[MortgageRecordViewController alloc] init];
-    UINavigationController* recordNavController = [[UINavigationController alloc] initWithRootViewController:recordController];
-    MortgageCalViewController* calController = [[MortgageCalViewController alloc] init];
-    [calController setRecordViewController:recordController];
-    UINavigationController* calNavController = [[UINavigationController alloc] initWithRootViewController:calController];
-
-    UITabBarController* tabController = [[UITabBarController alloc] init];
-        
-    UITabBarItem* item1 = [[UITabBarItem alloc] initWithTitle:@"計算器" image:[UIImage imageNamed:@"cal.png"] tag:1];
-    UITabBarItem* item2 = [[UITabBarItem alloc] initWithTitle:KEY_MY_MORTGAGE image:[UIImage imageNamed:@"record.png"] tag:2];
-    
-    [calNavController setTabBarItem:item1];
-    [recordNavController setTabBarItem:item2];
-    
-    [tabController setViewControllers:[NSArray arrayWithObjects:calNavController,recordNavController,nil]];
-    
+    UITabBarController* tabController = [[DimBoardTabBarViewController alloc] init];
     self.viewController = tabController;
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];

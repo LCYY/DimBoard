@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UpdateRecordItemProtocol.h"
+#import "DimBoardNotifications.h"
 
 @interface InputCellViewController : UIViewController<UITextFieldDelegate>{
     NSString* m_name;

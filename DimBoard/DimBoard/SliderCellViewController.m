@@ -64,6 +64,8 @@
             m_step = STEP_LOANYEAR_VALUE;
             m_stepCoeff = COEFF_LOANYEAR_VALUE;
         }
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
     }
     return self;
 }
@@ -116,6 +118,68 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     [self setM_deletegate:nil];
+}
+
+-(BOOL)shouldAutorotate{
+    return YES;
+}
+
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    return YES;
+}
+
+-(void)onViewRotation:(NSNotification*) noti{
+    NSString* orientation = noti.object;
+    NSInteger widthchange = 160;
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    if(screen.size.height == 480){
+    }else if(screen.size.height == 568){
+        widthchange = widthchange + (568 - 480);
+    }
+    
+    if(UIInterfaceOrientationIsLandscape([orientation integerValue])){
+        //NSLog(@"received notification for landscape widthchange = %d",widthchange);
+        CGRect frame = self.view.frame;
+        frame.size.width = screen.size.height;
+        [self.view setFrame:frame];
+        
+        frame = ValueInput.frame;
+        frame.size.width = 102 + widthchange;
+        [ValueInput setFrame:frame];
+        
+        frame = UnitLabel.frame;
+        frame.origin.x = 197 + widthchange;
+        [UnitLabel setFrame:frame];
+        
+        frame = MinusButton.frame;
+        frame.origin.x = 237 + widthchange;
+        [MinusButton setFrame:frame];
+        
+        frame = AddButton.frame;
+        frame.origin.x = 282 + widthchange;
+        [AddButton setFrame:frame];
+    }else{
+        //NSLog(@"received notification for protrait");
+        CGRect frame = self.view.frame;
+        frame.size.width = 320;
+        [self.view setFrame:frame];
+
+        frame = ValueInput.frame;
+        frame.size.width = 102;
+        [ValueInput setFrame:frame];
+        
+        frame = UnitLabel.frame;
+        frame.origin.x = 197;
+        [UnitLabel setFrame:frame];
+        
+        frame = MinusButton.frame;
+        frame.origin.x = 237;
+        [MinusButton setFrame:frame];
+        
+        frame = AddButton.frame;
+        frame.origin.x = 282;
+        [AddButton setFrame:frame];
+    }
 }
 
 - (IBAction)onMinusDown:(id)sender {

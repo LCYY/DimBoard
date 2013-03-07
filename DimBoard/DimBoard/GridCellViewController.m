@@ -71,6 +71,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,4 +88,67 @@
     [self setLeftAmountLabel:nil];
     [super viewDidUnload];
 }
+
+-(BOOL)shouldAutorotate{
+    return YES;
+}
+
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    return YES;
+}
+
+-(void)onViewRotation:(NSNotification*) noti{
+    NSString* orientation = noti.object;
+    NSInteger widthchange = 160;
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    if(screen.size.height == 480){
+    }else if(screen.size.height == 568){
+        widthchange = widthchange + (568 - 480);
+    }
+    
+    if(UIInterfaceOrientationIsLandscape([orientation integerValue])){
+        //NSLog(@"received notification for landscape widthchange = %d",widthchange);
+        CGRect frame = self.view.frame;
+        frame.size.width = screen.size.height;
+        [self.view setFrame:frame];
+        
+        frame = PrincipalLabel.frame;
+        frame.size.width = 84 + widthchange/3;
+        [PrincipalLabel setFrame:frame];
+        
+        int x = frame.origin.x + frame.size.width - 1;
+        
+        frame = InterestLabel.frame;
+        frame.origin.x = x;
+        frame.size.width = 84 + widthchange/3;
+        [InterestLabel setFrame:frame];
+        
+        x = frame.origin.x + frame.size.width - 1;
+        
+        frame = LeftAmountLabel.frame;
+        frame.origin.x = x;
+        frame.size.width = 114 + widthchange/3 + 5;
+        [LeftAmountLabel setFrame:frame];
+    }else{
+        //NSLog(@"received notification for protrait");
+        CGRect frame = self.view.frame;
+        frame.size.width = 320;
+        [self.view setFrame:frame];
+        
+        frame = PrincipalLabel.frame;
+        frame.size.width = 84;
+        [PrincipalLabel setFrame:frame];
+        
+        frame = InterestLabel.frame;
+        frame.origin.x = 124;
+        frame.size.width = 84;
+        [InterestLabel setFrame:frame];
+        
+        frame = LeftAmountLabel.frame;
+        frame.origin.x = 207;
+        frame.size.width = 114;
+        [LeftAmountLabel setFrame:frame];
+    }
+}
+
 @end

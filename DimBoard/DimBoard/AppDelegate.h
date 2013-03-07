@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MortgageCalViewController.h"
-#import "MortgageRecordViewController.h"
+#import "DimBoardTabBarViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

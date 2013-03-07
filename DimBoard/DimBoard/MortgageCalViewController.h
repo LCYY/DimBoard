@@ -13,6 +13,7 @@
 #import "UpdateRecordItemProtocol.h"
 #import "MortgageDetailViewController.h"
 #import "MortgageMonthlyPayViewController.h"
+#import "DimBoardNotifications.h"
 
 @interface MortgageCalViewController : UIViewController<UITableViewDataSource,UITableViewDelegate, UpdateRecordItemProtocol>
 

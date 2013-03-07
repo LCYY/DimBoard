@@ -68,6 +68,11 @@
     self.title = KEY_MORTGAGE_DETAILS;
     UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onAddMortgageToRecord:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    
+    self.navigationController.delegate = self;
+    
+    UIInterfaceOrientation orientation =  self.interfaceOrientation;
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_SCREENROTATION object:[NSString stringWithFormat:@"%d",orientation]];
 }
 
 - (void)viewDidUnload
@@ -249,7 +254,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 -(NSInteger)getRecordId{

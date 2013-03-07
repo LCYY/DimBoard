@@ -105,9 +105,12 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
+-(BOOL)shouldAutorotate{
+    return YES;
+}
 
 - (void)onAddNewMortgageRecord:(id)sender{   
     AddRecordViewController* rootController = [[AddRecordViewController alloc] init];

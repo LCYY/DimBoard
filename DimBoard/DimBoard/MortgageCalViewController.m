@@ -58,6 +58,9 @@
     UIBarButtonItem *detailButton = [[UIBarButtonItem alloc] initWithTitle:@"支出一覽" style:UIBarButtonItemStyleDone target:self action:@selector(onShowMortgageDetails:)];
 
     self.navigationItem.rightBarButtonItem = detailButton;
+    
+    UIInterfaceOrientation orientation =  self.interfaceOrientation;
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_SCREENROTATION object:[NSString stringWithFormat:@"%d",orientation]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,6 +73,17 @@
     [self setInputTableView:nil];
     [self setResultTableView:nil];
     [super viewDidUnload];
+}
+
+-(BOOL)shouldAutorotate{
+    UIInterfaceOrientation orientation =  self.interfaceOrientation;
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_SCREENROTATION object:[NSString stringWithFormat:@"%d",orientation]];
+    return YES;
+}
+
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_SCREENROTATION object:[NSString stringWithFormat:@"%d",toInterfaceOrientation]];
+    return YES;
 }
 
 -(void)setRecordViewController:(id)controller{

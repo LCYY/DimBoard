@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "XYPieChart/XYPieChart.h"
+#import "DimBoardNotifications.h"
+#import <QuartzCore/QuartzCore.h>
 
 @protocol PieChartCellExtendDelegate <NSObject>
 
@@ -27,11 +29,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *PieChartSlice_output;
 @property (weak, nonatomic) IBOutlet XYPieChart *PieChart;
 @property (weak, nonatomic) IBOutlet UIButton *ExtendButton;
-@property (weak, nonatomic) IBOutlet UILabel *ColorLabel_1;
-@property (weak, nonatomic) IBOutlet UILabel *ColorLabel_2;
-@property (weak, nonatomic) IBOutlet UILabel *ColorLabel_3;
-@property (weak, nonatomic) IBOutlet UILabel *ColorLabel_4;
-@property (weak, nonatomic) IBOutlet UILabel *ColorLabel_5;
+@property (weak, nonatomic) IBOutlet UIButton *ColorLabel_1;
+@property (weak, nonatomic) IBOutlet UIButton *ColorLabel_2;
+@property (weak, nonatomic) IBOutlet UIButton *ColorLabel_3;
+@property (weak, nonatomic) IBOutlet UIButton *ColorLabel_4;
+@property (weak, nonatomic) IBOutlet UIButton *ColorLabel_5;
+
 
 @property (retain, nonatomic) NSMutableArray *m_slices;
 @property (retain, nonatomic) NSMutableArray *m_slicesDesp;

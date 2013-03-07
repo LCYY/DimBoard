@@ -53,6 +53,8 @@
     [LeftAmountLabel setText:@"剩餘金額"];
     
     self.title = KEY_MORTGAGE_TABLE;
+    
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
 }
 
 -(void)viewDidUnload{
@@ -70,6 +72,10 @@
     m_principals = [pricipals copy];
     m_leftLoanAmounts = [leftAmounts copy];
     m_monthlyPay = monthlypay;
+}
+
+-(void)onViewRotation:(NSNotification*)noti{
+
 }
 
 #pragma mark - Table view data source

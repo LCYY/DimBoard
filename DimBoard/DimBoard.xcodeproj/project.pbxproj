@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		35AB6DF816BEA10000795E57 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35AB6DF716BEA10000795E57 /* Default-568h@2x.png */; };
+		D0B17CF816E4CB1500097A07 /* DimBoardTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B17CF716E4CB1500097A07 /* DimBoardTabBarViewController.m */; };
 		FB2CAB8916E05F5F008C73B0 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2CAB8716E05F5F008C73B0 /* add.png */; };
 		FB2CAB8A16E05F5F008C73B0 /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2CAB8816E05F5F008C73B0 /* minus.png */; };
 		FB2CAB8D16E0897B008C73B0 /* add2.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2CAB8B16E0897B008C73B0 /* add2.png */; };
@@ -70,6 +71,9 @@
 
 /* Begin PBXFileReference section */
 		35AB6DF716BEA10000795E57 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		D0B17CF616E4CB1500097A07 /* DimBoardTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DimBoardTabBarViewController.h; sourceTree = "<group>"; };
+		D0B17CF716E4CB1500097A07 /* DimBoardTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DimBoardTabBarViewController.m; sourceTree = "<group>"; };
+		D0B17CF916E5925800097A07 /* DimBoardNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DimBoardNotifications.h; sourceTree = "<group>"; };
 		FB2CAB8716E05F5F008C73B0 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add.png; path = Home.iconset/add.png; sourceTree = "<group>"; };
 		FB2CAB8816E05F5F008C73B0 /* minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = minus.png; path = Home.iconset/minus.png; sourceTree = "<group>"; };
 		FB2CAB8B16E0897B008C73B0 /* add2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add2.png; path = Home.iconset/add2.png; sourceTree = "<group>"; };
@@ -273,6 +277,9 @@
 				FB2D6FA416BA2364008E367F /* Res */,
 				FBF3C86416B920D400790005 /* AppDelegate.h */,
 				FBF3C86516B920D400790005 /* AppDelegate.m */,
+				D0B17CF616E4CB1500097A07 /* DimBoardTabBarViewController.h */,
+				D0B17CF716E4CB1500097A07 /* DimBoardTabBarViewController.m */,
+				D0B17CF916E5925800097A07 /* DimBoardNotifications.h */,
 				FB78592316C103F100C63D08 /* Calculator.h */,
 				FB78592416C103F100C63D08 /* Calculator.m */,
 				FB78590A16C0B07500C63D08 /* MortgageDataType.h */,
@@ -436,6 +443,7 @@
 				FBC747E616DF5D450090A4B6 /* RecordCellViewController.m in Sources */,
 				FBC747F016DF61FC0090A4B6 /* RecordCell.m in Sources */,
 				FBC747F916E03EFF0090A4B6 /* MortgageCalViewController.m in Sources */,
+				D0B17CF816E4CB1500097A07 /* DimBoardTabBarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,7 +472,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuanyuan Cui (W4LQ38N2T4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuanyuan Cui (W4LQ38N2T4)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -479,6 +488,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -494,7 +505,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuanyuan Cui (W4LQ38N2T4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuanyuan Cui (W4LQ38N2T4)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -503,6 +515,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -511,10 +525,14 @@
 		FBF3C87016B920D400790005 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuanyuan Cui (W4LQ38N2T4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuanyuan Cui (W4LQ38N2T4)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DimBoard/DimBoard-Prefix.pch";
 				INFOPLIST_FILE = "DimBoard/DimBoard-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -522,10 +540,14 @@
 		FBF3C87116B920D400790005 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuanyuan Cui (W4LQ38N2T4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuanyuan Cui (W4LQ38N2T4)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DimBoard/DimBoard-Prefix.pch";
 				INFOPLIST_FILE = "DimBoard/DimBoard-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

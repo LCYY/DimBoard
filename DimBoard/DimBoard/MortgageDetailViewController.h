@@ -13,7 +13,7 @@
 #import "PieChartCell.h"
 #import "MortgageMonthlyPayViewController.h"
 
-@interface MortgageDetailViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate, PieChartCellExtendDelegate>
+@interface MortgageDetailViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate, PieChartCellExtendDelegate, UINavigationControllerDelegate>
 @property (retain, nonatomic) id m_recordViewController;
 @property (retain, nonatomic) MortgageRecord *m_record;
 @property (retain, nonatomic) MortgageOutput *m_output;

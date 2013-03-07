@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "DimBoardNotifications.h"
 
 @interface GridCellViewController : UIViewController{
     NSInteger m_term;

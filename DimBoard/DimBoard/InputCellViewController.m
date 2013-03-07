@@ -51,6 +51,9 @@
     [ValueInput setDelegate:self];
     
     [NameLabel setFont:[UIFont boldSystemFontOfSize:17]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
+
 }
 
 - (void)viewDidUnload
@@ -63,9 +66,42 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+-(BOOL)shouldAutorotate{
+    return YES;
+}
+
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    return YES;
+}
+
+-(void)onViewRotation:(NSNotification*) noti{
+    NSString* orientation = noti.object;
+    NSInteger widthchange = 160;
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    if(screen.size.height == 480){
+    }else if(screen.size.height == 568){
+        widthchange = widthchange + (568 - 480);
+    }
+    
+    if(UIInterfaceOrientationIsLandscape([orientation integerValue])){
+        //NSLog(@"received notification for landscape widthchange = %d",widthchange);
+        CGRect frame = self.view.frame;
+        frame.size.width = screen.size.height;
+        [self.view setFrame:frame];
+        
+        frame = ValueInput.frame;
+        frame.size.width = 219 + widthchange;
+        [ValueInput setFrame:frame];
+    }else{
+        //NSLog(@"received notification for protrait");
+        CGRect frame = self.view.frame;
+        frame.size.width = 320;
+        [self.view setFrame:frame];
+        
+        frame = ValueInput.frame;
+        frame.size.width = 219;
+        [ValueInput setFrame:frame];
+    }
 }
 
 -(NSString *)getValue{

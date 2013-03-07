@@ -51,4 +51,12 @@
     [self setProgressBar:nil];
     [super viewDidUnload];
 }
+
+-(BOOL)shouldAutorotate{
+    return YES;
+}
+
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    return YES;
+}
 @end
