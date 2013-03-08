@@ -70,9 +70,6 @@
     self.navigationItem.rightBarButtonItem = addButton;
     
     self.navigationController.delegate = self;
-    
-    UIInterfaceOrientation orientation =  self.interfaceOrientation;
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_SCREENROTATION object:[NSString stringWithFormat:@"%d",orientation]];
 }
 
 - (void)viewDidUnload
@@ -250,11 +247,6 @@
             [m_pieChartCells setObject:cell forKey:key];
         }
     }
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
 }
 
 -(NSInteger)getRecordId{

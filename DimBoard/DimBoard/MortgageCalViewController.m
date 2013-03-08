@@ -13,7 +13,7 @@
 @end
 
 @implementation MortgageCalViewController
-@synthesize InputTableView, ResultTableView;
+@synthesize InputTableView, ResultTableView, InterLabel, InterLabelBG;
 @synthesize m_input,m_output,m_calculator,m_inputRows,m_outputRows;
 @synthesize m_recordViewController;
 
@@ -53,14 +53,16 @@
     [ResultTableView setDataSource:self];
     [ResultTableView setDelegate:self];
     
+    [InterLabel setText:@"請輸入"];
+    [InterLabel setFont:[UIFont boldSystemFontOfSize:15]];
+    
     self.title = KEY_MORTGAGE_CAL;
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     UIBarButtonItem *detailButton = [[UIBarButtonItem alloc] initWithTitle:@"支出一覽" style:UIBarButtonItemStyleDone target:self action:@selector(onShowMortgageDetails:)];
 
     self.navigationItem.rightBarButtonItem = detailButton;
     
-    UIInterfaceOrientation orientation =  self.interfaceOrientation;
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_SCREENROTATION object:[NSString stringWithFormat:@"%d",orientation]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,18 +74,37 @@
 - (void)viewDidUnload {
     [self setInputTableView:nil];
     [self setResultTableView:nil];
+    [self setInterLabel:nil];
+    [self setInterLabelBG:nil];
     [super viewDidUnload];
 }
 
--(BOOL)shouldAutorotate{
-    UIInterfaceOrientation orientation =  self.interfaceOrientation;
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_SCREENROTATION object:[NSString stringWithFormat:@"%d",orientation]];
-    return YES;
-}
-
--(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_SCREENROTATION object:[NSString stringWithFormat:@"%d",toInterfaceOrientation]];
-    return YES;
+-(void)onViewRotation:(NSNotification*)noti{
+    NSString* orientation = noti.object;
+   
+   CGRect frame;
+    if(UIInterfaceOrientationIsLandscape([orientation integerValue])){
+        //NSLog(@"received notification for landscape widthchange = %d",widthchange);
+        frame = InterLabel.frame;
+        frame.origin.x = 10;
+        frame.origin.y = 88;
+        [InterLabel setFrame:frame];
+        
+        frame = InterLabelBG.frame;
+        frame.origin.x = 0;
+        frame.origin.y = 88;
+        [InterLabelBG setFrame:frame];
+    }else{        
+        frame = InterLabel.frame;
+        frame.origin.x = 10;
+        frame.origin.y = 174;
+        [InterLabel setFrame:frame];
+        
+        frame = InterLabelBG.frame;
+        frame.origin.x = 0;
+        frame.origin.y = 174;
+        [InterLabelBG setFrame:frame];
+    }
 }
 
 -(void)setRecordViewController:(id)controller{
@@ -184,55 +205,6 @@
     return cell;
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if (tableView == InputTableView){
-        return @"請輸入";
-    }
-    return @"";
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    if (tableView == InputTableView){
-        UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 22)];
-        view.backgroundColor = [UIColor colorWithRed:39/255.0 green:64/255.0 blue:139/255.0 alpha:1];
-        
-        UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 320, 22)];
-        label.textAlignment = NSTextAlignmentLeft;
-        label.textColor = [UIColor whiteColor];
-        label.text = [self tableView:tableView titleForHeaderInSection:section];
-        label.font = [UIFont boldSystemFontOfSize:16];
-        label.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.0];
-        [view addSubview:label];
-        return view;
-    }
-    return nil;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    if (tableView == InputTableView){
-        UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
-        view.backgroundColor = [UIColor colorWithRed:39/255.0 green:64/255.0 blue:139/255.0 alpha:1];
-        return view;
-    }
-    return nil;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (tableView == InputTableView){
-        return 22;
-    }
-    return 0;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 0;
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if(scrollView.contentOffset.y < 0){
-        [scrollView setContentOffset:CGPointMake(0, 0)];
-    }
-}
 
 #pragma mark - UpdateRecordItemProtocol
 -(void)updateRecordKey:(NSString *)key withValue:(id)value{

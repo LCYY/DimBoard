@@ -64,11 +64,6 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-        return YES;
-}
-
 -(void)onSave:(id)sender{
     [self.navigationController popViewControllerAnimated: YES];
     if(m_selectedBankId > -1 && m_selectedBankId < [m_bankTypes getBankCount]){

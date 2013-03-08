@@ -54,7 +54,8 @@
     
     self.title = KEY_MORTGAGE_TABLE;
     
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
+    [self rotateToOrientation:self.interfaceOrientation];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
 }
 
 -(void)viewDidUnload{
@@ -72,10 +73,64 @@
     m_principals = [pricipals copy];
     m_leftLoanAmounts = [leftAmounts copy];
     m_monthlyPay = monthlypay;
+    m_headerWidth = 320;
 }
 
--(void)onViewRotation:(NSNotification*)noti{
 
+-(void)onViewRotation:(NSNotification*) noti{
+    NSString* orientation = noti.object;
+    [self rotateToOrientation:[orientation integerValue]];
+}
+
+-(void)rotateToOrientation:(UIInterfaceOrientation) orientation{
+    NSInteger widthchange = 160;
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    if(screen.size.height == 480){
+    }else if(screen.size.height == 568){
+        widthchange = widthchange + (568 - 480);
+    }
+    
+    CGRect frame;
+    if(UIInterfaceOrientationIsLandscape(orientation)){
+        //NSLog(@"received notification for landscape widthchange = %d",widthchange);
+        m_headerWidth = screen.size.height;
+  
+        frame = PrincipalLabel.frame;
+        frame.size.width = 84 + widthchange/3;
+        [PrincipalLabel setFrame:frame];
+        
+        int x = frame.origin.x + frame.size.width - 1;
+        
+        frame = InterestLabel.frame;
+        frame.origin.x = x;
+        frame.size.width = 84 + widthchange/3;
+        [InterestLabel setFrame:frame];
+        
+        x = frame.origin.x + frame.size.width - 1;
+        
+        frame = LeftAmountLabel.frame;
+        frame.origin.x = x;
+        frame.size.width = 114 + widthchange/3 + 5;
+        [LeftAmountLabel setFrame:frame];
+    }else{
+        //NSLog(@"received notification for protrait");
+        m_headerWidth = screen.size.width;
+        
+        frame = PrincipalLabel.frame;
+        frame.size.width = 84;
+        [PrincipalLabel setFrame:frame];
+        
+        frame = InterestLabel.frame;
+        frame.origin.x = 124;
+        frame.size.width = 84;
+        [InterestLabel setFrame:frame];
+        
+        frame = LeftAmountLabel.frame;
+        frame.origin.x = 207;
+        frame.size.width = 114;
+        [LeftAmountLabel setFrame:frame];
+    }
+    [TableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -124,10 +179,10 @@
     return 18;
 }
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 18)];
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{ 
+    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, m_headerWidth, 18)];
     view.backgroundColor = [UIColor colorWithRed:39/255.0 green:64/255.0 blue:139/255.0 alpha:0.8];
-    UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 18)];
+    UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, m_headerWidth, 18)];
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [UIColor whiteColor];
     label.text = [NSString stringWithFormat:@"第 %d 年",section+1];

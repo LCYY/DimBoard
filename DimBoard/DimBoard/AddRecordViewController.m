@@ -86,11 +86,6 @@
     [self setM_section3:nil];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
-}
-
 - (void)hideKeyboard:(id)sender{
     [self.view endEditing:YES];
 }

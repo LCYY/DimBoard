@@ -17,6 +17,8 @@
 
 @interface MortgageCalViewController : UIViewController<UITableViewDataSource,UITableViewDelegate, UpdateRecordItemProtocol>
 
+@property (weak, nonatomic) IBOutlet UILabel *InterLabel;
+@property (weak, nonatomic) IBOutlet UILabel *InterLabelBG;
 @property (weak, nonatomic) IBOutlet UITableView *InputTableView;
 @property (weak, nonatomic) IBOutlet UITableView *ResultTableView;
 //Section 0

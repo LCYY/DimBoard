@@ -68,11 +68,6 @@
     [self setM_date:nil];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
-}
-
 -(void)onSave:(id)sender{
     [self.navigationController popViewControllerAnimated: YES];
     [m_delegate updateRecordKey:KEY_MORTGAGE_LOANDATE withValue:m_date];

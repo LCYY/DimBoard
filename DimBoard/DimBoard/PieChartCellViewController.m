@@ -84,6 +84,8 @@
     }
     
     [self showPieChar];
+    
+    [self rotateToOrientation:self.interfaceOrientation];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
 }
 
@@ -123,17 +125,12 @@
     [PieChart reloadData];
 }
 
--(BOOL)shouldAutorotate{
-    
-    return YES;
-}
-
--(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
-    return YES;
-}
-
 -(void)onViewRotation:(NSNotification*) noti{
     NSString* orientation = noti.object;
+    [self rotateToOrientation:[orientation integerValue]];
+}
+
+-(void)rotateToOrientation:(UIInterfaceOrientation) orientation{
     NSInteger widthchange = 160;
     CGRect screen = [[UIScreen mainScreen] bounds];
     if(screen.size.height == 480){
@@ -141,42 +138,29 @@
         widthchange = widthchange + (568 - 480);
     }
     
-    if(UIInterfaceOrientationIsLandscape([orientation integerValue])){
-        CGRect frame = self.view.frame;
-        frame.size.width = screen.size.height;
-        [self.view setFrame:frame];
-        
+    CGRect frame;
+    if(UIInterfaceOrientationIsLandscape(orientation)){        
         frame = ExtendButton.frame;
         frame.origin.x = 263 + widthchange;
         [ExtendButton setFrame:frame];
-        
-        NSLog(@"extend button frame = %f %f %f %f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
-
-        
+ 
         frame = PieChart.frame;
         frame.origin.x = -2 + widthchange/2 - 50;
         [PieChart setFrame:frame];
         
-                
+        
         for(int i = 0; i < [m_slices count]; i++){
             UILabel* label = [m_colorLabels objectAtIndex:i];
             frame = label.frame;
             frame.origin.x = 227 + widthchange/2;
             [label setFrame:frame];
-             [label setUserInteractionEnabled:YES];
+            [label setUserInteractionEnabled:YES];
         }
-    }else{
-        CGRect frame = self.view.frame;
-        frame.size.width = 320;
-        [self.view setFrame:frame];
-        
+    }else{        
         frame = ExtendButton.frame;
         frame.origin.x = 263;
         [ExtendButton setFrame:frame];
-        
-        NSLog(@"extend button frame = %f %f %f %f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
 
-        
         frame = PieChart.frame;
         frame.origin.x = -2;
         [PieChart setFrame:frame];
@@ -187,9 +171,10 @@
             frame = label.frame;
             frame.origin.x = 227;
             [label setFrame:frame];
-             [label setUserInteractionEnabled:YES];
+            [label setUserInteractionEnabled:YES];
         }
     }
+
 }
 
 -(void)setSlices:(NSArray*)slices Descriptions:(NSArray*)desps Colors:(NSArray*)colors IndexPath:(NSIndexPath *)indexpath{

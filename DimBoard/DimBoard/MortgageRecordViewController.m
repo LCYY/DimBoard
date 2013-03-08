@@ -91,6 +91,9 @@
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onAddNewMortgageRecord:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    
+    [self rotateToOrientation:self.interfaceOrientation];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
 }
 
 - (void)viewDidUnload
@@ -103,15 +106,6 @@
     self.view.backgroundColor = [UIColor colorWithRed:39/255.0 green:64/255.0 blue:139/255.0 alpha:0.8];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
-}
-
--(BOOL)shouldAutorotate{
-    return YES;
-}
-
 - (void)onAddNewMortgageRecord:(id)sender{   
     AddRecordViewController* rootController = [[AddRecordViewController alloc] init];
     [rootController setM_delegate:self];
@@ -120,6 +114,14 @@
     self.navigationItem.title = self.title;
     [self.navigationController pushViewController:rootController animated:YES];
     [self setHidesBottomBarWhenPushed:NO];
+}
+
+-(void)onViewRotation:(NSNotification*) noti{
+    NSString* orientation = noti.object;
+    [self rotateToOrientation:[orientation integerValue]];
+}
+
+-(void)rotateToOrientation:(UIInterfaceOrientation) orientation{
 }
 
 #pragma mark - UITableViewDelegate

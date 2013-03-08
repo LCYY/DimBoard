@@ -14,6 +14,7 @@
 @interface MortgageMonthlyPayViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
     double m_monthlyPay;
+    double m_headerWidth;
 }
 @property (weak, nonatomic) IBOutlet UITextField *PrincipalLabel;
 @property (weak, nonatomic) IBOutlet UITextField *InterestLabel;

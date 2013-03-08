@@ -275,11 +275,6 @@
     }
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
-}
-
 -(NSInteger)getRecordId{
     return m_record->recordId;
 }
