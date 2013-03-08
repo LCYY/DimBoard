@@ -135,7 +135,11 @@
     }
     
     CGRect frame;
-    if(UIInterfaceOrientationIsLandscape(orientation)){   
+    if(UIInterfaceOrientationIsLandscape(orientation)){
+        frame = self.view.frame;
+        frame.size.width = screen.size.height;
+        [self.view setFrame:frame];
+        
         frame = ValueInput.frame;
         frame.size.width = 102 + widthchange;
         [ValueInput setFrame:frame];
@@ -152,7 +156,10 @@
         frame.origin.x = 282 + widthchange;
         [AddButton setFrame:frame];
     }else{
-        //NSLog(@"received notification for protrait");
+        frame = self.view.frame;
+        frame.size.width = screen.size.width;
+        [self.view setFrame:frame];
+        
         frame = ValueInput.frame;
         frame.size.width = 102;
         [ValueInput setFrame:frame];

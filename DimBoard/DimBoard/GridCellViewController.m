@@ -105,6 +105,10 @@
     }
     CGRect frame;
     if(UIInterfaceOrientationIsLandscape(orientation)){
+        frame = self.view.frame;
+        frame.size.width = screen.size.height;
+        [self.view setFrame:frame];
+        
         frame = PrincipalLabel.frame;
         frame.size.width = 84 + widthchange/3;
         [PrincipalLabel setFrame:frame];
@@ -123,6 +127,10 @@
         frame.size.width = 114 + widthchange/3 + 5;
         [LeftAmountLabel setFrame:frame];
     }else{
+        frame = self.view.frame;
+        frame.size.width = screen.size.width;
+        [self.view setFrame:frame];
+        
         frame = PrincipalLabel.frame;
         frame.size.width = 84;
         [PrincipalLabel setFrame:frame];

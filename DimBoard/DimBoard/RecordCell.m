@@ -21,12 +21,12 @@
     return self;
 }
 
--(void)setName:(NSString *)name Term:(NSString *)term Date:(NSString *)date Progress:(float)progress{
+-(void)setName:(NSString *)name Term:(NSString *)term MonthlyPay:(NSString *)pay Progress:(float)progress{
     if(m_cellController == nil){
         m_cellController = [[RecordCellViewController alloc] init];
         [self.contentView addSubview:m_cellController.view];
     }
-    [m_cellController setName:name Term:term Date:date Progress:progress];    
+    [m_cellController setName:name Term:term MonthlyPay:pay Progress:progress];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

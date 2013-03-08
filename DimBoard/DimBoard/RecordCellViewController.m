@@ -24,10 +24,10 @@
     return self;
 }
 
--(void)setName:(NSString *)name Term:(NSString *)term Date:(NSString *)date Progress:(float)progress{
+-(void)setName:(NSString *)name Term:(NSString *)term MonthlyPay:(NSString *)pay Progress:(float)progress{
     [NameLabel setText:name];
     [TermLabel setText:term];
-    [DateLabel setText:date];
+    [DateLabel setText:pay];
     [ProgressBar setProgress:progress];
 }
 
@@ -35,6 +35,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self rotateToOrientation:self.interfaceOrientation];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,5 +53,39 @@
     [self setProgressBar:nil];
     [super viewDidUnload];
 }
+
+-(void)onViewRotation:(NSNotification*) noti{
+    NSString* orientation = noti.object;
+    [self rotateToOrientation:[orientation integerValue]];
+}
+
+-(void)rotateToOrientation:(UIInterfaceOrientation) orientation{
+    NSInteger widthchange = 160;
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    if(screen.size.height == 480){
+    }else if(screen.size.height == 568){
+        widthchange = widthchange + (568 - 480);
+    }
+    CGRect frame;
+    if(UIInterfaceOrientationIsLandscape(orientation)){
+        frame = self.view.frame;
+        frame.size.width = screen.size.height;
+        [self.view setFrame:frame];
+        
+        frame = ProgressBar.frame;
+        frame.size.width = screen.size.height - 150;
+        [ProgressBar setFrame:frame];
+        
+    }else{
+        frame = self.view.frame;
+        frame.size.width = screen.size.width;
+        [self.view setFrame:frame];
+        
+        frame = ProgressBar.frame;
+        frame.size.width = screen.size.width - 150;
+        [ProgressBar setFrame:frame];
+    }
+}
+
 
 @end

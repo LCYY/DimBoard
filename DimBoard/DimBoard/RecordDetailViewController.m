@@ -284,14 +284,22 @@
 }
 
 -(NSString *)getTermDsp{
-    return [NSString stringWithFormat:@"第%d期 %0.2f元", m_output->paidTerms + 1, m_output->monthlyPay];
-}
-
--(NSString *)getNextPayDate{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents* start_comps = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:m_record.input.date];
+    NSDateComponents* past_months = [[NSDateComponents alloc] init];
+    past_months.month = m_output->paidTerms;
+    
+    NSDate* nextPayDate = [calendar dateByAddingComponents:past_months toDate:m_record.input.date options:0];
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat: DATEFORMAT];
-    NSString* datestring = [dateFormatter stringFromDate:m_record.input.date];
-    return datestring;
+    NSString* datestring = [dateFormatter stringFromDate:nextPayDate];
+    
+    return [NSString stringWithFormat:@"%@ 第%d期", datestring, m_output->paidTerms + 1];
+}
+
+-(NSString *)getMonthlyPay{
+    return [NSString stringWithFormat:@"待付: %0.2f 元", m_output->monthlyPay];
 }
 
 -(float)getPayProgress{

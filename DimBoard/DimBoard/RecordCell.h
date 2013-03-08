@@ -13,5 +13,5 @@
 
 @property (retain, nonatomic) RecordCellViewController* m_cellController;
 
--(void)setName:(NSString*)name Term:(NSString*)term Date:(NSString*)date Progress:(float)progress;
+-(void)setName:(NSString*)name Term:(NSString*)term MonthlyPay:(NSString*)pay Progress:(float)progress;
 @end

@@ -139,7 +139,11 @@
     }
     
     CGRect frame;
-    if(UIInterfaceOrientationIsLandscape(orientation)){        
+    if(UIInterfaceOrientationIsLandscape(orientation)){
+        frame = self.view.frame;
+        frame.size.width = screen.size.height;
+        [self.view setFrame:frame];
+        
         frame = ExtendButton.frame;
         frame.origin.x = 263 + widthchange;
         [ExtendButton setFrame:frame];
@@ -156,7 +160,11 @@
             [label setFrame:frame];
             [label setUserInteractionEnabled:YES];
         }
-    }else{        
+    }else{
+        frame = self.view.frame;
+        frame.size.width = screen.size.width;
+        [self.view setFrame:frame];
+        
         frame = ExtendButton.frame;
         frame.origin.x = 263;
         [ExtendButton setFrame:frame];

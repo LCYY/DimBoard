@@ -82,10 +82,18 @@
     
     CGRect frame;
     if(UIInterfaceOrientationIsLandscape(orientation)){
+        frame = self.view.frame;
+        frame.size.width = screen.size.height;
+        [self.view setFrame:frame];
+        
         frame = ValueInput.frame;
         frame.size.width = 219 + widthchange;
         [ValueInput setFrame:frame];
     }else{
+        frame = self.view.frame;
+        frame.size.width = screen.size.width;
+        [self.view setFrame:frame];
+        
         frame = ValueInput.frame;
         frame.size.width = 219;
         [ValueInput setFrame:frame];

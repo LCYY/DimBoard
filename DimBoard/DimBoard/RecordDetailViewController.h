@@ -80,6 +80,6 @@
 -(NSInteger)getRecordId;
 -(NSString*)getName;
 -(NSString*)getTermDsp;
--(NSString*)getNextPayDate;
+-(NSString*)getMonthlyPay;
 -(float)getPayProgress;
 @end
