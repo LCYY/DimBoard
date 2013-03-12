@@ -1,3 +1,3 @@
 DimBoard
 ========
-Hello
+Hello, world
