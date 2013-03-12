@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XYPieChart/XYPieChart.h"
+#import "XYPieChart.h"
 #import "DimBoardNotifications.h"
 #import <QuartzCore/QuartzCore.h>
 

@@ -94,15 +94,26 @@
         frame.origin.x = 0;
         frame.origin.y = 88;
         [InterLabelBG setFrame:frame];
-    }else{        
+    }else{
+        CGRect screen = [[UIScreen mainScreen] bounds];
+
+ 
         frame = InterLabel.frame;
         frame.origin.x = 10;
-        frame.origin.y = 174;
+        if(screen.size.height == 480){
+            frame.origin.y = 174; 
+        }else if(screen.size.height == 568){
+            frame.origin.y = 214;
+        }
         [InterLabel setFrame:frame];
         
         frame = InterLabelBG.frame;
         frame.origin.x = 0;
-        frame.origin.y = 174;
+        if(screen.size.height == 480){
+            frame.origin.y = 174;
+        }else if(screen.size.height == 568){
+            frame.origin.y = 214;
+        }
         [InterLabelBG setFrame:frame];
     }
 }

@@ -285,7 +285,6 @@
 
 -(NSString *)getTermDsp{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents* start_comps = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:m_record.input.date];
     NSDateComponents* past_months = [[NSDateComponents alloc] init];
     past_months.month = m_output->paidTerms;
     
