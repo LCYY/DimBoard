@@ -1,0 +1,68 @@
+/* 
+  Localizable.strings
+  DimBoard
+
+  Created by conicacui on 14/3/13.
+  Copyright (c) 2013 LCYY. All rights reserved.
+*/
+
+"Year"="";
+"Save"="Save";
+"Name"="Name";
+"Bank"="Bank";
+"Term"="Term";
+"$"="$";
+"Principal"="Principal";
+"Interest"="Interest";
+"PropertyInfo"="Property Information";
+"MortInfo"="Mortgage Information";
+"FirstPaymentDetails"="First Payment Details";
+"RepaymentDetails"="Repayment Details";
+"StartDate"="Start Date";
+"Calculator"="Calculator";
+"PleaseInput"="Please input:";
+"TotalExpensesInfo"="Details";
+"TotalExpensesDetails"="Expence Details";
+"LoanTerm"="Loan Term";
+"InterestRate"="Interest Rate";
+"HomeValue"="Home Value";
+"LoanRatio"="Loan Ratio";
+"MortYear"="Mortgage Year";
+"MonthlyPay"="Monthly Payment";
+"FirstPay"="First Payment";
+"Commission"="Agency Fee";
+"Tax"="Stamp Duty";
+"FirstTotalExpence"="First Total Expence";
+"LoanAmount"="Loan Amount";
+"TotalRepayment"="Repayment";
+"TotalInterestAmount"="Interest Amount";
+"TotalInterestPaid"="Interest Paid";
+"TotalInterestLeft"="Interest Left";
+"TotalLoanPaid"="Loan Paid";
+"TotalLoanLeft"="Loan Left";
+"NoTermsPaid"="Terms Paid";
+"TotalExpences"="Total Expences";
+"RepaymentSchedule"="Repayment Schedule";
+"MortgageRecord"="My Record";
+"NewMortgagePlan"="New Record";
+"StandardBank"="Standard Chartered Bank";
+"HongkongShanghaiBankingCorp"="HSBC";
+"ChinaConstructionBank"="China Construction Bank";
+"ChinaBank"="Bank of China";
+"AsiaBank"="Bank of East Asia";
+"HangSengBank"="Hang Seng Bank";
+"DahSingBank"="Dah Sing Bank";
+"ChinaIndustrialBank"="Industrial and Commercial Bank of China";
+"CitiBank"="Citibank";
+"CITICBank"="CITIC Bank Internaional";
+"DBSBank"="DBS Bank";
+"FubonBank"="Fubon Bank";
+"ChongHingBank"="Chong Hing Bank";
+"MEVASBank"="MEVAS Bank";
+"NanyangBank"="Nanyang Commercial Bank";
+"PublicBank"="Public Bank";
+"ShanghaiCommercialBank"="Shanghai Commercial Bank";
+"WingHangBank"="Wing Hang Bank";
+"WingLungBank"="Wing Lung Bank";
+"YEARNO"="Year %d";
+"PieChart"="Pie Chart";

@@ -84,7 +84,7 @@
     [NameLabel setText:m_name];
     [ValueInput setText:m_value];
     [UnitLabel setText:m_unit];    
-    [NameLabel setFont:[UIFont boldSystemFontOfSize:17]];
+    [NameLabel setFont:[UIFont boldSystemFontOfSize:15]];
     
     [AddButton setBackgroundImage:[UIImage imageNamed:@"add.png"] forState:UIControlStateNormal];
     [AddButton setBackgroundImage:[UIImage imageNamed:@"add2.png"] forState:UIControlStateHighlighted];

@@ -51,7 +51,7 @@
     [BankPicker selectRow:m_selectedBankId inComponent:0 animated:YES];
     
     self.title = KEY_MORTGAGE_BANKID;
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonItemStyleDone target:self action:@selector(onSave:)];
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save",nil) style:UIBarButtonItemStyleDone target:self action:@selector(onSave:)];
     self.navigationItem.rightBarButtonItem = saveButton;
 }
 

@@ -54,7 +54,7 @@
     [DatePicker addTarget:self action:@selector(onDateChanged:) forControlEvents:UIControlEventValueChanged];
     
     self.title = KEY_MORTGAGE_LOANDATE;
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonItemStyleDone target:self action:@selector(onSave:)];
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save",nil) style:UIBarButtonItemStyleDone target:self action:@selector(onSave:)];
     self.navigationItem.rightBarButtonItem = saveButton;
 }
 

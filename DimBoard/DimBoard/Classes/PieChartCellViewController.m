@@ -59,6 +59,7 @@
     // Do any additional setup after loading the view from its nib.
     [PieChart setHidden:YES];
     [PieChartSlice_output setHidden:YES];
+    [TitleLabel setText:NSLocalizedString(@"PieChart", nil)];
     [TitleLabel setFont:[UIFont boldSystemFontOfSize:17]];
     
     m_colorLabels = [NSArray arrayWithObjects:ColorLabel_1,ColorLabel_2,ColorLabel_3,ColorLabel_4,ColorLabel_5,nil];
@@ -79,6 +80,8 @@
         [label setTitle:text forState:UIControlStateHighlighted];
         
         [label setUserInteractionEnabled:YES];
+        [label setAutoresizesSubviews:NO];
+        [label.titleLabel setAdjustsFontSizeToFitWidth:NO];
         UITapGestureRecognizer* recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onColorLabelTouched:)];
         [label addGestureRecognizer:recognizer];
     }
@@ -154,11 +157,12 @@
         
         
         for(int i = 0; i < [m_slices count]; i++){
-            UILabel* label = [m_colorLabels objectAtIndex:i];
+            UIButton* label = [m_colorLabels objectAtIndex:i];
             frame = label.frame;
             frame.origin.x = 227 + widthchange/2;
+            frame.size.width = 120;
             [label setFrame:frame];
-            [label setUserInteractionEnabled:YES];
+            [label.titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
         }
     }else{
         frame = self.view.frame;
@@ -175,11 +179,12 @@
         
         
         for(int i = 0; i < [m_slices count]; i++){
-            UILabel* label = [m_colorLabels objectAtIndex:i];
+            UIButton* label = [m_colorLabels objectAtIndex:i];
             frame = label.frame;
             frame.origin.x = 227;
+            frame.size.width = 85;
             [label setFrame:frame];
-            [label setUserInteractionEnabled:YES];
+            [label.titleLabel setFont:[UIFont boldSystemFontOfSize:11]];
         }
     }
 

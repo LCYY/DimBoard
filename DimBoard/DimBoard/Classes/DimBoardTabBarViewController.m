@@ -38,7 +38,7 @@
     UINavigationController* calNavController = [[UINavigationController alloc] initWithRootViewController:m_calViewController];
     
     
-    UITabBarItem* item1 = [[UITabBarItem alloc] initWithTitle:@"計算器" image:[UIImage imageNamed:@"cal.png"] tag:1];
+    UITabBarItem* item1 = [[UITabBarItem alloc] initWithTitle:KEY_MORTGAGE_CAL image:[UIImage imageNamed:@"cal.png"] tag:1];
     UITabBarItem* item2 = [[UITabBarItem alloc] initWithTitle:KEY_MY_MORTGAGE image:[UIImage imageNamed:@"record.png"] tag:2];
     
     [calNavController setTabBarItem:item1];

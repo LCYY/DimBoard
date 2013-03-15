@@ -26,7 +26,7 @@
         m_section1 = KEY_MORTGAGE_BANKID; //input cell
         NSArray *value1 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_HOMEVALUE,@"萬元",nil];
         NSArray *value2 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANPERCENT,@"%",nil];
-        NSArray *value3 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANYEAR,@"年",nil];
+        NSArray *value3 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANYEAR,NSLocalizedString(@"Year",nil)];
         NSArray *value4 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_INTERESTRATE,@"%",nil];
         m_section2 = [[NSArray alloc] initWithObjects:value1,value2,value3,value4,nil];
         
@@ -65,10 +65,10 @@
     UIBarButtonItem *saveButton = nil;
     if(m_mode == ADDMODE){
         self.title = KEY_MORTGAGE_NEW;
-        saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonItemStyleDone target:self action:@selector(onSaveNewRecord:)];
+        saveButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save",nil) style:UIBarButtonItemStyleDone target:self action:@selector(onSaveNewRecord:)];
     }else{
         self.title = m_record.name;
-        saveButton = [[UIBarButtonItem alloc] initWithTitle:@"存儲" style:UIBarButtonItemStyleDone target:self action:@selector(onSaveRecord:)];
+        saveButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save",nil) style:UIBarButtonItemStyleDone target:self action:@selector(onSaveRecord:)];
     }
     self.navigationItem.rightBarButtonItem = saveButton;
 }
@@ -235,13 +235,13 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if(section == 0){
-        return @"命名";
+        return NSLocalizedString(@"Name",nil);
     }else if (section == 1){
-        return @"按揭銀行";
+        return KEY_MORTGAGE_BANKID;
     }else if (section == 2){
-        return @"按揭資料";
+        return NSLocalizedString(@"MortInfo",nil);
     }else if (section == 3){
-        return @"按揭日期";
+        return KEY_MORTGAGE_LOANDATE;
     }
     return @"";
 }
