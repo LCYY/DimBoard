@@ -13,7 +13,7 @@
 @end
 
 @implementation DimBoardTabBarViewController
-@synthesize m_calViewController, m_recordViewController;
+@synthesize m_calViewController, m_recordViewController, m_settingViewController;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -37,14 +37,19 @@
     [m_calViewController setRecordViewController:m_recordViewController];
     UINavigationController* calNavController = [[UINavigationController alloc] initWithRootViewController:m_calViewController];
     
+    m_settingViewController = [[SettingViewController alloc] init];
+    UINavigationController* settingNavController = [[UINavigationController alloc] initWithRootViewController:m_settingViewController];
+    
     
     UITabBarItem* item1 = [[UITabBarItem alloc] initWithTitle:KEY_MORTGAGE_CAL image:[UIImage imageNamed:@"cal.png"] tag:1];
     UITabBarItem* item2 = [[UITabBarItem alloc] initWithTitle:KEY_MY_MORTGAGE image:[UIImage imageNamed:@"record.png"] tag:2];
+    UITabBarItem* item3 = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Setting", nil) image:[UIImage imageNamed:@"setting.png"] tag:3];
     
     [calNavController setTabBarItem:item1];
     [recordNavController setTabBarItem:item2];
+    [settingNavController setTabBarItem:item3];
     
-    [self setViewControllers:[NSArray arrayWithObjects:calNavController,recordNavController,nil]];
+    [self setViewControllers:[NSArray arrayWithObjects:calNavController,recordNavController, settingNavController,nil]];
 }
 
 - (void)didReceiveMemoryWarning

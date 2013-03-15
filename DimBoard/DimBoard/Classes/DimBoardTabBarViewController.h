@@ -10,9 +10,11 @@
 #import "MortgageCalViewController.h"
 #import "MortgageRecordViewController.h"
 #import "DimBoardNotifications.h"
+#import "SettingViewController.h"
 
 @interface DimBoardTabBarViewController : UITabBarController
 
 @property (retain, nonatomic) MortgageCalViewController* m_calViewController;
 @property (retain, nonatomic) MortgageRecordViewController* m_recordViewController;
+@property (retain, nonatomic) SettingViewController* m_settingViewController;
 @end

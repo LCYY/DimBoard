@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MortgageDataType.h"
-#define PLISTFILENAME @"records.plist"
+#define RECORDPLISTFILENAME @"records.plist"
 
 @interface MortgageRecordIO : NSObject
 {

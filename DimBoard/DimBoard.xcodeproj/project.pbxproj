@@ -44,6 +44,8 @@
 		D0B17D6616E9F3E800097A07 /* SliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B17D3A16E9F3E800097A07 /* SliderCell.m */; };
 		D0B17D6716E9F3E800097A07 /* SliderCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B17D3C16E9F3E800097A07 /* SliderCellViewController.m */; };
 		D0B17D6816E9F3E800097A07 /* SliderCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0B17D3D16E9F3E800097A07 /* SliderCellViewController.xib */; };
+		FB3406C816F3023E0066B084 /* SettingIO.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3406C716F3023E0066B084 /* SettingIO.m */; };
+		FB3406CA16F3214E0066B084 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = FB3406C916F3214E0066B084 /* setting.png */; };
 		FB78592916C1040100C63D08 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FB78592816C1040100C63D08 /* XYPieChart.m */; };
 		FB78592B16C104EC00C63D08 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB78592A16C104EC00C63D08 /* QuartzCore.framework */; };
 		FB7ADE2716F1767500CB0263 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = FB7ADE1716F1767500CB0263 /* add.png */; };
@@ -63,6 +65,8 @@
 		FB7ADE3516F1767500CB0263 /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = FB7ADE2516F1767500CB0263 /* record.png */; };
 		FB7ADE3616F1767500CB0263 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = FB7ADE2616F1767500CB0263 /* up.png */; };
 		FB7ADE3916F176CF00CB0263 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FB7ADE3B16F176CF00CB0263 /* Localizable.strings */; };
+		FB7ADE4016F2BC2900CB0263 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7ADE3E16F2BC2500CB0263 /* SettingViewController.m */; };
+		FB7ADE4116F2BC2900CB0263 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB7ADE3F16F2BC2700CB0263 /* SettingViewController.xib */; };
 		FBF3C85616B920D400790005 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85516B920D400790005 /* UIKit.framework */; };
 		FBF3C85816B920D400790005 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85716B920D400790005 /* Foundation.framework */; };
 		FBF3C85A16B920D400790005 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF3C85916B920D400790005 /* CoreGraphics.framework */; };
@@ -132,6 +136,9 @@
 		D0B17D3C16E9F3E800097A07 /* SliderCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SliderCellViewController.m; path = Classes/SliderCellViewController.m; sourceTree = "<group>"; };
 		D0B17D3D16E9F3E800097A07 /* SliderCellViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SliderCellViewController.xib; path = Classes/SliderCellViewController.xib; sourceTree = "<group>"; };
 		D0B17D9316E9F67000097A07 /* UpdateRecordItemProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateRecordItemProtocol.h; sourceTree = "<group>"; };
+		FB3406C616F3023E0066B084 /* SettingIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingIO.h; sourceTree = "<group>"; };
+		FB3406C716F3023E0066B084 /* SettingIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingIO.m; sourceTree = "<group>"; };
+		FB3406C916F3214E0066B084 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
 		FB78592716C1040100C63D08 /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
 		FB78592816C1040100C63D08 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		FB78592A16C104EC00C63D08 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -151,7 +158,10 @@
 		FB7ADE2416F1767500CB0263 /* minus2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minus2.png; sourceTree = "<group>"; };
 		FB7ADE2516F1767500CB0263 /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record.png; sourceTree = "<group>"; };
 		FB7ADE2616F1767500CB0263 /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
-		FB7ADE3A16F176CF00CB0263 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FB7ADE3A16F176CF00CB0263 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FB7ADE3D16F2BC2400CB0263 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		FB7ADE3E16F2BC2500CB0263 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		FB7ADE3F16F2BC2700CB0263 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		FBF3C85116B920D400790005 /* DimBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DimBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF3C85516B920D400790005 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FBF3C85716B920D400790005 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -183,12 +193,17 @@
 				D0B17D0416E9F3E700097A07 /* Calculator.m */,
 				D0B17D1916E9F3E800097A07 /* MortgageDataType.h */,
 				D0B17D1A16E9F3E800097A07 /* MortgageDataType.m */,
+				FB3406C616F3023E0066B084 /* SettingIO.h */,
+				FB3406C716F3023E0066B084 /* SettingIO.m */,
 				D0B17D2416E9F3E800097A07 /* MortgageRecordIO.h */,
 				D0B17D2516E9F3E800097A07 /* MortgageRecordIO.m */,
 				D0B17D0916E9F3E700097A07 /* DimBoardTabBarViewController.h */,
 				D0B17D0A16E9F3E800097A07 /* DimBoardTabBarViewController.m */,
 				D0B17D0816E9F3E700097A07 /* DimBoardNotifications.h */,
 				D0B17D9316E9F67000097A07 /* UpdateRecordItemProtocol.h */,
+				FB7ADE3D16F2BC2400CB0263 /* SettingViewController.h */,
+				FB7ADE3E16F2BC2500CB0263 /* SettingViewController.m */,
+				FB7ADE3F16F2BC2700CB0263 /* SettingViewController.xib */,
 				D0B17D1616E9F3E800097A07 /* MortgageCalViewController.h */,
 				D0B17D1716E9F3E800097A07 /* MortgageCalViewController.m */,
 				D0B17D1816E9F3E800097A07 /* MortgageCalViewController.xib */,
@@ -204,10 +219,10 @@
 				D0B17D3616E9F3E800097A07 /* RecordDetailViewController.h */,
 				D0B17D3716E9F3E800097A07 /* RecordDetailViewController.m */,
 				D0B17D3816E9F3E800097A07 /* RecordDetailViewController.xib */,
-				D0B17D0016E9F3E700097A07 /* BankPickerViewController.h */,
 				D0B17D1E16E9F3E800097A07 /* MortgageMonthlyPayViewController.h */,
 				D0B17D1F16E9F3E800097A07 /* MortgageMonthlyPayViewController.m */,
 				D0B17D2016E9F3E800097A07 /* MortgageMonthlyPayViewController.xib */,
+				D0B17D0016E9F3E700097A07 /* BankPickerViewController.h */,
 				D0B17D0116E9F3E700097A07 /* BankPickerViewController.m */,
 				D0B17D0216E9F3E700097A07 /* BankPickerViewController.xib */,
 				D0B17D0516E9F3E700097A07 /* DatePickerViewController.h */,
@@ -239,6 +254,7 @@
 		FB7ADE1616F1767500CB0263 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FB3406C916F3214E0066B084 /* setting.png */,
 				FB7ADE1716F1767500CB0263 /* add.png */,
 				FB7ADE1816F1767500CB0263 /* add2.png */,
 				FB7ADE1916F1767500CB0263 /* cal.png */,
@@ -432,6 +448,8 @@
 				FB7ADE3516F1767500CB0263 /* record.png in Resources */,
 				FB7ADE3616F1767500CB0263 /* up.png in Resources */,
 				FB7ADE3916F176CF00CB0263 /* Localizable.strings in Resources */,
+				FB7ADE4116F2BC2900CB0263 /* SettingViewController.xib in Resources */,
+				FB3406CA16F3214E0066B084 /* setting.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +485,8 @@
 				D0B17D6416E9F3E800097A07 /* RecordDetailViewController.m in Sources */,
 				D0B17D6616E9F3E800097A07 /* SliderCell.m in Sources */,
 				D0B17D6716E9F3E800097A07 /* SliderCellViewController.m in Sources */,
+				FB7ADE4016F2BC2900CB0263 /* SettingViewController.m in Sources */,
+				FB3406C816F3023E0066B084 /* SettingIO.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
