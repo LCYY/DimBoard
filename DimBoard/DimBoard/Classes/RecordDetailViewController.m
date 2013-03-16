@@ -364,17 +364,17 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if(section == 0){
-        return @"物業資料";
+        return NSLocalizedString(@"PropertyInfo", nil);
     }else if (section == 1){
-        return @"按揭資料";
+        return NSLocalizedString(@"MortInfo", nil);
     }else if (section == 2){
-        return @"首付金額分析";
+        return NSLocalizedString(@"FirstPaymentDetails", nil);
     }else if (section == 3){
-        return @"貸款金額分析";
+        return NSLocalizedString(@"RepaymentDetails", nil);
     }else if (section == 4){
-        return @"費用總額分析";
+        return NSLocalizedString(@"TotalExpensesDetails", nil);
     }else if (section == 5){
-        return @"供款表";
+        return KEY_MORTGAGE_TABLE;
     }
     return @"";
 }
