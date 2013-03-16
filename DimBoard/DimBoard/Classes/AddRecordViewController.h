@@ -23,7 +23,7 @@
     NSInteger m_mode;
 }
 
-@property (retain, nonatomic) id<UpdateRecordProtocol> m_delegate;
+@property (weak, nonatomic) id<UpdateRecordProtocol> m_delegate;
 //Section 0
 //---------
 //貸款名稱 inputcell

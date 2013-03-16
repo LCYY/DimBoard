@@ -16,7 +16,7 @@
 }
 @property (weak, nonatomic) IBOutlet UILabel *NameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *ValueInput;
-@property(nonatomic, retain) id<UpdateRecordItemProtocol> m_delegate;
+@property(nonatomic, weak) id<UpdateRecordItemProtocol> m_delegate;
 
 - (id)initWithName:(NSString *)name Value:(NSString*)value;
 - (void)setName:(NSString *)name Value:(NSString *)value;

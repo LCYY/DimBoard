@@ -13,7 +13,7 @@
 @interface DatePickerViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIDatePicker *DatePicker;
 @property (retain, nonatomic) NSDate* m_date;
-@property (retain, nonatomic) id<UpdateRecordItemProtocol> m_delegate;
+@property (weak, nonatomic) id<UpdateRecordItemProtocol> m_delegate;
 
 -(id)initWithDate:(NSDate*)date;
 @end

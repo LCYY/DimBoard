@@ -15,7 +15,7 @@
     NSInteger m_selectedBankId;
 }
 @property (weak, nonatomic) IBOutlet UIPickerView *BankPicker;
-@property (retain, nonatomic) id<UpdateRecordItemProtocol> m_delegate;
+@property (weak, nonatomic) id<UpdateRecordItemProtocol> m_delegate;
 -(id)initWithBankId:(NSInteger)bankId;
 
 @end
