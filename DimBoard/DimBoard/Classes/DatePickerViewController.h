@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MortgageDataType.h"
-#import "UpdateRecordItemProtocol.h"
+#import "DimBoardProtocols.h"
 #import "DimBoardNotifications.h"
 
 @interface DatePickerViewController : UIViewController

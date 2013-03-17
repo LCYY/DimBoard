@@ -8,6 +8,29 @@
 
 #import "MortgageDataType.h"
 
+@implementation LangTypes
+@synthesize m_langs;
+-(id)init{
+    self = [super init];
+    if(self){
+        m_langs = [[NSArray alloc] initWithObjects:
+                   NSLocalizedString(@"English", nil),
+                   NSLocalizedString(@"TChinese", nil),
+                   NSLocalizedString(@"SChinese", nil),
+                   nil];
+    }
+    return self;
+}
+
+-(NSInteger)getLangCount{
+    return [m_langs count];
+}
+
+-(NSString *)getLangNameById:(NSInteger)lid{
+    return [m_langs objectAtIndex:lid];
+}
+@end
+
 @implementation BankTypes
 @synthesize m_banks;
 

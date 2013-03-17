@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UpdateRecordItemProtocol.h"
+#import "DimBoardProtocols.h"
 #import "DimBoardNotifications.h"
 
 @interface InputCellViewController : UIViewController<UITextFieldDelegate>{

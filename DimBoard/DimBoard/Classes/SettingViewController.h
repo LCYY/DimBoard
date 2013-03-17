@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "SettingIO.h"
+#import "LangPickerViewController.h"
 
 @interface SettingViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate>
 {
 }
 @property (nonatomic, retain) SettingIO* m_settingIO;
+@property (nonatomic, strong) LangPickerViewController* m_langPickerViewController;
 @end

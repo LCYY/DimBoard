@@ -14,11 +14,13 @@
 
 @implementation SettingViewController
 @synthesize m_settingIO;
+@synthesize m_langPickerViewController;
 
 -(id)init{
     self = [super init];
     if(self){
         m_settingIO = [[SettingIO alloc] initWithLoadSettings];
+        m_langPickerViewController = [[LangPickerViewController alloc] initWithLangId:0];
     }
     return self;
 }
@@ -68,7 +70,10 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    if(indexPath.row == 0){
+        [self.navigationController.view addSubview:m_langPickerViewController.view];
+        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

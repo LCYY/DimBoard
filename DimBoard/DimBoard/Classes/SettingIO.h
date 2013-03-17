@@ -7,14 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MortgageDataType.h"
 
 #define SETTINGPLISTFILENAME @"settings.plist"
-#define KEY_SETTING_LANG NSLocalizedString(@"Language",nil)
-
-#define LANG_CHINESE_T NSLocalizedString(@"TChinese",nil)
-#define LANG_CHINESE_S NSLocalizedString(@"SChinese",nil)
-#define LANG_ENG NSLocalizedString(@"English",nil)
-
 @interface SettingIO : NSObject
 {
     NSString* m_plistpath;
@@ -23,4 +18,6 @@
 
 -(id)initWithLoadSettings;
 -(void)save;
+
+-(NSString*) getLang;
 @end

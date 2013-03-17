@@ -55,11 +55,22 @@
 #define KEY_MORTGAGE_CAL NSLocalizedString(@"Calculator",nil)
 #define DATEFORMAT @"yyyy-MM-dd"
 
+#define KEY_SETTING_LANG NSLocalizedString(@"Language",nil)
+
+#define LANG_CHINESE_T NSLocalizedString(@"TChinese",nil)
+#define LANG_CHINESE_S NSLocalizedString(@"SChinese",nil)
+#define LANG_ENG NSLocalizedString(@"English",nil)
 
 @interface BankTypes : NSObject
 @property(retain,nonatomic) NSArray* m_banks;
 -(NSString*)getBankNameById:(NSInteger)bid;
 -(NSInteger)getBankCount;
+@end
+
+@interface LangTypes : NSObject
+@property(strong, nonatomic) NSArray* m_langs;
+-(NSString*)getLangNameById:(NSInteger)lid;
+-(NSInteger)getLangCount;
 @end
 
 

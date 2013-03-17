@@ -10,7 +10,7 @@
 #import "SliderCell.h"
 #import "MortgageDataType.h"
 #import "Calculator.h"
-#import "UpdateRecordItemProtocol.h"
+#import "DimBoardProtocols.h"
 #import "MortgageDetailViewController.h"
 #import "MortgageMonthlyPayViewController.h"
 #import "DimBoardNotifications.h"

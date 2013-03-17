@@ -10,7 +10,7 @@
 #import "RecordDetailViewController.h"
 #import "AddRecordViewController.h"
 #import "MortgageRecordIO.h"
-#import "UpdateRecordItemProtocol.h"
+#import "DimBoardProtocols.h"
 #import "RecordCell.h"
 
 @interface MortgageRecordViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource, UpdateRecordProtocol>

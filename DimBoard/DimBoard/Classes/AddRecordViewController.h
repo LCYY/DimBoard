@@ -12,7 +12,7 @@
 #import "MortgageDataType.h"
 #import "DatePickerViewController.h"
 #import "BankPickerViewController.h"
-#import "UpdateRecordItemProtocol.h"
+#import "DimBoardProtocols.h"
 
 #define ADDRECORDSECTIONCOUNT 4
 

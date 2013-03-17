@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SliderCellViewController.h"
-#import "UpdateRecordItemProtocol.h"
+#import "DimBoardProtocols.h"
 
 @interface SliderCell : UITableViewCell{
 

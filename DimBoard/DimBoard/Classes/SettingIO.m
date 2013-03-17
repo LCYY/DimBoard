@@ -54,4 +54,8 @@
     [settingsDict writeToFile:m_plistpath atomically:YES];
 
 }
+
+-(NSString *)getLang{
+    return [[m_settings objectAtIndex:0] objectAtIndex:1];
+}
 @end

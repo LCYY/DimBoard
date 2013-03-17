@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AddRecordViewController.h"
 #import "Calculator.h"
-#import "UpdateRecordItemProtocol.h"
+#import "DimBoardProtocols.h"
 #import "PieChartCell.h"
 #import "MortgageMonthlyPayViewController.h"
 

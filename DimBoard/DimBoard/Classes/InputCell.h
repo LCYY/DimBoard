@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "InputCellViewController.h"
-#import "UpdateRecordItemProtocol.h"
+#import "DimBoardProtocols.h"
 
 @interface InputCell : UITableViewCell
 

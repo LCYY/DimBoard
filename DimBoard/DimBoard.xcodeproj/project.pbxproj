@@ -44,6 +44,8 @@
 		D0B17D6616E9F3E800097A07 /* SliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B17D3A16E9F3E800097A07 /* SliderCell.m */; };
 		D0B17D6716E9F3E800097A07 /* SliderCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B17D3C16E9F3E800097A07 /* SliderCellViewController.m */; };
 		D0B17D6816E9F3E800097A07 /* SliderCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0B17D3D16E9F3E800097A07 /* SliderCellViewController.xib */; };
+		D0C3EE6016F5BC9600D1530E /* LangPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C3EE5E16F5BC9500D1530E /* LangPickerViewController.m */; };
+		D0C3EE6116F5BC9600D1530E /* LangPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C3EE5F16F5BC9500D1530E /* LangPickerViewController.xib */; };
 		FB3406C816F3023E0066B084 /* SettingIO.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3406C716F3023E0066B084 /* SettingIO.m */; };
 		FB3406CA16F3214E0066B084 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = FB3406C916F3214E0066B084 /* setting.png */; };
 		FB78592916C1040100C63D08 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FB78592816C1040100C63D08 /* XYPieChart.m */; };
@@ -135,7 +137,10 @@
 		D0B17D3B16E9F3E800097A07 /* SliderCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SliderCellViewController.h; path = Classes/SliderCellViewController.h; sourceTree = "<group>"; };
 		D0B17D3C16E9F3E800097A07 /* SliderCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SliderCellViewController.m; path = Classes/SliderCellViewController.m; sourceTree = "<group>"; };
 		D0B17D3D16E9F3E800097A07 /* SliderCellViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SliderCellViewController.xib; path = Classes/SliderCellViewController.xib; sourceTree = "<group>"; };
-		D0B17D9316E9F67000097A07 /* UpdateRecordItemProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateRecordItemProtocol.h; sourceTree = "<group>"; };
+		D0C3EE5D16F5BC9500D1530E /* LangPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LangPickerViewController.h; sourceTree = "<group>"; };
+		D0C3EE5E16F5BC9500D1530E /* LangPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LangPickerViewController.m; sourceTree = "<group>"; };
+		D0C3EE5F16F5BC9500D1530E /* LangPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LangPickerViewController.xib; sourceTree = "<group>"; };
+		D0C3EE6216F5C08100D1530E /* DimBoardProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DimBoardProtocols.h; sourceTree = "<group>"; };
 		FB3406C616F3023E0066B084 /* SettingIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingIO.h; sourceTree = "<group>"; };
 		FB3406C716F3023E0066B084 /* SettingIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingIO.m; sourceTree = "<group>"; };
 		FB3406C916F3214E0066B084 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
@@ -200,7 +205,7 @@
 				D0B17D0916E9F3E700097A07 /* DimBoardTabBarViewController.h */,
 				D0B17D0A16E9F3E800097A07 /* DimBoardTabBarViewController.m */,
 				D0B17D0816E9F3E700097A07 /* DimBoardNotifications.h */,
-				D0B17D9316E9F67000097A07 /* UpdateRecordItemProtocol.h */,
+				D0C3EE6216F5C08100D1530E /* DimBoardProtocols.h */,
 				FB7ADE3D16F2BC2400CB0263 /* SettingViewController.h */,
 				FB7ADE3E16F2BC2500CB0263 /* SettingViewController.m */,
 				FB7ADE3F16F2BC2700CB0263 /* SettingViewController.xib */,
@@ -228,6 +233,9 @@
 				D0B17D0516E9F3E700097A07 /* DatePickerViewController.h */,
 				D0B17D0616E9F3E700097A07 /* DatePickerViewController.m */,
 				D0B17D0716E9F3E700097A07 /* DatePickerViewController.xib */,
+				D0C3EE5D16F5BC9500D1530E /* LangPickerViewController.h */,
+				D0C3EE5E16F5BC9500D1530E /* LangPickerViewController.m */,
+				D0C3EE5F16F5BC9500D1530E /* LangPickerViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -450,6 +458,7 @@
 				FB7ADE3916F176CF00CB0263 /* Localizable.strings in Resources */,
 				FB7ADE4116F2BC2900CB0263 /* SettingViewController.xib in Resources */,
 				FB3406CA16F3214E0066B084 /* setting.png in Resources */,
+				D0C3EE6116F5BC9600D1530E /* LangPickerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +496,7 @@
 				D0B17D6716E9F3E800097A07 /* SliderCellViewController.m in Sources */,
 				FB7ADE4016F2BC2900CB0263 /* SettingViewController.m in Sources */,
 				FB3406C816F3023E0066B084 /* SettingIO.m in Sources */,
+				D0C3EE6016F5BC9600D1530E /* LangPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
