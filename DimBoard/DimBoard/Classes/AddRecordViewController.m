@@ -15,6 +15,7 @@
 @implementation AddRecordViewController
 @synthesize m_section0,m_section1,m_section2,m_section3,m_record;
 @synthesize m_delegate;
+@synthesize m_bankViewController, m_dataPickerViewController;
 
 -(id)init{
     self = [super init];
@@ -26,11 +27,16 @@
         m_section1 = KEY_MORTGAGE_BANKID; //input cell
         NSArray *value1 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_HOMEVALUE,@"萬元",nil];
         NSArray *value2 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANPERCENT,@"%",nil];
-        NSArray *value3 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANYEAR,NSLocalizedString(@"Year",nil)];
+        NSArray *value3 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANYEAR,NSLocalizedString(@"Year",nil),nil];
         NSArray *value4 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_INTERESTRATE,@"%",nil];
         m_section2 = [[NSArray alloc] initWithObjects:value1,value2,value3,value4,nil];
         
         m_section3 = KEY_MORTGAGE_LOANDATE; //input cell
+        
+        m_bankViewController = [[BankPickerViewController alloc] initWithBankId:m_record->bankId];
+        [m_bankViewController setM_delegate:self];
+        m_dataPickerViewController = [[DatePickerViewController alloc] initWithDate:m_record.input.date];
+        [m_dataPickerViewController setM_delegate:self];
     }
     return self;
 }
@@ -50,6 +56,7 @@
         // Custom initialization
         m_record = [record copy];
         m_mode = mode;
+        [m_bankViewController setBankId:m_record->bankId];
     }
     return self;
 }
@@ -106,17 +113,12 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger section = [indexPath section];
     if(section == 1){
-        BankPickerViewController* rootController = [[BankPickerViewController alloc] initWithBankId:m_record->bankId];
-        [rootController setM_delegate:self];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:rootController animated:YES];
-        [self setHidesBottomBarWhenPushed:NO];
+        [self.navigationController.view addSubview:m_bankViewController.view];
+        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }else if(section == 3){
-        DatePickerViewController* rootController = [[DatePickerViewController alloc] initWithDate:m_record.input.date];
-        [rootController setM_delegate:self];
-        [self setHidesBottomBarWhenPushed:YES];
-        [self.navigationController pushViewController:rootController animated:YES];
-        [self setHidesBottomBarWhenPushed:NO];
+        [self.navigationController.view addSubview:m_dataPickerViewController.view];
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, self.tableView.frame.size.height - 170, 0);
+        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }
 }
 
@@ -283,6 +285,7 @@
         [((UITableView*)self.view) reloadData];
     }else if([key isEqualToString:KEY_MORTGAGE_LOANDATE]){
         m_record.input.date = (NSDate*)[value copy];
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         [((UITableView*)self.view) reloadData];
     }else if([key isEqualToString:KEY_MORTGAGE_HOMEVALUE]){
         m_record.input->homeValue = [((NSString*)value) doubleValue];

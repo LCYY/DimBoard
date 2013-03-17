@@ -52,5 +52,8 @@
 @property (retain, nonatomic) NSString *m_section3;
 @property (retain, nonatomic) MortgageRecord* m_record;
 
+@property (strong) BankPickerViewController* m_bankViewController;
+@property (strong) DatePickerViewController* m_dataPickerViewController;
+
 - (id)initWithMortgageRecord:(MortgageRecord*)record Mode:(NSInteger)mode;
 @end

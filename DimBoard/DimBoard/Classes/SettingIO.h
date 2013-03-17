@@ -23,6 +23,4 @@
 
 -(id)initWithLoadSettings;
 -(void)save;
--(void)setLanguage:(NSString*)lang;
--(NSString*)getLanguage;
 @end
