@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIToolbar *ToolBar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *OKButton;
 @property (weak, nonatomic) IBOutlet UIPickerView *BankPicker;
-@property (retain, nonatomic) id<UpdateRecordItemProtocol> m_delegate;
+@property (weak, nonatomic) id<UpdateRecordItemProtocol> m_delegate;
 
 -(id)initWithBankId:(NSInteger)bankId;
 -(void)setBankId:(NSInteger)bankId;

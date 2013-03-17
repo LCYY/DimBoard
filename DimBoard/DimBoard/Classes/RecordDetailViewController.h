@@ -21,7 +21,7 @@
 @property (retain, nonatomic) NSMutableArray* m_pieChartDesps;
 @property (retain, nonatomic) NSMutableDictionary* m_pieChartCells; //heights for indexpath
 @property (readonly, nonatomic) NSSet* m_pieChartKeys;
-@property (retain, nonatomic) id<UpdateRecordProtocol> m_delegate;
+@property (weak, nonatomic) id<UpdateRecordProtocol> m_delegate;
 
 //Section 0
 //---------
