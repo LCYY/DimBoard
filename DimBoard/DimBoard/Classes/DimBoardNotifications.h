@@ -10,6 +10,6 @@
 #define DimBoard_DimBoardNotifications_h
 
 #define NOTI_SCREENROTATION @"Noti_ScreenRotation"
-
+#define NOTI_CHANGELANGUAGE @"Noti_ChangeLanguage"
 
 #endif

@@ -47,7 +47,9 @@
 - (id)initWithMortgageRecord:(MortgageRecord*)record{
     self = [self init];
     if (self) {
-        [self setSectionWithRecord:record];
+        m_record = [record copy];
+        m_output = [[self getOutput] copy];
+        [self setSectionWithRecord];
     }
     return self;
 }
@@ -58,7 +60,13 @@
     // Do any additional setup after loading the view from its nib.
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(onEdit:)];
     self.navigationItem.rightBarButtonItem = editButton;
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     self.title = m_record.name;
+    [self setSectionWithRecord];
 }
 
 - (void)viewDidUnload
@@ -75,19 +83,16 @@
     [self setM_pieChartCells:nil];
 }
 
--(void)setSectionWithRecord:(MortgageRecord*)record{
+-(void)setSectionWithRecord{
     [m_sections removeAllObjects];
     [m_pieChartDesps removeAllObjects];
     [m_pieChartSlices removeAllObjects];
-    
-    m_record = [record copy];
-    m_output = [[self getOutput] copy];
-    
+ 
     self.title = m_record.name;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat: DATEFORMAT];
-    NSString* datestring = [dateFormatter stringFromDate:record.input.date];
+    NSString* datestring = [dateFormatter stringFromDate:m_record.input.date];
     
     NSArray* sectionkeys0 = [[NSArray alloc] initWithObjects:
                              KEY_MORTGAGE_HOMEVALUE,
@@ -273,6 +278,8 @@
             [m_pieChartCells setObject:cell forKey:key];
         }
     }
+    
+    [self.tableView reloadData];
 }
 
 -(NSInteger)getRecordId{
@@ -364,15 +371,15 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if(section == 0){
-        return NSLocalizedString(@"PropertyInfo", nil);
+        return DimBoardLocalizedString(@"PropertyInfo");
     }else if (section == 1){
-        return NSLocalizedString(@"MortInfo", nil);
+        return DimBoardLocalizedString(@"MortInfo");
     }else if (section == 2){
-        return NSLocalizedString(@"FirstPaymentDetails", nil);
+        return DimBoardLocalizedString(@"FirstPaymentDetails");
     }else if (section == 3){
-        return NSLocalizedString(@"RepaymentDetails", nil);
+        return DimBoardLocalizedString(@"RepaymentDetails");
     }else if (section == 4){
-        return NSLocalizedString(@"TotalExpensesDetails", nil);
+        return DimBoardLocalizedString(@"TotalExpensesDetails");
     }else if (section == 5){
         return KEY_MORTGAGE_TABLE;
     }
@@ -429,7 +436,9 @@
 
 #pragma mark - UpdateRecordProtocl
 -(void)updateRecord:(MortgageRecord *)record{
-    [self setSectionWithRecord:record];
+    m_record = [record copy];
+    m_output = [[self getOutput] copy];
+    [self setSectionWithRecord];
     [((UITableView*)self.view) reloadData];
     [m_delegate updateRecord:m_record];
 }

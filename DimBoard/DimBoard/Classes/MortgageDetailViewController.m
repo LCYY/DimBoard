@@ -49,7 +49,8 @@
 - (id)initWithMortgageRecord:(MortgageRecord*)record{
     self = [self init];
     if (self) {
-        [self setSectionWithRecord:record];
+        m_record = [record copy];
+        m_output = [[self getOutput] copy];
         if(m_record.input.date == nil){
             m_record.input.date = [NSDate date];
         }
@@ -65,11 +66,19 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = KEY_MORTGAGE_DETAILS;
+    
     UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onAddMortgageToRecord:)];
     self.navigationItem.rightBarButtonItem = addButton;
     
     self.navigationController.delegate = self;
+    
+    [self setSectionWithRecord];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.title = KEY_MORTGAGE_DETAILS;
+    [self setSectionWithRecord];
 }
 
 - (void)viewDidUnload
@@ -85,14 +94,11 @@
     [self setM_pieChartCells:nil];
 }
 
--(void)setSectionWithRecord:(MortgageRecord*)record{
+-(void)setSectionWithRecord{
     [m_sections removeAllObjects];
     [m_pieChartDesps removeAllObjects];
     [m_pieChartSlices removeAllObjects];
-    
-    m_record = [record copy];
-    m_output = [[self getOutput] copy];
-    
+
     self.title = m_record.name;
         
     NSArray* sectionkeys0 = [[NSArray alloc] initWithObjects:
@@ -114,7 +120,7 @@
                              nil];
     
     NSArray* sectionValues1 = [[NSArray alloc] initWithObjects:
-                               [NSString stringWithFormat:@"%d %@",m_output->loanTerms, NSLocalizedString(@"Term", nil)],
+                               [NSString stringWithFormat:@"%d %@",m_output->loanTerms, DimBoardLocalizedString(@"Term")],
                                [NSString stringWithFormat:@"%0.2f 元",m_output->monthlyPay],
                                nil];
     
@@ -315,15 +321,15 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if(section == 0){
-        return NSLocalizedString(@"PropertyInfo", nil);
+        return DimBoardLocalizedString(@"PropertyInfo");
     }else if (section == 1){
-        return NSLocalizedString(@"MortInfo", nil);
+        return DimBoardLocalizedString(@"MortInfo");
     }else if (section == 2){
-        return NSLocalizedString(@"FirstPaymentDetails", nil);
+        return DimBoardLocalizedString(@"FirstPaymentDetails");
     }else if (section == 3){
-        return NSLocalizedString(@"RepaymentDetails", nil);
+        return DimBoardLocalizedString(@"RepaymentDetails");
     }else if (section == 4){
-        return NSLocalizedString(@"TotalExpensesDetails", nil);
+        return DimBoardLocalizedString(@"TotalExpensesDetails");
     }else if (section == 5){
         return KEY_MORTGAGE_TABLE;
     }

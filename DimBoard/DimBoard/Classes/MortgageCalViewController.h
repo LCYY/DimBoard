@@ -14,6 +14,7 @@
 #import "MortgageDetailViewController.h"
 #import "MortgageMonthlyPayViewController.h"
 #import "DimBoardNotifications.h"
+#import "LocalizeHelper.h"
 
 @interface MortgageCalViewController : UIViewController<UITableViewDataSource,UITableViewDelegate, UpdateRecordItemProtocol>
 
@@ -37,7 +38,7 @@
 //每月供款
 //還款總額
 //---------
-@property (retain, nonatomic) NSArray *m_inputRows;
+@property (retain, nonatomic) NSMutableArray *m_inputRows;
 @property (retain, nonatomic) MortgageInput *m_input;
 @property (retain, nonatomic) MortgageOutput *m_output;
 @property (retain, nonatomic) Calculator* m_calculator;

@@ -48,6 +48,7 @@
 		D0C3EE6116F5BC9600D1530E /* LangPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C3EE5F16F5BC9500D1530E /* LangPickerViewController.xib */; };
 		FB3406C816F3023E0066B084 /* SettingIO.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3406C716F3023E0066B084 /* SettingIO.m */; };
 		FB3406CA16F3214E0066B084 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = FB3406C916F3214E0066B084 /* setting.png */; };
+		FB3406CD16F6FEE30066B084 /* LocalizeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3406CC16F6FEE30066B084 /* LocalizeHelper.m */; };
 		FB78592916C1040100C63D08 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FB78592816C1040100C63D08 /* XYPieChart.m */; };
 		FB78592B16C104EC00C63D08 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB78592A16C104EC00C63D08 /* QuartzCore.framework */; };
 		FB7ADE2716F1767500CB0263 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = FB7ADE1716F1767500CB0263 /* add.png */; };
@@ -144,6 +145,10 @@
 		FB3406C616F3023E0066B084 /* SettingIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingIO.h; sourceTree = "<group>"; };
 		FB3406C716F3023E0066B084 /* SettingIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingIO.m; sourceTree = "<group>"; };
 		FB3406C916F3214E0066B084 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
+		FB3406CB16F6FEE20066B084 /* LocalizeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizeHelper.h; sourceTree = "<group>"; };
+		FB3406CC16F6FEE30066B084 /* LocalizeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizeHelper.m; sourceTree = "<group>"; };
+		FB3406CE16F700490066B084 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		FB3406CF16F7028D0066B084 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FB78592716C1040100C63D08 /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
 		FB78592816C1040100C63D08 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		FB78592A16C104EC00C63D08 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -236,6 +241,8 @@
 				D0C3EE5D16F5BC9500D1530E /* LangPickerViewController.h */,
 				D0C3EE5E16F5BC9500D1530E /* LangPickerViewController.m */,
 				D0C3EE5F16F5BC9500D1530E /* LangPickerViewController.xib */,
+				FB3406CB16F6FEE20066B084 /* LocalizeHelper.h */,
+				FB3406CC16F6FEE30066B084 /* LocalizeHelper.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -497,6 +504,7 @@
 				FB7ADE4016F2BC2900CB0263 /* SettingViewController.m in Sources */,
 				FB3406C816F3023E0066B084 /* SettingIO.m in Sources */,
 				D0C3EE6016F5BC9600D1530E /* LangPickerViewController.m in Sources */,
+				FB3406CD16F6FEE30066B084 /* LocalizeHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +515,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				FB7ADE3A16F176CF00CB0263 /* en */,
+				FB3406CE16F700490066B084 /* zh-Hant */,
+				FB3406CF16F7028D0066B084 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

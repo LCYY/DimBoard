@@ -14,9 +14,9 @@
     self = [super init];
     if(self){
         m_langs = [[NSArray alloc] initWithObjects:
-                   NSLocalizedString(@"English", nil),
-                   NSLocalizedString(@"TChinese", nil),
-                   NSLocalizedString(@"SChinese", nil),
+                   DimBoardLocalizedString(@"English"),
+                   DimBoardLocalizedString(@"TChinese"),
+                   DimBoardLocalizedString(@"SChinese"),
                    nil];
     }
     return self;
@@ -38,25 +38,25 @@
     self = [super init];
     if(self){
         m_banks = [[NSArray alloc] initWithObjects:
-                   NSLocalizedString(@"StandardBank", nil),
-                   NSLocalizedString(@"HongkongShanghaiBankingCorp", nil),
-                   NSLocalizedString(@"ChinaConstructionBank", nil),
-                   NSLocalizedString(@"ChinaBank", nil),
-                   NSLocalizedString(@"AsiaBank", nil),
-                   NSLocalizedString(@"HangSengBank", nil),
-                   NSLocalizedString(@"DahSingBank", nil),
-                   NSLocalizedString(@"ChinaIndustrialBank", nil),
-                   NSLocalizedString(@"CitiBank", nil),
-                   NSLocalizedString(@"CITICBank", nil),
-                   NSLocalizedString(@"DBSBank", nil),
-                   NSLocalizedString(@"FubonBank", nil),
-                   NSLocalizedString(@"ChongHingBank", nil),
-                   NSLocalizedString(@"MEVASBank", nil),
-                   NSLocalizedString(@"NanyangBank", nil),
-                   NSLocalizedString(@"PublicBank", nil),
-                   NSLocalizedString(@"ShanghaiCommercialBank", nil),
-                   NSLocalizedString(@"WingHangBank", nil),
-                   NSLocalizedString(@"WingLungBank", nil),
+                   DimBoardLocalizedString(@"StandardBank"),
+                   DimBoardLocalizedString(@"HongkongShanghaiBankingCorp"),
+                   DimBoardLocalizedString(@"ChinaConstructionBank"),
+                   DimBoardLocalizedString(@"ChinaBank"),
+                   DimBoardLocalizedString(@"AsiaBank"),
+                   DimBoardLocalizedString(@"HangSengBank"),
+                   DimBoardLocalizedString(@"DahSingBank"),
+                   DimBoardLocalizedString(@"ChinaIndustrialBank"),
+                   DimBoardLocalizedString(@"CitiBank"),
+                   DimBoardLocalizedString(@"CITICBank"),
+                   DimBoardLocalizedString(@"DBSBank"),
+                   DimBoardLocalizedString(@"FubonBank"),
+                   DimBoardLocalizedString(@"ChongHingBank"),
+                   DimBoardLocalizedString(@"MEVASBank"),
+                   DimBoardLocalizedString(@"NanyangBank"),
+                   DimBoardLocalizedString(@"PublicBank"),
+                   DimBoardLocalizedString(@"ShanghaiCommercialBank"),
+                   DimBoardLocalizedString(@"WingHangBank"),
+                   DimBoardLocalizedString(@"WingLungBank"),
 //
 //                   
 //                    @"渣打銀行",

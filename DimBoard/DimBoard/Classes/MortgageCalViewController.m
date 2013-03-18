@@ -23,14 +23,7 @@
         m_input = [[MortgageInput alloc] initWithHomeValue:100.0 LoanYear:30 LoanPercent:30.0 LoanRate:2.0 LoanDate:nil];
         m_output = [[MortgageOutput alloc] init];
         m_calculator = [[Calculator alloc] init];
-        
-        NSArray *value01 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_HOMEVALUE,@"萬元",nil];
-        NSArray *value02 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANPERCENT,@"%",nil];
-        NSArray *value03 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANYEAR,NSLocalizedString(@"Year",nil),nil];
-        NSArray *value04 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_INTERESTRATE,@"%",nil];
-        m_inputRows = [[NSArray alloc] initWithObjects:value01,value02,value03,value04,nil];
-        
-        [self updateResult];
+        m_inputRows = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -53,13 +46,8 @@
     [ResultTableView setDataSource:self];
     [ResultTableView setDelegate:self];
     
-    [InterLabel setText:NSLocalizedString(@"PleaseInput",nil)];
-    [InterLabel setFont:[UIFont boldSystemFontOfSize:15]];
-    
-    self.title = KEY_MORTGAGE_CAL;
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    UIBarButtonItem *detailButton = [[UIBarButtonItem alloc] initWithTitle:KEY_MORTGAGE_DETAILS style:UIBarButtonItemStyleDone target:self action:@selector(onShowMortgageDetails:)];
-
+    UIBarButtonItem *detailButton = [[UIBarButtonItem alloc] initWithTitle:KEY_MORTGAGE_DETAILS style:UIBarButtonItemStyleBordered target:self action:@selector(onShowMortgageDetails:)];
     self.navigationItem.rightBarButtonItem = detailButton;
     
     UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
@@ -67,6 +55,30 @@
     [self.view addGestureRecognizer:tapRecognizer];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [m_inputRows removeAllObjects];
+    NSArray *value01 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_HOMEVALUE,@"萬元",nil];
+    NSArray *value02 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANPERCENT,@"%",nil];
+    NSArray *value03 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANYEAR,DimBoardLocalizedString(@"Year"),nil];
+    NSArray *value04 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_INTERESTRATE,@"%",nil];
+    [m_inputRows addObject:value01];
+    [m_inputRows addObject:value02];
+    [m_inputRows addObject:value03];
+    [m_inputRows addObject:value04];
+
+    [InterLabel setText:DimBoardLocalizedString(@"PleaseInput")];
+    [InterLabel setFont:[UIFont boldSystemFontOfSize:15]];
+    
+    self.title = KEY_MORTGAGE_CAL;
+    self.navigationItem.rightBarButtonItem.title = KEY_MORTGAGE_DETAILS;
+    
+    [self updateResult];
+    [InputTableView reloadData];
+    [ResultTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -131,7 +143,7 @@
     m_output = [[m_calculator getOutput] copy];
     
     NSArray *value11 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANAMOUNT,[NSString stringWithFormat:@"%0.4f 萬元",m_output->loanAmount],nil];
-    NSArray *value12 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANTERM,[NSString stringWithFormat:@"%d %@",m_output->loanTerms, NSLocalizedString(@"Term",nil)],nil];
+    NSArray *value12 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANTERM,[NSString stringWithFormat:@"%d %@",m_output->loanTerms, DimBoardLocalizedString(@"Term")],nil];
     NSArray *value13 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_MONTHLYPAYMENT,[NSString stringWithFormat:@"%0.2f 元",m_output->monthlyPay],nil];
     NSArray *value14 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_REPAYMENT,[NSString stringWithFormat:@"%0.4f 萬元",m_output->rePayment],nil];
     m_outputRows = [[NSArray alloc] initWithObjects:value11,value12,value13,value14,nil];

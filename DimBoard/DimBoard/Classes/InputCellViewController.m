@@ -39,22 +39,30 @@
 - (void) setName:(NSString *)name Value:(NSString *)value{
     m_name = name;
     m_value = value;
+    
+    [NameLabel setText:m_name];
+    [ValueInput setText:m_value];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = m_name;
-    [NameLabel setText:m_name];
-    [ValueInput setText:m_value];
+
     [ValueInput setDelegate:self];
-    
     [NameLabel setFont:[UIFont boldSystemFontOfSize:17]];
     
     [self rotateToOrientation:self.interfaceOrientation];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
 
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.title = m_name;
+    [NameLabel setText:m_name];
+    [ValueInput setText:m_value];
 }
 
 - (void)viewDidUnload

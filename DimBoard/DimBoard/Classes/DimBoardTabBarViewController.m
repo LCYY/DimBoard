@@ -43,13 +43,20 @@
     
     UITabBarItem* item1 = [[UITabBarItem alloc] initWithTitle:KEY_MORTGAGE_CAL image:[UIImage imageNamed:@"cal.png"] tag:1];
     UITabBarItem* item2 = [[UITabBarItem alloc] initWithTitle:KEY_MY_MORTGAGE image:[UIImage imageNamed:@"record.png"] tag:2];
-    UITabBarItem* item3 = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Setting", nil) image:[UIImage imageNamed:@"setting.png"] tag:3];
+    UITabBarItem* item3 = [[UITabBarItem alloc] initWithTitle:DimBoardLocalizedString(@"Setting") image:[UIImage imageNamed:@"setting.png"] tag:3];
     
     [calNavController setTabBarItem:item1];
     [recordNavController setTabBarItem:item2];
     [settingNavController setTabBarItem:item3];
     
     [self setViewControllers:[NSArray arrayWithObjects:calNavController,recordNavController, settingNavController,nil]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onChangeLanuage:) name:NOTI_CHANGELANGUAGE object:nil];
+}
+
+-(void)onChangeLanuage:(NSNotification*)noti{
+    [[[self.viewControllers objectAtIndex:0] tabBarItem] setTitle:KEY_MORTGAGE_CAL];
+    [[[self.viewControllers objectAtIndex:1] tabBarItem] setTitle:KEY_MY_MORTGAGE];
+    [[[self.viewControllers objectAtIndex:2] tabBarItem] setTitle:DimBoardLocalizedString(@"Setting")];
 }
 
 - (void)didReceiveMemoryWarning

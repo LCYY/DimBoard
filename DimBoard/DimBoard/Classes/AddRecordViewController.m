@@ -23,11 +23,11 @@
         // Custom initialization
         m_record = [[MortgageRecord alloc] init];
         
-        m_section0 = KEY_MORTGAGE_NAME; //input cell
+        m_section0 = DimBoardLocalizedString(@"Name"); //input cell
         m_section1 = KEY_MORTGAGE_BANKID; //input cell
         NSArray *value1 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_HOMEVALUE,@"萬元",nil];
         NSArray *value2 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANPERCENT,@"%",nil];
-        NSArray *value3 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANYEAR,NSLocalizedString(@"Year",nil),nil];
+        NSArray *value3 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANYEAR,DimBoardLocalizedString(@"Year"),nil];
         NSArray *value4 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_INTERESTRATE,@"%",nil];
         m_section2 = [[NSArray alloc] initWithObjects:value1,value2,value3,value4,nil];
         
@@ -72,10 +72,10 @@
     UIBarButtonItem *saveButton = nil;
     if(m_mode == ADDMODE){
         self.title = KEY_MORTGAGE_NEW;
-        saveButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save",nil) style:UIBarButtonItemStyleDone target:self action:@selector(onSaveNewRecord:)];
+        saveButton = [[UIBarButtonItem alloc] initWithTitle:DimBoardLocalizedString(@"Save") style:UIBarButtonItemStyleDone target:self action:@selector(onSaveNewRecord:)];
     }else{
         self.title = m_record.name;
-        saveButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save",nil) style:UIBarButtonItemStyleDone target:self action:@selector(onSaveRecord:)];
+        saveButton = [[UIBarButtonItem alloc] initWithTitle:DimBoardLocalizedString(@"Save") style:UIBarButtonItemStyleDone target:self action:@selector(onSaveRecord:)];
     }
     self.navigationItem.rightBarButtonItem = saveButton;
 }
@@ -237,11 +237,11 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if(section == 0){
-        return NSLocalizedString(@"Name",nil);
+        return DimBoardLocalizedString(@"Name");
     }else if (section == 1){
         return KEY_MORTGAGE_BANKID;
     }else if (section == 2){
-        return NSLocalizedString(@"MortInfo",nil);
+        return DimBoardLocalizedString(@"MortInfo");
     }else if (section == 3){
         return KEY_MORTGAGE_LOANDATE;
     }

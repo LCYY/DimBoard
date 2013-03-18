@@ -10,6 +10,7 @@
 #import "XYPieChart.h"
 #import "DimBoardNotifications.h"
 #import <QuartzCore/QuartzCore.h>
+#import "LocalizeHelper.h"
 
 @protocol PieChartCellExtendDelegate <NSObject>
 

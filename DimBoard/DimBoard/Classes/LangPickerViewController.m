@@ -120,7 +120,7 @@
     //[self.navigationController popViewControllerAnimated: YES];
     [self.view removeFromSuperview];
     if(m_selectedLangId > -1 && m_selectedLangId < [m_langTypes getLangCount]){
-        [m_delegate updateSettingKey:KEY_SETTING_LANG withValue:[m_langTypes getLangNameById:m_selectedLangId]];
+        [m_delegate updateSettingKey:KEY_SETTING_LANG withValue:[NSNumber numberWithInteger:m_selectedLangId]];
     }
 }
 

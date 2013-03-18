@@ -1,0 +1,74 @@
+/* 
+  Localizable.strings
+  DimBoard
+
+  Created by conicacui on 14/3/13.
+  Copyright (c) 2013 LCYY. All rights reserved.
+*/
+
+"Year"="年";
+"Save"="存儲";
+"Name"="名稱";
+"Bank"="銀行";
+"Term"="期";
+"$"="$";
+"Principal"="本金";
+"Interest"="利息";
+"PropertyInfo"="物業資料";
+"MortInfo"="按揭資料";
+"FirstPaymentDetails"="首付分析";
+"RepaymentDetails"="Repayment Details";
+"StartDate"="貸款開始日期";
+"Calculator"="計算器";
+"PleaseInput"="請輸入";
+"TotalExpensesInfo"="詳細資料";
+"TotalExpensesDetails"="Expence Details";
+"LoanTerm"="期數";
+"InterestRate"="按揭利率";
+"HomeValue"="物業價值";
+"LoanRatio"="按揭比率";
+"MortYear"="按揭年限";
+"MonthlyPay"="每月還款";
+"FirstPay"="首付金額";
+"Commission"="代理佣金";
+"Tax"="印花稅";
+"FirstTotalExpence"="首次支出總額";
+"LoanAmount"="按揭金額";
+"TotalRepayment"="剩餘還款";
+"TotalInterestAmount"="利息金額";
+"TotalInterestPaid"="已付利息";
+"TotalInterestLeft"="剩餘利息";
+"TotalLoanPaid"="已付按揭";
+"TotalLoanLeft"="剩餘按揭";
+"NoTermsPaid"="已付期數";
+"TotalExpences"="總支出";
+"RepaymentSchedule"="供款表";
+"MortgageRecord"="我的按揭";
+"NewMortgagePlan"="新增按揭";
+"StandardBank"="渣打銀行";
+"HongkongShanghaiBankigCorp"="匯豐銀行";
+"ChinaConstructionBank"="中國建設銀行";
+"ChinaBank"="中國銀行";
+"AsiaBank"="東亞銀行";
+"HangSengBank"="恆生銀行";
+"DahSingBank"="大新銀行";
+"ChinaIndustrialBank"="中國工商銀行";
+"CitiBank"="花旗銀行";
+"CITICBank"="中信銀行";
+"DBSBank"="星展銀行";
+"FubonBank"="富邦銀行";
+"ChongHingBank"="創興銀行";
+"MEVASBank"="豐明銀行";
+"NanyangBank"="南洋商業銀行";
+"PublicBank"="大眾yinh";
+"ShanghaiCommercialBank"="上海商業銀行";
+"WingHangBank"="永亨銀行";
+"WingLungBank"="永隆銀行";
+"YEARNO"="第 %d 年";
+"PieChart"="餅圖";
+"TChinese"="繁體中文";
+"SChinese"="簡體中文";
+"English"="英文";
+"Setting"="設置";
+"Language"="語言";
+

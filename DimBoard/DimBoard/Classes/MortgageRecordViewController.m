@@ -87,13 +87,18 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = KEY_MY_MORTGAGE;
+
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onAddNewMortgageRecord:)];
     self.navigationItem.rightBarButtonItem = addButton;
     
     [self rotateToOrientation:self.interfaceOrientation];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.title = KEY_MY_MORTGAGE;
 }
 
 - (void)viewDidUnload

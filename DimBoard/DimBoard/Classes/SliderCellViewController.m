@@ -72,19 +72,18 @@
     m_name = name;
     m_value = value;
     m_unit = unit;
+    
+    [NameLabel setText:m_name];
+    [ValueInput setText:m_value];
+    [UnitLabel setText:m_unit];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = m_name;
-    [ValueInput setDelegate:self];
     
-    [NameLabel setText:m_name];
-    [ValueInput setText:m_value];
-    [UnitLabel setText:m_unit];    
-    [NameLabel setFont:[UIFont boldSystemFontOfSize:15]];
+    [ValueInput setDelegate:self];
     
     [AddButton setBackgroundImage:[UIImage imageNamed:@"add.png"] forState:UIControlStateNormal];
     [AddButton setBackgroundImage:[UIImage imageNamed:@"add2.png"] forState:UIControlStateHighlighted];
@@ -94,8 +93,7 @@
     [MinusButton setBackgroundImage:[UIImage imageNamed:@"minus2.png"] forState:UIControlStateHighlighted];
     [MinusButton setBackgroundImage:[UIImage imageNamed:@"minus2.png"] forState:UIControlStateReserved];
     [MinusButton setBackgroundImage:[UIImage imageNamed:@"minus2.png"] forState:UIControlStateSelected];
-    
-    
+        
     UILongPressGestureRecognizer* addlongPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onAddLongPressed:)];
     [addlongPressRecognizer setMinimumPressDuration:0.5];
     [AddButton addGestureRecognizer:addlongPressRecognizer];
@@ -106,6 +104,24 @@
     
     [self rotateToOrientation:self.interfaceOrientation];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.title = m_name;
+    
+    [NameLabel setText:m_name];
+    [ValueInput setText:m_value];
+    [UnitLabel setText:m_unit];
+    
+    NSString* lang = LocalizationGetLanguage();
+    
+    if([LocalizationGetLanguage() isEqualToString:LANG_ENG]){
+        [NameLabel setFont:[UIFont boldSystemFontOfSize:15]];
+    }
+    else{
+        [NameLabel setFont:[UIFont boldSystemFontOfSize:17]];
+    }
 }
 
 - (void)viewDidUnload

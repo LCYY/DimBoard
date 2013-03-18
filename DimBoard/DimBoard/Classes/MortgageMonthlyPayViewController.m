@@ -47,10 +47,10 @@
     [InterestLabel setUserInteractionEnabled:NO];
     [LeftAmountLabel setUserInteractionEnabled:NO];
     
-    [TermLabel setText:NSLocalizedString(@"Term", nil)];
-    [PrincipalLabel setText:NSLocalizedString(@"Principal", nil)];
-    [InterestLabel setText:NSLocalizedString(@"Interest", nil)];
-    [LeftAmountLabel setText:NSLocalizedString(@"TotalLoanLeft", nil)];
+    [TermLabel setText:DimBoardLocalizedString(@"Term")];
+    [PrincipalLabel setText:DimBoardLocalizedString(@"Principal")];
+    [InterestLabel setText:DimBoardLocalizedString(@"Interest")];
+    [LeftAmountLabel setText:DimBoardLocalizedString(@"TotalLoanLeft")];
     
     self.title = KEY_MORTGAGE_TABLE;
     
@@ -185,7 +185,7 @@
     UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, m_headerWidth, 18)];
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [UIColor whiteColor];
-    label.text = [NSString stringWithFormat:NSLocalizedString(@"YEARNO", nil),section+1];
+    label.text = [NSString stringWithFormat:DimBoardLocalizedString(@"YEARNO"),section+1];
     label.font = [UIFont fontWithName:label.font.fontName size:13];
     label.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.0];
     [view addSubview:label];

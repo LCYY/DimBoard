@@ -59,7 +59,7 @@
     // Do any additional setup after loading the view from its nib.
     [PieChart setHidden:YES];
     [PieChartSlice_output setHidden:YES];
-    [TitleLabel setText:NSLocalizedString(@"PieChart", nil)];
+
     [TitleLabel setFont:[UIFont boldSystemFontOfSize:17]];
     
     m_colorLabels = [NSArray arrayWithObjects:ColorLabel_1,ColorLabel_2,ColorLabel_3,ColorLabel_4,ColorLabel_5,nil];
@@ -90,6 +90,21 @@
     
     [self rotateToOrientation:self.interfaceOrientation];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [TitleLabel setText:DimBoardLocalizedString(@"PieChart")];
+    for(int i = 0; i < [m_slices count]; i++){
+        UIButton* label = [m_colorLabels objectAtIndex:i];
+        NSString* text = [[[m_slicesDesp objectAtIndex:i] componentsSeparatedByString:@":"] objectAtIndex:0];
+        [label.titleLabel setText:text];
+        [label setTitle:text forState:UIControlStateNormal];
+        [label setTitle:text forState:UIControlStateReserved];
+        [label setTitle:text forState:UIControlStateSelected];
+        [label setTitle:text forState:UIControlStateHighlighted];
+    }
 }
 
 - (void)viewDidUnload
@@ -204,6 +219,15 @@
     
     [PieChartSlice_output setText:[m_slicesDesp objectAtIndex:[m_slices count]]];
     [PieChartSlice_output setTextAlignment:UITextAlignmentCenter];
+    for(int i = 0; i < [m_slices count]; i++){
+        UIButton* label = [m_colorLabels objectAtIndex:i];
+        NSString* text = [[[m_slicesDesp objectAtIndex:i] componentsSeparatedByString:@":"] objectAtIndex:0];
+        [label.titleLabel setText:text];
+        [label setTitle:text forState:UIControlStateNormal];
+        [label setTitle:text forState:UIControlStateReserved];
+        [label setTitle:text forState:UIControlStateSelected];
+        [label setTitle:text forState:UIControlStateHighlighted];
+    }
     [PieChart reloadData];
 }
 
