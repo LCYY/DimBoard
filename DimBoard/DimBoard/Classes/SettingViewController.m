@@ -61,7 +61,7 @@
 -(void)setSectionsWithSettings{
     [m_sections removeAllObjects];
     NSArray* sectionkeys0 = [[NSArray alloc] initWithObjects:
-                             KEY_SETTING_LANG,
+                             DimBoardLocalizedString(@"Language"),
                              nil];
     NSArray* sectionValues0 = [[NSArray alloc] initWithObjects:
                                [[[LangTypes alloc] init] getLangNameById:m_settingIO.m_settings.langId],

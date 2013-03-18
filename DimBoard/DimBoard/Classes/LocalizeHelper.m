@@ -35,14 +35,14 @@ static NSBundle* myBundle = nil;
 }
 
 - (void) setLanguage:(NSInteger) langid {
-    m_lang = [[[LangTypes alloc] init] getLangNameById:langid];
+    m_lang = langid;
     NSString* lang = @"en";
     
-    if([m_lang isEqualToString:LANG_ENG]){
+    if(m_lang == 0){
         lang = @"en";
-    }else if([m_lang isEqualToString:LANG_CHINESE_S]){
+    }else if(m_lang == 1){
         lang = @"zh-Hans";
-    }else if([m_lang isEqualToString:LANG_CHINESE_T]){
+    }else if(m_lang == 2){
         lang = @"zh-Hant";
     }
     
@@ -57,7 +57,7 @@ static NSBundle* myBundle = nil;
     }
 }
 
--(NSString *)getLanguage{
+-(NSInteger)getLanguageId{
     return m_lang;
 }
 

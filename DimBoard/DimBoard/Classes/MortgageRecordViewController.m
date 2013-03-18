@@ -98,7 +98,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.title = KEY_MY_MORTGAGE;
+    self.title = DimBoardLocalizedString(@"MortgageRecord");
 }
 
 - (void)viewDidUnload

@@ -27,40 +27,21 @@
 #define COEFF_LOANPERCENT_VALUE 0.01
 
 #define KEY_MORTGAGE_RECORDID @"mortgage_recordid"
-#define KEY_MORTGAGE_NAME DimBoardLocalizedString(@"Name")
-#define KEY_MORTGAGE_BANKID DimBoardLocalizedString(@"Bank")
-#define KEY_MORTGAGE_HOMEVALUE DimBoardLocalizedString(@"HomeValue")
-#define KEY_MORTGAGE_LOANPERCENT DimBoardLocalizedString(@"LoanRatio")
-#define KEY_MORTGAGE_LOANYEAR DimBoardLocalizedString(@"MortYear")
-#define KEY_MORTGAGE_LOANTERM DimBoardLocalizedString(@"LoanTerm")
-#define KEY_MORTGAGE_INTERESTRATE DimBoardLocalizedString(@"InterestRate")
-#define KEY_MORTGAGE_LOANDATE DimBoardLocalizedString(@"StartDate")
-#define KEY_MORTGAGE_MONTHLYPAYMENT DimBoardLocalizedString(@"MonthlyPay")
-#define KEY_MORTGAGE_FIRSTPAYMENT DimBoardLocalizedString(@"FirstPay")
-#define KEY_MORTGAGE_COMISSION DimBoardLocalizedString(@"Commission")
-#define KEY_MORTGAGE_TAX DimBoardLocalizedString(@"Tax")
-#define KEY_MORTGAGE_FIRSTTOTALEXP DimBoardLocalizedString(@"FirstTotalExpence")
-#define KEY_MORTGAGE_LOANAMOUNT DimBoardLocalizedString(@"LoanAmount")
-#define KEY_MORTGAGE_REPAYMENT DimBoardLocalizedString(@"TotalRepayment")
-#define KEY_MORTGAGE_REPAYMENT_INTEREST DimBoardLocalizedString(@"TotalInterestAmount")
-#define KEY_MORTGAGE_TOBEPAIDPRINCIPAL DimBoardLocalizedString(@"TotalLoanLeft")
-#define KEY_MORTGAGE_PAIDPRINCIPAL DimBoardLocalizedString(@"TotalLoanPaid")
-#define KEY_MORTGAGE_TOBEPAIDINTEREST DimBoardLocalizedString(@"TotalInterestLeft")
-#define KEY_MORTGAGE_PAIDINTEREST DimBoardLocalizedString(@"TotalInterestPaid")
-#define KEY_MORTGAGE_PAIDTERM DimBoardLocalizedString(@"NoTermsPaid")
-#define KEY_MORTGAGE_TOTALEXP DimBoardLocalizedString(@"TotalExpences")
-#define KEY_MORTGAGE_TABLE DimBoardLocalizedString(@"RepaymentSchedule")
-#define KEY_MY_MORTGAGE DimBoardLocalizedString(@"MortgageRecord")
-#define KEY_MORTGAGE_DETAILS  DimBoardLocalizedString(@"TotalExpensesInfo")
-#define KEY_MORTGAGE_NEW DimBoardLocalizedString(@"NewMortgagePlan")
-#define KEY_MORTGAGE_CAL DimBoardLocalizedString(@"Calculator")
+#define KEY_MORTGAGE_NAME @"Name"
+#define KEY_MORTGAGE_BANKID @"Bank"
+#define KEY_MORTGAGE_HOMEVALUE @"HomeValue"
+#define KEY_MORTGAGE_LOANPERCENT @"LoanRatio"
+#define KEY_MORTGAGE_LOANYEAR @"MortYear"
+#define KEY_MORTGAGE_INTERESTRATE @"InterestRate"
+#define KEY_MORTGAGE_LOANDATE @"StartDate"
+
 #define DATEFORMAT @"yyyy-MM-dd"
 
-#define KEY_SETTING_LANG DimBoardLocalizedString(@"Language")
+#define KEY_SETTING_LANG @"Language"
 
-#define LANG_CHINESE_T DimBoardLocalizedString(@"TChinese")
-#define LANG_CHINESE_S DimBoardLocalizedString(@"SChinese")
-#define LANG_ENG DimBoardLocalizedString(@"English")
+#define LANG_CHINESE_T @"TChinese"
+#define LANG_CHINESE_S @"SChinese"
+#define LANG_ENG @"English"
 
 @interface BankTypes : NSObject
 @property(retain,nonatomic) NSArray* m_banks;

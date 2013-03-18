@@ -41,8 +41,8 @@
     UINavigationController* settingNavController = [[UINavigationController alloc] initWithRootViewController:m_settingViewController];
     
     
-    UITabBarItem* item1 = [[UITabBarItem alloc] initWithTitle:KEY_MORTGAGE_CAL image:[UIImage imageNamed:@"cal.png"] tag:1];
-    UITabBarItem* item2 = [[UITabBarItem alloc] initWithTitle:KEY_MY_MORTGAGE image:[UIImage imageNamed:@"record.png"] tag:2];
+    UITabBarItem* item1 = [[UITabBarItem alloc] initWithTitle:DimBoardLocalizedString(@"Calculator") image:[UIImage imageNamed:@"cal.png"] tag:1];
+    UITabBarItem* item2 = [[UITabBarItem alloc] initWithTitle:DimBoardLocalizedString(@"MortgageRecord") image:[UIImage imageNamed:@"record.png"] tag:2];
     UITabBarItem* item3 = [[UITabBarItem alloc] initWithTitle:DimBoardLocalizedString(@"Setting") image:[UIImage imageNamed:@"setting.png"] tag:3];
     
     [calNavController setTabBarItem:item1];
@@ -54,8 +54,8 @@
 }
 
 -(void)onChangeLanuage:(NSNotification*)noti{
-    [[[self.viewControllers objectAtIndex:0] tabBarItem] setTitle:KEY_MORTGAGE_CAL];
-    [[[self.viewControllers objectAtIndex:1] tabBarItem] setTitle:KEY_MY_MORTGAGE];
+    [[[self.viewControllers objectAtIndex:0] tabBarItem] setTitle:DimBoardLocalizedString(@"Calculator")];
+    [[[self.viewControllers objectAtIndex:1] tabBarItem] setTitle:DimBoardLocalizedString(@"MortgageRecord")];
     [[[self.viewControllers objectAtIndex:2] tabBarItem] setTitle:DimBoardLocalizedString(@"Setting")];
 }
 

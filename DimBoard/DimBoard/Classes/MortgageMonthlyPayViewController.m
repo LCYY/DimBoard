@@ -52,7 +52,7 @@
     [InterestLabel setText:DimBoardLocalizedString(@"Interest")];
     [LeftAmountLabel setText:DimBoardLocalizedString(@"TotalLoanLeft")];
     
-    self.title = KEY_MORTGAGE_TABLE;
+    self.title = DimBoardLocalizedString(@"RepaymentSchedule");
     
     [self rotateToOrientation:self.interfaceOrientation];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];

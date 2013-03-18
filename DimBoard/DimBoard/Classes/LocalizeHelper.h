@@ -12,14 +12,14 @@
 
 #define DimBoardLocalizedString(key) [[LocalizeHelper sharedLocalSystem] localizedStringForKey:(key)]
 #define LocalizationSetLanguage(language) [[LocalizeHelper sharedLocalSystem] setLanguage:(language)]
-#define LocalizationGetLanguage() [[LocalizeHelper sharedLocalSystem] getLanguage]
+#define LocalizationGetLanguage() [[LocalizeHelper sharedLocalSystem] getLanguageId]
 
 @interface LocalizeHelper : NSObject
 
-@property (nonatomic) NSString* m_lang;
+@property (nonatomic) NSInteger m_lang;
 
 + (LocalizeHelper*) sharedLocalSystem;
 - (NSString*) localizedStringForKey:(NSString*) key;
 - (void) setLanguage:(NSInteger) langid;
-- (NSString*) getLanguage;
+- (NSInteger) getLanguageId;
 @end
