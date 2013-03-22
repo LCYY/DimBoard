@@ -43,22 +43,22 @@
         m_step = 0.0;
         m_repeatCnt = 0;
         
-        if([m_name isEqualToString:DimBoardLocalizedString(@"HomeValue")]){//int terms of 10-thousand
+        if([m_name isEqualToString:KEY_MORTGAGE_HOMEVALUE]){//int terms of 10-thousand
             m_minValue = MIN_HOME_VALUE;
             m_maxValue = MAX_HOME_VALUE;
             m_step = STEP_HOME_VALUE;
             m_stepCoeff = COEFF_HOME_VALUE;
-        }else if([m_name isEqualToString:DimBoardLocalizedString(@"InterestRate")]){//in terms of %
+        }else if([m_name isEqualToString:KEY_MORTGAGE_INTERESTRATE]){//in terms of %
             m_minValue = MIN_LOANRATE_VALUE;
             m_maxValue = MAX_LOANRATE_VALUE;
             m_step = STEP_LOANRATE_VALUE;
             m_stepCoeff = COEFF_LOANRATE_VALUE;
-        }else if([m_name isEqualToString:DimBoardLocalizedString(@"LoanRatio")]){// in terms of year
+        }else if([m_name isEqualToString:KEY_MORTGAGE_LOANPERCENT]){// in terms of year
             m_minValue = MIN_LOANPERCENT_VALUE;
             m_maxValue = MAX_LOANPERCENT_VALUE;
             m_step = STEP_LOANPERCENT_VALUE;
             m_stepCoeff = COEFF_LOANPERCENT_VALUE;
-        }else if([m_name isEqualToString:DimBoardLocalizedString(@"MortYear")]){// in terms of %
+        }else if([m_name isEqualToString:KEY_MORTGAGE_LOANYEAR]){// in terms of %
             m_minValue = MIN_LOANYEAR_VALUE;
             m_maxValue = MAX_LOANYEAR_VALUE;
             m_step = STEP_LOANYEAR_VALUE;
@@ -73,7 +73,7 @@
     m_value = value;
     m_unit = unit;
     
-    [NameLabel setText:m_name];
+    [NameLabel setText:DimBoardLocalizedString(m_name)];
     [ValueInput setText:m_value];
     [UnitLabel setText:m_unit];
     
@@ -118,7 +118,7 @@
     [super viewWillAppear:animated];
     self.title = m_name;
     
-    [NameLabel setText:m_name];
+    [NameLabel setText:DimBoardLocalizedString(m_name)];
     [ValueInput setText:m_value];
     [UnitLabel setText:m_unit];
     
@@ -280,13 +280,13 @@
 
 -(void)updateValues{
     [self checkValueRange];
-    if([m_name isEqualToString:DimBoardLocalizedString(@"MortYear")]){
+    if([m_name isEqualToString:KEY_MORTGAGE_LOANYEAR]){
         m_value = [NSString stringWithFormat:@"%d",(int)m_currentValue];
-    }else if([m_name isEqualToString:DimBoardLocalizedString(@"LoanRatio")]){
+    }else if([m_name isEqualToString:KEY_MORTGAGE_LOANPERCENT]){
         m_value = [NSString stringWithFormat:@"%d",(int)m_currentValue];
-    }else if([m_name isEqualToString:DimBoardLocalizedString(@"InterestRate")]){
+    }else if([m_name isEqualToString:KEY_MORTGAGE_INTERESTRATE]){
         m_value = [NSString stringWithFormat:@"%0.2f",m_currentValue];
-    }else if([m_name isEqualToString:DimBoardLocalizedString(@"HomeValue")]){
+    }else if([m_name isEqualToString:KEY_MORTGAGE_HOMEVALUE]){
         m_value = [NSString stringWithFormat:@"%d",(int)m_currentValue];
     }
     ValueInput.text = m_value;

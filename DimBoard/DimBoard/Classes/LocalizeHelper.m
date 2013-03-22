@@ -41,9 +41,9 @@ static NSBundle* myBundle = nil;
     if(m_lang == 0){
         lang = @"en";
     }else if(m_lang == 1){
-        lang = @"zh-Hans";
-    }else if(m_lang == 2){
         lang = @"zh-Hant";
+    }else if(m_lang == 2){
+        lang = @"zh-Hans";
     }
     
     NSString *path = [[NSBundle mainBundle] pathForResource:lang ofType:@"lproj" ];

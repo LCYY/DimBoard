@@ -23,15 +23,15 @@
         // Custom initialization
         m_record = [[MortgageRecord alloc] init];
         
-        m_section0 = DimBoardLocalizedString(@"Name"); //input cell
-        m_section1 = DimBoardLocalizedString(@"Bank"); //input cell
-        NSArray *value1 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"HomeValue"),@"萬元",nil];
-        NSArray *value2 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"LoanRatio"),@"%",nil];
-        NSArray *value3 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"MortYear"),DimBoardLocalizedString(@"Year"),nil];
-        NSArray *value4 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"InterestRate"),@"%",nil];
+        m_section0 = KEY_MORTGAGE_NAME; //input cell
+        m_section1 = KEY_MORTGAGE_BANKID; //input cell
+        NSArray *value1 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_HOMEVALUE,@"萬元",nil];
+        NSArray *value2 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANPERCENT,@"%",nil];
+        NSArray *value3 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANYEAR,DimBoardLocalizedString(@"Year"),nil];
+        NSArray *value4 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_INTERESTRATE,@"%",nil];
         m_section2 = [[NSArray alloc] initWithObjects:value1,value2,value3,value4,nil];
         
-        m_section3 = DimBoardLocalizedString(@"StartDate"); //input cell
+        m_section3 = KEY_MORTGAGE_LOANDATE; //input cell
         
         m_bankViewController = [[BankPickerViewController alloc] initWithBankId:m_record->bankId];
         [m_bankViewController setM_delegate:self];
