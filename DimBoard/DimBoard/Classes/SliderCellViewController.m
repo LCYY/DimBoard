@@ -43,22 +43,22 @@
         m_step = 0.0;
         m_repeatCnt = 0;
         
-        if([m_name isEqualToString:KEY_MORTGAGE_HOMEVALUE]){//int terms of 10-thousand
+        if([m_name isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_HOMEVALUE)]){//int terms of 10-thousand
             m_minValue = MIN_HOME_VALUE;
             m_maxValue = MAX_HOME_VALUE;
             m_step = STEP_HOME_VALUE;
             m_stepCoeff = COEFF_HOME_VALUE;
-        }else if([m_name isEqualToString:KEY_MORTGAGE_INTERESTRATE]){//in terms of %
+        }else if([m_name isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_INTERESTRATE)]){//in terms of %
             m_minValue = MIN_LOANRATE_VALUE;
             m_maxValue = MAX_LOANRATE_VALUE;
             m_step = STEP_LOANRATE_VALUE;
             m_stepCoeff = COEFF_LOANRATE_VALUE;
-        }else if([m_name isEqualToString:KEY_MORTGAGE_LOANPERCENT]){// in terms of year
+        }else if([m_name isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_LOANPERCENT)]){// in terms of year
             m_minValue = MIN_LOANPERCENT_VALUE;
             m_maxValue = MAX_LOANPERCENT_VALUE;
             m_step = STEP_LOANPERCENT_VALUE;
             m_stepCoeff = COEFF_LOANPERCENT_VALUE;
-        }else if([m_name isEqualToString:KEY_MORTGAGE_LOANYEAR]){// in terms of %
+        }else if([m_name isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_LOANYEAR)]){// in terms of %
             m_minValue = MIN_LOANYEAR_VALUE;
             m_maxValue = MAX_LOANYEAR_VALUE;
             m_step = STEP_LOANYEAR_VALUE;
@@ -112,6 +112,7 @@
     
     [self rotateToOrientation:self.interfaceOrientation];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onChangeLanuage:) name:NOTI_CHANGELANGUAGE object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -149,6 +150,10 @@
     [self rotateToOrientation:[orientation integerValue]];
 }
 
+-(void)onChangeLanuage:(NSNotification*) noti{
+    [self rotateToOrientation:self.interfaceOrientation];
+}
+
 -(void)rotateToOrientation:(UIInterfaceOrientation) orientation{
     NSInteger widthchange = 160;
     CGRect screen = [[UIScreen mainScreen] bounds];
@@ -157,47 +162,105 @@
         widthchange = widthchange + (568 - 480);
     }
     
-    CGRect frame;
-    if(UIInterfaceOrientationIsLandscape(orientation)){
-        frame = self.view.frame;
-        frame.size.width = screen.size.height;
-        [self.view setFrame:frame];
-        
-        frame = ValueInput.frame;
-        frame.size.width = 102 + widthchange;
-        [ValueInput setFrame:frame];
-        
-        frame = UnitLabel.frame;
-        frame.origin.x = 197 + widthchange;
-        [UnitLabel setFrame:frame];
-        
-        frame = MinusButton.frame;
-        frame.origin.x = 237 + widthchange;
-        [MinusButton setFrame:frame];
-        
-        frame = AddButton.frame;
-        frame.origin.x = 282 + widthchange;
-        [AddButton setFrame:frame];
+    NSInteger langId = LocalizationGetLanguage();
+    if(langId == 0){
+        CGRect frame;
+        if(UIInterfaceOrientationIsLandscape(orientation)){
+            frame = self.view.frame;
+            frame.size.width = screen.size.height;
+            [self.view setFrame:frame];
+            
+            frame = NameLabel.frame;
+            frame.size.width = 120;
+            [NameLabel setFrame:frame];
+            
+            frame = ValueInput.frame;
+            frame.size.width = 20 + widthchange;
+            frame.origin.x = 140;
+            [ValueInput setFrame:frame];
+            
+            frame = UnitLabel.frame;
+            frame.origin.x = 155 + widthchange;
+            [UnitLabel setFrame:frame];
+            
+            frame = MinusButton.frame;
+            frame.origin.x = 225 + widthchange;
+            [MinusButton setFrame:frame];
+            
+            frame = AddButton.frame;
+            frame.origin.x = 282 + widthchange;
+            [AddButton setFrame:frame];
+        }else{
+            frame = self.view.frame;
+            frame.size.width = screen.size.width;
+            [self.view setFrame:frame];
+            
+            frame = NameLabel.frame;
+            frame.size.width = 120;
+            [NameLabel setFrame:frame];
+            
+            frame = ValueInput.frame;
+            frame.size.width = 80;
+            frame.origin.x = 125;
+            [ValueInput setFrame:frame];
+            
+            frame = UnitLabel.frame;
+            frame.origin.x = 197;
+            [UnitLabel setFrame:frame];
+            
+            frame = MinusButton.frame;
+            frame.origin.x = 237;
+            [MinusButton setFrame:frame];
+            
+            frame = AddButton.frame;
+            frame.origin.x = 282;
+            [AddButton setFrame:frame];
+        }
     }else{
-        frame = self.view.frame;
-        frame.size.width = screen.size.width;
-        [self.view setFrame:frame];
-        
-        frame = ValueInput.frame;
-        frame.size.width = 102;
-        [ValueInput setFrame:frame];
-        
-        frame = UnitLabel.frame;
-        frame.origin.x = 197;
-        [UnitLabel setFrame:frame];
-        
-        frame = MinusButton.frame;
-        frame.origin.x = 237;
-        [MinusButton setFrame:frame];
-        
-        frame = AddButton.frame;
-        frame.origin.x = 282;
-        [AddButton setFrame:frame];
+        CGRect frame;
+        if(UIInterfaceOrientationIsLandscape(orientation)){
+            frame = self.view.frame;
+            frame.size.width = screen.size.height;
+            [self.view setFrame:frame];
+            
+            frame = ValueInput.frame;
+            frame.size.width = 50 + widthchange;
+            frame.origin.x = 110;
+            [ValueInput setFrame:frame];
+            
+            frame = UnitLabel.frame;
+            frame.origin.x = 155 + widthchange;
+            [UnitLabel setFrame:frame];
+            
+            frame = MinusButton.frame;
+            frame.origin.x = 215 + widthchange;
+            [MinusButton setFrame:frame];
+            
+            frame = AddButton.frame;
+            frame.origin.x = 282 + widthchange;
+            [AddButton setFrame:frame];
+        }else{
+            frame = self.view.frame;
+            frame.size.width = screen.size.width;
+            [self.view setFrame:frame];
+            
+            frame = ValueInput.frame;
+            frame.size.width = 102;
+            frame.origin.x = 95;
+            [ValueInput setFrame:frame];
+            
+            frame = UnitLabel.frame;
+            frame.origin.x = 190;
+            [UnitLabel setFrame:frame];
+            
+            frame = MinusButton.frame;
+            frame.origin.x = 230;
+            [MinusButton setFrame:frame];
+            
+            frame = AddButton.frame;
+            frame.origin.x = 282;
+            [AddButton setFrame:frame];
+        }
     }
 }
 
@@ -280,13 +343,13 @@
 
 -(void)updateValues{
     [self checkValueRange];
-    if([m_name isEqualToString:KEY_MORTGAGE_LOANYEAR]){
+    if([m_name isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_LOANYEAR)]){
         m_value = [NSString stringWithFormat:@"%d",(int)m_currentValue];
-    }else if([m_name isEqualToString:KEY_MORTGAGE_LOANPERCENT]){
+    }else if([m_name isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_LOANPERCENT)]){
         m_value = [NSString stringWithFormat:@"%d",(int)m_currentValue];
-    }else if([m_name isEqualToString:KEY_MORTGAGE_INTERESTRATE]){
+    }else if([m_name isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_INTERESTRATE)]){
         m_value = [NSString stringWithFormat:@"%0.2f",m_currentValue];
-    }else if([m_name isEqualToString:KEY_MORTGAGE_HOMEVALUE]){
+    }else if([m_name isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_HOMEVALUE)]){
         m_value = [NSString stringWithFormat:@"%d",(int)m_currentValue];
     }
     ValueInput.text = m_value;

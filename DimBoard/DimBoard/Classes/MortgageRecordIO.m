@@ -44,7 +44,7 @@
                     m_maxId = maxid;
                 }
             }
-            NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+            NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:KEY_MORTGAGE_NAME ascending:YES];
             m_records = [[m_records sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]] mutableCopy];
         }
     }
@@ -70,7 +70,7 @@
     m_maxId ++;
     record->recordId = m_maxId ;
     [m_records addObject:[record copy]];
-    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:KEY_MORTGAGE_NAME ascending:YES];
     m_records = [[m_records sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]] mutableCopy];
     [self save];
 }
@@ -83,7 +83,7 @@
             [m_records replaceObjectAtIndex:i withObject:[r copy]];
         }
     }
-    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:KEY_MORTGAGE_NAME ascending:YES];
     m_records = [[m_records sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]] mutableCopy];
     [self save];
 }

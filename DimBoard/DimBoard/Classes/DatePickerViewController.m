@@ -115,7 +115,7 @@
 
 -(void)onSave:(id)sender{
     [self.view removeFromSuperview];
-    [m_delegate updateRecordKey:KEY_MORTGAGE_LOANDATE withValue:m_date];
+    [m_delegate updateRecordKey:DimBoardLocalizedString(KEY_MORTGAGE_LOANDATE) withValue:m_date];
 }
 
 -(void)onDateChanged:(id)sener{

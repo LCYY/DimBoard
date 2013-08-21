@@ -30,7 +30,7 @@
 }
 
 -(double)calculateTax{
-    double homevalue = m_input->homeValue*10000;
+    double homevalue = m_input->homeValue;
     if(homevalue <= 2000000){ //20,0000
         return 100;
     }else if(homevalue <= 2351760){
@@ -58,7 +58,7 @@
 }
 
 -(double)calculateComission{
-    return 10000*m_input->homeValue*0.01;
+    return m_input->homeValue*0.01;
 }
 
 -(void)calculateCurrentStatus{
@@ -86,11 +86,11 @@
     if(pastMonths == 0){
         m_output->toPayPrincipal = m_output->loanAmount;
     }else{
-        m_output->toPayPrincipal = [[m_output.leftLoanAmounts objectAtIndex:(pastMonths-1)] doubleValue]/10000.0;
+        m_output->toPayPrincipal = [[m_output.leftLoanAmounts objectAtIndex:(pastMonths-1)] doubleValue];
     }
     m_output->paidPrincipal = m_output->loanAmount - m_output->toPayPrincipal;
     m_output->paidTerms = pastMonths;
-    m_output->paidInterest = m_output->monthlyPay*pastMonths/10000.0 - m_output->paidPrincipal;
+    m_output->paidInterest = m_output->monthlyPay*pastMonths - m_output->paidPrincipal;
     m_output->toPayInterest = m_output->rePaymentInterest - m_output->paidInterest;
 }
 
@@ -103,7 +103,7 @@
     m_output->firstPayment = m_input->homeValue - m_output->loanAmount;
     m_output->comission = [self calculateComission];  // in terms of 1
     m_output->tax = [self calculateTax]; // in terms of 1
-    m_output->firstTotalExp = m_output->firstPayment + (m_output->comission + m_output->tax)/10000.0;
+    m_output->firstTotalExp = m_output->firstPayment + (m_output->comission + m_output->tax);
     
     if(m_output->loanAmount == 0 || m_input->loanYear == 0){
         return;
@@ -111,16 +111,16 @@
     
     //monthlypay
     double rate_per_month = m_input->interestRate/12.0/100.0;
-    double interest_term_1 = 10000*m_output->loanAmount*rate_per_month;
+    double interest_term_1 = m_output->loanAmount*rate_per_month;
     double principle_term_1 = interest_term_1/(pow(1+rate_per_month,m_output->loanTerms) - 1);
        
     m_output->monthlyPay = interest_term_1 + principle_term_1;
-    m_output->rePayment = m_output->monthlyPay/10000.0*m_output->loanTerms;
+    m_output->rePayment = m_output->monthlyPay*m_output->loanTerms;
     m_output->rePaymentInterest = m_output->rePayment - m_output->loanAmount;
     m_output->totalExpence = m_output->firstTotalExp + m_output->rePayment;
     
     //calculate principal in each term
-    double leftLoanAmount = m_output->loanAmount*10000.0;
+    double leftLoanAmount = m_output->loanAmount;
     double pricipal_term_1 = m_output->monthlyPay - interest_term_1;
     for(int i=0; i<m_output->loanTerms; i++){
         double principal = pricipal_term_1*pow(1+rate_per_month,i);

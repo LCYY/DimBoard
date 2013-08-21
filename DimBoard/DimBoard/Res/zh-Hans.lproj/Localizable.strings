@@ -10,7 +10,7 @@
 "Save"="存储";
 "Name"="名称";
 "Bank"="银行";
-"Term"="期";
+"Term"="";
 "$"="$";
 "Principal"="本金";
 "Interest"="利息";

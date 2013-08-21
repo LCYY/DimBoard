@@ -39,7 +39,7 @@
     if(self){
         m_banks = [[NSArray alloc] initWithObjects:
                    DimBoardLocalizedString(@"StandardBank"),
-                   DimBoardLocalizedString(@"HongkongShanghaiBankingCorp"),
+                   DimBoardLocalizedString(@"HongkongShanghaiBankigCorp"),
                    DimBoardLocalizedString(@"ChinaConstructionBank"),
                    DimBoardLocalizedString(@"ChinaBank"),
                    DimBoardLocalizedString(@"AsiaBank"),

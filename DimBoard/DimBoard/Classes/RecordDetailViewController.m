@@ -101,8 +101,8 @@
                              DimBoardLocalizedString(@"InterestRate"),
                              nil];
     NSArray* sectionValues0 = [[NSArray alloc] initWithObjects:
-                               [NSString stringWithFormat:@"%0.4f 萬元",m_record.input->homeValue],
-                               [NSString stringWithFormat:@"%0.2f %%",m_record.input->loanPercent],
+                               [NSString stringWithFormat:@"%0.0f ＄",m_record.input->homeValue],
+                               [NSString stringWithFormat:@"%0.0f %%",m_record.input->loanPercent],
                                [NSString stringWithFormat:@"%d 年",m_record.input->loanYear],
                                [NSString stringWithFormat:@"%0.2f %%",m_record.input->interestRate],
                                nil];
@@ -122,15 +122,15 @@
     
     NSArray* sectionValues1 = [[NSArray alloc] initWithObjects:
                                [[[BankTypes alloc] init] getBankNameById:m_record->bankId],
-                               [NSString stringWithFormat:@"%0.4f 萬元",m_output->loanAmount],
-                               [NSString stringWithFormat:@"%d 期",m_output->loanTerms],
+                               [NSString stringWithFormat:@"%0.2f ＄",m_output->loanAmount],
+                               [NSString stringWithFormat:@"%d %@",m_output->loanTerms,DimBoardLocalizedString(@"Term")],
                                datestring,
-                               [NSString stringWithFormat:@"%0.2f 元",m_output->monthlyPay],
-                               [NSString stringWithFormat:@"%d 期",m_output->paidTerms],
-                               [NSString stringWithFormat:@"%0.4f 萬元",m_output->paidPrincipal],
-                               [NSString stringWithFormat:@"%0.4f 萬元",m_output->toPayPrincipal],
-                               [NSString stringWithFormat:@"%0.4f 萬元",m_output->paidInterest],
-                               [NSString stringWithFormat:@"%0.4f 萬元",m_output->toPayInterest],
+                               [NSString stringWithFormat:@"%0.2f ＄",m_output->monthlyPay],
+                               [NSString stringWithFormat:@"%d %@",m_output->paidTerms,DimBoardLocalizedString(@"Term")],
+                               [NSString stringWithFormat:@"%0.2f ＄",m_output->paidPrincipal],
+                               [NSString stringWithFormat:@"%0.2f ＄",m_output->toPayPrincipal],
+                               [NSString stringWithFormat:@"%0.2f ＄",m_output->paidInterest],
+                               [NSString stringWithFormat:@"%0.2f ＄",m_output->toPayInterest],
                                nil];
     
     NSArray* sectionkeys2 = [[NSArray alloc] initWithObjects:
@@ -140,10 +140,10 @@
                              DimBoardLocalizedString(@"FirstTotalExpence"),
                              nil];
     NSArray* sectionValues2 = [[NSArray alloc] initWithObjects:
-                               [NSString stringWithFormat:@"%0.4f 萬元",m_output->firstPayment],
-                               [NSString stringWithFormat:@"%0.2f 元",m_output->tax],
-                               [NSString stringWithFormat:@"%0.2f 元",m_output->comission],
-                               [NSString stringWithFormat:@"%0.4f 萬元",m_output->firstTotalExp],
+                               [NSString stringWithFormat:@"%0.2f ＄",m_output->firstPayment],
+                               [NSString stringWithFormat:@"%0.2f ＄",m_output->tax],
+                               [NSString stringWithFormat:@"%0.2f ＄",m_output->comission],
+                               [NSString stringWithFormat:@"%0.2f ＄",m_output->firstTotalExp],
                                nil];
     
     NSArray* sectionkeys3 = [[NSArray alloc] initWithObjects:
@@ -153,9 +153,9 @@
                              nil];
 
     NSArray* sectionValues3 = [[NSArray alloc] initWithObjects:
-                               [NSString stringWithFormat:@"%0.4f 萬元",m_output->loanAmount],
-                               [NSString stringWithFormat:@"%0.4f 萬元",m_output->rePaymentInterest],
-                               [NSString stringWithFormat:@"%0.4f 萬元",m_output->rePayment],
+                               [NSString stringWithFormat:@"%0.2f ＄",m_output->loanAmount],
+                               [NSString stringWithFormat:@"%0.2f ＄",m_output->rePaymentInterest],
+                               [NSString stringWithFormat:@"%0.2f ＄",m_output->rePayment],
                                nil];
     
     NSArray* sectionkeys4 = [[NSArray alloc] initWithObjects:
@@ -163,7 +163,7 @@
                              nil];
     
     NSArray* sectionValues4 = [[NSArray alloc] initWithObjects:
-                               [NSString stringWithFormat:@"%0.4f 萬元",m_output->totalExpence],
+                               [NSString stringWithFormat:@"%0.2f ＄",m_output->totalExpence],
                                nil];
     
     NSArray* sectionkeys5 = [[NSArray alloc] initWithObjects:
@@ -190,58 +190,58 @@
     
     //slices for section 1 pie chart
     NSArray *s1Slices = [[NSArray alloc] initWithObjects:
-                         [NSString stringWithFormat:@"%0.4f",m_output->paidPrincipal/m_output->rePayment],
-                         [NSString stringWithFormat:@"%0.4f",m_output->paidInterest/m_output->rePayment],
-                         [NSString stringWithFormat:@"%0.4f",m_output->toPayPrincipal/m_output->rePayment],
-                         [NSString stringWithFormat:@"%0.4f",m_output->toPayInterest/m_output->rePayment],
+                         [NSString stringWithFormat:@"%0.2f",m_output->paidPrincipal/m_output->rePayment],
+                         [NSString stringWithFormat:@"%0.2f",m_output->paidInterest/m_output->rePayment],
+                         [NSString stringWithFormat:@"%0.2f",m_output->toPayPrincipal/m_output->rePayment],
+                         [NSString stringWithFormat:@"%0.2f",m_output->toPayInterest/m_output->rePayment],
                          nil];
     NSArray *s1Desps = [[NSArray alloc] initWithObjects:
-                        [DimBoardLocalizedString(@"TotalLoanPaid") stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->paidPrincipal]],
-                        [DimBoardLocalizedString(@"TotalInterestPaid") stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->paidInterest]],
-                        [DimBoardLocalizedString(@"TotalLoanLeft") stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->toPayPrincipal]],
-                        [DimBoardLocalizedString(@"TotalInterestLeft") stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->toPayInterest]],
-                        [DimBoardLocalizedString(@"TotalRepayment") stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->rePayment]],
+                        [DimBoardLocalizedString(@"TotalLoanPaid") stringByAppendingString:[NSString stringWithFormat:@": %0.2f ＄",m_output->paidPrincipal]],
+                        [DimBoardLocalizedString(@"TotalInterestPaid") stringByAppendingString:[NSString stringWithFormat:@": %0.2f ＄",m_output->paidInterest]],
+                        [DimBoardLocalizedString(@"TotalLoanLeft") stringByAppendingString:[NSString stringWithFormat:@": %0.2f ＄",m_output->toPayPrincipal]],
+                        [DimBoardLocalizedString(@"TotalInterestLeft") stringByAppendingString:[NSString stringWithFormat:@": %0.2f ＄",m_output->toPayInterest]],
+                        [DimBoardLocalizedString(@"TotalRepayment") stringByAppendingString:[NSString stringWithFormat:@": %0.2f ＄",m_output->rePayment]],
                         nil];
     
     //slices for section 2 pie chart
     NSArray *s2Slices = [[NSArray alloc] initWithObjects:
-                         [NSString stringWithFormat:@"%0.4f",m_output->firstPayment/m_output->firstTotalExp],
-                         [NSString stringWithFormat:@"%0.4f",m_output->tax/m_output->firstTotalExp/10000.0],
-                         [NSString stringWithFormat:@"%0.4f",m_output->comission/m_output->firstTotalExp/10000.0],
+                         [NSString stringWithFormat:@"%0.2f",m_output->firstPayment/m_output->firstTotalExp],
+                         [NSString stringWithFormat:@"%0.2f",m_output->tax/m_output->firstTotalExp],
+                         [NSString stringWithFormat:@"%0.2f",m_output->comission/m_output->firstTotalExp],
                          nil];
     NSArray *s2Desps = [[NSArray alloc] initWithObjects:
-                        [DimBoardLocalizedString(@"FirstPay") stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->firstPayment]],
-                        [DimBoardLocalizedString(@"Tax") stringByAppendingString:[NSString stringWithFormat:@": %0.4f 元",m_output->tax]],
-                        [DimBoardLocalizedString(@"Comission") stringByAppendingString:[NSString stringWithFormat:@": %0.4f 元",m_output->comission]],
-                        [DimBoardLocalizedString(@"FirstTotalExpence") stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->firstTotalExp]],
+                        [DimBoardLocalizedString(@"FirstPay") stringByAppendingString:[NSString stringWithFormat:@": %0.2f ＄",m_output->firstPayment]],
+                        [DimBoardLocalizedString(@"Tax") stringByAppendingString:[NSString stringWithFormat:@": %0.2f ＄",m_output->tax]],
+                        [DimBoardLocalizedString(@"Comission") stringByAppendingString:[NSString stringWithFormat:@": %0.2f ＄",m_output->comission]],
+                        [DimBoardLocalizedString(@"FirstTotalExpence") stringByAppendingString:[NSString stringWithFormat:@": %0.2f ＄",m_output->firstTotalExp]],
                         nil];
     
     //slices for section 3 pie chart
     NSArray *s3Slices = [[NSArray alloc] initWithObjects:
-                         [NSString stringWithFormat:@"%0.4f",m_output->loanAmount/m_output->rePayment],
-                         [NSString stringWithFormat:@"%0.4f",m_output->rePaymentInterest/m_output->rePayment],
+                         [NSString stringWithFormat:@"%0.2f",m_output->loanAmount/m_output->rePayment],
+                         [NSString stringWithFormat:@"%0.2f",m_output->rePaymentInterest/m_output->rePayment],
                          nil];
     NSArray *s3Desps = [[NSArray alloc] initWithObjects:
-                        [DimBoardLocalizedString(@"LoanAmount") stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->loanAmount]],
-                        [DimBoardLocalizedString(@"TotalInterestAmount") stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->rePaymentInterest]],
-                        [DimBoardLocalizedString(@"TotalRepayment") stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->rePayment]],
+                        [DimBoardLocalizedString(@"LoanAmount") stringByAppendingString:[NSString stringWithFormat:@": %0.2f ＄",m_output->loanAmount]],
+                        [DimBoardLocalizedString(@"TotalInterestAmount") stringByAppendingString:[NSString stringWithFormat:@": %0.2f ＄",m_output->rePaymentInterest]],
+                        [DimBoardLocalizedString(@"TotalRepayment") stringByAppendingString:[NSString stringWithFormat:@": %0.2f ＄",m_output->rePayment]],
                         nil];
     
     //slices for section 4 pie chart
     NSArray *s4Slices = [[NSArray alloc] initWithObjects:
-                         [NSString stringWithFormat:@"%0.4f",m_output->firstPayment/m_output->totalExpence],
-                         [NSString stringWithFormat:@"%0.4f",m_output->tax/m_output->totalExpence/10000.0],
-                         [NSString stringWithFormat:@"%0.4f",m_output->comission/m_output->totalExpence/10000.0],
-                         [NSString stringWithFormat:@"%0.4f",m_output->loanAmount/m_output->totalExpence],
-                         [NSString stringWithFormat:@"%0.4f",m_output->rePaymentInterest/m_output->totalExpence],
+                         [NSString stringWithFormat:@"%0.2f",m_output->firstPayment/m_output->totalExpence],
+                         [NSString stringWithFormat:@"%0.2f",m_output->tax/m_output->totalExpence],
+                         [NSString stringWithFormat:@"%0.2f",m_output->comission/m_output->totalExpence],
+                         [NSString stringWithFormat:@"%0.2f",m_output->loanAmount/m_output->totalExpence],
+                         [NSString stringWithFormat:@"%0.2f",m_output->rePaymentInterest/m_output->totalExpence],
                          nil];
     NSArray *s4Desps = [[NSArray alloc] initWithObjects:
-                        [DimBoardLocalizedString(@"FirstPay") stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->firstPayment]],
-                        [DimBoardLocalizedString(@"Tax") stringByAppendingString:[NSString stringWithFormat:@": %0.4f 元",m_output->tax]],
-                        [DimBoardLocalizedString(@"Comission") stringByAppendingString:[NSString stringWithFormat:@": %0.4f 元",m_output->comission]],
-                        [DimBoardLocalizedString(@"LoanAmount") stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->loanAmount]],
-                        [DimBoardLocalizedString(@"TotalInterestAmount") stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->rePaymentInterest]],
-                        [DimBoardLocalizedString(@"TotalExpences") stringByAppendingString:[NSString stringWithFormat:@": %0.4f 萬元",m_output->totalExpence]],
+                        [DimBoardLocalizedString(@"FirstPay") stringByAppendingString:[NSString stringWithFormat:@": %0.2f ＄",m_output->firstPayment]],
+                        [DimBoardLocalizedString(@"Tax") stringByAppendingString:[NSString stringWithFormat:@": %0.2f ＄",m_output->tax]],
+                        [DimBoardLocalizedString(@"Comission") stringByAppendingString:[NSString stringWithFormat:@": %0.2f ＄",m_output->comission]],
+                        [DimBoardLocalizedString(@"LoanAmount") stringByAppendingString:[NSString stringWithFormat:@": %0.2f ＄",m_output->loanAmount]],
+                        [DimBoardLocalizedString(@"TotalInterestAmount") stringByAppendingString:[NSString stringWithFormat:@": %0.2f ＄",m_output->rePaymentInterest]],
+                        [DimBoardLocalizedString(@"TotalExpences") stringByAppendingString:[NSString stringWithFormat:@": %0.2f ＄",m_output->totalExpence]],
                         nil];
     
     [m_pieChartSlices addObject:s1Slices];
@@ -301,11 +301,36 @@
     [dateFormatter setDateFormat: DATEFORMAT];
     NSString* datestring = [dateFormatter stringFromDate:nextPayDate];
     
-    return [NSString stringWithFormat:@"%@ 第%d期", datestring, m_output->paidTerms + 1];
+    NSInteger langId = LocalizationGetLanguage();
+    NSString* dsp;
+    if(langId == 0){
+        //english
+        dsp = [NSString stringWithFormat:@"%@ Term %d", datestring, m_output->paidTerms + 1];
+    }else if(langId == 1){
+        //chinese traditional
+        dsp = [NSString stringWithFormat:@"%@ 第%d期", datestring, m_output->paidTerms + 1];
+    }else if(langId == 2){
+        //chinese simple
+        dsp = [NSString stringWithFormat:@"%@ 第%d期", datestring, m_output->paidTerms + 1];
+    }
+    
+    return dsp;
 }
 
 -(NSString *)getMonthlyPay{
-    return [NSString stringWithFormat:@"待付: %0.2f 元", m_output->monthlyPay];
+    NSInteger langId = LocalizationGetLanguage();
+    NSString* dsp;
+    if(langId == 0){
+        //english
+        dsp = [NSString stringWithFormat:@"Mortgage Payable: %0.2f", m_output->monthlyPay];
+    }else if(langId == 1){
+        //chinese traditional
+        dsp = [NSString stringWithFormat:@"待付: %0.2f ＄", m_output->monthlyPay];
+    }else if(langId == 2){
+        //chinese simple
+        dsp = [NSString stringWithFormat:@"待付: %0.2f ＄", m_output->monthlyPay];
+    }
+    return dsp;
 }
 
 -(float)getPayProgress{

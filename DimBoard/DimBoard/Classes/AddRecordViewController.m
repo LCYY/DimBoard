@@ -23,15 +23,15 @@
         // Custom initialization
         m_record = [[MortgageRecord alloc] init];
         
-        m_section0 = KEY_MORTGAGE_NAME; //input cell
-        m_section1 = KEY_MORTGAGE_BANKID; //input cell
-        NSArray *value1 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_HOMEVALUE,@"萬元",nil];
-        NSArray *value2 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANPERCENT,@"%",nil];
-        NSArray *value3 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_LOANYEAR,DimBoardLocalizedString(@"Year"),nil];
-        NSArray *value4 = [[NSArray alloc] initWithObjects:KEY_MORTGAGE_INTERESTRATE,@"%",nil];
+        m_section0 = DimBoardLocalizedString(KEY_MORTGAGE_NAME); //input cell
+        m_section1 = DimBoardLocalizedString(KEY_MORTGAGE_BANKID); //input cell
+        NSArray *value1 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(KEY_MORTGAGE_HOMEVALUE),@" ＄",nil];
+        NSArray *value2 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(KEY_MORTGAGE_LOANPERCENT),@"%",nil];
+        NSArray *value3 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(KEY_MORTGAGE_LOANYEAR),DimBoardLocalizedString(@"Year"),nil];
+        NSArray *value4 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(KEY_MORTGAGE_INTERESTRATE),@"%",nil];
         m_section2 = [[NSArray alloc] initWithObjects:value1,value2,value3,value4,nil];
         
-        m_section3 = KEY_MORTGAGE_LOANDATE; //input cell
+        m_section3 = DimBoardLocalizedString(KEY_MORTGAGE_LOANDATE); //input cell
         
         m_bankViewController = [[BankPickerViewController alloc] initWithBankId:m_record->bankId];
         [m_bankViewController setM_delegate:self];
@@ -163,9 +163,9 @@
             NSString *unit = [[m_section2 objectAtIndex:row] objectAtIndex:1];
             NSString *value = nil;
             if(row == 0){
-                value = [NSString stringWithFormat:@"%0.4f",m_record.input->homeValue];
+                value = [NSString stringWithFormat:@"%0.0f",m_record.input->homeValue];
             }else if(row == 1){
-                value = [NSString stringWithFormat:@"%0.2f",m_record.input->loanPercent];
+                value = [NSString stringWithFormat:@"%0.0f",m_record.input->loanPercent];
             }else if(row == 2){
                 value = [NSString stringWithFormat:@"%d",m_record.input->loanYear];
             }else if(row == 3){
@@ -195,9 +195,9 @@
             NSString *unit = [[m_section2 objectAtIndex:row] objectAtIndex:1];
             NSString *value = nil;
             if(row == 0){
-                value = [NSString stringWithFormat:@"%0.4f",m_record.input->homeValue];
+                value = [NSString stringWithFormat:@"%0.0f",m_record.input->homeValue];
             }else if(row == 1){
-                value = [NSString stringWithFormat:@"%0.2f",m_record.input->loanPercent];
+                value = [NSString stringWithFormat:@"%0.0f",m_record.input->loanPercent];
             }else if(row == 2){
                 value = [NSString stringWithFormat:@"%d",m_record.input->loanYear];
             }else if(row == 3){
@@ -277,25 +277,24 @@
 }
 
 
-
 #pragma mark - UpdateRecordItemProtocol
 -(void)updateRecordKey:(NSString *)key withValue:(id)value{
-    if([key isEqualToString:KEY_MORTGAGE_BANKID]){
+    if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_BANKID)]){
         m_record->bankId = [((NSNumber*)value) integerValue];
         [((UITableView*)self.view) reloadData];
-    }else if([key isEqualToString:KEY_MORTGAGE_LOANDATE]){
+    }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_LOANDATE)]){
         m_record.input.date = (NSDate*)[value copy];
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         [((UITableView*)self.view) reloadData];
-    }else if([key isEqualToString:KEY_MORTGAGE_HOMEVALUE]){
+    }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_HOMEVALUE)]){
         m_record.input->homeValue = [((NSString*)value) doubleValue];
-    }else if([key isEqualToString:KEY_MORTGAGE_LOANPERCENT]){
+    }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_LOANPERCENT)]){
         m_record.input->loanPercent = [((NSString*)value) doubleValue];
-    }else if([key isEqualToString:KEY_MORTGAGE_INTERESTRATE]){
+    }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_INTERESTRATE)]){
         m_record.input->interestRate = [((NSString*)value) doubleValue];
-    }else if([key isEqualToString:KEY_MORTGAGE_LOANYEAR]){
+    }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_LOANYEAR)]){
         m_record.input->loanYear = [((NSNumber*)value) integerValue];
-    }else if([key isEqualToString:KEY_MORTGAGE_NAME]){
+    }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_NAME)]){
         m_record.name = (NSString*)[value copy];
         self.title = m_record.name;
     }

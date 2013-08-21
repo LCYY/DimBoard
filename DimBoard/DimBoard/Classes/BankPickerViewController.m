@@ -118,7 +118,7 @@
     //[self.navigationController popViewControllerAnimated: YES];
     [self.view removeFromSuperview];
     if(m_selectedBankId > -1 && m_selectedBankId < [m_bankTypes getBankCount]){
-        [m_delegate updateRecordKey:KEY_MORTGAGE_BANKID withValue:[NSNumber numberWithInteger:m_selectedBankId]];
+        [m_delegate updateRecordKey:DimBoardLocalizedString(KEY_MORTGAGE_BANKID) withValue:[NSNumber numberWithInteger:m_selectedBankId]];
     }
 }
 

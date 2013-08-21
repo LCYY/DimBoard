@@ -20,7 +20,7 @@
 -(id)init{
     self = [super init];
     if(self){
-        m_input = [[MortgageInput alloc] initWithHomeValue:100.0 LoanYear:30 LoanPercent:30.0 LoanRate:2.0 LoanDate:nil];
+        m_input = [[MortgageInput alloc] initWithHomeValue:1000000 LoanYear:30 LoanPercent:30.0 LoanRate:2.0 LoanDate:nil];
         m_output = [[MortgageOutput alloc] init];
         m_calculator = [[Calculator alloc] init];
         m_inputRows = [[NSMutableArray alloc] init];
@@ -61,7 +61,7 @@
     [super viewWillAppear:animated];
     
     [m_inputRows removeAllObjects];
-    NSArray *value01 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"HomeValue"),@"萬元",nil];
+    NSArray *value01 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"HomeValue"),@" ＄",nil];
     NSArray *value02 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"LoanRatio"),@"%",nil];
     NSArray *value03 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"MortYear"),DimBoardLocalizedString(@"Year"),nil];
     NSArray *value04 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"InterestRate"),@"%",nil];
@@ -142,10 +142,10 @@
     [m_calculator setInput:m_input];
     m_output = [[m_calculator getOutput] copy];
     
-    NSArray *value11 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"LoanAmount"),[NSString stringWithFormat:@"%0.4f 萬元",m_output->loanAmount],nil];
+    NSArray *value11 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"LoanAmount"),[NSString stringWithFormat:@"%0.2f ＄",m_output->loanAmount],nil];
     NSArray *value12 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"LoanTerm"),[NSString stringWithFormat:@"%d %@",m_output->loanTerms, DimBoardLocalizedString(@"Term")],nil];
-    NSArray *value13 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"MonthlyPay"),[NSString stringWithFormat:@"%0.2f 元",m_output->monthlyPay],nil];
-    NSArray *value14 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"TotalRepayment"),[NSString stringWithFormat:@"%0.4f 萬元",m_output->rePayment],nil];
+    NSArray *value13 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"MonthlyPay"),[NSString stringWithFormat:@"%0.2f ＄",m_output->monthlyPay],nil];
+    NSArray *value14 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"TotalRepayment"),[NSString stringWithFormat:@"%0.2f ＄",m_output->rePayment],nil];
     m_outputRows = [[NSArray alloc] initWithObjects:value11,value12,value13,value14,nil];
 }
 
@@ -202,9 +202,9 @@
         NSString *unit = [[m_inputRows objectAtIndex:row] objectAtIndex:1];
         NSString *value = nil;
         if(row == 0){
-            value = [NSString stringWithFormat:@"%0.4f",m_input->homeValue];
+            value = [NSString stringWithFormat:@"%0.0f",m_input->homeValue];
         }else if(row == 1){
-            value = [NSString stringWithFormat:@"%0.2f",m_input->loanPercent];
+            value = [NSString stringWithFormat:@"%0.0f",m_input->loanPercent];
         }else if(row == 2){
             value = [NSString stringWithFormat:@"%d",m_input->loanYear];
         }else if(row == 3){
@@ -235,13 +235,13 @@
 
 #pragma mark - UpdateRecordItemProtocol
 -(void)updateRecordKey:(NSString *)key withValue:(id)value{
-    if([key isEqualToString:KEY_MORTGAGE_HOMEVALUE]){
+    if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_HOMEVALUE)]){
         m_input->homeValue = [((NSString*)value) doubleValue];
-    }else if([key isEqualToString:KEY_MORTGAGE_LOANPERCENT]){
+    }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_LOANPERCENT)]){
         m_input->loanPercent = [((NSString*)value) doubleValue];
-    }else if([key isEqualToString:KEY_MORTGAGE_INTERESTRATE]){
+    }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_INTERESTRATE)]){
         m_input->interestRate = [((NSString*)value) doubleValue];
-    }else if([key isEqualToString:KEY_MORTGAGE_LOANYEAR]){
+    }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_LOANYEAR)]){
         m_input->loanYear = [((NSNumber*)value) integerValue];
     }
     [self updateResult];
