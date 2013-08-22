@@ -46,6 +46,8 @@
 		D0B17D6816E9F3E800097A07 /* SliderCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0B17D3D16E9F3E800097A07 /* SliderCellViewController.xib */; };
 		D0C3EE6016F5BC9600D1530E /* LangPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C3EE5E16F5BC9500D1530E /* LangPickerViewController.m */; };
 		D0C3EE6116F5BC9600D1530E /* LangPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C3EE5F16F5BC9500D1530E /* LangPickerViewController.xib */; };
+		FB0FB2CC17C60FFC00231ACA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0FB2CB17C60FFC00231ACA /* CoreData.framework */; };
+		FB0FB2CE17C6100500231ACA /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0FB2CD17C6100500231ACA /* iAd.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FB3406C816F3023E0066B084 /* SettingIO.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3406C716F3023E0066B084 /* SettingIO.m */; };
 		FB3406CA16F3214E0066B084 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = FB3406C916F3214E0066B084 /* setting.png */; };
 		FB3406CD16F6FEE30066B084 /* LocalizeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3406CC16F6FEE30066B084 /* LocalizeHelper.m */; };
@@ -142,6 +144,8 @@
 		D0C3EE5E16F5BC9500D1530E /* LangPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LangPickerViewController.m; sourceTree = "<group>"; };
 		D0C3EE5F16F5BC9500D1530E /* LangPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LangPickerViewController.xib; sourceTree = "<group>"; };
 		D0C3EE6216F5C08100D1530E /* DimBoardProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DimBoardProtocols.h; sourceTree = "<group>"; };
+		FB0FB2CB17C60FFC00231ACA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FB0FB2CD17C6100500231ACA /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		FB3406C616F3023E0066B084 /* SettingIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingIO.h; sourceTree = "<group>"; };
 		FB3406C716F3023E0066B084 /* SettingIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingIO.m; sourceTree = "<group>"; };
 		FB3406C916F3214E0066B084 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB0FB2CE17C6100500231ACA /* iAd.framework in Frameworks */,
+				FB0FB2CC17C60FFC00231ACA /* CoreData.framework in Frameworks */,
 				FB78592B16C104EC00C63D08 /* QuartzCore.framework in Frameworks */,
 				FBF3C85616B920D400790005 /* UIKit.framework in Frameworks */,
 				FBF3C85816B920D400790005 /* Foundation.framework in Frameworks */,
@@ -325,7 +331,6 @@
 		FBF3C84616B920D400790005 = {
 			isa = PBXGroup;
 			children = (
-				FB78592A16C104EC00C63D08 /* QuartzCore.framework */,
 				35AB6DF716BEA10000795E57 /* Default-568h@2x.png */,
 				FBF3C85B16B920D400790005 /* DimBoard */,
 				FB7ADE1516F1767500CB0263 /* Res */,
@@ -345,6 +350,9 @@
 		FBF3C85416B920D400790005 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FB0FB2CD17C6100500231ACA /* iAd.framework */,
+				FB0FB2CB17C60FFC00231ACA /* CoreData.framework */,
+				FB78592A16C104EC00C63D08 /* QuartzCore.framework */,
 				FBF3C85516B920D400790005 /* UIKit.framework */,
 				FBF3C85716B920D400790005 /* Foundation.framework */,
 				FBF3C85916B920D400790005 /* CoreGraphics.framework */,

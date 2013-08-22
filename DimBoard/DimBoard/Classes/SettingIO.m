@@ -14,7 +14,7 @@
 -(id)init{
     self = [super init];
     if(self){
-        langId = 0;
+        langId = 1;
     }
     return self;
 }
