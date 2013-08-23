@@ -20,6 +20,7 @@
 @synthesize m_pieChartCells;
 @synthesize m_recordViewController;
 @synthesize m_pieChartKeys;
+@synthesize m_tableView, m_adBannerView;
 
 -(id)init{
     self = [super init];
@@ -67,6 +68,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [m_tableView setDataSource:self];
+    [m_tableView setDelegate:self];
+    [m_adBannerView setDelegate:self];
+    
     UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onAddMortgageToRecord:)];
     self.navigationItem.rightBarButtonItem = addButton;
     
@@ -83,6 +88,9 @@
 
 - (void)viewDidUnload
 {
+    [self setM_tableView:nil];
+    [self setM_tableView:nil];
+    [self setM_adBannerView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -345,7 +353,7 @@
         PieChartCell* cell = [m_pieChartCells objectForKey:key];
         return [cell getHeight];
     }
-    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+    return 40;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -389,7 +397,22 @@
 
 #pragma mark - PieChartCellExtendDelegate
 -(void)extendPieChartCell:(BOOL)extend atIndexPath:(NSIndexPath *)indexpath{
-    [self.tableView reloadData];
+    [self.m_tableView reloadData];
+}
+
+#pragma mark - ADBannerView
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner{
+    CGRect frame = m_tableView.frame;
+    frame.size.height -= m_adBannerView.frame.size.height;
+    [m_tableView setFrame:frame];
+    [m_adBannerView setHidden:false];
+}
+
+-(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
+    CGRect frame = m_tableView.frame;
+    frame.size.height += m_adBannerView.frame.size.height;
+    [m_tableView setFrame:frame];
+    [m_adBannerView setHidden:true];
 }
 @end
 
