@@ -19,6 +19,7 @@
 @synthesize AddButton, MinusButton;
 @synthesize m_deletegate;
 @synthesize m_timer;
+@synthesize m_numFormatter;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -64,6 +65,12 @@
             m_step = STEP_LOANYEAR_VALUE;
             m_stepCoeff = COEFF_LOANYEAR_VALUE;
         }
+        
+        m_numFormatter = [[NSNumberFormatter alloc] init];
+        [m_numFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        
+        NSString* a = @"1234.12";
+        NSLog(@"%@",[self getFormattedString:a]);
     }
     return self;
 }
@@ -74,7 +81,7 @@
     m_unit = unit;
     
     [NameLabel setText:DimBoardLocalizedString(m_name)];
-    [ValueInput setText:m_value];
+    [ValueInput setText:[self getFormattedString:value]];
     [UnitLabel setText:m_unit];
     
     NSInteger langid = LocalizationGetLanguage();
@@ -92,6 +99,7 @@
     // Do any additional setup after loading the view from its nib.
     
     [ValueInput setDelegate:self];
+    [ValueInput setKeyboardType:UIKeyboardTypeDecimalPad];
     
     [AddButton setBackgroundImage:[UIImage imageNamed:@"add.png"] forState:UIControlStateNormal];
     [AddButton setBackgroundImage:[UIImage imageNamed:@"add2.png"] forState:UIControlStateHighlighted];
@@ -120,7 +128,7 @@
     self.title = m_name;
     
     [NameLabel setText:DimBoardLocalizedString(m_name)];
-    [ValueInput setText:m_value];
+    [ValueInput setText:[self getFormattedString:m_value]];
     [UnitLabel setText:m_unit];
     
     NSInteger langid = LocalizationGetLanguage();
@@ -352,13 +360,34 @@
     }else if([m_name isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_HOMEVALUE)]){
         m_value = [NSString stringWithFormat:@"%d",(int)m_currentValue];
     }
-    ValueInput.text = m_value;
+    [ValueInput setText:[self getFormattedString:m_value]];
     [m_deletegate updateRecordKey:m_name withValue:m_value];
 }
 
+- (NSString*) getFormattedString:(NSString*)instr{
+    NSNumber* innum = [NSNumber numberWithDouble:[instr doubleValue]];
+    if([instr hasSuffix:@"."]){
+        return [NSString stringWithFormat:@"%@.",[m_numFormatter stringFromNumber:innum]];
+    }else if([instr hasSuffix:@".0"]){
+        return [NSString stringWithFormat:@"%@.0",[m_numFormatter stringFromNumber:innum]];
+    }
+    return [m_numFormatter stringFromNumber:innum];
+}
+
+- (NSString*) getOriginalString:(NSString*)instr{
+    NSNumber* innum = [m_numFormatter numberFromString:instr];
+    if([instr hasSuffix:@"."]){
+        return [NSString stringWithFormat:@"%@.",innum.stringValue];
+    }else if([instr hasSuffix:@".0"]){
+        return [NSString stringWithFormat:@"%@.0",innum.stringValue];
+    }
+    return innum.stringValue;
+} 
+
 #pragma mark - UITextFieldDelegate
 -(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
-    m_value = [ValueInput text];
+    NSNumber* num = [m_numFormatter numberFromString:[ValueInput text]];
+    m_value = num.stringValue;
     m_currentValue = [m_value doubleValue];
     [m_deletegate updateRecordKey:m_name withValue:m_value];
     return YES;
@@ -366,24 +395,13 @@
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
 replacementString:(NSString *)string {
-    if(string.length == 0)
-        return YES;
-    //can only input number and one dot
-    NSRange hasDot = [textField.text rangeOfString:@"."];
-    NSCharacterSet* filterSet;
-    NSString* afterFilter;
-    if(hasDot.location < textField.text.length || hasDot.location == 0 ){
-        filterSet = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
-        afterFilter = [string stringByTrimmingCharactersInSet:filterSet];
-    }else{
-        filterSet = [[NSCharacterSet characterSetWithCharactersInString:@".0123456789"] invertedSet];
-        afterFilter = [string stringByTrimmingCharactersInSet:filterSet];
-    }
-    if(afterFilter.length > 0){
-        return YES;
-    }else{
+    if([[ValueInput text] length] > 0 && [string length] > 0 && [string compare:@"."] != NSOrderedSame){
+        NSString* newstring = [NSString stringWithFormat:@"%@%@",[self getOriginalString:[ValueInput text]],string];
+        NSString* formatted = [self getFormattedString:newstring];
+        NSLog(@"shouldChangeCharactersInRange incharacter = %@ in = %@ out = %@", string, newstring,formatted);
+        [ValueInput setText:formatted];
         return NO;
-    }
-    //? need range handling???
+    }else
+        return YES;    
 }
 @end

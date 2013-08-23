@@ -28,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *MinusButton;
 @property (weak, nonatomic) IBOutlet UIButton *AddButton;
 
-
+@property (retain,nonatomic) NSNumberFormatter* m_numFormatter;
 @property (weak, nonatomic) id<UpdateRecordItemProtocol> m_deletegate;
 @property (retain, nonatomic) NSTimer* m_timer;
 
