@@ -17,6 +17,7 @@
 @synthesize m_langPickerViewController;
 @synthesize m_sections;
 @synthesize m_delegate;
+@synthesize m_tableView,m_adBannerView;
 
 -(id)init{
     self = [super init];
@@ -44,6 +45,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [m_tableView setDelegate:self];
+    [m_tableView setDataSource:self];
+    [m_adBannerView setDelegate:self];
+    
+    [self rotateToOrientation:self.interfaceOrientation];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
+    
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
 }
 
@@ -74,6 +83,26 @@
 -(void)changeLanguage{
     LocalizationSetLanguage(m_settingIO.m_settings.langId);
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHANGELANGUAGE object:nil];
+}
+
+-(void)onViewRotation:(NSNotification*) noti{
+    NSString* orientation = noti.object;
+    [self rotateToOrientation:[orientation integerValue]];
+}
+
+-(void)rotateToOrientation:(UIInterfaceOrientation) orientation{
+    CGRect frame = m_tableView.frame;
+    CGRect bannerframe = m_adBannerView.frame;
+    CGRect layout = self.view.frame;
+    if(m_adBannerView.isHidden){
+        frame.size.height = layout.size.height;
+    }else{
+        frame.size.height = layout.size.height - bannerframe.size.height;
+    }
+    [m_tableView setFrame:frame];
+    bannerframe.origin.y = frame.origin.y + frame.size.height;
+    bannerframe.origin.x = frame.origin.x;
+    [m_adBannerView setFrame:bannerframe];
 }
 
 #pragma mark - UITable Delegate
@@ -120,7 +149,34 @@
         [self changeLanguage];
         [self setSectionsWithSettings];
         self.title = DimBoardLocalizedString(@"Setting");
-        [((UITableView*)self.view) reloadData];
+        [m_tableView reloadData];
     }
+}
+- (void)viewDidUnload {
+    [self setM_tableView:nil];
+    [self setM_adBannerView:nil];
+    [super viewDidUnload];
+}
+
+#pragma mark - ADBannerView
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner{
+    CGRect frame = m_tableView.frame;
+    CGRect bannerframe = m_adBannerView.frame;
+    CGRect layout = self.view.frame;
+    frame.size.height = layout.size.height - bannerframe.size.height;
+    [m_tableView setFrame:frame];
+    
+    bannerframe.origin.y = frame.origin.y + frame.size.height;
+    bannerframe.origin.x = frame.origin.x;
+    [m_adBannerView setFrame:bannerframe];
+    [m_adBannerView setHidden:false];
+}
+
+-(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
+    CGRect frame = m_tableView.frame;
+    frame.size.height = self.view.frame.size.height;
+    [m_tableView setFrame:frame];
+    [m_tableView setFrame:frame];
+    [m_adBannerView setHidden:true];
 }
 @end

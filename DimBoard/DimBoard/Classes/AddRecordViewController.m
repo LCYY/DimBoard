@@ -16,6 +16,7 @@
 @synthesize m_section0,m_section1,m_section2,m_section3,m_record;
 @synthesize m_delegate;
 @synthesize m_bankViewController, m_dataPickerViewController;
+@synthesize m_adBannerView,m_tableView;
 
 -(id)init{
     self = [super init];
@@ -65,6 +66,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [m_tableView setDelegate:self];
+    [m_tableView setDataSource:self];
+    [m_adBannerView setDelegate:self];
+    
+    [self rotateToOrientation:self.interfaceOrientation];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
+    
     UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
     tapRecognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tapRecognizer];
@@ -82,6 +91,8 @@
 
 - (void)viewDidUnload
 {
+    [self setM_tableView:nil];
+    [self setM_adBannerView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -107,6 +118,26 @@
     [self.navigationController popViewControllerAnimated: YES];
 }
 
+-(void)onViewRotation:(NSNotification*) noti{
+    NSString* orientation = noti.object;
+    [self rotateToOrientation:[orientation integerValue]];
+}
+
+-(void)rotateToOrientation:(UIInterfaceOrientation) orientation{
+    CGRect frame = m_tableView.frame;
+    CGRect bannerframe = m_adBannerView.frame;
+    CGRect layout = self.view.frame;
+    if(m_adBannerView.isHidden){
+        frame.size.height = layout.size.height;
+    }else{
+        frame.size.height = layout.size.height - bannerframe.size.height;
+    }
+    [m_tableView setFrame:frame];
+    bannerframe.origin.y = frame.origin.y + frame.size.height;
+    bannerframe.origin.x = frame.origin.x;
+    [m_adBannerView setFrame:bannerframe];
+}
+
 #pragma mark-
 #pragma mark UITableViewDelegate
 
@@ -117,7 +148,7 @@
         [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }else if(section == 3){
         [self.navigationController.view addSubview:m_dataPickerViewController.view];
-        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, self.tableView.frame.size.height - 170, 0);
+        m_tableView.contentInset = UIEdgeInsetsMake(0, 0, m_tableView.frame.size.height - 170, 0);
         [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }
 }
@@ -281,11 +312,11 @@
 -(void)updateRecordKey:(NSString *)key withValue:(id)value{
     if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_BANKID)]){
         m_record->bankId = [((NSNumber*)value) integerValue];
-        [((UITableView*)self.view) reloadData];
+        [m_tableView reloadData];
     }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_LOANDATE)]){
         m_record.input.date = (NSDate*)[value copy];
-        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        [((UITableView*)self.view) reloadData];
+        m_tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        [m_tableView reloadData];
     }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_HOMEVALUE)]){
         m_record.input->homeValue = [((NSString*)value) doubleValue];
     }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_LOANPERCENT)]){
@@ -298,6 +329,28 @@
         m_record.name = (NSString*)[value copy];
         self.title = m_record.name;
     }
+}
+
+#pragma mark - ADBannerView
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner{
+    CGRect frame = m_tableView.frame;
+    CGRect bannerframe = m_adBannerView.frame;
+    CGRect layout = self.view.frame;
+    frame.size.height = layout.size.height - bannerframe.size.height;
+    [m_tableView setFrame:frame];
+    
+    bannerframe.origin.y = frame.origin.y + frame.size.height;
+    bannerframe.origin.x = frame.origin.x;
+    [m_adBannerView setFrame:bannerframe];
+    [m_adBannerView setHidden:false];
+}
+
+-(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
+    CGRect frame = m_tableView.frame;
+    frame.size.height = self.view.frame.size.height;
+    [m_tableView setFrame:frame];
+    [m_tableView setFrame:frame];
+    [m_adBannerView setHidden:true];
 }
 
 @end

@@ -77,6 +77,10 @@
     
     self.navigationController.delegate = self;
     
+    [self rotateToOrientation:self.interfaceOrientation];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
+
+    
     [self setSectionWithRecord];
 }
 
@@ -273,6 +277,26 @@
     return [cal getOutput];
 }
 
+-(void)onViewRotation:(NSNotification*) noti{
+    NSString* orientation = noti.object;
+    [self rotateToOrientation:[orientation integerValue]];
+}
+
+-(void)rotateToOrientation:(UIInterfaceOrientation) orientation{
+    CGRect frame = m_tableView.frame;
+    CGRect bannerframe = m_adBannerView.frame;
+    CGRect layout = self.view.frame;
+    if(m_adBannerView.isHidden){
+        frame.size.height = layout.size.height;
+    }else{
+        frame.size.height = layout.size.height - bannerframe.size.height;
+    }
+    [m_tableView setFrame:frame];
+    bannerframe.origin.y = frame.origin.y + frame.size.height;
+    bannerframe.origin.x = frame.origin.x;
+    [m_adBannerView setFrame:bannerframe];
+}
+
 -(void)onAddMortgageToRecord:(id)sender{
     AddRecordViewController* rootController = [[AddRecordViewController alloc] initWithMortgageRecord:m_record Mode:ADDMODE];
     [rootController setM_delegate:m_recordViewController];
@@ -403,14 +427,21 @@
 #pragma mark - ADBannerView
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner{
     CGRect frame = m_tableView.frame;
-    frame.size.height -= m_adBannerView.frame.size.height;
+    CGRect bannerframe = m_adBannerView.frame;
+    CGRect layout = self.view.frame;
+    frame.size.height = layout.size.height - bannerframe.size.height;
     [m_tableView setFrame:frame];
+    
+    bannerframe.origin.y = frame.origin.y + frame.size.height;
+    bannerframe.origin.x = frame.origin.x;
+    [m_adBannerView setFrame:bannerframe];
     [m_adBannerView setHidden:false];
 }
 
 -(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
     CGRect frame = m_tableView.frame;
-    frame.size.height += m_adBannerView.frame.size.height;
+    frame.size.height = self.view.frame.size.height;
+    [m_tableView setFrame:frame];
     [m_tableView setFrame:frame];
     [m_adBannerView setHidden:true];
 }

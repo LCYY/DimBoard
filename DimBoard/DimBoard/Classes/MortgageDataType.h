@@ -27,7 +27,7 @@
 #define COEFF_LOANPERCENT_VALUE 0.01
 
 #define KEY_MORTGAGE_RECORDID @"mortgage_recordid"
-#define KEY_MORTGAGE_NAME @"Name"
+#define KEY_MORTGAGE_NAME @"name"
 #define KEY_MORTGAGE_BANKID @"Bank"
 #define KEY_MORTGAGE_HOMEVALUE @"HomeValue"
 #define KEY_MORTGAGE_LOANPERCENT @"LoanRatio"

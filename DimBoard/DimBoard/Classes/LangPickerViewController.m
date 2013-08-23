@@ -142,4 +142,5 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     return [m_langTypes getLangNameById:row];
 }
+
 @end

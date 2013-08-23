@@ -16,6 +16,7 @@
 
 @synthesize m_controllerList;
 @synthesize m_recordIO;
+@synthesize m_tableView, m_adBannerView;
 
 -(void)testRecordIO{
     MortgageRecordIO* recordIO = [[MortgageRecordIO alloc] initWithLoadRecords];
@@ -92,6 +93,10 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onAddNewMortgageRecord:)];
     self.navigationItem.rightBarButtonItem = addButton;
     
+    [m_tableView setDelegate:self];
+    [m_tableView setDataSource:self];
+    [m_adBannerView setDelegate:self];
+    
     [self rotateToOrientation:self.interfaceOrientation];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
 }
@@ -103,6 +108,8 @@
 
 - (void)viewDidUnload
 {
+    [self setM_tableView:nil];
+    [self setM_adBannerView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -127,6 +134,18 @@
 }
 
 -(void)rotateToOrientation:(UIInterfaceOrientation) orientation{
+    CGRect frame = m_tableView.frame;
+    CGRect bannerframe = m_adBannerView.frame;
+    CGRect layout = self.view.frame;
+    if(m_adBannerView.isHidden){
+        frame.size.height = layout.size.height;
+    }else{
+        frame.size.height = layout.size.height - bannerframe.size.height;
+    }
+    [m_tableView setFrame:frame];
+    bannerframe.origin.y = frame.origin.y + frame.size.height;
+    bannerframe.origin.x = frame.origin.x;
+    [m_adBannerView setFrame:bannerframe];
 }
 
 #pragma mark - UITableViewDelegate
@@ -174,7 +193,7 @@
         [m_recordIO deleteRecordbyId:rid];
         [m_recordIO save];
         [m_controllerList removeObjectAtIndex:indexPath.row];
-        [((UITableView*)self.view) reloadData];
+        [m_tableView reloadData];
     }
 }
 
@@ -185,16 +204,41 @@
 #pragma mark - UpdateRecordProtocol
 -(void)updateRecord:(MortgageRecord *)record{
     [m_recordIO updateRecord:record];
-    [((UITableView*)self.view) reloadData];
+    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:KEY_MORTGAGE_NAME ascending:YES];
+    m_controllerList = [[m_controllerList sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]] mutableCopy];
+    [m_tableView reloadData];
 }
 
 -(void)addNewRecord:(MortgageRecord *)record{
     [m_recordIO addRecord:record];
-    [m_recordIO save];
     RecordDetailViewController* controller = [[RecordDetailViewController alloc] initWithMortgageRecord:record];
     [controller setM_delegate:self];
     [self.m_controllerList addObject:controller];
-    [((UITableView*)self.view) reloadData];
+    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:KEY_MORTGAGE_NAME ascending:YES];
+    m_controllerList = [[m_controllerList sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]] mutableCopy];
+    [m_tableView reloadData];
+}
+
+#pragma mark - ADBannerView
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner{
+    CGRect frame = m_tableView.frame;
+    CGRect bannerframe = m_adBannerView.frame;
+    CGRect layout = self.view.frame;
+    frame.size.height = layout.size.height - bannerframe.size.height;
+    [m_tableView setFrame:frame];
+    
+    bannerframe.origin.y = frame.origin.y + frame.size.height;
+    bannerframe.origin.x = frame.origin.x;
+    [m_adBannerView setFrame:bannerframe];
+    [m_adBannerView setHidden:false];
+}
+
+-(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
+    CGRect frame = m_tableView.frame;
+    frame.size.height = self.view.frame.size.height;
+    [m_tableView setFrame:frame];
+    [m_tableView setFrame:frame];
+    [m_adBannerView setHidden:true];
 }
 
 @end

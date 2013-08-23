@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iAd/iAd.h>
 #import "AddRecordViewController.h"
 #import "Calculator.h"
 #import "DimBoardProtocols.h"
 #import "PieChartCell.h"
 #import "MortgageMonthlyPayViewController.h"
 
-@interface RecordDetailViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate,UpdateRecordProtocol, PieChartCellExtendDelegate>
+@interface RecordDetailViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ADBannerViewDelegate, UpdateRecordProtocol, PieChartCellExtendDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *m_tableView;
+@property (weak, nonatomic) IBOutlet ADBannerView *m_adBannerView;
 @property (retain, nonatomic) MortgageRecord *m_record;
 @property (retain, nonatomic) MortgageOutput *m_output;
 @property (retain, nonatomic) NSMutableArray* m_sections;

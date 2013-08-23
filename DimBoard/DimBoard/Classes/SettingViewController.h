@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iAd/iAd.h>
 #import "SettingIO.h"
 #import "LangPickerViewController.h"
 #import "LocalizeHelper.h"
 
-@interface SettingViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate, UpdateSettingItemProtocol>
+@interface SettingViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ADBannerViewDelegate, UpdateSettingItemProtocol>
 {
 }
+@property (weak, nonatomic) IBOutlet ADBannerView *m_adBannerView;
+@property (weak, nonatomic) IBOutlet UITableView *m_tableView;
 @property (nonatomic, retain) SettingIO* m_settingIO;
 @property (nonatomic, strong) LangPickerViewController* m_langPickerViewController;
 @property (nonatomic, strong) NSMutableArray* m_sections;

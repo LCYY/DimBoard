@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iAd/iAd.h>
 #import "SliderCell.h"
 #import "InputCell.h"
 #import "MortgageDataType.h"
@@ -19,10 +20,12 @@
 #define ADDMODE 0
 #define EDITMODE 1
 
-@interface AddRecordViewController : UITableViewController<UpdateRecordItemProtocol>{
+@interface AddRecordViewController : UIViewController<UpdateRecordItemProtocol, UITableViewDataSource, UITableViewDelegate, ADBannerViewDelegate>{
     NSInteger m_mode;
 }
 
+@property (weak, nonatomic) IBOutlet ADBannerView *m_adBannerView;
+@property (weak, nonatomic) IBOutlet UITableView *m_tableView;
 @property (weak, nonatomic) id<UpdateRecordProtocol> m_delegate;
 //Section 0
 //---------
