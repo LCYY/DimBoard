@@ -465,8 +465,11 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 5 && indexPath.row == 0){
         MortgageMonthlyPayViewController* rootController = [[MortgageMonthlyPayViewController alloc] init];
-        [rootController setPricipals:m_output.principals LeftAmount:m_output.leftLoanAmounts MonthlyPay:m_output->monthlyPay];
+        [rootController setPricipals:m_output.principals LeftAmount:m_output.leftLoanAmounts MonthlyPay:m_output->monthlyPay CurrentTerm:m_output->paidTerms + 1];
+        [self setHidesBottomBarWhenPushed:YES];
+        self.navigationItem.title = self.title;
         [self.navigationController pushViewController:rootController animated:YES];
+        [self setHidesBottomBarWhenPushed:NO];
     }
 }
 

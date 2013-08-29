@@ -69,11 +69,19 @@
     [super viewDidUnload];
 }
 
--(void)setPricipals:(NSArray *)pricipals LeftAmount:(NSArray*)leftAmounts MonthlyPay:(double)monthlypay{
+-(void)viewDidAppear:(BOOL)animated{
+    NSInteger year = m_currentTerm/12;
+    NSInteger month = m_currentTerm%12;
+      
+    [TableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:month-1 inSection:year] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
+-(void)setPricipals:(NSArray *)pricipals LeftAmount:(NSArray*)leftAmounts MonthlyPay:(double)monthlypay CurrentTerm:(NSInteger)term{
     m_principals = [pricipals copy];
     m_leftLoanAmounts = [leftAmounts copy];
     m_monthlyPay = monthlypay;
     m_headerWidth = 320;
+    m_currentTerm = term;
 }
 
 

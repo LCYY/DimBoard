@@ -15,6 +15,7 @@
 {
     double m_monthlyPay;
     double m_headerWidth;
+    NSInteger m_currentTerm;
 }
 @property (weak, nonatomic) IBOutlet UITextField *PrincipalLabel;
 @property (weak, nonatomic) IBOutlet UITextField *InterestLabel;
@@ -24,5 +25,5 @@
 @property (retain, nonatomic) NSArray* m_principals;
 @property (retain, nonatomic) NSArray* m_leftLoanAmounts;
 
--(void)setPricipals:(NSArray*)pricipals LeftAmount:(NSArray*)leftAmounts MonthlyPay:(double)monthlyPay;
+-(void)setPricipals:(NSArray*)pricipals LeftAmount:(NSArray*)leftAmounts MonthlyPay:(double)monthlyPay CurrentTerm:(NSInteger)term;
 @end
