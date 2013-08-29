@@ -393,7 +393,7 @@
     return YES;
 }
 
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+-(BOOL)textFieldDidBeginEditing:(UITextField *)textField{
     [m_deletegate startEditRecordKey:m_name];
 }
 
