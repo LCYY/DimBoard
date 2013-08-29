@@ -43,6 +43,12 @@
 #define LANG_CHINESE_S @"SChinese"
 #define LANG_ENG @"English"
 
+#define TABLE_CELL_HEIGHT 44
+#define TABLE_SECTION_HEADER_HEIGHT 30
+#define MONTHLYPAY_TABLE_HEIGHT 28
+#define MONTHLYPAY_TABLE_SECTION_HEADER_HEIGHT 18
+#define PIECHAR_CELL_HEIGHT 95
+
 @interface BankTypes : NSObject
 @property(retain,nonatomic) NSArray* m_banks;
 -(NSString*)getBankNameById:(NSInteger)bid;

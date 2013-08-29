@@ -12,6 +12,21 @@
 
 @end
 
+@implementation UIView (FindAndResignFirstResponder)
+- (BOOL)findAndResignFirstResponder
+{
+    if (self.isFirstResponder) {
+        [self resignFirstResponder];
+        return YES;
+    }
+    for (UIView *subView in self.subviews) {
+        if ([subView findAndResignFirstResponder])
+            return YES;
+    }
+    return NO;
+}
+@end
+
 @implementation MortgageCalViewController
 @synthesize InputTableView, ResultTableView, InterLabel, InterLabelBG;
 @synthesize m_input,m_output,m_calculator,m_inputRows,m_outputRows;
@@ -55,6 +70,7 @@
     [self.view addGestureRecognizer:tapRecognizer];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onViewRotation:) name:NOTI_SCREENROTATION object:nil];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -166,9 +182,9 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(tableView == InputTableView){
-        return 44;
+        return TABLE_CELL_HEIGHT;
     }else if(tableView == ResultTableView){
-        return 44;
+        return TABLE_CELL_HEIGHT;
     }
     return 0;
 }
@@ -242,6 +258,7 @@
 
 #pragma mark - UpdateRecordItemProtocol
 -(void)updateRecordKey:(NSString *)key withValue:(id)value{
+    [InputTableView setContentOffset:CGPointMake(0,0)];
     if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_HOMEVALUE)]){
         m_input->homeValue = [((NSString*)value) doubleValue];
     }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_LOANPERCENT)]){
@@ -255,4 +272,15 @@
     //[InputTableView reloadData];
     [ResultTableView reloadData];
 }
+
+- (void)startEditRecordKey:(NSString *)key{
+    if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_LOANPERCENT)]){
+        [InputTableView setContentOffset:CGPointMake(0,TABLE_CELL_HEIGHT)];
+    }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_INTERESTRATE)]){
+        [InputTableView setContentOffset:CGPointMake(0,TABLE_CELL_HEIGHT*3)];
+    }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_LOANYEAR)]){
+        [InputTableView setContentOffset:CGPointMake(0,TABLE_CELL_HEIGHT*2)];
+    }
+}
+
 @end

@@ -393,6 +393,10 @@
     return YES;
 }
 
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    [m_deletegate startEditRecordKey:m_name];
+}
+
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
 replacementString:(NSString *)string {
     if([[ValueInput text] length] > 0 && [string length] > 0 && [string compare:@"."] != NSOrderedSame){

@@ -459,7 +459,7 @@
         PieChartCell* cell = [m_pieChartCells objectForKey:key];
         return [cell getHeight];
     }
-    return 40;
+    return TABLE_CELL_HEIGHT;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -491,7 +491,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 30;
+    return TABLE_SECTION_HEADER_HEIGHT;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{

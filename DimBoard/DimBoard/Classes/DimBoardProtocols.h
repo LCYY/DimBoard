@@ -12,6 +12,8 @@
 @protocol UpdateRecordItemProtocol <NSObject>
 @required
 -(void)updateRecordKey:(NSString*)kay withValue:(id)value;
+@optional
+-(void)startEditRecordKey:(NSString*)key;
 @end
 
 @protocol UpdateRecordProtocol <NSObject>

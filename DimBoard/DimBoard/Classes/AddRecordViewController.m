@@ -154,10 +154,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section == 2)
-        return 44;
-    else
-        return 44;
+    return TABLE_CELL_HEIGHT;
 }
 
 #pragma mark UITableViewDataSource
@@ -300,16 +297,16 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 30;
+    return TABLE_SECTION_HEADER_HEIGHT;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0;
 }
 
-
 #pragma mark - UpdateRecordItemProtocol
 -(void)updateRecordKey:(NSString *)key withValue:(id)value{
+    [m_tableView setContentOffset:CGPointMake(0, 0)];
     if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_BANKID)]){
         m_record->bankId = [((NSNumber*)value) integerValue];
         [m_tableView reloadData];
@@ -328,6 +325,18 @@
     }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_NAME)]){
         m_record.name = (NSString*)[value copy];
         self.title = m_record.name;
+    }
+}
+
+-(void)startEditRecordKey:(NSString *)key{
+    if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_HOMEVALUE)]){
+        [m_tableView setContentOffset:CGPointMake(0, TABLE_SECTION_HEADER_HEIGHT*2 + TABLE_CELL_HEIGHT*2)];
+    }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_LOANPERCENT)]){
+        [m_tableView setContentOffset:CGPointMake(0, TABLE_SECTION_HEADER_HEIGHT*2 + TABLE_CELL_HEIGHT*3)];
+    }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_INTERESTRATE)]){
+        [m_tableView setContentOffset:CGPointMake(0, TABLE_SECTION_HEADER_HEIGHT*2 + TABLE_CELL_HEIGHT*5)];
+    }else if([key isEqualToString:DimBoardLocalizedString(KEY_MORTGAGE_LOANYEAR)]){
+        [m_tableView setContentOffset:CGPointMake(0, TABLE_SECTION_HEADER_HEIGHT*2 + TABLE_CELL_HEIGHT*4)];
     }
 }
 
