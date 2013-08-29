@@ -67,6 +67,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [m_adBannerView setHidden:true];
     
     [m_tableView setDataSource:self];
     [m_tableView setDelegate:self];
@@ -449,7 +450,6 @@
 -(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
     CGRect frame = m_tableView.frame;
     frame.size.height = self.view.frame.size.height;
-    [m_tableView setFrame:frame];
     [m_tableView setFrame:frame];
     [m_adBannerView setHidden:true];
 }
