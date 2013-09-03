@@ -188,7 +188,7 @@
             [ValueInput setFrame:frame];
             
             frame = UnitLabel.frame;
-            frame.origin.x = 155 + widthchange;
+            frame.origin.x = 160 + widthchange;
             [UnitLabel setFrame:frame];
             
             frame = MinusButton.frame;
@@ -208,12 +208,12 @@
             [NameLabel setFrame:frame];
             
             frame = ValueInput.frame;
-            frame.size.width = 80;
-            frame.origin.x = 125;
+            frame.size.width = 90;
+            frame.origin.x = 105;
             [ValueInput setFrame:frame];
             
             frame = UnitLabel.frame;
-            frame.origin.x = 197;
+            frame.origin.x = 192;
             [UnitLabel setFrame:frame];
             
             frame = MinusButton.frame;

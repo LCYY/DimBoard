@@ -77,7 +77,7 @@
     [super viewWillAppear:animated];
     
     [m_inputRows removeAllObjects];
-    NSArray *value01 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"HomeValue"),@" ＄",nil];
+    NSArray *value01 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"HomeValue"),@" $",nil];
     NSArray *value02 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"LoanRatio"),@"%",nil];
     NSArray *value03 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"MortYear"),DimBoardLocalizedString(@"Year"),nil];
     NSArray *value04 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"InterestRate"),@"%",nil];
@@ -158,10 +158,10 @@
     [m_calculator setInput:m_input];
     m_output = [[m_calculator getOutput] copy];
     
-    NSArray *value11 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"LoanAmount"),[NSString stringWithFormat:@"%@ ＄",[self getFormattedString:m_output->loanAmount]],nil];
-    NSArray *value12 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"LoanTerm"),[NSString stringWithFormat:@"%d %@",m_output->loanTerms, DimBoardLocalizedString(@"Term")],nil];
-    NSArray *value13 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"MonthlyPay"),[NSString stringWithFormat:@"%@ ＄",[self getFormattedString:m_output->monthlyPay]],nil];
-    NSArray *value14 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"TotalRepayment"),[NSString stringWithFormat:@"%@ ＄",[self getFormattedString:m_output->rePayment]],nil];
+    NSArray *value11 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"LoanAmount"),[NSString stringWithFormat:@"$ %@",[self getFormattedString:m_output->loanAmount]],nil];
+    NSArray *value12 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"LoanTerm"),[NSString stringWithFormat:@"%d %@",m_output->loanTerms, DimBoardLocalizedString(@"Months")],nil];
+    NSArray *value13 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"MonthlyPay"),[NSString stringWithFormat:@"$ %@",[self getFormattedString:m_output->monthlyPay]],nil];
+    NSArray *value14 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(@"TotalRepayment"),[NSString stringWithFormat:@"$ %@",[self getFormattedString:m_output->rePayment]],nil];
     m_outputRows = [[NSArray alloc] initWithObjects:value11,value12,value13,value14,nil];
 }
 

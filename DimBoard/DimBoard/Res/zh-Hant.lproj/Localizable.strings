@@ -5,12 +5,16 @@
   Created by conicacui on 14/3/13.
   Copyright (c) 2013 LCYY. All rights reserved.
 */
-
+"paidoff"="已還清";
 "Year"="年";
+"Years"="年";
 "Save"="存儲";
 "name"="名稱";
 "Bank"="銀行";
-"Term"="";
+"Months"="期";
+"Term"="期";
+"Termth"="%@  第%d期";
+"Payable"="待付: $%@";
 "$"="$";
 "Principal"="本金";
 "Interest"="利息";

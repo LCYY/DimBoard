@@ -26,7 +26,7 @@
         
         m_section0 = DimBoardLocalizedString(KEY_MORTGAGE_NAME); //input cell
         m_section1 = DimBoardLocalizedString(KEY_MORTGAGE_BANKID); //input cell
-        NSArray *value1 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(KEY_MORTGAGE_HOMEVALUE),@" ＄",nil];
+        NSArray *value1 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(KEY_MORTGAGE_HOMEVALUE),@" $",nil];
         NSArray *value2 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(KEY_MORTGAGE_LOANPERCENT),@"%",nil];
         NSArray *value3 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(KEY_MORTGAGE_LOANYEAR),DimBoardLocalizedString(@"Year"),nil];
         NSArray *value4 = [[NSArray alloc] initWithObjects:DimBoardLocalizedString(KEY_MORTGAGE_INTERESTRATE),@"%",nil];

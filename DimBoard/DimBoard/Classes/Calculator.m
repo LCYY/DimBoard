@@ -85,6 +85,9 @@
     }
     if(pastMonths == 0){
         m_output->toPayPrincipal = m_output->loanAmount;
+    }else if(pastMonths >= m_output->loanTerms){
+        m_output->toPayPrincipal = 0;
+        pastMonths = m_output->loanTerms;
     }else{
         m_output->toPayPrincipal = [[m_output.leftLoanAmounts objectAtIndex:(pastMonths-1)] doubleValue];
     }

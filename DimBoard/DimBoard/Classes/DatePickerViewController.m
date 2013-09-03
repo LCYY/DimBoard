@@ -53,7 +53,7 @@
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:DATEFORMAT];
     [DatePicker setMinimumDate:[formatter dateFromString:@"1980-01-01"]];
-    [DatePicker setMaximumDate:[formatter dateFromString:@"3000-12-31"]];
+    [DatePicker setMaximumDate:[formatter dateFromString:@"2100-12-31"]];
     [DatePicker setDate:m_date animated:YES];
     
     [DatePicker addTarget:self action:@selector(onDateChanged:) forControlEvents:UIControlEventValueChanged];

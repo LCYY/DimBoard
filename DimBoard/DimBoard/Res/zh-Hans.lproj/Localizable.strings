@@ -5,24 +5,28 @@
  Created by conicacui on 14/3/13.
  Copyright (c) 2013 LCYY. All rights reserved.
  */
-
+"paidoff"="已还清";
 "Year"="年";
+"Years"="年";
 "Save"="存储";
 "name"="名称";
 "Bank"="银行";
-"Term"="";
+"Months"="期";
+"Term"="期";
+"Termth"="%@  第%d期";
+"Payable"="待付: $%@";
 "$"="$";
 "Principal"="本金";
 "Interest"="利息";
 "PropertyInfo"="物业资料";
 "MortInfo"="按揭资料";
 "FirstPaymentDetails"="首付分析";
-"RepaymentDetails"="Repayment Details";
+"RepaymentDetails"="按揭分析";
 "StartDate"="贷款开始日期";
 "Calculator"="计算器";
 "PleaseInput"="请输入";
 "TotalExpensesInfo"="详细资料";
-"TotalExpensesDetails"="Expence Details";
+"TotalExpensesDetails"="总支出分析";
 "LoanTerm"="期数";
 "InterestRate"="按揭利率";
 "HomeValue"="物业价值";
@@ -60,7 +64,7 @@
 "ChongHingBank"="创兴银行";
 "MEVASBank"="丰明银行";
 "NanyangBank"="南洋商业银行";
-"PublicBank"="大众yinh";
+"PublicBank"="大众银行";
 "ShanghaiCommercialBank"="上海商业银行";
 "WingHangBank"="永亨银行";
 "WingLungBank"="永隆银行";
